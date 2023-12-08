@@ -1,8 +1,7 @@
 package main.java.app.Controller;
-import java.awt.Image;
+
 import javax.swing.ImageIcon;
-
-
+import java.awt.Image;
 
 public class ImageController {
     public ImageIcon getITEBestIcon(){
