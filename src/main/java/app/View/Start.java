@@ -1,8 +1,9 @@
 package main.java.app.View;
 import main.java.app.Controller.ImageController;
+import main.java.app.Controller.ColoringController;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
+// import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JFrame;
@@ -15,20 +16,19 @@ public class Start extends JFrame{
         initComponents();
     }
     private void initComponents(){
-        ImageController imageController = new ImageController();
         Font f20 = new Font("Arial", Font.BOLD, 20);
         JPanel left=new JPanel();
         JPanel rigth=new JPanel();
 
         
         JLabel welcomelLabel=new JLabel("Welcome");
-        JLabel imageLabel = new JLabel(imageController.getITEBestIcon());
+        JLabel imageLabel = new JLabel(ImageController.getITEBestIcon());
         
         // إضافة الصورة إلى النافذة
         rigth.setBounds(500, 0, 200, 400);
         left.setBounds(0, 0, 500, 400);
         left.setLayout(new BorderLayout());
-        left.setBackground(Color.decode("#AF2655"));
+        left.setBackground(ColoringController.getPrimaryColor());
         setSize(700,400);
         setUndecorated(true);
         setLocationRelativeTo(null);
