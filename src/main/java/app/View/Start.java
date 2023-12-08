@@ -1,11 +1,10 @@
 package main.java.app.View;
+import main.java.app.Controller.ImageController;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Image;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,16 +15,14 @@ public class Start extends JFrame{
         initComponents();
     }
     private void initComponents(){
+        ImageController imageController = new ImageController();
         Font f20 = new Font("Arial", Font.BOLD, 20);
         JPanel left=new JPanel();
         JPanel rigth=new JPanel();
 
-        String imagePath = "D:\\Univercity\\Years\\ITE Second Year\\الفصل الاول\\برمجة 3\\project\\ITEBestIcon.png";
-        ImageIcon imageIcon = new ImageIcon(imagePath);
-        Image resizedImage = imageIcon.getImage().getScaledInstance(300, 300, Image.SCALE_DEFAULT);
-        ImageIcon resizedImageIcon = new ImageIcon(resizedImage);
+        
         JLabel welcomelLabel=new JLabel("Welcome");
-        JLabel imageLabel = new JLabel(resizedImageIcon);
+        JLabel imageLabel = new JLabel(imageController.getITEBestIcon());
         
         // إضافة الصورة إلى النافذة
         rigth.setBounds(500, 0, 200, 400);
