@@ -1,6 +1,7 @@
 package main.java.app.View;
 import main.java.app.Controller.ImageController;
 import main.java.app.Controller.ColoringController;
+import main.java.app.Controller.FontController;
 
 import java.awt.BorderLayout;
 // import java.awt.Color;
@@ -16,11 +17,10 @@ public class Start extends JFrame{
         initComponents();
     }
     private void initComponents(){
-        Font f20 = new Font("Arial", Font.BOLD, 20);
+        // Font f20 = new Font("Arial", Font.BOLD, 20);
         JPanel left=new JPanel();
         JPanel rigth=new JPanel();
 
-        
         JLabel welcomelLabel=new JLabel("Welcome");
         JLabel imageLabel = new JLabel(ImageController.getITEBestIcon());
         
@@ -33,7 +33,7 @@ public class Start extends JFrame{
         setUndecorated(true);
         setLocationRelativeTo(null);
         setLayout(null);
-        welcomelLabel.setFont(f20);
+        welcomelLabel.setFont(FontController.getPrimaryFont(Font.BOLD, 20));
         rigth.add(welcomelLabel);
         left.add(imageLabel,BorderLayout.CENTER);
         add(rigth);
@@ -42,7 +42,7 @@ public class Start extends JFrame{
 
 
     }
-    public static void main(String[] args) {
+    public static void main() {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
