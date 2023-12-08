@@ -1,8 +1,14 @@
 package main.java.app.View;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.MouseListener;
+
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
@@ -10,7 +16,13 @@ public class Home extends JFrame{
     Home(){
         initComponents();
     }
-
+    private JLabel Photo(String imagePath){
+        ImageIcon imageIcon = new ImageIcon(imagePath);
+        Image resizedImage = imageIcon.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT);
+        ImageIcon resizedImageIcon = new ImageIcon(resizedImage);
+        JLabel imageLabel = new JLabel(resizedImageIcon);
+        return imageLabel;
+    }
     private void MouseEnterPtoolbar(JPanel panel){
             panel.addMouseListener(new MouseListener() {
 
@@ -49,23 +61,83 @@ public class Home extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);
-
+        Font f20 = new Font("Arial", Font.BOLD, 30);
         JPanel toolbar=new JPanel();
         JPanel Top=new JPanel();
+        JLabel title=new JLabel("ITE Best");
+        
+        //-------------------------------------------------
+        
         JPanel BProfile=new JPanel();
-
+        BProfile.setLayout(new BorderLayout());
+        BProfile.setBounds(0, 70, 60, 100);
+        BProfile.add(Photo("D:\\Univercity\\Years\\ITE Second Year\\الفصل الاول\\برمجة 3\\project\\profile.png"),BorderLayout.CENTER);
+        BProfile.setBackground(Color.decode("#860A35"));
         MouseEnterPtoolbar(BProfile);
+        toolbar.add(BProfile);
+        //
+         //
+        JPanel BMovie=new JPanel();
+        BMovie.setLayout(new BorderLayout());
+        BMovie.setBounds(0, 170, 60, 100);
+        BMovie.add(Photo("D:\\Univercity\\Years\\ITE Second Year\\الفصل الاول\\برمجة 3\\project\\movie.png"),BorderLayout.CENTER);
+        BMovie.setBackground(Color.decode("#860A35"));
+        MouseEnterPtoolbar(BMovie);
+        toolbar.add(BMovie);
+        //
+          //
+        JPanel Btrend=new JPanel();
+        Btrend.setLayout(new BorderLayout());
+        Btrend.setBounds(0, 270, 60, 100);
+        Btrend.add(Photo("D:\\Univercity\\Years\\ITE Second Year\\الفصل الاول\\برمجة 3\\project\\fire.png"),BorderLayout.CENTER);
+        Btrend.setBackground(Color.decode("#860A35"));
+        MouseEnterPtoolbar(Btrend);
+        toolbar.add(Btrend);
+        //
+        //
+        JPanel BHome=new JPanel();
+        BHome.setLayout(new BorderLayout());
+        BHome.setBounds(0, 370, 60, 100);
+        BHome.add(Photo("D:\\Univercity\\Years\\ITE Second Year\\الفصل الاول\\برمجة 3\\project\\home.png"),BorderLayout.CENTER);
+        BHome.setBackground(Color.decode("#860A35"));
+        MouseEnterPtoolbar(BHome);
+        toolbar.add(BHome);
+        //
+        //
+        JPanel Bticket=new JPanel();
+        Bticket.setLayout(new BorderLayout());
+        Bticket.setBounds(0, 470, 60, 100);
+        Bticket.add(Photo("D:\\Univercity\\Years\\ITE Second Year\\الفصل الاول\\برمجة 3\\project\\ticket.png"),BorderLayout.CENTER);
+        Bticket.setBackground(Color.decode("#860A35"));
+        MouseEnterPtoolbar(Bticket);
+        toolbar.add(Bticket);
+        //
+         //
+        JPanel Bsettings=new JPanel();
+        Bsettings.setLayout(new BorderLayout());
+        Bsettings.setBounds(0, 570, 60, 100);
+        Bsettings.add(Photo("D:\\Univercity\\Years\\ITE Second Year\\الفصل الاول\\برمجة 3\\project\\setting.png"),BorderLayout.CENTER);
+        Bsettings.setBackground(Color.decode("#860A35"));
+        MouseEnterPtoolbar(Bsettings);
+        toolbar.add(Bsettings);
+        //
+        //----------------------------------
+        
+
+
+        title.setBounds(600, 0, 300, 50);
+        Top.setLayout(null);
         setUndecorated(true);
         toolbar.setBounds(0, 0, 60, 1000);
         Top.setBounds(0, 0, 1280, 50);
-        BProfile.setBounds(0, 0, 40, 50);
-        BProfile.setBackground(Color.decode("#860A35"));
         toolbar.setBackground(Color.decode("#860A35"));
         Top.setBackground(Color.decode("#860A35"));
-        toolbar.setLayout(new GridLayout(6,1));
-        toolbar.add(BProfile);
-        add(toolbar);
+        toolbar.setLayout(null);
+        title.setFont(f20);
+        title.setForeground(Color.WHITE);
+        Top.add(title);
         add(Top);
+        add(toolbar);
 
 
         setVisible(true);
