@@ -25,7 +25,7 @@ public class Home extends JPanel{
         tHome.setBounds(10, 0, 300, 50);
         tHome.setFont(FontController.getPrimaryFont(ALLBITS, 30));
         //banner
-        JLabel imgbanner=new JLabel(ImageController.getbanar1Icon());
+        JLabel imgbanner=new JLabel(ImageController.getBanar1Icon());
         imgbanner.setBounds(0, 0, 1180, 250);
         JPanel banner = new JPanel();
         banner.setBackground(Color.LIGHT_GRAY);
