@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import main.java.app.Controller.ImageController;
+
 public class Lobby extends JFrame{
     Home Phome=new Home();
     Profile PProfile=new Profile();
@@ -74,6 +76,7 @@ public class Lobby extends JFrame{
 
     }
     private void initComponents() {
+        setIconImage(new ImageIcon("src\\main\\resources\\images\\ITEBestIcon.png").getImage());
         setSize(1280,720);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
