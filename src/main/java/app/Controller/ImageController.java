@@ -1,6 +1,6 @@
 package main.java.app.Controller;
-
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import java.awt.Image;
 
 public class ImageController {
@@ -18,5 +18,20 @@ public class ImageController {
         Image resizedImage = imageIcon.getImage().getScaledInstance(1180, 250, Image.SCALE_SMOOTH);
         ImageIcon resizedImageIcon = new ImageIcon(resizedImage);
         return resizedImageIcon;
+    }
+    public static ImageIcon getIcon(String name){
+        String imagePath = imagesPath + name;
+        ImageIcon imageIcon = new ImageIcon(imagePath);
+        Image resizedImage = imageIcon.getImage().getScaledInstance(300, 300, Image.SCALE_SMOOTH);
+        ImageIcon resizedImageIcon = new ImageIcon(resizedImage);
+        return resizedImageIcon;
+    }
+    public static JLabel addPhoto(String name){
+        String imagePath = imagesPath + name;
+        ImageIcon imageIcon = new ImageIcon(imagePath);
+        Image resizedImage = imageIcon.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT);
+        ImageIcon resizedImageIcon = new ImageIcon(resizedImage);
+        JLabel imageLabel = new JLabel(resizedImageIcon);
+        return imageLabel;
     }
 }
