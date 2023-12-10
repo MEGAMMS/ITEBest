@@ -34,4 +34,12 @@ public class ImageController {
         JLabel imageLabel = new JLabel(resizedImageIcon);
         return imageLabel;
     }
+    public static JLabel addPhoto(String name,int WIDTH,int HEIGHT){
+        String imagePath = imagesPath + name;
+        ImageIcon imageIcon = new ImageIcon(imagePath);
+        Image resizedImage = imageIcon.getImage().getScaledInstance(WIDTH, HEIGHT, Image.SCALE_DEFAULT);
+        ImageIcon resizedImageIcon = new ImageIcon(resizedImage);
+        JLabel imageLabel = new JLabel(resizedImageIcon);
+        return imageLabel;
+    }
 }

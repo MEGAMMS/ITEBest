@@ -30,6 +30,7 @@ public class Lobby extends JFrame {
                     case "Home":
                         Phome.setVisible(true);
                         PProfile.setVisible(false);
+                        Ticketadd ticketadd=new Ticketadd();
                         break;
                     case "Profile":
                         Phome.setVisible(false);

@@ -2,6 +2,7 @@ package main.java.app.View;
 import java.awt.BorderLayout;
 // import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,7 +22,7 @@ public class Home extends JPanel{
     //----------Top--------------
         JLabel tHome = new JLabel("Home Page");
         tHome.setBounds(10, 0, 300, 50);
-        tHome.setFont(FontController.getPrimaryFont(ALLBITS, 30));
+        tHome.setFont(FontController.getPrimaryFont(Font.BOLD, 30));
     //---------------------------
 
     //---------banner------------
