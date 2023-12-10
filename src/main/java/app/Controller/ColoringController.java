@@ -8,7 +8,13 @@ public class ColoringController {
     public static Color getBasicColor(){
         return Color.decode("#860A35");
     }
-    public static Color getlightBasicColor(){
+    public static Color getLightBasicColor(){
         return Color.decode("#D17292");
+    }
+    public static Color getWhiteColor(){
+        return Color.white;
+    }
+    public static Color getLightGrayColor(){
+        return Color.lightGray;
     }
 }
