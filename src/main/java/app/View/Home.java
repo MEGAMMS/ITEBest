@@ -1,4 +1,5 @@
 package main.java.app.View;
+
 import java.awt.BorderLayout;
 // import java.awt.Color;
 import java.awt.Dimension;
@@ -11,57 +12,60 @@ import main.java.app.Controller.FontController;
 import main.java.app.Controller.ImageController;
 import main.java.app.Controller.ColoringController;
 
-public class Home extends JPanel{
-    Home(){
+public class Home extends JPanel {
+    Home() {
         initComponents();
     }
-    private void initComponents(){
+
+    private void initComponents() {
 
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(null);
-    //----------Top--------------
+        // ----------Top--------------
         JLabel tHome = new JLabel("Home Page");
         tHome.setBounds(10, 0, 300, 50);
         tHome.setFont(FontController.getPrimaryFont(Font.BOLD, 30));
-    //---------------------------
+        // ---------------------------
 
-    //---------banner------------
-        JLabel imgbanner=new JLabel(ImageController.getBanar1Icon());
+        // ---------banner------------
+        JLabel imgbanner = new JLabel(ImageController.getBanar1Icon());
         imgbanner.setBounds(0, 0, 1180, 250);
         JPanel banner = new JPanel();
         banner.setBackground(ColoringController.getLightBasicColor());
         banner.setBounds(10, 50, 1180, 250);
         banner.add(imgbanner);
         banner.setLayout(null);
-    //---------------------------
+        // ---------------------------
 
-    //----------menu-------------
+        // ----------menu-------------
         JPanel menu = new JPanel();
         menu.setBackground(ColoringController.getLightGrayColor());
         menu.setBounds(10, 310, 1180, 40);
         menu.setLayout(null);
-    //---------------------------
-    
-    //-----------Body------------
+        // ---------------------------
+
+        // -----------Body------------
         JPanel body = new JPanel();
         body.setBackground(ColoringController.getLightGrayColor());
         body.setBounds(10, 360, 1180, 1000);
         body.setLayout(new GridLayout(4, 5, 10, 10));
-    //---------------------------
+        // ---------------------------
 
-    //-------Properites----------
+        // -------Properites----------
+        this.setName("Home");
         setBounds(60, 50, 1220, 670);
         setLayout(new BorderLayout());
-        mainPanel.setPreferredSize(new Dimension(1200,1400));
+        mainPanel.setPreferredSize(new Dimension(1200, 1400));
         mainPanel.add(tHome);
         mainPanel.add(banner);
         mainPanel.add(menu);
         mainPanel.add(body);
         JScrollPane scrollPane = new JScrollPane(mainPanel);
-        add(scrollPane,BorderLayout.CENTER);
-    //---------------------------
+        add(scrollPane, BorderLayout.CENTER);
+        // ---------------------------
     }
-    public JPanel getP(){
+
+    public JPanel getP() {
         return this;
     }
 }

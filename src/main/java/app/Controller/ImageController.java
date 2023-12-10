@@ -5,12 +5,17 @@ import java.awt.Image;
 
 public class ImageController {
     static String imagesPath = "src\\main\\resources\\images\\";
+    public static ImageIcon getITEBestIcon(int width,int height){
+        String imagePath = imagesPath + "ITEBestIcon.png";
+        ImageIcon imageIcon = new ImageIcon(imagePath);
+        Image resizedImage = imageIcon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        ImageIcon resizedImageIcon = new ImageIcon(resizedImage);
+        return resizedImageIcon;
+    }
     public static ImageIcon getITEBestIcon(){
         String imagePath = imagesPath + "ITEBestIcon.png";
         ImageIcon imageIcon = new ImageIcon(imagePath);
-        Image resizedImage = imageIcon.getImage().getScaledInstance(300, 300, Image.SCALE_SMOOTH);
-        ImageIcon resizedImageIcon = new ImageIcon(resizedImage);
-        return resizedImageIcon;
+        return imageIcon;
     }
     public static ImageIcon getBanar1Icon(){
         String imagePath =  imagesPath + "banaer.png";

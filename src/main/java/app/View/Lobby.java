@@ -16,33 +16,19 @@ import main.java.app.Controller.PanelsController;
 import main.java.app.Model.MainPanels;
 
 public class Lobby extends JFrame {
-    Home Phome = new Home();
+    Home PHome = new Home();
     Profile PProfile = new Profile();
-
     Lobby() {
         initComponents();
     }
-
+    
+    
     private void MouseEnterPtoolbar(JPanel panel) {
         panel.addMouseListener(new MouseListener() {
 
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
-                switch (panel.getName()) {
-                    case "Home":
-                        Phome.setVisible(true);
-                        PProfile.setVisible(false);
-                        Ticketadd ticketadd=new Ticketadd();
-                        break;
-                    case "Profile":
-                        Phome.setVisible(false);
-                        PProfile.setVisible(true);
-                        break;
-                    default:
-                        Phome.setVisible(false);
-                        PProfile.setVisible(false);
-                        break;
-                }
+                PanelsController.switchPanels(panel);
             }
 
             @Override
@@ -93,7 +79,7 @@ public class Lobby extends JFrame {
         toolbar.setLayout(null);
         //
         JPanel BProfile = new JPanel();
-        BProfile.setName("Profile");
+        BProfile.setName("BProfile");
         BProfile.setLayout(new BorderLayout());
         BProfile.setBounds(0, 70, 60, 100);
         BProfile.add(ImageController.addPhoto("profile.png"), BorderLayout.CENTER);
@@ -109,16 +95,16 @@ public class Lobby extends JFrame {
         MouseEnterPtoolbar(BMovie);
         toolbar.add(BMovie);
         //
-        JPanel Btrend = new JPanel();
-        Btrend.setLayout(new BorderLayout());
-        Btrend.setBounds(0, 270, 60, 100);
-        Btrend.add(ImageController.addPhoto("fire.png"), BorderLayout.CENTER);
-        Btrend.setBackground(ColoringController.getBasicColor());
-        MouseEnterPtoolbar(Btrend);
-        toolbar.add(Btrend);
+        JPanel BTrend = new JPanel();
+        BTrend.setLayout(new BorderLayout());
+        BTrend.setBounds(0, 270, 60, 100);
+        BTrend.add(ImageController.addPhoto("fire.png"), BorderLayout.CENTER);
+        BTrend.setBackground(ColoringController.getBasicColor());
+        MouseEnterPtoolbar(BTrend);
+        toolbar.add(BTrend);
         //
         JPanel BHome = new JPanel();
-        BHome.setName("Home");
+        BHome.setName("BHome");
         BHome.setLayout(new BorderLayout());
         BHome.setBounds(0, 370, 60, 100);
         BHome.add(ImageController.addPhoto("home.png"), BorderLayout.CENTER);
@@ -134,26 +120,28 @@ public class Lobby extends JFrame {
         MouseEnterPtoolbar(Bticket);
         toolbar.add(Bticket);
         //
-        JPanel Bsettings = new JPanel();
-        Bsettings.setLayout(new BorderLayout());
-        Bsettings.setBounds(0, 570, 60, 100);
-        Bsettings.add(ImageController.addPhoto("setting.png"), BorderLayout.CENTER);
-        Bsettings.setBackground(ColoringController.getBasicColor());
-        MouseEnterPtoolbar(Bsettings);
-        toolbar.add(Bsettings);
+        JPanel BSettings = new JPanel();
+        BSettings.setLayout(new BorderLayout());
+        BSettings.setBounds(0, 570, 60, 100);
+        BSettings.add(ImageController.addPhoto("setting.png"), BorderLayout.CENTER);
+        BSettings.setBackground(ColoringController.getBasicColor());
+        MouseEnterPtoolbar(BSettings);
+        toolbar.add(BSettings);
         //
         // -----------------------------
 
         // ----------Properties------------
-        setIconImage(new ImageIcon("src\\main\\resources\\images\\ITEBestIcon.png").getImage());
+        setIconImage(ImageController.getITEBestIcon().getImage());
         setSize(1280, 720);
         setUndecorated(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);
-        add(Phome);
+        MainPanels.addPanel(PHome);
+        MainPanels.addPanel(PProfile);
+        add(PHome);
         add(PProfile);
-        Phome.setVisible(false);
+        PHome.setVisible(false);
         PProfile.setVisible(false);
         add(Top);
         add(toolbar);
