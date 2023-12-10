@@ -1,4 +1,5 @@
 package main.java.app.View;
+
 import main.java.app.Controller.ImageController;
 import main.java.app.Controller.ColoringController;
 import main.java.app.Controller.FontController;
@@ -9,38 +10,40 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-public class Start extends JFrame{
-    Start(){
+public class Start extends JFrame {
+    Start() {
         initComponents();
     }
-    private void initComponents(){
-    //----------Left-------------
-        JPanel left=new JPanel();
+
+    private void initComponents() {
+        // ----------Left-------------
+        JPanel left = new JPanel();
         JLabel imageLabel = new JLabel(ImageController.getITEBestIcon());
         left.setBounds(0, 0, 500, 400);
         left.setLayout(new BorderLayout());
         left.setBackground(ColoringController.getPrimaryColor());
-        left.add(imageLabel,BorderLayout.CENTER);
-    //---------------------------
+        left.add(imageLabel, BorderLayout.CENTER);
+        // ---------------------------
 
-    //---------Rigth-------------
-        JPanel rigth=new JPanel();
-        JLabel welcomelLabel=new JLabel("Welcome");
+        // ---------Rigth-------------
+        JPanel rigth = new JPanel();
+        JLabel welcomelLabel = new JLabel("Welcome");
         rigth.setBounds(500, 0, 200, 400);
         welcomelLabel.setFont(FontController.getPrimaryFont(Font.BOLD, 20));
         rigth.add(welcomelLabel);
-    //---------------------------
-        
-    //-------Propeties-----------
-        setSize(700,400);
+        // ---------------------------
+
+        // -------Propeties-----------
+        setSize(700, 400);
         setUndecorated(true);
         setLocationRelativeTo(null);
         setLayout(null);
         add(rigth);
         add(left);
         setVisible(true);
-    //---------------------------
+        // ---------------------------
     }
+
     public static void main() {
         SwingUtilities.invokeLater(new Runnable() {
             @Override

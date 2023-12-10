@@ -12,6 +12,8 @@ import javax.swing.SwingUtilities;
 import main.java.app.Controller.ColoringController;
 import main.java.app.Controller.FontController;
 import main.java.app.Controller.ImageController;
+import main.java.app.Controller.PanelsController;
+import main.java.app.Model.MainPanels;
 
 public class Lobby extends JFrame {
     Home Phome = new Home();
