@@ -27,25 +27,26 @@ public class PanelsController {
             @Override
             public void mousePressed(MouseEvent e) {
                 // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'mousePressed'");
+                // throw new UnsupportedOperationException("Unimplemented method
+                // 'mousePressed'");
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
                 // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'mouseReleased'");
+                // throw new UnsupportedOperationException("Unimplemented method
+                // 'mouseReleased'");
             }
 
             @Override
-            public void mouseEntered(MouseEvent e) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'mouseEntered'");
+            public void mouseEntered(java.awt.event.MouseEvent e) {
+                panel.setBackground(ColoringController.getLightBasicColor());
             }
 
             @Override
-            public void mouseExited(MouseEvent e) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'mouseExited'");
+            public void mouseExited(java.awt.event.MouseEvent e) {
+                panel.setBackground(ColoringController.getBasicColor());
+
             }
         };
         panel.addMouseListener(ms);
