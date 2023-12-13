@@ -3,12 +3,21 @@ package main.java.app.Model;
 import java.util.ArrayList;
 
 public class Movie {
-    private static int idCounter = 0;
+    public Movie(int id, String title, String director, String description, int showTimeId, ArrayList<Rate> rates,
+            int cinemaId) {
+        this.id = id;
+        this.title = title;
+        this.director = director;
+        this.description = description;
+        this.showTimeId = showTimeId;
+        this.rates = rates;
+        this.cinemaId = cinemaId;
+    }
     private int id;
     private String title;
     private String director;
     private String description;
-    private Showtimes showtimes;
+    private int showTimeId;
     private ArrayList<Rate> rates;
     private int cinemaId;
     public int getId() {
@@ -35,12 +44,10 @@ public class Movie {
     public void setDescription(String description) {
         this.description = description;
     }
-    public Showtimes getShowtimes() {
-        return showtimes;
+    public int getShowTimeId() {
+        return showTimeId;
     }
-    public void setShowtimes(Showtimes showtimes) {
-        this.showtimes = showtimes;
-    }
+
     public ArrayList<Rate> getRates() {
         return rates;
     }
@@ -53,17 +60,10 @@ public class Movie {
     public void setCinemaId(int cinemaId) {
         this.cinemaId = cinemaId;
     }
-    public Movie(String title, String director, String description, Showtimes showtimes, ArrayList<Rate> rates,
-            int cinemaId) {
-        this.id = idCounter;
-        idCounter++;
-        this.title = title;
-        this.director = director;
-        this.description = description;
-        this.showtimes = showtimes;
-        this.rates = rates;
-        this.cinemaId = cinemaId;
+    public void setShowTimeId(int showTimeId) {
+        this.showTimeId = showTimeId;
     }
+    
     
 
 }
