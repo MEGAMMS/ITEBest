@@ -2,9 +2,7 @@ package main.java.app.View;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridLayout;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -13,7 +11,6 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import main.java.app.Controller.ColoringController;
-import main.java.app.Controller.EventController;
 import main.java.app.Controller.FontController;
 import main.java.app.Controller.ImageController;
 
@@ -104,7 +101,7 @@ public class Ticketadd extends JFrame{
             addTick.setBackground(ColoringController.getBasicColor());
             addTick.setLayout(new BorderLayout());
             addTick.add(bttickT);
-            EventController.lightButton(addTick);
+            // EventController.lightButton(addTick);
 
             JPanel closeP=new JPanel();
             JLabel closeT=new JLabel("Close");
@@ -115,7 +112,7 @@ public class Ticketadd extends JFrame{
             closeP.setBackground(ColoringController.getBasicColor());
             closeP.setLayout(new BorderLayout());
             closeP.add(closeT);
-            EventController.lightButton(closeP);
+            // EventController.lightButton(closeP);
         //-----------------------
         body.add(img);
         body.add(titleP);
