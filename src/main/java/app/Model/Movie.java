@@ -1,8 +1,9 @@
 package main.java.app.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Movie {
+public class Movie implements Serializable{
     public Movie(int id, String title, String director, String description, int showTimeId, ArrayList<Rate> rates,
             int cinemaId) {
         this.id = id;
