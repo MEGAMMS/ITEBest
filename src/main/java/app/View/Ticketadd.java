@@ -15,7 +15,7 @@ import main.java.app.Controller.FontController;
 import main.java.app.Controller.ImageController;
 
 public class Ticketadd extends JPanel{
-
+    //Haha
     String titleMove="LADYBUG & CAT NOIR";
     String descriptionMove="Wanneer een onverwachte schurk Parijs in gevaar brengt met zwarte magie, verandert de onhandige tiener Marinette in superheld Ladybug. Op zoek naar balans tussen haar nieuwe krachten en school, bundelt ze haar krachten met de charmante Cat Noir.";
     String posterPath="MoviesPosters//LADYBUG&CATNOIR.png";
