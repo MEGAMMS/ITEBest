@@ -13,6 +13,7 @@ public class Database implements Serializable {
     public static ArrayList<User> users = new ArrayList<User>();
     public static ArrayList<Movie> movies = new ArrayList<Movie>();
 
+    
     static {
         users = new ArrayList<User>();
         movies = new ArrayList<Movie>();
