@@ -14,7 +14,7 @@ import main.java.app.Controller.ColoringController;
 import main.java.app.Controller.FontController;
 import main.java.app.Controller.ImageController;
 
-public class Ticketadd extends JFrame{
+public class Ticketadd extends JPanel{
 
     String titleMove="LADYBUG & CAT NOIR";
     String descriptionMove="Wanneer een onverwachte schurk Parijs in gevaar brengt met zwarte magie, verandert de onhandige tiener Marinette in superheld Ladybug. Op zoek naar balans tussen haar nieuwe krachten en school, bundelt ze haar krachten met de charmante Cat Noir.";
@@ -128,10 +128,10 @@ public class Ticketadd extends JFrame{
         
     //---------------------------
     //-------Properites----------
-        setIconImage(new ImageIcon("src\\main\\resources\\images\\ITEBestIcon.png").getImage());
+        //setIconImage(new ImageIcon("src\\main\\resources\\images\\ITEBestIcon.png").getImage());
         setSize(800, 600);
-        setUndecorated(true);
-        setLocationRelativeTo(null);
+        //setUndecorated(true);
+        //setLocationRelativeTo(null);
         setLayout(null);
         setVisible(true);
         add(top);
