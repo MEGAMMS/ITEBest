@@ -1,6 +1,8 @@
 package main.java.app.Model;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable{
     public User(int id, String name, String email, String password) {
         this.id = id;
         this.name = name;
