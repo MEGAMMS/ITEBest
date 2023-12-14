@@ -5,6 +5,8 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.util.ArrayList;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -47,15 +49,23 @@ public class Home extends JPanel {
         // -----------Body------------
         JPanel body = new JPanel();
         body.setBackground(ColoringController.getLightGrayColor());
-        body.setBounds(10, 360, 1180, 1000);
-        body.setLayout(new GridLayout(4, 5, 10, 10));
+        
+        body.setLayout(null);
+        
+        for (int i = 0; i <2; i++) {
+            body.add(new itemMove());
+        }
+        int size=itemMove.sizePanel();
+        System.out.println(size+"HHHHHHHHHHH"+itemMove.length);
+        body.setBounds(10, 360, 1180,size+10);
         // ---------------------------
 
         // -------Properites----------
         this.setName("Home");
         setBounds(60, 50, 1220, 670);
         setLayout(new BorderLayout());
-        mainPanel.setPreferredSize(new Dimension(1200, 1400));
+        
+        mainPanel.setPreferredSize(new Dimension(1200,size+400));
         mainPanel.add(tHome);
         mainPanel.add(banner);
         mainPanel.add(menu);
