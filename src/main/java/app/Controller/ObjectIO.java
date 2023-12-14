@@ -22,6 +22,7 @@ public class ObjectIO {
             objectOut.writeObject(serObj);
             objectOut.close();
             System.err.println(serObj);
+            //test
             System.out.println("The Object  was succesfully written to a file.");
     }
 }
