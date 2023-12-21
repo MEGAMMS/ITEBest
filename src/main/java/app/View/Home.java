@@ -1,27 +1,38 @@
 package main.java.app.View;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 // import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridLayout;
-import java.util.ArrayList;
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.border.LineBorder;
+
 import main.java.app.Controller.FontController;
 import main.java.app.Controller.ImageController;
+import main.java.app.Model.Database;
 import main.java.app.Controller.ColoringController;
 
 public class Home extends JPanel {
-    Home() {
+    public static JLabel imgbanner = new JLabel(ImageController.getBanar1Icon());
+    public static  JPanel body;
+    JPanel mainPanel = new JPanel();
+    int size=itemMove.sizePanel();
+    public void setBody(int n){
+        setVisible(false);
+    }
+    public Home() {
         initComponents();
     }
-
-    private void initComponents() {
-
-        JPanel mainPanel = new JPanel();
+    public static Home reset(Home home){
+        Home temp=new Home();
+        temp=home;
+        return home;
+    }
+    public void initComponents() {
+        System.out.println("Comp Home");
         mainPanel.setLayout(null);
         // ----------Top--------------
         JLabel tHome = new JLabel("Home Page");
@@ -30,7 +41,6 @@ public class Home extends JPanel {
         // ---------------------------
 
         // ---------banner------------
-        JLabel imgbanner = new JLabel(ImageController.getBanar1Icon());
         imgbanner.setBounds(0, 0, 1180, 250);
         JPanel banner = new JPanel();
         banner.setBackground(ColoringController.getLightBasicColor());
@@ -46,17 +56,16 @@ public class Home extends JPanel {
         menu.setLayout(null);
         // ---------------------------
 
-        // -----------Body------------
-        JPanel body = new JPanel();
-        body.setBackground(ColoringController.getLightGrayColor());
-        
+        // -----------Body------------     
+        body=new JPanel();
+        //body.setBackground(Color.decode("#E5E5E5"));
+        body.setBorder(new LineBorder(ColoringController.getLightGrayColor() ,2));
         body.setLayout(null);
-        
-        for (int i = 0; i <2; i++) {
-            body.add(new itemMove());
+        for (int i = 0; i <Database.movies.size(); i++) {
+            System.out.println("add film "+(i+1));
+            body.add(new itemMove(Database.movies.get(i)));
         }
-        int size=itemMove.sizePanel();
-        System.out.println(size+"HHHHHHHHHHH"+itemMove.length);
+        size=itemMove.sizePanel();
         body.setBounds(10, 360, 1180,size+10);
         // ---------------------------
 
@@ -70,6 +79,7 @@ public class Home extends JPanel {
         mainPanel.add(banner);
         mainPanel.add(menu);
         mainPanel.add(body);
+        //mainPanel.add(body);
         JScrollPane scrollPane = new JScrollPane(mainPanel);
         add(scrollPane, BorderLayout.CENTER);
         // ---------------------------
