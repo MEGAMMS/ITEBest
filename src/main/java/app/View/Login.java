@@ -17,7 +17,7 @@ import main.java.app.Controller.FontController;
 import main.java.app.Controller.ImageController;
 import main.java.app.Controller.PanelsController;
 
-public class LoginP extends JPanel {
+public class Login extends JPanel {
     JPanel center;
     JPanel info;
     JLabel name;
@@ -29,7 +29,7 @@ public class LoginP extends JPanel {
     KButton BSign;
     KButton BCansel;
 
-    public LoginP() {
+    public Login() {
         initComponents();
     }
 
@@ -122,7 +122,7 @@ public class LoginP extends JPanel {
         setBackground(ColoringController.getWhiteColor());
         setBounds(60, 50, 1220, 670);
         setLayout(null);
-        this.setName("Singup");
+        this.setName("Login");
         add(center);
         add(info);
 
