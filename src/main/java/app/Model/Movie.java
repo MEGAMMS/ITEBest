@@ -4,9 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Movie implements Serializable{
-    public Movie(int id,String title){
+    public Movie(int id,String title,String poster){
         this.id=id;
         this.title=title;
+        this.poster=poster;
     }
     public Movie(int id, String title, String director, String description, int showTimeId, ArrayList<Rate> rates,
             int cinemaId) {
@@ -18,6 +19,7 @@ public class Movie implements Serializable{
         this.rates = rates;
         this.cinemaId = cinemaId;
     }
+    private String poster;
     private int id;
     private String title;
     private String director;
@@ -27,6 +29,9 @@ public class Movie implements Serializable{
     private int cinemaId;
     public int getId() {
         return id;
+    }
+    public String getPoster(){
+        return poster;
     }
     public void setId(int id) {
         this.id = id;
