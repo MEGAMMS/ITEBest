@@ -46,16 +46,20 @@ public class PanelsController {
         kButton.setkIndicatorColor(Color.BLACK);
     }
 
-    public static void switchPanels(JPanel panel) {
+    public static void switchPanels(String name) {
         for (JPanel p : MainPanels.Panels) {
-            p.setVisible(("B" + p.getName()).equals(panel.getName()));
+            if (p.getName().equals(name)) {
+                p.setVisible(true);
+            } else {
+                p.setVisible(false);
+            }
             // System.err.println(("B" + p.getName()));
             // System.err.println(panel.getName());
             // System.err.println(("B" + p.getName()).equals(panel.getName()) + "\n");
         }
     }
 
-    public static void addToToolbar(JPanel panel, String nameP) {
+    public static void addActionToButton(JPanel buuton, String action) {
 
         MouseListener ms = new MouseListener() {
             @Override
@@ -67,29 +71,19 @@ public class PanelsController {
                  * CardLayout cardLayout = (CardLayout) Lobby.Cardpanel.getLayout();
                  * cardLayout.show(Lobby.Cardpanel, nameP);
                  */
-                switch (nameP) {
+                switch (action) {
                     case "Home":
-                        Lobby.PHome.setVisible(true);
-                        Lobby.PProfile.setVisible(false);
-                        Lobby.ticketAdd.setVisible(false);
-                        Lobby.singup.setVisible(false);
+                        switchPanels("Home");
                         break;
                     case "Profile":
-                        Lobby.PHome.setVisible(false);
-                        Lobby.ticketAdd.setVisible(false);
-                        Lobby.login.setVisible(false);
                         if (ITEBest.LoginState.equals("none")) {
-                            Lobby.singup.setVisible(true);
+                            switchPanels("Singup");
                         } else {
-                            Lobby.PProfile.setVisible(true);
+                            switchPanels("Profile");
                         }
-
                         break;
                     case "Close":
-                        Lobby.PHome.setVisible(true);
-                        Lobby.PProfile.setVisible(false);
-                        Lobby.ticketAdd.setVisible(false);
-                        Lobby.singup.setVisible(false);
+                        switchPanels("Home");
                         break;
 
                     default:
@@ -113,25 +107,17 @@ public class PanelsController {
 
             @Override
             public void mouseEntered(java.awt.event.MouseEvent e) {
-                panel.setBackground(ColoringController.getLightBasicColor());
+                buuton.setBackground(ColoringController.getLightBasicColor());
             }
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent e) {
-                panel.setBackground(ColoringController.getBasicColor());
+                buuton.setBackground(ColoringController.getBasicColor());
 
             }
         };
-        panel.addMouseListener(ms);
-        ActionListener al = new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
-            }
-
-        };
+        buuton.addMouseListener(ms);
+        
 
     }
 

@@ -28,8 +28,8 @@ public class Lobby extends JFrame {
     public static Home PHome = new Home();
     public static Profile PProfile = new Profile();
     public static Ticketadd ticketAdd = new Ticketadd();
-    public static Signup singup = new Signup();
-    public static LoginP login = new LoginP();
+    public static Signup PSignup = new Signup();
+    public static Login PLogin = new Login();
 
     public void showAddTicket(Movie movie) {
         remove(ticketAdd);
@@ -86,7 +86,7 @@ public class Lobby extends JFrame {
         BProfile.setBounds(0, 70, 60, 100);
         BProfile.add(ImageController.addPhoto("profile.png"), BorderLayout.CENTER);
         BProfile.setBackground(ColoringController.getBasicColor());
-        PanelsController.addToToolbar(BProfile, "Profile");
+        PanelsController.addActionToButton(BProfile, "Profile");
         toolbar.add(BProfile);
         //
         JPanel BMovie = new JPanel();
@@ -94,7 +94,7 @@ public class Lobby extends JFrame {
         BMovie.setBounds(0, 170, 60, 100);
         BMovie.add(ImageController.addPhoto("movie.png"), BorderLayout.CENTER);
         BMovie.setBackground(ColoringController.getBasicColor());
-        PanelsController.addToToolbar(BMovie, "");
+        PanelsController.addActionToButton(BMovie, "");
         toolbar.add(BMovie);
         //
         JPanel BTrend = new JPanel();
@@ -102,7 +102,7 @@ public class Lobby extends JFrame {
         BTrend.setBounds(0, 270, 60, 100);
         BTrend.add(ImageController.addPhoto("fire.png"), BorderLayout.CENTER);
         BTrend.setBackground(ColoringController.getBasicColor());
-        PanelsController.addToToolbar(BTrend, "");
+        PanelsController.addActionToButton(BTrend, "");
         toolbar.add(BTrend);
         //
         JPanel BHome = new JPanel();
@@ -111,7 +111,7 @@ public class Lobby extends JFrame {
         BHome.setBounds(0, 370, 60, 100);
         BHome.add(ImageController.addPhoto("home.png"), BorderLayout.CENTER);
         BHome.setBackground(ColoringController.getBasicColor());
-        PanelsController.addToToolbar(BHome, "Home");
+        PanelsController.addActionToButton(BHome, "Home");
         PHome.repaint();
         toolbar.add(BHome);
         //
@@ -120,7 +120,7 @@ public class Lobby extends JFrame {
         Bticket.setBounds(0, 470, 60, 100);
         Bticket.add(ImageController.addPhoto("ticket.png"), BorderLayout.CENTER);
         Bticket.setBackground(ColoringController.getBasicColor());
-        PanelsController.addToToolbar(Bticket, "");
+        PanelsController.addActionToButton(Bticket, "");
         toolbar.add(Bticket);
         //
         JPanel BSettings = new JPanel();
@@ -128,7 +128,7 @@ public class Lobby extends JFrame {
         BSettings.setBounds(0, 570, 60, 100);
         BSettings.add(ImageController.addPhoto("setting.png"), BorderLayout.CENTER);
         BSettings.setBackground(ColoringController.getBasicColor());
-        PanelsController.addToToolbar(BSettings, "");
+        PanelsController.addActionToButton(BSettings, "");
         toolbar.add(BSettings);
         //
         // -----------------------------
@@ -147,17 +147,19 @@ public class Lobby extends JFrame {
         maiPanel.setLayout(null);
         maiPanel.add(Top);
         maiPanel.add(toolbar);
-        // MainPanels.addPanel(PHome);
-        // MainPanels.addPanel(PProfile);
+        MainPanels.addPanel(PHome);
+        MainPanels.addPanel(PProfile);
+        MainPanels.addPanel(PSignup);
+
         maiPanel.add(PHome);
         maiPanel.add(PProfile);
         maiPanel.add(ticketAdd);
-        maiPanel.add(singup);
-        maiPanel.add(login);
+        maiPanel.add(PSignup);
+        maiPanel.add(PLogin);
         PHome.setVisible(false);
         PProfile.setVisible(false);
         ticketAdd.setVisible(false);
-        singup.setVisible(false);
+        PSignup.setVisible(false);
         add(maiPanel);
 
         setVisible(true);
