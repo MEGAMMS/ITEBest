@@ -1,7 +1,10 @@
 package main.java.app.View;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
+
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -26,7 +29,8 @@ public class Lobby extends JFrame {
     public static Home PHome=new Home();
     public static Profile PProfile = new Profile();
     public static Ticketadd ticketadd=new Ticketadd();
-    public static Singup singup = new Singup();
+    public static Signup singup = new Signup();
+    public static LoginP login = new LoginP();
     public void showAddTicket(Movie movie){
         remove(ticketadd);
         ticketadd=new Ticketadd(movie);
@@ -49,13 +53,24 @@ public class Lobby extends JFrame {
     
         // -------------Head---------------
         JLabel title = new JLabel("ITEBest");
+        JPanel PExit=new JPanel();
+        //JLabel Exitimh=ImageController.addPhoto("\\Exit.png", 40, 40);
+        JLabel Exitimh=new JLabel();
+        ImageIcon icon = new ImageIcon("src\\main\\resources\\images\\ex.svg"); // تعيين مسار الصورة المتجه
+        Exitimh.setIcon(icon);
+        PExit.setBounds(1230, 0, 50, 50);
+        PExit.add(Exitimh);
+        PExit.setBackground(ColoringController.getBasicColor());
         title.setBounds(600, 0, 300, 50);
         Top.setBounds(0, 0, 1280, 50);
         Top.setLayout(null);
         Top.setBackground(ColoringController.getBasicColor());
         title.setFont(FontController.getPrimaryFont(Font.BOLD, 30));
         title.setForeground(ColoringController.getWhiteColor());
+        
         Top.add(title);
+        Top.add(PExit);
+        PanelsController.Exit(PExit);
         // --------------------------------
 
         // -----------------toolbar----------------
@@ -138,9 +153,11 @@ public class Lobby extends JFrame {
         maiPanel.add(PProfile);
         maiPanel.add(ticketadd);
         maiPanel.add(singup);
-        PHome.setVisible(true);
+        maiPanel.add(login);
+        PHome.setVisible(false);
         PProfile.setVisible(false);
         ticketadd.setVisible(false);
+        singup.setVisible(false);
         add(maiPanel);
         
         setVisible(true);
