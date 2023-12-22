@@ -1,6 +1,7 @@
 package main.java.app.Controller;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -12,6 +13,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
+
+import com.k33ptoo.components.KButton;
 
 import main.java.app.ITEBest;
 import main.java.app.Model.Database;
@@ -26,6 +29,21 @@ public class PanelsController {
         return new RoundedBorder(n);
     }
 
+    public static void setButtonN(KButton kButton){
+        kButton.setkAllowGradient(false);
+        kButton.setFont(FontController.Roboto(Font.BOLD, 22));
+        kButton.setkBackGroundColor(ColoringController.getBasicColor());
+        kButton.setkForeGround(ColoringController.getWhiteColor());
+        kButton.setkHoverColor(ColoringController.getWhiteColor());
+        kButton.setkPressedColor(ColoringController.getLightBasicColor());
+        kButton.setkSelectedColor(ColoringController.getBasicColor());;
+        kButton.setkHoverForeGround(ColoringController.getBasicColor());
+        kButton.setBorder(null);
+        kButton.setkFillButton(true);
+        kButton.setkBorderRadius(30);
+        kButton.setkIndicatorThickness(2);
+        kButton.setkIndicatorColor(Color.BLACK);
+    }
     public static void switchPanels(JPanel panel) {
         for (JPanel p : MainPanels.Panels) {
             p.setVisible(("B" + p.getName()).equals(panel.getName()));
@@ -51,19 +69,27 @@ public class PanelsController {
                         Lobby.PHome.setVisible(true);
                         Lobby.PProfile.setVisible(false);
                         Lobby.ticketadd.setVisible(false);
+                        Lobby.singup.setVisible(false);
                         break;
                     case "Profile":
-                     Lobby.PHome.setVisible(false);
-                        Lobby.PProfile.setVisible(true);
+                        Lobby.PHome.setVisible(false);
                         Lobby.ticketadd.setVisible(false);
+                        Lobby.login.setVisible(false);
+                        if(ITEBest.LoginnState.equals("none")){
+                            Lobby.singup.setVisible(true);
+                        }else{
+                            Lobby.PProfile.setVisible(true);
+                        }
+                        
 
                     break;
                     case "Close":
                         Lobby.PHome.setVisible(true);
                         Lobby.PProfile.setVisible(false);
                         Lobby.ticketadd.setVisible(false);
-
+                        Lobby.singup.setVisible(false);
                     break;
+                    
                     default:
                         break;
                 }
@@ -147,5 +173,49 @@ public class PanelsController {
         
         button.addMouseListener(ms);
         //panel.addMouseListener(ms);
+    }
+
+
+     public static void  Exit(JPanel panel) {
+
+        
+        MouseListener ms = new MouseListener() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                System.exit(0);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                
+            }
+
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent e) {
+                panel.setBackground(ColoringController.getLightBasicColor());
+            }
+
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent e) {
+                panel.setBackground(ColoringController.getBasicColor());
+
+            }
+        };
+        panel.addMouseListener(ms);
+        ActionListener al=new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO Auto-generated method stub
+                throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+            }
+            
+        };
+       
     }
 }
