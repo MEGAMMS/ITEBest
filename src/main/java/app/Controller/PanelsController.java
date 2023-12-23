@@ -1,6 +1,7 @@
 package main.java.app.Controller;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,8 +9,10 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import main.java.app.View.Home;
 import main.java.app.View.Lobby;
+import main.java.app.View.MoviesView;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
@@ -70,6 +73,7 @@ public class PanelsController {
                         Lobby.PProfile.setVisible(false);
                         Lobby.ticketadd.setVisible(false);
                         Lobby.singup.setVisible(false);
+                        Lobby.login.setVisible(false);
                         break;
                     case "Profile":
                         Lobby.PHome.setVisible(false);
@@ -217,5 +221,39 @@ public class PanelsController {
             
         };
        
+    }
+    public static void ChooseComboPanel(JComboBox comboBox){
+        comboBox.addActionListener(e -> {
+            String selectedValue = (String) comboBox.getSelectedItem();
+            switch (selectedValue) {
+                case "sadness":
+                    MoviesView.VisiblePanel(MoviesView.sadness);
+                    MoviesView.sizeP=MoviesView.sadness.getHeight();
+                    MoviesView.mainPanel.setPreferredSize(new Dimension(1224,MoviesView.sizeP+80));
+                    break;
+                case "All":
+                    MoviesView.VisiblePanel(MoviesView.All);
+                    MoviesView.sizeP=MoviesView.All.getHeight();
+                    MoviesView.mainPanel.setPreferredSize(new Dimension(1224,MoviesView.sizeP+80));
+                    break;
+                case "farcical":
+                    MoviesView.VisiblePanel(MoviesView.farcical);
+                    MoviesView.sizeP=MoviesView.farcical.getHeight();
+                    MoviesView.mainPanel.setPreferredSize(new Dimension(1224,MoviesView.sizeP+80));
+                    break;
+                case "action":
+                    MoviesView.VisiblePanel(MoviesView.action);
+                    MoviesView. sizeP=MoviesView.action.getHeight();
+                    MoviesView.mainPanel.setPreferredSize(new Dimension(1224,MoviesView.sizeP+80));
+                    break;
+                case "adventure":
+                    MoviesView.VisiblePanel(MoviesView.adventure);
+                    MoviesView.sizeP=MoviesView.adventure.getHeight();
+                    MoviesView.mainPanel.setPreferredSize(new Dimension(1224,MoviesView.sizeP+80));
+                    break;
+                default:
+                    break;
+            }
+        });
     }
 }

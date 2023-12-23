@@ -31,6 +31,7 @@ public class Lobby extends JFrame {
     public static Ticketadd ticketadd=new Ticketadd();
     public static Signup singup = new Signup();
     public static LoginP login = new LoginP();
+    public static MoviesView moviesView = new MoviesView();
     public void showAddTicket(Movie movie){
         remove(ticketadd);
         ticketadd=new Ticketadd(movie);
@@ -54,10 +55,10 @@ public class Lobby extends JFrame {
         // -------------Head---------------
         JLabel title = new JLabel("ITEBest");
         JPanel PExit=new JPanel();
-        //JLabel Exitimh=ImageController.addPhoto("\\Exit.png", 40, 40);
-        JLabel Exitimh=new JLabel();
-        ImageIcon icon = new ImageIcon("src\\main\\resources\\images\\ex.svg"); // تعيين مسار الصورة المتجه
-        Exitimh.setIcon(icon);
+        JLabel Exitimh=ImageController.addPhoto("\\Exit.png", 40, 40);
+        //JLabel Exitimh=new JLabel();
+        //ImageIcon icon = new ImageIcon("src\\main\\resources\\images\\ex.svg"); // تعيين مسار الصورة المتجه
+        //Exitimh.setIcon(icon);
         PExit.setBounds(1230, 0, 50, 50);
         PExit.add(Exitimh);
         PExit.setBackground(ColoringController.getBasicColor());
@@ -154,10 +155,12 @@ public class Lobby extends JFrame {
         maiPanel.add(ticketadd);
         maiPanel.add(singup);
         maiPanel.add(login);
+        maiPanel.add(moviesView);
         PHome.setVisible(false);
         PProfile.setVisible(false);
         ticketadd.setVisible(false);
         singup.setVisible(false);
+        login.setVisible(false);
         add(maiPanel);
         
         setVisible(true);

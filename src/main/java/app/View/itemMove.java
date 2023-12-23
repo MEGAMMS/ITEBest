@@ -34,7 +34,7 @@ public class itemMove extends JPanel{
     public static void restSize(){
         hash=10;
         width=280;
-        heigh=400;
+        heigh=430;
         x=hash+5;
         y=hash;
         length=0;
@@ -79,7 +79,7 @@ public class itemMove extends JPanel{
         
         setBorder(PanelsController.roundedBorder(30));
         button.setBorder(PanelsController.roundedBorder(20));
-        setBackground(Color.decode("#F2F2F2"));
+        setBackground(Color.decode("#FFE5E5"));
         add(img);
         add(titel);
         add(button);
