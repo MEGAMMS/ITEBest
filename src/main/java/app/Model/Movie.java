@@ -19,6 +19,7 @@ public class Movie implements Serializable{
         this.rates = rates;
         this.cinemaId = cinemaId;
     }
+    private String tag;
     private String poster;
     private int id;
     private String title;
@@ -27,6 +28,12 @@ public class Movie implements Serializable{
     private int showTimeId;
     private ArrayList<Rate> rates;
     private int cinemaId;
+    public void setTag(String tag){
+        this.tag=tag;
+    }
+    public String getTag(){
+        return tag;
+    }
     public int getId() {
         return id;
     }
