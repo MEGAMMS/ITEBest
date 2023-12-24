@@ -76,7 +76,6 @@ public class PanelsController {
                  */
                 switch (action) {
                     case "Home":
-                   
 
                         switchPanels("Home");
 
@@ -90,7 +89,7 @@ public class PanelsController {
                         break;
                     case "Close":
 
-                      switchPanels("Home");
+                        switchPanels("Home");
                         break;
                     default:
                         break;
@@ -123,7 +122,6 @@ public class PanelsController {
             }
         };
         buuton.addMouseListener(ms);
-        
 
     }
 
@@ -133,11 +131,10 @@ public class PanelsController {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 System.out.println(panel.movie.getTitle());
-//                 VisiblePanelHome(Lobby.ticketadd);
-//                 ITEBest.lobby.showAddTicket(Database.movies.get(0));
+                // VisiblePanelHome(Lobby.ticketadd);
+                // ITEBest.lobby.showAddTicket(Database.movies.get(0));
                 Lobby.PHome.setVisible(false);
-                Lobby.ticketAdd.setVisible(true);
-                Ticketadd.setValues(Lobby.ticketAdd, Database.movies.get(Database.movies.indexOf(n)));
+                Lobby.PTicketAdd.setVisible(true);
             }
 
             @Override
@@ -210,47 +207,40 @@ public class PanelsController {
         };
 
     }
-    public static void ChooseComboPanel(JComboBox comboBox){
+
+    public static void ChooseComboPanel(JComboBox comboBox) {
         comboBox.addActionListener(e -> {
             String selectedValue = (String) comboBox.getSelectedItem();
             switch (selectedValue) {
                 case "sadness":
                     MoviesView.VisiblePanel(MoviesView.sadness);
-                    MoviesView.sizeP=MoviesView.sadness.getHeight();
-                    MoviesView.mainPanel.setPreferredSize(new Dimension(1224,MoviesView.sizeP+80));
+                    MoviesView.sizeP = MoviesView.sadness.getHeight();
+                    MoviesView.mainPanel.setPreferredSize(new Dimension(1224, MoviesView.sizeP + 80));
                     break;
                 case "All":
                     MoviesView.VisiblePanel(MoviesView.All);
-                    MoviesView.sizeP=MoviesView.All.getHeight();
-                    MoviesView.mainPanel.setPreferredSize(new Dimension(1224,MoviesView.sizeP+80));
+                    MoviesView.sizeP = MoviesView.All.getHeight();
+                    MoviesView.mainPanel.setPreferredSize(new Dimension(1224, MoviesView.sizeP + 80));
                     break;
                 case "farcical":
                     MoviesView.VisiblePanel(MoviesView.farcical);
-                    MoviesView.sizeP=MoviesView.farcical.getHeight();
-                    MoviesView.mainPanel.setPreferredSize(new Dimension(1224,MoviesView.sizeP+80));
+                    MoviesView.sizeP = MoviesView.farcical.getHeight();
+                    MoviesView.mainPanel.setPreferredSize(new Dimension(1224, MoviesView.sizeP + 80));
                     break;
                 case "action":
                     MoviesView.VisiblePanel(MoviesView.action);
-                    MoviesView. sizeP=MoviesView.action.getHeight();
-                    MoviesView.mainPanel.setPreferredSize(new Dimension(1224,MoviesView.sizeP+80));
+                    MoviesView.sizeP = MoviesView.action.getHeight();
+                    MoviesView.mainPanel.setPreferredSize(new Dimension(1224, MoviesView.sizeP + 80));
                     break;
                 case "adventure":
                     MoviesView.VisiblePanel(MoviesView.adventure);
-                    MoviesView.sizeP=MoviesView.adventure.getHeight();
-                    MoviesView.mainPanel.setPreferredSize(new Dimension(1224,MoviesView.sizeP+80));
+                    MoviesView.sizeP = MoviesView.adventure.getHeight();
+                    MoviesView.mainPanel.setPreferredSize(new Dimension(1224, MoviesView.sizeP + 80));
                     break;
                 default:
                     break;
             }
         });
     }
-    public static void VisiblePanelHome(JPanel panel){
-        Lobby.PHome.setVisible(false);
-        Lobby.PProfile.setVisible(false);
-        Lobby.ticketadd.setVisible(false);
-        Lobby.singup.setVisible(false);
-        Lobby.login.setVisible(false);
-        Lobby.moviesView.setVisible(false);
-        panel.setVisible(true);
-    }
+
 }

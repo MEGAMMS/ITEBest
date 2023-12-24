@@ -152,7 +152,7 @@ public class Ticketadd extends JPanel {
             closeP.setBackground(ColoringController.getBasicColor());
             closeP.setLayout(new BorderLayout());
             closeP.add(closeT);
-            PanelsController.addToToolbar(closeP, "Close");
+            PanelsController.addActionToButton(closeP, "Close");
             // EventController.lightButton(closeP);
         //-----------------------
         body.add(img);
