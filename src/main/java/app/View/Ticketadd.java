@@ -23,45 +23,29 @@ public class TicketAdd extends JPanel {
     public JLabel descM;
     public JLabel poster;
 
-    // public void updateData(int id) {
-    //     this.movie = Database.movies.get(id);
-    //     this.titleM.setText(movie.getTitle());
-    //     JLabel label = ImageController.addPhoto(movie.getPoster(), 410, 650);
-    //     this.poster.setIcon(label.getIcon());
-    //     System.out.println(this.movie.getDescription());
-    //     this.descM.setText("<html>" + this.movie.getDescription() + "\r\n" + //
-    //             "\r\n" + //
-    //             "</html>");
-
-    // }
-
-    // public TicketAdd() {
-    //     movie = new Movie(1, "titleMove", "posterPath", "nonw", "");
-    //     titleM = new JLabel(movie.getTitle());
-    //     descM = new JLabel("<html>" + movie.getDescription() + "\r\n" + //
-    //             "\r\n" + //
-    //             "</html>");
-    //     poster = ImageController.addPhoto(movie.getPoster(), 410, 650);
-
-    //     System.out.println("Start Tic");
-    //     initComponents();
-    //     System.out.println("End");
-    // }
-
-    public TicketAdd(int id) {
+    public void updateData(int id) {
         this.movie = Database.movies.get(id);
-        titleM = new JLabel(movie.getTitle());
-        descM = new JLabel("<html>" + movie.getDescription() + "\r\n" + //
+        this.titleM.setText(movie.getTitle());
+        JLabel label = ImageController.addPhoto(movie.getPoster(), 400, 600);
+        this.poster.setIcon(label.getIcon());
+        System.out.println(this.movie.getDescription());
+        this.descM.setText("<html>" + this.movie.getDescription() + "\r\n" + //
                 "\r\n" + //
                 "</html>");
-        poster = ImageController.addPhoto(movie.getPoster(), 410, 650);
-        System.out.println("Start Tic");
+
+    }
+
+    public TicketAdd() {
+        movie = Database.movies.get(0);
+        titleM = new JLabel();
+        descM = new JLabel();
+        poster = ImageController.addPhoto(movie.getPoster(), 400, 600);
         initComponents();
-        System.out.println("End");
+
     }
 
     private void initComponents() {
-
+        this.setName("TicketAdd");
         // -----------TOP-------------
         /*
          * JPanel top=new JPanel();
@@ -174,7 +158,7 @@ public class TicketAdd extends JPanel {
         // setUndecorated(true);
         // setLocationRelativeTo(null);
         setLayout(null);
-        body.setBackground(Color.decode("#FDF7E4"));
+        setBackground(Color.BLACK);
         // add(top);
         // add(top);
 

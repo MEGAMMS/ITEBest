@@ -12,25 +12,23 @@ import main.java.app.Model.Movie;
 public class MainFrame extends JFrame {
     // Panels
     public static JPanel mainPanel = new JPanel();
-    public static JPanel Top = new JPanel();
-    public static JPanel toolbar = new JPanel();
 
     public static Home PHome = new Home();
     public static Profile PProfile = new Profile();
-    public static TicketAdd PTicketAdd = new TicketAdd(0);
+    public static TicketAdd PTicketAdd = new TicketAdd();
     public static Signup PSignup = new Signup();
     public static Login login = new Login();
     public static MoviesListView PMoviesListView = new MoviesListView();
 
-    public void showAddTicket(int id) {
-        PTicketAdd.setVisible(false);
-        remove(PTicketAdd);
-        PTicketAdd = new TicketAdd(id);
-        add(PTicketAdd);
-        PanelsController.switchPanels("");
-        PTicketAdd.setVisible(true);
+    // public void showAddTicket(int id) {
+    //     PTicketAdd.setVisible(false);
+    //     remove(PTicketAdd);
+    //     PTicketAdd = new TicketAdd(id);
+    //     add(PTicketAdd);
+    //     PanelsController.switchPanels("");
+    //     PTicketAdd.setVisible(true);
 
-    }
+    // }
 
     public MainFrame() {
         initComponents();
@@ -62,9 +60,8 @@ public class MainFrame extends JFrame {
         setLayout(null);
         mainPanel.setBorder(roundedBorder);
         mainPanel.setLayout(null);
-        mainPanel.add(Top);
-        mainPanel.add(toolbar);
 
+        MainPanels.addPanel(PTicketAdd);
         MainPanels.addPanel(PHome);
         MainPanels.addPanel(PProfile);
         MainPanels.addPanel(PSignup);
@@ -75,15 +72,15 @@ public class MainFrame extends JFrame {
         mainPanel.add(PSignup);
         mainPanel.add(login);
         mainPanel.add(PMoviesListView);
+        mainPanel.add(PTicketAdd);
         PHome.setVisible(false);
         PProfile.setVisible(false);
-        PTicketAdd.setVisible(true);
         PSignup.setVisible(false);
         login.setVisible(false);
         PMoviesListView.setVisible(false);
+        PTicketAdd.setVisible(true);
 
         add(mainPanel);
-
         setVisible(true);
         // --------------------------------
     }
