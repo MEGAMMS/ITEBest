@@ -82,10 +82,10 @@ public class PanelsController {
                     case "Close":
                         switchPanels("Home");
                         break;
-                    case "addTicket":
-                        ITEBest.mainFrame.showAddTicket(Integer.parseInt(button.getName()));
-
-                        switchPanels("addTicket");
+                    case "TicketAdd":
+                        int id = Integer.parseInt(button.getName());
+                        MainFrame.PTicketAdd.updateData(id);
+                        switchPanels("TicketAdd");
 
                     default:
                         switchPanels(action);
@@ -109,12 +109,21 @@ public class PanelsController {
 
             @Override
             public void mouseEntered(java.awt.event.MouseEvent e) {
+                if(action =="TicketAdd"){
+                    MainFrame.PTicketAdd.titleM.setForeground(ColoringController.getWhiteColor());
+                    return;
+                }
                 button.setBackground(ColoringController.getLightBasicColor());
+                
             }
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent e) {
-                button.setBackground(ColoringController.getBasicColor());
+                if(action!="TicketAdd")
+                    button.setBackground(ColoringController.getBasicColor());
+                else{
+                    MainFrame.PTicketAdd.titleM.setForeground(ColoringController.getBasicColor());
+                }
 
             }
         };

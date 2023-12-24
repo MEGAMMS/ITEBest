@@ -71,7 +71,7 @@ public class MovieCard extends JPanel {
         button.add(Btitel);
         button.setBorder(new LineBorder(ColoringController.getPrimaryColor(), 2, true));
         // button.setBorder(roundedBorder);
-        PanelsController.addActionToButton(button,"addTicket");
+        PanelsController.addActionToButton(button,"TicketAdd");
         // setBorder(new LineBorder(Color.BLACK, 1));
         setLayout(null);
         setBounds(x, y, width, heigh);
