@@ -28,7 +28,7 @@ public class Signup extends JPanel {
     JLabel pass;
     JPasswordField Tpass;
     JPanel Bsign;
-    JPanel Bcansel;
+    JPanel BCancel;
 
     public Signup() {
         initComponents();
@@ -117,20 +117,20 @@ public class Signup extends JPanel {
         Bsign.add(conBsign);
         left.add(Bsign);
 
-        Bcansel = new JPanel();
-        JPanel conBcansel = new JPanel();
-        JLabel BlabelC = new JLabel("Cansel");
+        BCancel = new JPanel();
+        JPanel conBCancel = new JPanel();
+        JLabel BlabelC = new JLabel("Cancel");
         BlabelC.setForeground(ColoringController.getBasicColor());
         BlabelC.setFont(FontController.Roboto(Font.BOLD, 22));
-        conBcansel.setBounds(5, 5, 240, 40);
-        conBcansel.setBackground(ColoringController.getWhiteColor());
-        conBcansel.add(BlabelC);
-        Bcansel.setBounds(380, 580, 250, 50);
-        Bcansel.setBackground(ColoringController.getPrimaryColor());
-        Bcansel.setLayout(null);
-        Bcansel.add(conBcansel);
-        left.add(Bcansel);
-        PanelsController.addActionToButton(Bcansel, "Close");
+        conBCancel.setBounds(5, 5, 240, 40);
+        conBCancel.setBackground(ColoringController.getWhiteColor());
+        conBCancel.add(BlabelC);
+        BCancel.setBounds(380, 580, 250, 50);
+        BCancel.setBackground(ColoringController.getPrimaryColor());
+        BCancel.setLayout(null);
+        BCancel.add(conBCancel);
+        left.add(BCancel);
+        PanelsController.addActionToButton(BCancel, "Close");
 
         right = new JPanel() {
             @Override

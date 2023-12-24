@@ -18,7 +18,7 @@ public class Home extends JPanel {
     public static JLabel imgbanner = new JLabel(ImageController.getBanar1Icon());
     public static  JPanel body;
     JPanel mainPanel = new JPanel();
-    int size=itemMove.sizePanel();
+    int size=MovieCard.sizePanel();
     public void setBody(int n){
         setVisible(false);
     }
@@ -62,9 +62,9 @@ public class Home extends JPanel {
         body.setLayout(null);
         for (int i = 0; i <Database.movies.size(); i++) {
             System.out.println("add film "+(i+1));
-            body.add(new itemMove(Database.movies.get(i)));
+            body.add(new MovieCard(Database.movies.get(i)));
         }
-        size=itemMove.sizePanel();
+        size=MovieCard.sizePanel();
         body.setBounds(10, 360, 1180,size+10);
         // ---------------------------
 

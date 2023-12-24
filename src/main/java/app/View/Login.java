@@ -27,7 +27,7 @@ public class Login extends JPanel {
     JLabel pass;
     JPasswordField TPass;
     KButton BSign;
-    KButton BCansel;
+    KButton BCancel;
 
     public Login() {
         initComponents();
@@ -97,12 +97,12 @@ public class Login extends JPanel {
         PanelsController.setButtonN(BSign);
         center.add(BSign);
 
-        BCansel = new KButton();
-        BCansel.setText("Cansel");
-        BCansel.setBounds(450, 330, 200, 50);
-        PanelsController.setButtonN(BCansel);
-        center.add(BCansel);
-        // PanelsController.addToToolbar(Bcansel, "Close");
+        BCancel = new KButton();
+        BCancel.setText("Cancel");
+        BCancel.setBounds(450, 330, 200, 50);
+        PanelsController.setButtonN(BCancel);
+        center.add(BCancel);
+        // PanelsController.addToToolbar(BCancel, "Close");
 
         /*
          * right=new JPanel();

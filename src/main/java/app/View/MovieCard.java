@@ -4,16 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-import javax.swing.border.SoftBevelBorder;
 
 import main.java.app.Controller.ColoringController;
 import main.java.app.Controller.FontController;
@@ -21,7 +15,7 @@ import main.java.app.Controller.ImageController;
 import main.java.app.Controller.PanelsController;
 import main.java.app.Model.Movie;
 
-public class itemMove extends JPanel{
+public class MovieCard extends JPanel{
     String tag;
     static int hash=10;
     static int width=280;
@@ -39,7 +33,7 @@ public class itemMove extends JPanel{
         y=hash;
         length=0;
     }
-    public itemMove(Movie movie){
+    public MovieCard(Movie movie){
         this.movie=movie;
         initComponents();
         fix();
