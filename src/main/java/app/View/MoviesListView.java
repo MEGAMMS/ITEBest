@@ -44,8 +44,8 @@ public class MoviesListView extends JPanel {
         menu.setBounds(10, 10, 1190, 50);
         menu.setLayout(null);
 
-        String[] items = { "All", "farcical", "action", "sadness", "adventure" };
-        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(items);
+        String[] tags = { "All", "farcical", "action", "sadness", "adventure" };
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(tags);
         JComboBox<String> comboBox = new JComboBox<>(model);
         comboBox.setBounds(10, 5, 200, 40);
         comboBox.setFont(FontController.Roboto(Font.CENTER_BASELINE, 18));
