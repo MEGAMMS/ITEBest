@@ -36,14 +36,14 @@ public class Ticketadd extends JPanel {
         ;
 
     }
+    public Ticketadd(){
+        movie=new Movie(1, "titleMove", "posterPath","nonw","");
+        titleM=new JLabel(movie.getTitle());
+        descM=new JLabel("<html>"+movie.getDescription()+"\r\n" + //
+                    "\r\n" + //
+                    "</html>");
+        poster=ImageController.addPhoto(movie.getPoster(), 410, 650);
 
-    public Ticketadd() {
-        movie = new Movie(1, "titleMove", "posterPath");
-        titleM = new JLabel(movie.getTitle());
-        descM = new JLabel("<html>" + movie.getDescription() + "\r\n" + //
-                "\r\n" + //
-                "</html>");
-        poster = ImageController.addPhoto(movie.getPoster(), 410, 650);
         System.out.println("Start Tic");
         initComponents();
         System.out.println("End");
@@ -80,79 +80,81 @@ public class Ticketadd extends JPanel {
         // body.setBackground(ColoringController.getLightGrayColor());
         body.setBounds(0, 0, 1220, 670);
         body.setLayout(null);
-        // ---------img-----------
-        JPanel img = new JPanel();
+        //---------img-----------
+            JPanel img=new JPanel();
+            
+            img.setBackground(Color.BLACK);
+            img.setBounds(800,10,410,650);
+            img.setLayout(new BorderLayout());
+            img.add(poster,BorderLayout.CENTER);
+        //-----------------------
+        //-------titleP---0------
+            JPanel titleP=new JPanel();
+           
+            titleM.setForeground(Color.BLACK);
+            titleM.setHorizontalAlignment(SwingConstants.CENTER);
+            titleM.setForeground(ColoringController.getWhiteColor());
+            titleM.setFont(FontController.getPrimaryFont(ABORT, 24));
+            titleP.setBounds(10,10,780,50);
+            titleP.setBackground(ColoringController.getDarkBasicColor());
+            titleP.setLayout(new BorderLayout());
+            titleP.add(titleM,BorderLayout.CENTER);
+        //-----------------------
+        //---------Des---------
+            
+            JLabel description=new JLabel("Description");
+          
+            //descM.setPreferredSize(new Dimension(380, 200));
+            descM.setBounds(10, 0, 780, 190);
+            descM.setForeground(Color.BLACK);
+            //descM.setHorizontalAlignment(SwingConstants.CENTER);
+            descM.setFont(FontController.getPrimaryFont(ABORT, 18));
+            //description.setPreferredSize(new Dimension(380, 40));
+            description.setBounds(10, 0, 780, 40);
+            description.setForeground(Color.BLACK);
+            //description.setHorizontalAlignment(SwingConstants.CENTER);
+            description.setFont(FontController.getPrimaryFont(Font.BOLD, 18));
+            descP.setBounds(10,70,780,170);
+            descP.setBackground(Color.decode("#EAD7BB"));
+            descP.setLayout(null);
+            descP.add(description);
+            descP.add(descM);
+        //-----------------------
+        //---------Booking---------
+            JPanel bookingP=new JPanel();
+            //JLabel descM=new JLabel("XIHOO Gran Turismo");
+            //descM.setForeground(Color.BLACK);
+            //descM.setHorizontalAlignment(SwingConstants.CENTER);
+            //titleM.setFont(FontController.getPrimaryFont(ABORT, 24));
+            bookingP.setBounds(10,250,780,350);
+            bookingP.setBackground(Color.decode("#EAD7BB"));
+            bookingP.setLayout(new BorderLayout());
+            
+        //-----------------------
+            //---------Buttons---------
+            JPanel addTick=new JPanel();
+            JLabel bttickT=new JLabel("Add");
+            bttickT.setForeground(Color.WHITE);
+            bttickT.setHorizontalAlignment(SwingConstants.CENTER);
+            bttickT.setFont(FontController.getPrimaryFont(ABORT, 24));
+            addTick.setBounds(20,615,200,40);
+            addTick.setBackground(ColoringController.getBasicColor());
+            addTick.setLayout(new BorderLayout());
+            addTick.add(bttickT);
+            
 
-        img.setBackground(Color.BLACK);
-        img.setBounds(800, 10, 410, 650);
-        img.setLayout(new BorderLayout());
-        img.add(poster, BorderLayout.CENTER);
-        // -----------------------
-        // -------titleP---0------
-        JPanel titleP = new JPanel();
-
-        titleM.setForeground(Color.BLACK);
-        titleM.setHorizontalAlignment(SwingConstants.CENTER);
-        titleM.setFont(FontController.getPrimaryFont(ABORT, 24));
-        titleP.setBounds(10, 10, 780, 50);
-        titleP.setBackground(ColoringController.getLightGrayColor());
-        titleP.setLayout(new BorderLayout());
-        titleP.add(titleM, BorderLayout.CENTER);
-        // -----------------------
-        // ---------Des---------
-
-        JLabel description = new JLabel("Description");
-
-        // descM.setPreferredSize(new Dimension(380, 200));
-        descM.setBounds(10, 0, 780, 190);
-        descM.setForeground(Color.BLACK);
-        // descM.setHorizontalAlignment(SwingConstants.CENTER);
-        descM.setFont(FontController.getPrimaryFont(ABORT, 18));
-        // description.setPreferredSize(new Dimension(380, 40));
-        description.setBounds(10, 0, 780, 40);
-        description.setForeground(Color.BLACK);
-        // description.setHorizontalAlignment(SwingConstants.CENTER);
-        description.setFont(FontController.getPrimaryFont(Font.BOLD, 18));
-        descP.setBounds(10, 70, 780, 170);
-        descP.setBackground(ColoringController.getLightGrayColor());
-        descP.setLayout(null);
-        descP.add(description);
-        descP.add(descM);
-        // -----------------------
-        // ---------Booking---------
-        JPanel bookingP = new JPanel();
-        // JLabel descM=new JLabel("XIHOO Gran Turismo");
-        // descM.setForeground(Color.BLACK);
-        // descM.setHorizontalAlignment(SwingConstants.CENTER);
-        // titleM.setFont(FontController.getPrimaryFont(ABORT, 24));
-        bookingP.setBounds(10, 250, 780, 350);
-        bookingP.setBackground(ColoringController.getLightGrayColor());
-        bookingP.setLayout(new BorderLayout());
-
-        // -----------------------
-        // ---------Buttons---------
-        JPanel addTick = new JPanel();
-        JLabel bttickT = new JLabel("Add");
-        bttickT.setForeground(Color.WHITE);
-        bttickT.setHorizontalAlignment(SwingConstants.CENTER);
-        bttickT.setFont(FontController.getPrimaryFont(ABORT, 24));
-        addTick.setBounds(20, 615, 200, 40);
-        addTick.setBackground(ColoringController.getBasicColor());
-        addTick.setLayout(new BorderLayout());
-        addTick.add(bttickT);
-
-        JPanel closeP = new JPanel();
-        JLabel closeT = new JLabel("Close");
-        closeT.setForeground(Color.WHITE);
-        closeT.setHorizontalAlignment(SwingConstants.CENTER);
-        closeT.setFont(FontController.getPrimaryFont(ABORT, 24));
-        closeP.setBounds(260, 615, 200, 40);
-        closeP.setBackground(ColoringController.getBasicColor());
-        closeP.setLayout(new BorderLayout());
-        closeP.add(closeT);
-        PanelsController.addActionToButton(closeP, "Close");
-        // EventController.lightButton(closeP);
-        // -----------------------
+            JPanel closeP=new JPanel();
+            JLabel closeT=new JLabel("Close");
+            closeT.setForeground(Color.WHITE);
+            closeT.setHorizontalAlignment(SwingConstants.CENTER);
+            closeT.setFont(FontController.getPrimaryFont(ABORT, 24));
+            closeP.setBounds(260,615,200,40);
+            closeP.setBackground(ColoringController.getBasicColor());
+            closeP.setLayout(new BorderLayout());
+            closeP.add(closeT);
+            PanelsController.addToToolbar(closeP, "Close");
+            // EventController.lightButton(closeP);
+        //-----------------------
         body.add(img);
         body.add(titleP);
         body.add(descP);
@@ -174,7 +176,10 @@ public class Ticketadd extends JPanel {
         // setUndecorated(true);
         // setLocationRelativeTo(null);
         setLayout(null);
+        body.setBackground(Color.decode("#FDF7E4"));
+        //add(top);
         // add(top);
+
         add(body);
         // add(buttom);
         // ---------------------------
