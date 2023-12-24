@@ -5,7 +5,7 @@ import main.java.app.Model.Movie;
 import main.java.app.View.MainFrame;
 
 public class ITEBest {
-    public static MainFrame lobby;
+    public static MainFrame mainFrame;
     public static String LoginState;
 
     static void test() {
@@ -21,7 +21,7 @@ public class ITEBest {
         // test();
 
         LoginState = "none";
-        lobby = new MainFrame();
+        mainFrame = new MainFrame();
         Database.save();
     }
 }
