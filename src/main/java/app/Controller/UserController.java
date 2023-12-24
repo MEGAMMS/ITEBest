@@ -8,6 +8,9 @@ public class UserController {
         if(name.equals(" ")||password.equals(" ")||email.equals(" ")){
             return "one of the textboxes is blank";
         }
+
+
+        
         if (name.length() > 50||name.length()<2) {
             return "error name is invaled";
         }
