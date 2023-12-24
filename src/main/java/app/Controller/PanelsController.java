@@ -80,7 +80,6 @@ public class PanelsController {
                         }
                         break;
                     case "Close":
-
                         switchPanels("Home");
                         break;
                     default:
