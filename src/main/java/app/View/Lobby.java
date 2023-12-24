@@ -27,6 +27,17 @@ public class Lobby extends JFrame {
 
     public static Home PHome = new Home();
     public static Profile PProfile = new Profile();
+// <<<<<<< NGP2
+//     public static Ticketadd ticketadd=new Ticketadd();
+//     public static Signup singup = new Signup();
+//     public static LoginP login = new LoginP();
+//     public static MoviesView moviesView = new MoviesView();
+//     public void showAddTicket(Movie movie){
+//         remove(ticketadd);
+//         ticketadd=new Ticketadd(movie);
+//         add(ticketadd);
+//         ticketadd.setVisible(false);
+// =======
     public static Ticketadd ticketAdd = new Ticketadd();
     public static Signup PSignup = new Signup();
     public static Login PLogin = new Login();
@@ -36,6 +47,7 @@ public class Lobby extends JFrame {
         ticketAdd = new Ticketadd(movie);
         add(ticketAdd);
         ticketAdd.setVisible(false);
+// >>>>>>> master
 
     }
 
@@ -54,11 +66,11 @@ public class Lobby extends JFrame {
 
         // -------------Head---------------
         JLabel title = new JLabel("ITEBest");
-        JPanel PExit = new JPanel();
-        // JLabel Exitimh=ImageController.addPhoto("\\Exit.png", 40, 40);
-        JLabel Exitimh = new JLabel();
-        ImageIcon icon = new ImageIcon("src\\main\\resources\\images\\ex.svg"); // تعيين مسار الصورة المتجه
-        Exitimh.setIcon(icon);
+        JPanel PExit=new JPanel();
+        JLabel Exitimh=ImageController.addPhoto("\\Exit.png", 40, 40);
+        //JLabel Exitimh=new JLabel();
+        //ImageIcon icon = new ImageIcon("src\\main\\resources\\images\\ex.svg"); // تعيين مسار الصورة المتجه
+        //Exitimh.setIcon(icon);
         PExit.setBounds(1230, 0, 50, 50);
         PExit.add(Exitimh);
         PExit.setBackground(ColoringController.getBasicColor());
@@ -94,7 +106,7 @@ public class Lobby extends JFrame {
         BMovie.setBounds(0, 170, 60, 100);
         BMovie.add(ImageController.addPhoto("movie.png"), BorderLayout.CENTER);
         BMovie.setBackground(ColoringController.getBasicColor());
-        PanelsController.addActionToButton(BMovie, "");
+        PanelsController.addActionToButton(BMovie, "Movies");
         toolbar.add(BMovie);
         //
         JPanel BTrend = new JPanel();
@@ -153,13 +165,17 @@ public class Lobby extends JFrame {
 
         maiPanel.add(PHome);
         maiPanel.add(PProfile);
-        maiPanel.add(ticketAdd);
-        maiPanel.add(PSignup);
-        maiPanel.add(PLogin);
+        maiPanel.add(ticketadd);
+        maiPanel.add(singup);
+        maiPanel.add(login);
+        maiPanel.add(moviesView);
         PHome.setVisible(false);
         PProfile.setVisible(false);
-        ticketAdd.setVisible(false);
-        PSignup.setVisible(false);
+        ticketadd.setVisible(true);
+        singup.setVisible(false);
+        login.setVisible(false);
+        moviesView.setVisible(false);
+    
         add(maiPanel);
 
         setVisible(true);

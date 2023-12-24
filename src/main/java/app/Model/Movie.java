@@ -4,10 +4,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Movie implements Serializable{
-    public Movie(int id,String title,String poster){
+    public Movie(int id,String title,String poster,String tag,String description){
         this.id=id;
         this.title=title;
         this.poster=poster;
+        this.tag=tag;
+        this.description=description;
     }
     public Movie(int id, String title, String director, String description, int showTimeId, ArrayList<Rate> rates,
             int cinemaId) {
@@ -19,6 +21,7 @@ public class Movie implements Serializable{
         this.rates = rates;
         this.cinemaId = cinemaId;
     }
+    private String tag;
     private String poster;
     private int id;
     private String title;
@@ -27,6 +30,12 @@ public class Movie implements Serializable{
     private int showTimeId;
     private ArrayList<Rate> rates;
     private int cinemaId;
+    public void setTag(String tag){
+        this.tag=tag;
+    }
+    public String getTag(){
+        return tag;
+    }
     public int getId() {
         return id;
     }
