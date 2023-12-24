@@ -19,7 +19,7 @@ import main.java.app.Model.Database;
 import main.java.app.Model.MainPanels;
 import main.java.app.Model.Movie;
 
-public class Lobby extends JFrame {
+public class MainFrame extends JFrame {
     // Panels
     public static JPanel maiPanel = new JPanel();
     public static JPanel Top = new JPanel();
@@ -30,7 +30,7 @@ public class Lobby extends JFrame {
     public static Ticketadd PTicketAdd=new Ticketadd();
     public static Signup PSignup = new Signup();
     public static Login login = new Login();
-    public static MoviesView moviesView = new MoviesView();
+    public static MoviesListView PMoviesListView = new MoviesListView();
     public void showAddTicket(Movie movie){
         remove(PTicketAdd);
         PTicketAdd=new Ticketadd(movie);
@@ -39,7 +39,7 @@ public class Lobby extends JFrame {
     
     }
 
-    public Lobby() {
+    public MainFrame() {
         initComponents();
     }
 
@@ -89,13 +89,13 @@ public class Lobby extends JFrame {
         PanelsController.addActionToButton(BProfile, "Profile");
         toolbar.add(BProfile);
         //
-        JPanel BMovie = new JPanel();
-        BMovie.setLayout(new BorderLayout());
-        BMovie.setBounds(0, 170, 60, 100);
-        BMovie.add(ImageController.addPhoto("movie.png"), BorderLayout.CENTER);
-        BMovie.setBackground(ColoringController.getBasicColor());
-        PanelsController.addActionToButton(BMovie, "Movies");
-        toolbar.add(BMovie);
+        JPanel BMoviesList = new JPanel();
+        BMoviesList.setLayout(new BorderLayout());
+        BMoviesList.setBounds(0, 170, 60, 100);
+        BMoviesList.add(ImageController.addPhoto("movie.png"), BorderLayout.CENTER);
+        BMoviesList.setBackground(ColoringController.getBasicColor());
+        PanelsController.addActionToButton(BMoviesList, "MoviesListView");
+        toolbar.add(BMoviesList);
         //
         JPanel BTrend = new JPanel();
         BTrend.setLayout(new BorderLayout());
@@ -150,19 +150,20 @@ public class Lobby extends JFrame {
         MainPanels.addPanel(PHome);
         MainPanels.addPanel(PProfile);
         MainPanels.addPanel(PSignup);
+        MainPanels.addPanel(PMoviesListView);
 
         maiPanel.add(PHome);
         maiPanel.add(PProfile);
         maiPanel.add(PTicketAdd);
         maiPanel.add(PSignup);
         maiPanel.add(login);
-        maiPanel.add(moviesView);
-        PHome.setVisible(false);
+        maiPanel.add(PMoviesListView);
+        PHome.setVisible(true);
         PProfile.setVisible(false);
-        PTicketAdd.setVisible(true);
+        PTicketAdd.setVisible(false);
         PSignup.setVisible(false);
         login.setVisible(false);
-        moviesView.setVisible(false);
+        PMoviesListView.setVisible(false);
     
         add(maiPanel);
 
