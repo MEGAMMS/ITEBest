@@ -1,21 +1,10 @@
 package main.java.app.View;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
-
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 
-import main.java.app.Controller.ColoringController;
-import main.java.app.Controller.FontController;
 import main.java.app.Controller.ImageController;
-import main.java.app.Controller.PanelsController;
-import main.java.app.Model.Database;
 import main.java.app.Model.MainPanels;
 import main.java.app.Model.Movie;
 
@@ -53,8 +42,6 @@ public class MainFrame extends JFrame {
          */
 
         Headbar headbar = new Headbar();
-
-
         mainPanel.add(headbar);
         Toolbar toolbar = new Toolbar();
         mainPanel.add(toolbar);

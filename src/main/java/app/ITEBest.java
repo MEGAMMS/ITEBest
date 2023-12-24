@@ -9,7 +9,7 @@ public class ITEBest {
     public static String LoginState;
 
     static void test() {
-        Database.delete();
+        // Database.delete();
         Database.movies.add(new Movie(3, "Les Miserabels", "\\MoviesPosters\\LesMiserabels.jpg"));
         Database.movies.add(new Movie(2, "LADYBUG & CATNOIR", "\\MoviesPosters\\LADYBUG&CATNOIR.png"));
         Database.movies.add(new Movie(1, "XIHOOG ran Turismo", "\\MoviesPosters\\XIHOOGranTurismo.jpg"));

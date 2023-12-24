@@ -52,7 +52,7 @@ public class Login extends JPanel {
         JLabel top = new JLabel("Login");
         top.setBounds(10, 10, 800, 50);
         top.setForeground(ColoringController.getBlackColor());
-        top.setFont(FontController.Roboto(Font.BOLD, 43));
+        top.setFont(FontController.getSecondryFont(Font.BOLD, 43));
         top.setHorizontalAlignment(SwingConstants.CENTER);
         center.setBorder(PanelsController.roundedBorder(50));
         center.add(top);
@@ -73,21 +73,21 @@ public class Login extends JPanel {
         email = new JLabel("Email:");
         email.setBounds(50, 100, 700, 30);
         // name.setForeground(Color.BLACK);
-        email.setFont(FontController.Roboto(Font.CENTER_BASELINE, 24));
+        email.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 24));
         center.add(email);
         TEmail = new JTextField();
         TEmail.setBounds(50, 140, 700, 50);
-        TEmail.setFont(FontController.Roboto(Font.CENTER_BASELINE, 22));
+        TEmail.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 22));
         center.add(TEmail);
 
         pass = new JLabel("Password:");
         pass.setBounds(50, 200, 700, 30);
         // name.setForeground(Color.BLACK);
-        pass.setFont(FontController.Roboto(Font.CENTER_BASELINE, 24));
+        pass.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 24));
         center.add(pass);
         TPass = new JPasswordField();
         TPass.setBounds(50, 240, 700, 50);
-        TPass.setFont(FontController.Roboto(Font.CENTER_BASELINE, 22));
+        TPass.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 22));
         center.add(TPass);
 
         BSign = new KButton();

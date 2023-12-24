@@ -9,11 +9,8 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
-import javax.xml.crypto.Data;
-
 import main.java.app.Controller.ColoringController;
 import main.java.app.Controller.FontController;
 import main.java.app.Controller.PanelsController;
@@ -48,7 +45,7 @@ public class MoviesListView extends JPanel {
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(tags);
         JComboBox<String> comboBox = new JComboBox<>(model);
         comboBox.setBounds(10, 5, 200, 40);
-        comboBox.setFont(FontController.Roboto(Font.CENTER_BASELINE, 18));
+        comboBox.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
         menu.add(comboBox);
         // ---------------------------
         // Topic Move
@@ -96,7 +93,7 @@ public class MoviesListView extends JPanel {
         panel2.setBounds(0, 0, 1190, 40);
         panel2.setBackground(ColoringController.getSlid());
         label.setForeground(Color.WHITE);
-        label.setFont(FontController.Roboto(Font.BOLD, 24));
+        label.setFont(FontController.getSecondryFont(Font.BOLD, 24));
         label.setHorizontalAlignment(SwingConstants.CENTER);
         panel.setLayout(null);
         // add
