@@ -35,7 +35,7 @@ public class Ticketadd extends JPanel{
 
     }
     public Ticketadd(){
-        movie=new Movie(1, "titleMove", "posterPath");
+        movie=new Movie(1, "titleMove", "posterPath","nonw","");
         titleM=new JLabel(movie.getTitle());
         descM=new JLabel("<html>"+movie.getDescription()+"\r\n" + //
                     "\r\n" + //
@@ -86,9 +86,10 @@ public class Ticketadd extends JPanel{
            
             titleM.setForeground(Color.BLACK);
             titleM.setHorizontalAlignment(SwingConstants.CENTER);
+            titleM.setForeground(ColoringController.getWhiteColor());
             titleM.setFont(FontController.getPrimaryFont(ABORT, 24));
             titleP.setBounds(10,10,780,50);
-            titleP.setBackground(ColoringController.getLightGrayColor());
+            titleP.setBackground(ColoringController.getDarkBasicColor());
             titleP.setLayout(new BorderLayout());
             titleP.add(titleM,BorderLayout.CENTER);
         //-----------------------
@@ -107,7 +108,7 @@ public class Ticketadd extends JPanel{
             //description.setHorizontalAlignment(SwingConstants.CENTER);
             description.setFont(FontController.getPrimaryFont(Font.BOLD, 18));
             descP.setBounds(10,70,780,170);
-            descP.setBackground(ColoringController.getLightGrayColor());
+            descP.setBackground(Color.decode("#EAD7BB"));
             descP.setLayout(null);
             descP.add(description);
             descP.add(descM);
@@ -119,7 +120,7 @@ public class Ticketadd extends JPanel{
             //descM.setHorizontalAlignment(SwingConstants.CENTER);
             //titleM.setFont(FontController.getPrimaryFont(ABORT, 24));
             bookingP.setBounds(10,250,780,350);
-            bookingP.setBackground(ColoringController.getLightGrayColor());
+            bookingP.setBackground(Color.decode("#EAD7BB"));
             bookingP.setLayout(new BorderLayout());
             
         //-----------------------
@@ -167,6 +168,7 @@ public class Ticketadd extends JPanel{
         //setUndecorated(true);
         //setLocationRelativeTo(null);
         setLayout(null);
+        body.setBackground(Color.decode("#FDF7E4"));
         //add(top);
         add(body);
         //add(buttom);

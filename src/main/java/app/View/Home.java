@@ -51,7 +51,7 @@ public class Home extends JPanel {
 
         // ----------menu-------------
         JPanel menu = new JPanel();
-        menu.setBackground(ColoringController.getLightGrayColor());
+        menu.setBackground(ColoringController.getDarkBasicColor());
         menu.setBounds(10, 310, 1180, 40);
         menu.setLayout(null);
         // ---------------------------
