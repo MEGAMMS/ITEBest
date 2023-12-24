@@ -34,7 +34,7 @@ public class PanelsController {
 
     public static void setButtonN(KButton kButton) {
         kButton.setkAllowGradient(false);
-        kButton.setFont(FontController.Roboto(Font.BOLD, 22));
+        kButton.setFont(FontController.getSecondryFont(Font.BOLD, 22));
         kButton.setkBackGroundColor(ColoringController.getBasicColor());
         kButton.setkForeGround(ColoringController.getWhiteColor());
         kButton.setkHoverColor(ColoringController.getWhiteColor());

@@ -16,19 +16,16 @@ import main.java.app.Controller.ColoringController;
 
 public class Home extends JPanel {
     public static JLabel imgbanner = new JLabel(ImageController.getBanar1Icon());
-    public static  JPanel body;
+    public static JPanel body;
     JPanel mainPanel = new JPanel();
-    int size=MovieCard.sizePanel();
-    public void setBody(int n){
+    int size = MovieCard.sizePanel();
+
+    public void setBody(int n) {
         setVisible(false);
     }
+
     public Home() {
         initComponents();
-    }
-    public static Home reset(Home home){
-        Home temp=new Home();
-        temp=home;
-        return home;
     }
     public void initComponents() {
         System.out.println("Comp Home");
@@ -55,36 +52,33 @@ public class Home extends JPanel {
         menu.setLayout(null);
         // ---------------------------
 
-        // -----------Body------------     
-        body=new JPanel();
-        //body.setBackground(Color.decode("#E5E5E5"));
-        body.setBorder(new LineBorder(ColoringController.getLightGrayColor() ,2));
+        // -----------Body------------
+        body = new JPanel();
+        // body.setBackground(Color.decode("#E5E5E5"));
+        body.setBorder(new LineBorder(ColoringController.getLightGrayColor(), 2));
         body.setLayout(null);
-        for (int i = 0; i <Database.movies.size(); i++) {
-            System.out.println("add film "+(i+1));
+        for (int i = 0; i < Database.movies.size(); i++) {
+            System.out.println("add film " + (i + 1));
             body.add(new MovieCard(Database.movies.get(i)));
         }
-        size=MovieCard.sizePanel();
-        body.setBounds(10, 360, 1180,size+10);
+        size = MovieCard.sizePanel();
+        body.setBounds(10, 360, 1180, size + 10);
         // ---------------------------
 
         // -------Properites----------
         this.setName("Home");
         setBounds(60, 50, 1220, 670);
         setLayout(new BorderLayout());
-        
-        mainPanel.setPreferredSize(new Dimension(1200,size+400));
+
+        mainPanel.setPreferredSize(new Dimension(1200, size + 400));
         mainPanel.add(tHome);
         mainPanel.add(banner);
         mainPanel.add(menu);
         mainPanel.add(body);
-        //mainPanel.add(body);
+        // mainPanel.add(body);
         JScrollPane scrollPane = new JScrollPane(mainPanel);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
         add(scrollPane, BorderLayout.CENTER);
         // ---------------------------
-    }
-
-    public JPanel getP() {
-        return this;
     }
 }

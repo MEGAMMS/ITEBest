@@ -15,84 +15,87 @@ import main.java.app.Controller.ImageController;
 import main.java.app.Controller.PanelsController;
 import main.java.app.Model.Movie;
 
-public class MovieCard extends JPanel{
+public class MovieCard extends JPanel {
     String tag;
-    static int hash=10;
-    static int width=280;
-    static int heigh=430;
-    static int x=hash+5;
-    static int y=hash;
-    static int length=0;
+    static int hash = 10;
+    static int width = 280;
+    static int heigh = 430;
+    static int x = hash + 5;
+    static int y = hash;
+    static int length = 0;
     public Movie movie;
-    
-    public static void restSize(){
-        hash=10;
-        width=280;
-        heigh=430;
-        x=hash+5;
-        y=hash;
-        length=0;
+
+    public static void restSize() {
+        hash = 10;
+        width = 280;
+        heigh = 430;
+        x = hash + 5;
+        y = hash;
+        length = 0;
     }
-    public MovieCard(Movie movie){
-        this.movie=movie;
+
+    public MovieCard(Movie movie) {
+        this.movie = movie;
         initComponents();
         fix();
         length++;
 
     }
-    private void initComponents(){
-         //---------img-----------
-            JPanel img=new JPanel();
-            JLabel poster=ImageController.addPhoto(movie.getPoster(), 260, 320);
-            img.setBackground(Color.BLACK);
-            img.setBounds(10,10,260,320);
-            img.setLayout(new BorderLayout());
-            img.add(poster,BorderLayout.CENTER);
 
+    private void initComponents() {
+        // ---------img-----------
+        JPanel img = new JPanel();
+        JLabel poster = ImageController.addPhoto(movie.getPoster(), 260, 320);
+        img.setBackground(Color.BLACK);
+        img.setBounds(10, 10, 260, 320);
+        img.setLayout(new BorderLayout());
+        img.add(poster, BorderLayout.CENTER);
 
         JLabel titel = new JLabel(movie.getTitle());
         titel.setHorizontalAlignment(SwingConstants.CENTER);
         titel.setBounds(10, 330, 260, 50);
-        titel.setFont(FontController.Roboto(Font.BOLD, 16));
-        //-----------------------
-        JPanel button=new JPanel();
+        titel.setFont(FontController.getSecondryFont(Font.BOLD, 16));
+        // -----------------------
+        JPanel button = new JPanel();
         JLabel Btitel = new JLabel("See More");
         Btitel.setHorizontalAlignment(SwingConstants.CENTER);
         Btitel.setBounds(0, 0, 260, 40);
         Btitel.setFont(FontController.getPrimaryFont(Font.BOLD, 18));
         button.setBackground(Color.white);
-        button.setBounds(10,380, 260, 40);
+        button.setBounds(10, 380, 260, 40);
         button.setLayout(null);
         button.add(Btitel);
-        button.setBorder(new LineBorder(ColoringController.getPrimaryColor(), 2,true));
-        //button.setBorder(roundedBorder);
-        PanelsController.Book(this,button,Btitel,movie);
-        //setBorder(new LineBorder(Color.BLACK, 1));
+        button.setBorder(new LineBorder(ColoringController.getPrimaryColor(), 2, true));
+        // button.setBorder(roundedBorder);
+        PanelsController.Book(this, button, Btitel, movie);
+        // setBorder(new LineBorder(Color.BLACK, 1));
         setLayout(null);
         setBounds(x, y, width, heigh);
-        
+
         setBorder(PanelsController.roundedBorder(30));
         button.setBorder(PanelsController.roundedBorder(20));
         setBackground(Color.decode("#FFE5E5"));
         add(img);
         add(titel);
         add(button);
-        
+
     }
-    public void fix(){
-        if(x+width+hash>1080){
-            y+=heigh+hash;
-            x=hash+5;
-        }else{
-            x+=width+hash;
+
+    public void fix() {
+        if (x + width + hash > 1080) {
+            y += heigh + hash;
+            x = hash + 5;
+        } else {
+            x += width + hash;
         }
     }
-    public static int sizePanel(){
+
+    public static int sizePanel() {
         int size;
-        if(length%4!=0){
-            size=((length/4)+1)*(heigh+10);
-        }else{
-            size=((length/4))*(heigh+hash);
+        if (length % 4 != 0) {
+            size = ((length / 4) + 1) * (heigh + 10);
+        } else {
+            size = ((length / 4)) * (heigh + hash);
         }
         return size;
     }
