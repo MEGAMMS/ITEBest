@@ -27,28 +27,16 @@ public class Lobby extends JFrame {
 
     public static Home PHome = new Home();
     public static Profile PProfile = new Profile();
-// <<<<<<< NGP2
-//     public static Ticketadd ticketadd=new Ticketadd();
-//     public static Signup singup = new Signup();
-//     public static LoginP login = new LoginP();
-//     public static MoviesView moviesView = new MoviesView();
-//     public void showAddTicket(Movie movie){
-//         remove(ticketadd);
-//         ticketadd=new Ticketadd(movie);
-//         add(ticketadd);
-//         ticketadd.setVisible(false);
-// =======
-    public static Ticketadd ticketAdd = new Ticketadd();
+    public static Ticketadd PTicketAdd=new Ticketadd();
     public static Signup PSignup = new Signup();
-    public static Login PLogin = new Login();
-
-    public void showAddTicket(Movie movie) {
-        remove(ticketAdd);
-        ticketAdd = new Ticketadd(movie);
-        add(ticketAdd);
-        ticketAdd.setVisible(false);
-// >>>>>>> master
-
+    public static Login login = new Login();
+    public static MoviesView moviesView = new MoviesView();
+    public void showAddTicket(Movie movie){
+        remove(PTicketAdd);
+        PTicketAdd=new Ticketadd(movie);
+        add(PTicketAdd);
+        PTicketAdd.setVisible(false);
+    
     }
 
     public Lobby() {
@@ -165,14 +153,14 @@ public class Lobby extends JFrame {
 
         maiPanel.add(PHome);
         maiPanel.add(PProfile);
-        maiPanel.add(ticketadd);
-        maiPanel.add(singup);
+        maiPanel.add(PTicketAdd);
+        maiPanel.add(PSignup);
         maiPanel.add(login);
         maiPanel.add(moviesView);
         PHome.setVisible(false);
         PProfile.setVisible(false);
-        ticketadd.setVisible(true);
-        singup.setVisible(false);
+        PTicketAdd.setVisible(true);
+        PSignup.setVisible(false);
         login.setVisible(false);
         moviesView.setVisible(false);
     

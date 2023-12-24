@@ -21,6 +21,8 @@ public class Movie implements Serializable{
         this.rates = rates;
         this.cinemaId = cinemaId;
     }
+    public Movie(int i, String string, String string2) {
+    }
     private String tag;
     private String poster;
     private int id;
