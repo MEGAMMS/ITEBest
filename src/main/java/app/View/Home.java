@@ -59,7 +59,7 @@ public class Home extends JPanel {
         body.setLayout(null);
         for (int i = 0; i < Database.movies.size(); i++) {
             System.out.println("add film " + (i + 1));
-            body.add(new MovieCard(Database.movies.get(i)));
+            body.add(new MovieCard(i));
         }
         size = MovieCard.sizePanel();
         body.setBounds(10, 360, 1180, size + 10);
@@ -80,5 +80,13 @@ public class Home extends JPanel {
         scrollPane.getVerticalScrollBar().setUnitIncrement(16);
         add(scrollPane, BorderLayout.CENTER);
         // ---------------------------
+        
+    }
+    @Override
+    public void setVisible(boolean aFlag) {
+        super.setVisible(aFlag);
+        mainPanel.setVisible(aFlag);
+        body.setVisible(aFlag);
+        
     }
 }

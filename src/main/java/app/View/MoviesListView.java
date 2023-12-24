@@ -100,7 +100,7 @@ public class MoviesListView extends JPanel {
         for (int i = 0; i < Database.movies.size(); i++) {
             if (Database.movies.get(i).getTag().equals(tag) || tag == "All") {
                 System.out.println("MMM  " + Database.movies.get(i).getTitle());
-                panel.add(new MovieCard(Database.movies.get(i)));
+                panel.add(new MovieCard(i));
             }
         }
         //
