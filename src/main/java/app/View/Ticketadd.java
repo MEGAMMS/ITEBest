@@ -16,22 +16,24 @@ import main.java.app.Controller.ImageController;
 import main.java.app.Controller.PanelsController;
 import main.java.app.Model.Movie;
 
-public class Ticketadd extends JPanel{
-    //Haha
+public class Ticketadd extends JPanel {
+    // Haha
     Movie movie;
-    JPanel descP=new JPanel();
+    JPanel descP = new JPanel();
     public JLabel titleM;
-    public  JLabel descM;
+    public JLabel descM;
     public JLabel poster;
-    public static void setValues(Ticketadd ticketadd,Movie movie){
-        ticketadd.movie=movie;
+
+    public static void setValues(Ticketadd ticketadd, Movie movie) {
+        ticketadd.movie = movie;
         ticketadd.titleM.setText(movie.getTitle());
-        JLabel label=ImageController.addPhoto(movie.getPoster(), 410, 650);
+        JLabel label = ImageController.addPhoto(movie.getPoster(), 410, 650);
         ticketadd.poster.setIcon(label.getIcon());
         System.out.println(ticketadd.movie.getDescription());
-        ticketadd.descM.setText("<html>"+ticketadd.movie.getDescription()+"\r\n" + //
-                    "\r\n" + //
-                    "</html>");;
+        ticketadd.descM.setText("<html>" + ticketadd.movie.getDescription() + "\r\n" + //
+                "\r\n" + //
+                "</html>");
+        ;
 
     }
     public Ticketadd(){
@@ -41,36 +43,41 @@ public class Ticketadd extends JPanel{
                     "\r\n" + //
                     "</html>");
         poster=ImageController.addPhoto(movie.getPoster(), 410, 650);
-        System.out.println("Start Tic");
-        initComponents();
-        System.out.println("End");
-    }public Ticketadd( Movie movie){
-        this.movie=movie;
-        titleM=new JLabel(movie.getTitle());
-        descM=new JLabel("<html>"+movie.getDescription()+"\r\n" + //
-                    "\r\n" + //
-                    "</html>");
-        poster=ImageController.addPhoto(movie.getPoster(), 410, 650);
+
         System.out.println("Start Tic");
         initComponents();
         System.out.println("End");
     }
-    private void initComponents(){
-        
-    //-----------TOP-------------
-    /*
-        JPanel top=new JPanel();
-        top.setBackground(ColoringController.getBasicColor());
-        top.setBounds(0,0,800,40);
-        JLabel title = new JLabel("Add Ticket");
-        title.setBounds(350, 0, 300, 50);
-        title.setFont(FontController.getPrimaryFont(Font.BOLD, 24));
-        title.setForeground(ColoringController.getWhiteColor());
-        top.add(title);*/
-    //---------------------------
-    //-----------Body------------
-        JPanel body=new JPanel();
-        //body.setBackground(ColoringController.getLightGrayColor());
+
+    public Ticketadd(Movie movie) {
+        this.movie = movie;
+        titleM = new JLabel(movie.getTitle());
+        descM = new JLabel("<html>" + movie.getDescription() + "\r\n" + //
+                "\r\n" + //
+                "</html>");
+        poster = ImageController.addPhoto(movie.getPoster(), 410, 650);
+        System.out.println("Start Tic");
+        initComponents();
+        System.out.println("End");
+    }
+
+    private void initComponents() {
+
+        // -----------TOP-------------
+        /*
+         * JPanel top=new JPanel();
+         * top.setBackground(ColoringController.getBasicColor());
+         * top.setBounds(0,0,800,40);
+         * JLabel title = new JLabel("Add Ticket");
+         * title.setBounds(350, 0, 300, 50);
+         * title.setFont(FontController.getPrimaryFont(Font.BOLD, 24));
+         * title.setForeground(ColoringController.getWhiteColor());
+         * top.add(title);
+         */
+        // ---------------------------
+        // -----------Body------------
+        JPanel body = new JPanel();
+        // body.setBackground(ColoringController.getLightGrayColor());
         body.setBounds(0, 0, 1220, 670);
         body.setLayout(null);
         //---------img-----------
@@ -154,24 +161,27 @@ public class Ticketadd extends JPanel{
         body.add(bookingP);
         body.add(addTick);
         body.add(closeP);
-    //---------------------------
-    //----------Buttom-----------
-        JPanel buttom=new JPanel();
+        // ---------------------------
+        // ----------Buttom-----------
+        JPanel buttom = new JPanel();
         buttom.setBackground(ColoringController.getBasicColor());
-        buttom.setBounds(0,580,800,20);
-        
-    //---------------------------
-    //-------Properites----------
-        //setIconImage(new ImageIcon("src\\main\\resources\\images\\ITEBestIcon.png").getImage());
-        //setSize(800, 600);
+        buttom.setBounds(0, 580, 800, 20);
+
+        // ---------------------------
+        // -------Properites----------
+        // setIconImage(new
+        // ImageIcon("src\\main\\resources\\images\\ITEBestIcon.png").getImage());
+        // setSize(800, 600);
         setBounds(60, 50, 1220, 670);
-        //setUndecorated(true);
-        //setLocationRelativeTo(null);
+        // setUndecorated(true);
+        // setLocationRelativeTo(null);
         setLayout(null);
         body.setBackground(Color.decode("#FDF7E4"));
         //add(top);
+        // add(top);
+
         add(body);
-        //add(buttom);
-    //---------------------------
+        // add(buttom);
+        // ---------------------------
     }
 }

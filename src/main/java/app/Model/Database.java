@@ -15,11 +15,14 @@ public class Database implements Serializable {
 
     
     static {
-        users = new ArrayList<User>();
-        movies = new ArrayList<Movie>();
+        initDatabase();
         load();
     }
+    private static void initDatabase(){
+        users = new ArrayList<User>();
+        movies = new ArrayList<Movie>();
 
+    }
     public static void save() {
 
         try {
@@ -39,5 +42,10 @@ public class Database implements Serializable {
         } catch (ClassNotFoundException | IOException e) {
             System.out.println("Failed to load.");
         }
+    }
+
+    public static void delete() {
+        initDatabase();
+        save();
     }
 }
