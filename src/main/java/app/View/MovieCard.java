@@ -13,6 +13,7 @@ import main.java.app.Controller.ColoringController;
 import main.java.app.Controller.FontController;
 import main.java.app.Controller.ImageController;
 import main.java.app.Controller.PanelsController;
+import main.java.app.Model.Database;
 import main.java.app.Model.Movie;
 
 public class MovieCard extends JPanel {
@@ -23,6 +24,7 @@ public class MovieCard extends JPanel {
     static int x = hash + 5;
     static int y = hash;
     static int length = 0;
+    public int id;
     public Movie movie;
 
     public static void restSize() {
@@ -34,8 +36,9 @@ public class MovieCard extends JPanel {
         length = 0;
     }
 
-    public MovieCard(Movie movie) {
-        this.movie = movie;
+    public MovieCard(int id) {
+        this.id = id;
+        movie = Database.movies.get(id);
         initComponents();
         fix();
         length++;
@@ -57,17 +60,18 @@ public class MovieCard extends JPanel {
         titel.setFont(FontController.getSecondryFont(Font.BOLD, 16));
         // -----------------------
         JPanel button = new JPanel();
+        button.setName(Integer.valueOf(id).toString());
         JLabel Btitel = new JLabel("See More");
         Btitel.setHorizontalAlignment(SwingConstants.CENTER);
         Btitel.setBounds(0, 0, 260, 40);
         Btitel.setFont(FontController.getPrimaryFont(Font.BOLD, 18));
-        button.setBackground(Color.white);
+        button.setBackground(ColoringController.getWhiteColor());
         button.setBounds(10, 380, 260, 40);
         button.setLayout(null);
         button.add(Btitel);
         button.setBorder(new LineBorder(ColoringController.getPrimaryColor(), 2, true));
         // button.setBorder(roundedBorder);
-        PanelsController.Book(this, button, Btitel, movie);
+        PanelsController.addActionToButton(button,"addTicket");
         // setBorder(new LineBorder(Color.BLACK, 1));
         setLayout(null);
         setBounds(x, y, width, heigh);

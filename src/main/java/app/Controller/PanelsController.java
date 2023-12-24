@@ -24,7 +24,7 @@ import main.java.app.Model.Database;
 import main.java.app.Model.MainPanels;
 import main.java.app.Model.Movie;
 import main.java.app.View.RoundedBorder;
-import main.java.app.View.Ticketadd;
+import main.java.app.View.TicketAdd;
 import main.java.app.View.MovieCard;
 
 public class PanelsController {
@@ -59,7 +59,7 @@ public class PanelsController {
         }
     }
 
-    public static void addActionToButton(JPanel buuton, String action) {
+    public static void addActionToButton(JPanel button, String action) {
 
         MouseListener ms = new MouseListener() {
             @Override
@@ -82,6 +82,11 @@ public class PanelsController {
                     case "Close":
                         switchPanels("Home");
                         break;
+                    case "addTicket":
+                        ITEBest.mainFrame.showAddTicket(Integer.parseInt(button.getName()));
+
+                        switchPanels("addTicket");
+
                     default:
                         switchPanels(action);
                         break;
@@ -104,58 +109,17 @@ public class PanelsController {
 
             @Override
             public void mouseEntered(java.awt.event.MouseEvent e) {
-                buuton.setBackground(ColoringController.getLightBasicColor());
+                button.setBackground(ColoringController.getLightBasicColor());
             }
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent e) {
-                buuton.setBackground(ColoringController.getBasicColor());
+                button.setBackground(ColoringController.getBasicColor());
 
             }
         };
-        buuton.addMouseListener(ms);
-
-    }
-
-    public static void Book(MovieCard panel, JPanel button, JLabel label, Movie n) {
-
-        MouseListener ms = new MouseListener() {
-            @Override
-            public void mouseClicked(java.awt.event.MouseEvent e) {
-                System.out.println(panel.movie.getTitle());
-                // VisiblePanelHome(Lobby.ticketadd);
-                // ITEBest.lobby.showAddTicket(Database.movies.get(0));
-                MainFrame.PHome.setVisible(false);
-                MainFrame.PTicketAdd.setVisible(true);
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                // TODO Auto-generated method stub
-                // throw new UnsupportedOperationException("Unimplemented method
-                // 'mousePressed'");
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                // TODO Auto-generated method stub
-                // throw new UnsupportedOperationException("Unimplemented method
-                // 'mouseReleased'");
-            }
-
-            @Override
-            public void mouseEntered(java.awt.event.MouseEvent e) {
-                label.setForeground(ColoringController.getBasicColor());
-            }
-
-            @Override
-            public void mouseExited(java.awt.event.MouseEvent e) {
-                label.setForeground(Color.GRAY);
-            }
-        };
-
         button.addMouseListener(ms);
-        // panel.addMouseListener(ms);
+
     }
 
     public static void Exit(JPanel panel) {
