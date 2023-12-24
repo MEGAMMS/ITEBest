@@ -26,4 +26,7 @@ public class ColoringController {
     public static Color getLightGrayColor(){
         return Color.lightGray;
     }
+    public static Color getBlackColor(){
+        return Color.BLACK;
+    }
 }

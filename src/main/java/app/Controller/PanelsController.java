@@ -28,18 +28,19 @@ import main.java.app.View.Ticketadd;
 import main.java.app.View.itemMove;
 
 public class PanelsController {
-    public static Border roundedBorder(int n){
+    public static Border roundedBorder(int n) {
         return new RoundedBorder(n);
     }
 
-    public static void setButtonN(KButton kButton){
+    public static void setButtonN(KButton kButton) {
         kButton.setkAllowGradient(false);
         kButton.setFont(FontController.Roboto(Font.BOLD, 22));
         kButton.setkBackGroundColor(ColoringController.getBasicColor());
         kButton.setkForeGround(ColoringController.getWhiteColor());
         kButton.setkHoverColor(ColoringController.getWhiteColor());
         kButton.setkPressedColor(ColoringController.getLightBasicColor());
-        kButton.setkSelectedColor(ColoringController.getBasicColor());;
+        kButton.setkSelectedColor(ColoringController.getBasicColor());
+        ;
         kButton.setkHoverForeGround(ColoringController.getBasicColor());
         kButton.setBorder(null);
         kButton.setkFillButton(true);
@@ -47,51 +48,50 @@ public class PanelsController {
         kButton.setkIndicatorThickness(2);
         kButton.setkIndicatorColor(Color.BLACK);
     }
-    public static void switchPanels(JPanel panel) {
+
+    public static void switchPanels(String name) {
         for (JPanel p : MainPanels.Panels) {
-            p.setVisible(("B" + p.getName()).equals(panel.getName()));
+            if (p.getName().equals(name)) {
+                p.setVisible(true);
+            } else {
+                p.setVisible(false);
+            }
             // System.err.println(("B" + p.getName()));
             // System.err.println(panel.getName());
             // System.err.println(("B" + p.getName()).equals(panel.getName()) + "\n");
         }
     }
 
-    public static void addToToolbar(JPanel panel,String nameP) {
+    public static void addActionToButton(JPanel buuton, String action) {
 
-        
         MouseListener ms = new MouseListener() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
-                //PanelsController.switchPanels(panel);
-                //Lobby.PHome.setBody(5);
-                
-                /*CardLayout cardLayout = (CardLayout) Lobby.Cardpanel.getLayout();
-                cardLayout.show(Lobby.Cardpanel, nameP);*/
-                switch (nameP) {
+                // PanelsController.switchPanels(panel);
+                // Lobby.PHome.setBody(5);
+
+                /*
+                 * CardLayout cardLayout = (CardLayout) Lobby.Cardpanel.getLayout();
+                 * cardLayout.show(Lobby.Cardpanel, nameP);
+                 */
+                switch (action) {
                     case "Home":
-                        VisiblePanelHome(Lobby.PHome);
+                   
+
+                        switchPanels("Home");
+
                         break;
                     case "Profile":
-                        Lobby.PHome.setVisible(false);
-                        Lobby.ticketadd.setVisible(false);
-                        Lobby.login.setVisible(false);
-                        if(ITEBest.LoginnState.equals("none")){
-                            Lobby.singup.setVisible(true);
-                        }else{
-                            Lobby.PProfile.setVisible(true);
+                        if (ITEBest.LoginState.equals("none")) {
+                            switchPanels("Singup");
+                        } else {
+                            switchPanels("Profile");
                         }
-                        
-
-                    break;
+                        break;
                     case "Close":
-                        Lobby.PHome.setVisible(true);
-                        Lobby.PProfile.setVisible(false);
-                        Lobby.ticketadd.setVisible(false);
-                        Lobby.singup.setVisible(false);
-                    break;
-                    case "Movies":
-                        VisiblePanelHome(Lobby.moviesView);
-                    break;
+
+                      switchPanels("Home");
+                        break;
                     default:
                         break;
                 }
@@ -113,37 +113,31 @@ public class PanelsController {
 
             @Override
             public void mouseEntered(java.awt.event.MouseEvent e) {
-                panel.setBackground(ColoringController.getLightBasicColor());
+                buuton.setBackground(ColoringController.getLightBasicColor());
             }
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent e) {
-                panel.setBackground(ColoringController.getBasicColor());
+                buuton.setBackground(ColoringController.getBasicColor());
 
             }
         };
-        panel.addMouseListener(ms);
-        ActionListener al=new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
-            }
-            
-        };
-       
-    }
-    
-    public static void Book(itemMove panel,JPanel button,JLabel label,Movie n) {
-
+        buuton.addMouseListener(ms);
         
+
+    }
+
+    public static void Book(itemMove panel, JPanel button, JLabel label, Movie n) {
+
         MouseListener ms = new MouseListener() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 System.out.println(panel.movie.getTitle());
-                VisiblePanelHome(Lobby.ticketadd);
-                Ticketadd.setValues(Lobby.ticketadd, Database.movies.get(Database.movies.indexOf(n)));
+//                 VisiblePanelHome(Lobby.ticketadd);
+//                 ITEBest.lobby.showAddTicket(Database.movies.get(0));
+                Lobby.PHome.setVisible(false);
+                Lobby.ticketAdd.setVisible(true);
+                Ticketadd.setValues(Lobby.ticketAdd, Database.movies.get(Database.movies.indexOf(n)));
             }
 
             @Override
@@ -170,15 +164,13 @@ public class PanelsController {
                 label.setForeground(Color.GRAY);
             }
         };
-        
+
         button.addMouseListener(ms);
-        //panel.addMouseListener(ms);
+        // panel.addMouseListener(ms);
     }
 
+    public static void Exit(JPanel panel) {
 
-     public static void  Exit(JPanel panel) {
-
-        
         MouseListener ms = new MouseListener() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
@@ -187,12 +179,12 @@ public class PanelsController {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                
+
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                
+
             }
 
             @Override
@@ -207,16 +199,16 @@ public class PanelsController {
             }
         };
         panel.addMouseListener(ms);
-        ActionListener al=new ActionListener() {
+        ActionListener al = new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
                 throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
             }
-            
+
         };
-       
+
     }
     public static void ChooseComboPanel(JComboBox comboBox){
         comboBox.addActionListener(e -> {
