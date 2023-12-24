@@ -94,7 +94,7 @@ public class Lobby extends JFrame {
         BMovie.setBounds(0, 170, 60, 100);
         BMovie.add(ImageController.addPhoto("movie.png"), BorderLayout.CENTER);
         BMovie.setBackground(ColoringController.getBasicColor());
-        PanelsController.addToToolbar(BMovie,"");
+        PanelsController.addToToolbar(BMovie,"Movies");
         toolbar.add(BMovie);
         //
         JPanel BTrend = new JPanel();
@@ -158,9 +158,10 @@ public class Lobby extends JFrame {
         maiPanel.add(moviesView);
         PHome.setVisible(false);
         PProfile.setVisible(false);
-        ticketadd.setVisible(false);
+        ticketadd.setVisible(true);
         singup.setVisible(false);
         login.setVisible(false);
+        moviesView.setVisible(false);
         add(maiPanel);
         
         setVisible(true);

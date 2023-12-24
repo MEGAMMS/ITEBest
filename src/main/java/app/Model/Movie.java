@@ -4,10 +4,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Movie implements Serializable{
-    public Movie(int id,String title,String poster){
+    public Movie(int id,String title,String poster,String tag,String description){
         this.id=id;
         this.title=title;
         this.poster=poster;
+        this.tag=tag;
+        this.description=description;
     }
     public Movie(int id, String title, String director, String description, int showTimeId, ArrayList<Rate> rates,
             int cinemaId) {

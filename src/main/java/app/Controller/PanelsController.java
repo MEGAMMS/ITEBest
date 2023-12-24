@@ -69,11 +69,7 @@ public class PanelsController {
                 cardLayout.show(Lobby.Cardpanel, nameP);*/
                 switch (nameP) {
                     case "Home":
-                        Lobby.PHome.setVisible(true);
-                        Lobby.PProfile.setVisible(false);
-                        Lobby.ticketadd.setVisible(false);
-                        Lobby.singup.setVisible(false);
-                        Lobby.login.setVisible(false);
+                        VisiblePanelHome(Lobby.PHome);
                         break;
                     case "Profile":
                         Lobby.PHome.setVisible(false);
@@ -93,7 +89,9 @@ public class PanelsController {
                         Lobby.ticketadd.setVisible(false);
                         Lobby.singup.setVisible(false);
                     break;
-                    
+                    case "Movies":
+                        VisiblePanelHome(Lobby.moviesView);
+                    break;
                     default:
                         break;
                 }
@@ -144,9 +142,7 @@ public class PanelsController {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 System.out.println(panel.movie.getTitle());
-                //ITEBest.lobby.showAddTicket(Database.movies.get(0));
-                Lobby.PHome.setVisible(false);
-                Lobby.ticketadd.setVisible(true);
+                VisiblePanelHome(Lobby.ticketadd);
                 Ticketadd.setValues(Lobby.ticketadd, Database.movies.get(Database.movies.indexOf(n)));
             }
 
@@ -255,5 +251,14 @@ public class PanelsController {
                     break;
             }
         });
+    }
+    public static void VisiblePanelHome(JPanel panel){
+        Lobby.PHome.setVisible(false);
+        Lobby.PProfile.setVisible(false);
+        Lobby.ticketadd.setVisible(false);
+        Lobby.singup.setVisible(false);
+        Lobby.login.setVisible(false);
+        Lobby.moviesView.setVisible(false);
+        panel.setVisible(true);
     }
 }
