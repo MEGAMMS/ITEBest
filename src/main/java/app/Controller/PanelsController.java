@@ -10,10 +10,12 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
+import javax.xml.crypto.Data;
 
 import com.k33ptoo.components.KButton;
 
 import main.java.app.ITEBest;
+import main.java.app.Model.Database;
 import main.java.app.Model.MainPanels;
 import main.java.app.View.RoundedBorder;
 
@@ -67,6 +69,7 @@ public class PanelsController {
                         if (ITEBest.LoginState.equals("none")) {
                             switchPanels("Login");
                         } else {
+                            MainFrame.toolbar.setVisible(true);
                             switchPanels("Profile");
                         }
                         break;
@@ -82,8 +85,9 @@ public class PanelsController {
                         System.out.println(button.getName());
                         break;
                     case "Tick":
-                        MainFrame.toolbar.setVisible(false);
+                        
                         if (ITEBest.LoginState.equals("none")) {
+                            MainFrame.toolbar.setVisible(false);
                             switchPanels("Singup");
                         } else {
                             
@@ -287,14 +291,6 @@ public static void addActionToKButton(KButton button, String action) {
                             char[] passwordCharsL = MainFrame.PLogin.TPass.getPassword();
                             String passwordL = new String(passwordCharsL);
                             String stateL= UserController.LogIn(emailL, passwordL);
-                            if(stateL.equals("Welcome"))
-                            {
-                            MainFrame.PLogin.MsgError.setForeground(Color.decode("#65B741"));
-                            ITEBest.LoginState="Logined";
-                            MainFrame.PLogin.TEmail.setText("");
-                            MainFrame.PLogin.TPass.setText("");
-                            }
-                            else MainFrame.PLogin.MsgError.setForeground(Color.decode("#B80000"));
                             MainFrame.PLogin.MsgError.setText(stateL);
                             if (emailL.equals("")) {
 
@@ -307,6 +303,25 @@ public static void addActionToKButton(KButton button, String action) {
                             } else {
                             MainFrame.PLogin.PassError.setVisible(false);
                             }
+                            if(stateL.equals("Welcome"))
+                            {
+                            MainFrame.PLogin.MsgError.setForeground(Color.decode("#65B741"));
+                            MainFrame.PLogin.MsgError.setVisible(true);
+                            ITEBest.LoginState="Logined";
+                            // try{
+                            //     Thread.sleep(1000);
+                            // }catch(Exception ex){
+                            //     System.out.println("error");;
+                            // }
+                            MainFrame.toolbar.setVisible(true);
+                            switchPanels("Profile");
+
+                            MainFrame.PLogin.TEmail.setText("");
+                            MainFrame.PLogin.TPass.setText("");
+                            }
+                            else MainFrame.PLogin.MsgError.setForeground(Color.decode("#B80000"));
+                            
+                            
                         break;
                     default:
                         

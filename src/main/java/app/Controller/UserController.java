@@ -2,6 +2,7 @@ package main.java.app.Controller;
 
 import main.java.app.Model.Database;
 import main.java.app.Model.User;
+import main.java.app.View.MainFrame;
 
 public class UserController {
     public static String AddUser(String name, String email, String password) {
@@ -43,7 +44,10 @@ public class UserController {
         for (User e : Database.users) {
             if(e.getEmail().equals(email)){
                 if(e.getPassword().equals(password)){
+                    Database.thisUser=e;
+                    MainFrame.PProfile.updateData(e);
                     return "Welcome";
+                    
                 }else return"Wrong Password";
             }
         }
