@@ -3,7 +3,6 @@ package main.java.app;
 import main.java.app.Model.Database;
 import main.java.app.Model.Movie;
 import main.java.app.View.MainFrame;
-import main.java.app.View.TicketAdd;
 
 public class ITEBest {
     public static MainFrame mainFrame;
