@@ -4,15 +4,18 @@ import main.java.app.Model.Database;
 import main.java.app.Model.User;
 
 public class UserController {
-    public String AddUser(String name, String email, String password) {
-        if(name.equals(" ")||password.equals(" ")||email.equals(" ")){
+    public static String AddUser(String name, String email, String password) {
+        if(name.equals("")||password.equals("")||email.equals("")){
             return "one of the textboxes is blank";
         }
         if (name.length() > 50||name.length()<2) {
             return "error name is invaled";
         }
         if (password.length() < 8 || password.length() > 50) {
-            return "\\ERROR\\ password is invaled";
+            return "password is invaled";
+        }
+        if (email.length() > 50||email.length()<12) {
+            return "error email is invaled";
         }
         for (User e : Database.users) {
             if (e.getEmail().equals(email)) {
@@ -25,6 +28,7 @@ public class UserController {
         Database.users.add(new User(Database.users.size(), name, email, password));
         return "Signed up successfully";
     }
+
     public String  LogIn(String email,String password){
          if(password.equals("")||email.equals("")){
             return "one of the textboxes is blank";
@@ -42,4 +46,5 @@ public class UserController {
     return "User not found";
     }
    
+
 }
