@@ -25,7 +25,7 @@ public class UserController {
         if (!email.substring(email.length() - 10).equals("@gmail.com")) {
             return "that's not an email";
         }
-        //Database.users.add(new User(Database.users.size(), name, email, password));
+        Database.users.add(new User(Database.users.size(), name, email, password));
         return "Signed up successfully";
     }
     
