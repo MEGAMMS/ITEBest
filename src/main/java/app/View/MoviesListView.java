@@ -37,7 +37,7 @@ public class MoviesListView extends JPanel {
         mainPanel.setLayout(null);
         // ----------menu-------------
         menu = new JPanel();
-        menu.setBackground(ColoringController.getDarkBasicColor());
+        menu.setBackground(ColoringController.getTowColorDark());
         menu.setBounds(10, 10, 1190, 50);
         menu.setLayout(null);
 
