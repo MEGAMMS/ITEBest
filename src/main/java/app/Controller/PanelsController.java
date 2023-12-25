@@ -1,7 +1,6 @@
 package main.java.app.Controller;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -105,24 +104,24 @@ public class PanelsController {
 
             @Override
             public void mouseEntered(java.awt.event.MouseEvent e) {
-                if(action =="TicketAdd"){
-                    //MovieCard.Btitel.setForeground(ColoringController.getWhiteColor());
+                if (action == "TicketAdd") {
+                    // MovieCard.Btitel.setForeground(ColoringController.getWhiteColor());
                     return;
-                }else if(action =="chair"){
+                } else if (action == "chair") {
                     button.setBackground(Color.decode("#B0A4A4"));
                     return;
                 }
                 button.setBackground(ColoringController.getLightBasicColor());
-        
+
             }
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent e) {
-                if(action =="chair"){
+                if (action == "chair") {
                     button.setBackground(Color.decode("#F3EEEA"));
                     return;
                 }
-                 button.setBackground(ColoringController.getBasicColor());
+                button.setBackground(ColoringController.getBasicColor());
 
             }
         };
@@ -164,39 +163,11 @@ public class PanelsController {
 
     public static void ChooseComboPanel(JComboBox<String> comboBox) {
         comboBox.addActionListener(e -> {
-            String selectedValue = (String) comboBox.getSelectedItem();
-            switch (selectedValue) {
-                case "sadness":
-                    MoviesListView.VisiblePanel(MoviesListView.sadness);
-                    MoviesListView.sizeP = MoviesListView.sadness.getHeight();
-                    MoviesListView.mainPanel.setPreferredSize(new Dimension(1224, MoviesListView.sizeP + 80));
-                    break;
-                case "All":
-                    MoviesListView.VisiblePanel(MoviesListView.All);
-                    MoviesListView.sizeP = MoviesListView.All.getHeight();
-                    MoviesListView.mainPanel.setPreferredSize(new Dimension(1224, MoviesListView.sizeP + 80));
-                    break;
-                case "farcical":
-                    MoviesListView.VisiblePanel(MoviesListView.farcical);
-                    MoviesListView.sizeP = MoviesListView.farcical.getHeight();
-                    MoviesListView.mainPanel.setPreferredSize(new Dimension(1224, MoviesListView.sizeP + 80));
-                    break;
-                case "action":
-                    MoviesListView.VisiblePanel(MoviesListView.action);
-                    MoviesListView.sizeP = MoviesListView.action.getHeight();
-                    MoviesListView.mainPanel.setPreferredSize(new Dimension(1224, MoviesListView.sizeP + 80));
-                    break;
-                case "adventure":
-                    MoviesListView.VisiblePanel(MoviesListView.adventure);
-                    MoviesListView.sizeP = MoviesListView.adventure.getHeight();
-                    MoviesListView.mainPanel.setPreferredSize(new Dimension(1224, MoviesListView.sizeP + 80));
-                    break;
-                default:
-                    break;
-            }
+            MainFrame.PMoviesListView.refresh((String)comboBox.getSelectedItem());
         });
     }
-public static void addActionToLabel(JLabel button, String action) {
+
+    public static void addActionToLabel(JLabel button, String action) {
 
         MouseListener ms = new MouseListener() {
             @Override
@@ -215,12 +186,12 @@ public static void addActionToLabel(JLabel button, String action) {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                
+
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                
+
             }
 
             @Override
@@ -230,7 +201,7 @@ public static void addActionToLabel(JLabel button, String action) {
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent e) {
-                 button.setForeground(Color.BLACK);
+                button.setForeground(Color.BLACK);
 
             }
         };
@@ -244,26 +215,26 @@ public static void addActionToKButton(KButton button, String action) {
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 switch (action) {
                     case "Sign Up":
-                        String name=MainFrame.PSignup.Tname.getText();
-                        String email=MainFrame.PSignup.Temail.getText();
-                        char[] passwordChars =MainFrame.PSignup.Tpass.getPassword();
-                        String password=new String(passwordChars);
-                        String state=UserController.AddUser(name, email, password);
+                        String name = MainFrame.PSignup.Tname.getText();
+                        String email = MainFrame.PSignup.Temail.getText();
+                        char[] passwordChars = MainFrame.PSignup.Tpass.getPassword();
+                        String password = new String(passwordChars);
+                        String state = UserController.AddUser(name, email, password);
                         System.out.println(state);
                         MainFrame.PSignup.MsgError.setText(state);
-                        if(name.equals("")){
+                        if (name.equals("")) {
                             MainFrame.PSignup.NameError.setVisible(true);
-                        }else{
+                        } else {
                             MainFrame.PSignup.NameError.setVisible(false);
                         }
-                        if(email.equals("")){
+                        if (email.equals("")) {
                             MainFrame.PSignup.EmailError.setVisible(true);
-                        }else{
+                        } else {
                             MainFrame.PSignup.EmailError.setVisible(false);
                         }
-                        if(password.equals("")){
+                        if (password.equals("")) {
                             MainFrame.PSignup.PassError.setVisible(true);
-                        }else{
+                        } else {
                             MainFrame.PSignup.PassError.setVisible(false);
                         }
                         break;
@@ -275,12 +246,12 @@ public static void addActionToKButton(KButton button, String action) {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                
+
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                
+
             }
 
             @Override
@@ -290,7 +261,7 @@ public static void addActionToKButton(KButton button, String action) {
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent e) {
-                 button.setForeground(Color.BLACK);
+                button.setForeground(Color.BLACK);
 
             }
         };
