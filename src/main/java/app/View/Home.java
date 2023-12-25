@@ -39,7 +39,7 @@ public class Home extends JPanel {
         // ---------banner------------
         imgbanner.setBounds(0, 0, 1180, 250);
         JPanel banner = new JPanel();
-        banner.setBackground(ColoringController.getLightBasicColor());
+        banner.setBackground(ColoringController.getTowColorDark());
         banner.setBounds(10, 50, 1180, 250);
         banner.add(imgbanner);
         banner.setLayout(null);
@@ -47,7 +47,7 @@ public class Home extends JPanel {
 
         // ----------menu-------------
         JPanel menu = new JPanel();
-        menu.setBackground(ColoringController.getDarkBasicColor());
+        menu.setBackground(ColoringController.getTowColorDark());
         menu.setBounds(10, 310, 1180, 40);
         menu.setLayout(null);
         // ---------------------------
@@ -55,8 +55,9 @@ public class Home extends JPanel {
         // -----------Body------------
         body = new JPanel();
         // body.setBackground(Color.decode("#E5E5E5"));
-        body.setBorder(new LineBorder(ColoringController.getLightGrayColor(), 2));
+        //body.setBorder(new LineBorder(ColoringController.getLightGrayColor(), 2));
         body.setLayout(null);
+        body.setBackground(ColoringController.getTowColor());
         for (int i = 0; i < Database.movies.size(); i++) {
             System.out.println("add film " + (i + 1));
             body.add(new MovieCard(i));
@@ -75,6 +76,7 @@ public class Home extends JPanel {
         mainPanel.add(banner);
         mainPanel.add(menu);
         mainPanel.add(body);
+        mainPanel.setBackground(ColoringController.getTowColor());
         // mainPanel.add(body);
         JScrollPane scrollPane = new JScrollPane(mainPanel);
         scrollPane.getVerticalScrollBar().setUnitIncrement(16);
