@@ -91,6 +91,14 @@ public class PanelsController {
                     case "chair":
                         System.out.println(button.getName());
                         break;
+                    case "Tick":
+                        MainFrame.toolbar.setVisible(false);
+                        if (ITEBest.LoginState.equals("none")) {
+                            switchPanels("Singup");
+                        } else {
+                            
+                        }
+                        break;
                     default:
                         switchPanels(action);
                         break;
@@ -268,7 +276,15 @@ public static void addActionToKButton(KButton button, String action) {
                         String password=new String(passwordChars);
                         String state=UserController.AddUser(name, email, password);
                         System.out.println(state);
+                        if(state.equals("Signed up successfully"))
+                        {
+                            MainFrame.PSignup.MsgError.setForeground(Color.decode("#65B741"));
+                            ITEBest.LoginState="Signed";
+                        }
+                             
+                        else MainFrame.PSignup.MsgError.setForeground(Color.decode("#B80000"));
                         MainFrame.PSignup.MsgError.setText(state);
+                      
                         if(name.equals("")){
                             MainFrame.PSignup.NameError.setVisible(true);
                         }else{
@@ -285,8 +301,12 @@ public static void addActionToKButton(KButton button, String action) {
                             MainFrame.PSignup.PassError.setVisible(false);
                         }
                         break;
+                        case "Cancel":
+                            switchPanels("Home");
+                            MainFrame.toolbar.setVisible(true);
+                        break;
                     default:
-                        switchPanels(action);
+                        
                         break;
                 }
             }
