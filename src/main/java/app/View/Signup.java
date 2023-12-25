@@ -49,17 +49,9 @@ public class Signup extends JPanel {
         };
         info.setOpaque(false);
         info.setBackground(Color.decode("#C9C9C9"));
-        left = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                g.setColor(new Color(255, 255, 255, 250)); // تعيين لون خلفية مع شفافية
-                g.fillRect(0, 0, getWidth(), getHeight());
-            }
-        };
-        left.setOpaque(false);
+        left = new JPanel();
         left.setBounds(0, 0, 730, 650);
-        // left.setBackground(Color.decode("#F2F2F2"));
+        left.setBackground(Color.decode("#EEEEEE"));
         left.setLayout(null);
         JLabel top = new JLabel("Sign Up");
         top.setBounds(10, 10, 670, 50);
@@ -133,6 +125,7 @@ public class Signup extends JPanel {
         BCancel.setText("Cancel");
         BCancel.setBounds(450, 580, 200, 50);
         PanelsController.setButtonN(BCancel);
+        PanelsController.addActionToKButton(BCancel, "Cancel");
         left.add(Bsign);
 
         left.add(BCancel);
@@ -141,8 +134,8 @@ public class Signup extends JPanel {
         right.setkStartColor(Color.decode("#D30A35"));
         right.setBounds(710, 0, 570, 650);
         right.setLayout(null);
-        JLabel img1 = ImageController.addPhoto("\\adduser3.png", 400, 400);
-        img1.setBounds(100, 150, 400, 400);
+        JLabel img1 = ImageController.addPhoto("\\ITEBestIcon.png", 400, 400);
+        img1.setBounds(100, 130, 400, 400);
         right.add(img1);
         info.setBounds(0, 0, 1280, 670);
         info.setLayout(null);
@@ -154,10 +147,10 @@ public class Signup extends JPanel {
         setBounds(0, 50, 1280, 670);
         setLayout(null);
         this.setName("Singup");
-
+        
         info.add(left);
         info.add(right);
-
+        
         add(info);
         add(Pback);
     }
