@@ -65,7 +65,7 @@ public class PanelsController {
                     case "Profile":
                         MainFrame.toolbar.setVisible(false);
                         if (ITEBest.LoginState.equals("none")) {
-                            switchPanels("Singup");
+                            switchPanels("Login");
                         } else {
                             switchPanels("Profile");
                         }
@@ -185,6 +185,12 @@ public class PanelsController {
                         MainFrame.PTicketAdd.updateData(id);
                         switchPanels("TicketAdd");
                         break;
+                    case "Login":
+                        switchPanels("Login");
+                        break;
+                    case "Signup":
+                        switchPanels("Singup");
+                        break;
                     default:
                         switchPanels(action);
                         break;
@@ -203,11 +209,19 @@ public class PanelsController {
 
             @Override
             public void mouseEntered(java.awt.event.MouseEvent e) {
+                if(action.equals("Login")||action.equals("Signup")){
+                    button.setForeground(ColoringController.getLightBasicColor());
+                    return;
+                }
                 button.setForeground(ColoringController.getBasicColor());
             }
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent e) {
+                if(action.equals("Login")||action.equals("Signup")){
+                    button.setForeground(ColoringController.getBasicColor());
+                    return;
+                }
                 button.setForeground(Color.BLACK);
 
             }
@@ -227,13 +241,14 @@ public static void addActionToKButton(KButton button, String action) {
                         char[] passwordChars = MainFrame.PSignup.Tpass.getPassword();
                         String password = new String(passwordChars);
                         String state = UserController.AddUser(name, email, password);
-                        System.out.println(state);
                         if(state.equals("Signed up successfully"))
                         {
                             MainFrame.PSignup.MsgError.setForeground(Color.decode("#65B741"));
                             ITEBest.LoginState="Signed";
+                            MainFrame.PSignup.Tname.setText("");
+                            MainFrame.PSignup.Temail.setText("");
+                            MainFrame.PSignup.Tpass.setText("");
                         }
-                             
                         else MainFrame.PSignup.MsgError.setForeground(Color.decode("#B80000"));
                         MainFrame.PSignup.MsgError.setText(state);
 
@@ -254,9 +269,44 @@ public static void addActionToKButton(KButton button, String action) {
                             MainFrame.PSignup.PassError.setVisible(false);
                         }
                         break;
-                        case "Cancel":
+                        case "Cancel Login":
+                            MainFrame.PLogin.TEmail.setText("");
+                            MainFrame.PLogin.TPass.setText("");
                             switchPanels("Home");
                             MainFrame.toolbar.setVisible(true);
+                        break;
+                        case "Cancel Signup":
+                            MainFrame.PSignup.Tname.setText("");
+                            MainFrame.PSignup.Temail.setText("");
+                            MainFrame.PSignup.Tpass.setText("");
+                            switchPanels("Home");
+                            MainFrame.toolbar.setVisible(true);
+                        break;
+                        case "Login":
+                            String emailL= MainFrame.PLogin.TEmail.getText();
+                            char[] passwordCharsL = MainFrame.PLogin.TPass.getPassword();
+                            String passwordL = new String(passwordCharsL);
+                            String stateL= UserController.LogIn(emailL, passwordL);
+                            if(stateL.equals("Welcome"))
+                            {
+                            MainFrame.PLogin.MsgError.setForeground(Color.decode("#65B741"));
+                            ITEBest.LoginState="Logined";
+                            MainFrame.PLogin.TEmail.setText("");
+                            MainFrame.PLogin.TPass.setText("");
+                            }
+                            else MainFrame.PLogin.MsgError.setForeground(Color.decode("#B80000"));
+                            MainFrame.PLogin.MsgError.setText(stateL);
+                            if (emailL.equals("")) {
+
+                            MainFrame.PLogin.EmailError.setVisible(true);
+                            } else {
+                            MainFrame.PLogin.EmailError.setVisible(false);
+                            }
+                            if (passwordL.equals("")) {
+                            MainFrame.PLogin.PassError.setVisible(true);
+                            } else {
+                            MainFrame.PLogin.PassError.setVisible(false);
+                            }
                         break;
                     default:
                         

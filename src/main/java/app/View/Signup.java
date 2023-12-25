@@ -112,6 +112,14 @@ public class Signup extends JPanel {
         MsgError.setForeground(Color.decode("#B80000"));
         MsgError.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 16));
         left.add(MsgError);
+
+        JLabel Login = new JLabel("You have an account? Login" );
+        Login.setBounds(10, 440, 300, 30);
+        Login.setForeground(ColoringController.getBasicColor());
+        Login.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 20));
+        PanelsController.addActionToLabel(Login, "Login");
+        left.add(Login);
+
         Bsign = new KButton();
         Bsign.setBounds(50, 580, 200, 50);
         Bsign.setText("Sign Up");
@@ -122,7 +130,7 @@ public class Signup extends JPanel {
         BCancel.setText("Cancel");
         BCancel.setBounds(450, 580, 200, 50);
         PanelsController.setButtonN(BCancel);
-        PanelsController.addActionToKButton(BCancel, "Cancel");
+        PanelsController.addActionToKButton(BCancel, "Cancel Signup");
         left.add(Bsign);
 
         left.add(BCancel);

@@ -26,25 +26,29 @@ public class UserController {
             return "that's not an email";
         }
         Database.users.add(new User(Database.users.size(), name, email, password));
+        Database.save();
         return "Signed up successfully";
     }
 
-    public String  LogIn(String email,String password){
-         if(password.equals("")||email.equals("")){
+    public static String  LogIn(String email,String password){
+        if(password.equals("")||email.equals("")){
             return "one of the textboxes is blank";
         }
-         if (!email.substring(email.length() - 10).equals("@gmail.com")) {
+        if (email.length() > 50||email.length()<12) {
+            return "error email is invaled";
+        }
+        if (!email.substring(email.length() - 10).equals("@gmail.com")) {
             return "Wrong email adress";
         }
-     for (User e : Database.users) {
-      if(e.getEmail().equals(email)){
-        if(e.getPassword().equals(password)){
-           return "Welcome";
-        }else return"Wrong Password";
-      }
-    }
+        for (User e : Database.users) {
+            if(e.getEmail().equals(email)){
+                if(e.getPassword().equals(password)){
+                    return "Welcome";
+                }else return"Wrong Password";
+            }
+        }
     return "User not found";
     }
-   
+
 
 }
