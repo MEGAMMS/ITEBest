@@ -73,6 +73,7 @@ public class PanelsController {
                  */
                 switch (action) {
                     case "Profile":
+                        MainFrame.toolbar.setVisible(false);
                         if (ITEBest.LoginState.equals("none")) {
                             switchPanels("Singup");
                         } else {
@@ -86,7 +87,10 @@ public class PanelsController {
                         int id = Integer.parseInt(button.getName());
                         MainFrame.PTicketAdd.updateData(id);
                         switchPanels("TicketAdd");
-
+                        break;
+                    case "chair":
+                        System.out.println(button.getName());
+                        break;
                     default:
                         switchPanels(action);
                         break;
@@ -110,20 +114,23 @@ public class PanelsController {
             @Override
             public void mouseEntered(java.awt.event.MouseEvent e) {
                 if(action =="TicketAdd"){
-                    MainFrame.PTicketAdd.titleM.setForeground(ColoringController.getWhiteColor());
+                    //MovieCard.Btitel.setForeground(ColoringController.getWhiteColor());
+                    return;
+                }else if(action =="chair"){
+                    button.setBackground(Color.decode("#B0A4A4"));
                     return;
                 }
                 button.setBackground(ColoringController.getLightBasicColor());
-                
+        
             }
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent e) {
-                if(action!="TicketAdd")
-                    button.setBackground(ColoringController.getBasicColor());
-                else{
-                    MainFrame.PTicketAdd.titleM.setForeground(ColoringController.getBasicColor());
+                if(action =="chair"){
+                    button.setBackground(Color.decode("#F3EEEA"));
+                    return;
                 }
+                 button.setBackground(ColoringController.getBasicColor());
 
             }
         };
@@ -207,5 +214,105 @@ public class PanelsController {
             }
         });
     }
+public static void addActionToLabel(JLabel button, String action) {
 
+        MouseListener ms = new MouseListener() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                switch (action) {
+                    case "TicketAdd":
+                        int id = Integer.parseInt(button.getName());
+                        MainFrame.PTicketAdd.updateData(id);
+                        switchPanels("TicketAdd");
+                        break;
+                    default:
+                        switchPanels(action);
+                        break;
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                
+            }
+
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent e) {
+                button.setForeground(ColoringController.getBasicColor());
+            }
+
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent e) {
+                 button.setForeground(Color.BLACK);
+
+            }
+        };
+        button.addMouseListener(ms);
+
+    }
+public static void addActionToKButton(KButton button, String action) {
+
+        MouseListener ms = new MouseListener() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                switch (action) {
+                    case "Sign Up":
+                        String name=MainFrame.PSignup.Tname.getText();
+                        String email=MainFrame.PSignup.Temail.getText();
+                        char[] passwordChars =MainFrame.PSignup.Tpass.getPassword();
+                        String password=new String(passwordChars);
+                        String state=UserController.AddUser(name, email, password);
+                        System.out.println(state);
+                        MainFrame.PSignup.MsgError.setText(state);
+                        if(name.equals("")){
+                            MainFrame.PSignup.NameError.setVisible(true);
+                        }else{
+                            MainFrame.PSignup.NameError.setVisible(false);
+                        }
+                        if(email.equals("")){
+                            MainFrame.PSignup.EmailError.setVisible(true);
+                        }else{
+                            MainFrame.PSignup.EmailError.setVisible(false);
+                        }
+                        if(password.equals("")){
+                            MainFrame.PSignup.PassError.setVisible(true);
+                        }else{
+                            MainFrame.PSignup.PassError.setVisible(false);
+                        }
+                        break;
+                    default:
+                        switchPanels(action);
+                        break;
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                
+            }
+
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent e) {
+                button.setForeground(ColoringController.getBasicColor());
+            }
+
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent e) {
+                 button.setForeground(Color.BLACK);
+
+            }
+        };
+        button.addMouseListener(ms);
+
+    }
 }
