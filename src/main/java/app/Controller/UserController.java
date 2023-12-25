@@ -8,9 +8,6 @@ public class UserController {
         if(name.equals(" ")||password.equals(" ")||email.equals(" ")){
             return "one of the textboxes is blank";
         }
-
-
-        
         if (name.length() > 50||name.length()<2) {
             return "error name is invaled";
         }
@@ -22,10 +19,27 @@ public class UserController {
                 return "You already have an account";
             }
         }
-        if (!email.substring(email.length() - 10).equals("@gmail")) {
+        if (!email.substring(email.length() - 10).equals("@gmail.com")) {
             return "that's not an email";
         }
         Database.users.add(new User(Database.users.size(), name, email, password));
         return "Signed up successfully";
     }
+    public String  LogIn(String email,String password){
+         if(password.equals("")||email.equals("")){
+            return "one of the textboxes is blank";
+        }
+         if (!email.substring(email.length() - 10).equals("@gmail.com")) {
+            return "Wrong email adress";
+        }
+     for (User e : Database.users) {
+      if(e.getEmail().equals(email)){
+        if(e.getPassword().equals(password)){
+           return "Welcome";
+        }else return"Wrong Password";
+      }
+    }
+    return "User not found";
+    }
+   
 }
