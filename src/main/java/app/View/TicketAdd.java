@@ -137,6 +137,7 @@ public class TicketAdd extends JPanel {
         addTick.setBounds(20, 615, 200, 40);
         addTick.setBackground(ColoringController.getBasicColor());
         addTick.setLayout(new BorderLayout());
+        PanelsController.addActionToButton(addTick, "Tick");
         addTick.add(bttickT);
 
         JPanel closeP = new JPanel();
