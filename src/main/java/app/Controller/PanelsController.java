@@ -1,17 +1,12 @@
 package main.java.app.Controller;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import main.java.app.View.Home;
 import main.java.app.View.MainFrame;
 import main.java.app.View.MoviesListView;
 
-import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,12 +15,8 @@ import javax.swing.border.Border;
 import com.k33ptoo.components.KButton;
 
 import main.java.app.ITEBest;
-import main.java.app.Model.Database;
 import main.java.app.Model.MainPanels;
-import main.java.app.Model.Movie;
 import main.java.app.View.RoundedBorder;
-import main.java.app.View.TicketAdd;
-import main.java.app.View.MovieCard;
 
 public class PanelsController {
     public static Border roundedBorder(int n) {
@@ -121,24 +112,24 @@ public class PanelsController {
 
             @Override
             public void mouseEntered(java.awt.event.MouseEvent e) {
-                if(action =="TicketAdd"){
-                    //MovieCard.Btitel.setForeground(ColoringController.getWhiteColor());
+                if (action == "TicketAdd") {
+                    // MovieCard.Btitel.setForeground(ColoringController.getWhiteColor());
                     return;
-                }else if(action =="chair"){
+                } else if (action == "chair") {
                     button.setBackground(Color.decode("#B0A4A4"));
                     return;
                 }
                 button.setBackground(ColoringController.getLightBasicColor());
-        
+
             }
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent e) {
-                if(action =="chair"){
+                if (action == "chair") {
                     button.setBackground(Color.decode("#F3EEEA"));
                     return;
                 }
-                 button.setBackground(ColoringController.getBasicColor());
+                button.setBackground(ColoringController.getBasicColor());
 
             }
         };
@@ -176,53 +167,15 @@ public class PanelsController {
             }
         };
         panel.addMouseListener(ms);
-        ActionListener al = new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
-            }
-
-        };
-
     }
 
-    public static void ChooseComboPanel(JComboBox comboBox) {
+    public static void ChooseComboPanel(JComboBox<String> comboBox) {
         comboBox.addActionListener(e -> {
-            String selectedValue = (String) comboBox.getSelectedItem();
-            switch (selectedValue) {
-                case "sadness":
-                    MoviesListView.VisiblePanel(MoviesListView.sadness);
-                    MoviesListView.sizeP = MoviesListView.sadness.getHeight();
-                    MoviesListView.mainPanel.setPreferredSize(new Dimension(1224, MoviesListView.sizeP + 80));
-                    break;
-                case "All":
-                    MoviesListView.VisiblePanel(MoviesListView.All);
-                    MoviesListView.sizeP = MoviesListView.All.getHeight();
-                    MoviesListView.mainPanel.setPreferredSize(new Dimension(1224, MoviesListView.sizeP + 80));
-                    break;
-                case "farcical":
-                    MoviesListView.VisiblePanel(MoviesListView.farcical);
-                    MoviesListView.sizeP = MoviesListView.farcical.getHeight();
-                    MoviesListView.mainPanel.setPreferredSize(new Dimension(1224, MoviesListView.sizeP + 80));
-                    break;
-                case "action":
-                    MoviesListView.VisiblePanel(MoviesListView.action);
-                    MoviesListView.sizeP = MoviesListView.action.getHeight();
-                    MoviesListView.mainPanel.setPreferredSize(new Dimension(1224, MoviesListView.sizeP + 80));
-                    break;
-                case "adventure":
-                    MoviesListView.VisiblePanel(MoviesListView.adventure);
-                    MoviesListView.sizeP = MoviesListView.adventure.getHeight();
-                    MoviesListView.mainPanel.setPreferredSize(new Dimension(1224, MoviesListView.sizeP + 80));
-                    break;
-                default:
-                    break;
-            }
+            MainFrame.PMoviesListView.refresh((String)comboBox.getSelectedItem());
         });
     }
-public static void addActionToLabel(JLabel button, String action) {
+
+    public static void addActionToLabel(JLabel button, String action) {
 
         MouseListener ms = new MouseListener() {
             @Override
@@ -241,12 +194,12 @@ public static void addActionToLabel(JLabel button, String action) {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                
+
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                
+
             }
 
             @Override
@@ -256,7 +209,7 @@ public static void addActionToLabel(JLabel button, String action) {
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent e) {
-                 button.setForeground(Color.BLACK);
+                button.setForeground(Color.BLACK);
 
             }
         };
@@ -270,11 +223,11 @@ public static void addActionToKButton(KButton button, String action) {
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 switch (action) {
                     case "Sign Up":
-                        String name=MainFrame.PSignup.Tname.getText();
-                        String email=MainFrame.PSignup.Temail.getText();
-                        char[] passwordChars =MainFrame.PSignup.Tpass.getPassword();
-                        String password=new String(passwordChars);
-                        String state=UserController.AddUser(name, email, password);
+                        String name = MainFrame.PSignup.Tname.getText();
+                        String email = MainFrame.PSignup.Temail.getText();
+                        char[] passwordChars = MainFrame.PSignup.Tpass.getPassword();
+                        String password = new String(passwordChars);
+                        String state = UserController.AddUser(name, email, password);
                         System.out.println(state);
                         if(state.equals("Signed up successfully"))
                         {
@@ -284,20 +237,21 @@ public static void addActionToKButton(KButton button, String action) {
                              
                         else MainFrame.PSignup.MsgError.setForeground(Color.decode("#B80000"));
                         MainFrame.PSignup.MsgError.setText(state);
-                      
-                        if(name.equals("")){
+
+                        if (name.equals("")) {
+
                             MainFrame.PSignup.NameError.setVisible(true);
-                        }else{
+                        } else {
                             MainFrame.PSignup.NameError.setVisible(false);
                         }
-                        if(email.equals("")){
+                        if (email.equals("")) {
                             MainFrame.PSignup.EmailError.setVisible(true);
-                        }else{
+                        } else {
                             MainFrame.PSignup.EmailError.setVisible(false);
                         }
-                        if(password.equals("")){
+                        if (password.equals("")) {
                             MainFrame.PSignup.PassError.setVisible(true);
-                        }else{
+                        } else {
                             MainFrame.PSignup.PassError.setVisible(false);
                         }
                         break;
@@ -313,12 +267,12 @@ public static void addActionToKButton(KButton button, String action) {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                
+
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                
+
             }
 
             @Override
@@ -328,7 +282,7 @@ public static void addActionToKButton(KButton button, String action) {
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent e) {
-                 button.setForeground(Color.BLACK);
+                button.setForeground(Color.BLACK);
 
             }
         };

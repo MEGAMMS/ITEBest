@@ -5,9 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 import main.java.app.Controller.ImageController;
-import main.java.app.Controller.PanelsController;
 import main.java.app.Model.MainPanels;
-import main.java.app.Model.Movie;
 
 public class MainFrame extends JFrame {
     // Panels
@@ -84,16 +82,4 @@ public class MainFrame extends JFrame {
         setVisible(true);
         // --------------------------------
     }
-    /*
-     * public static void main(String[] args) {
-     * SwingUtilities.invokeLater(new Runnable() {
-     * 
-     * @Override
-     * public void run() {
-     * //new Lobby();
-     * }
-     * });
-     * }
-     */
-
 }
