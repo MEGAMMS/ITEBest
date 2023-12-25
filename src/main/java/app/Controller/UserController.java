@@ -25,4 +25,5 @@ public class UserController {
         Database.users.add(new User(Database.users.size(), name, email, password));
         return "Signed up successfully";
     }
+    
 }

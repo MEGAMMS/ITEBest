@@ -3,6 +3,7 @@ package main.java.app.View;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GridLayout;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -79,7 +80,7 @@ public class TicketAdd extends JPanel {
         titleM.setForeground(ColoringController.getWhiteColor());
         titleM.setFont(FontController.getPrimaryFont(ABORT, 24));
         titleP.setBounds(10, 10, 780, 50);
-        titleP.setBackground(ColoringController.getDarkBasicColor());
+        titleP.setBackground(ColoringController.getTowColorDark());
         titleP.setLayout(new BorderLayout());
         titleP.add(titleM, BorderLayout.CENTER);
         // -----------------------
@@ -112,7 +113,20 @@ public class TicketAdd extends JPanel {
         bookingP.setBounds(10, 250, 780, 350);
         bookingP.setBackground(Color.decode("#EAD7BB"));
         bookingP.setLayout(new BorderLayout());
-
+        bookingP.setLayout(null);
+        JPanel chairs=new JPanel();
+        chairs.setBounds(10, 10, 300, 300);
+        chairs.setBackground(ColoringController.getTowColorDark());
+        chairs.setLayout(new GridLayout(8,8,3,3));
+        int n=0;
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                String s=Integer.toString(++n);
+                chairs.add(itemChair(s));
+               
+        }
+        }
+        bookingP.add(chairs);
         // -----------------------
         // ---------Buttons---------
         JPanel addTick = new JPanel();
@@ -165,5 +179,16 @@ public class TicketAdd extends JPanel {
         add(body);
         // add(buttom);
         // ---------------------------
+    }
+    public JPanel itemChair(String num){
+        JPanel panel=new JPanel();
+        JLabel label =new JLabel(num);
+        label.setHorizontalAlignment(SwingConstants.CENTER);
+        panel.setLayout(new BorderLayout());
+        panel.add(label,BorderLayout.CENTER);
+        panel.setName(num);
+        panel.setBackground(Color.decode("#F3EEEA"));
+        PanelsController.addActionToButton(panel, "chair");
+        return panel;
     }
 }

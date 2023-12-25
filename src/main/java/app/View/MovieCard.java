@@ -26,7 +26,7 @@ public class MovieCard extends JPanel {
     static int length = 0;
     public int id;
     public Movie movie;
-
+    public JLabel Btitel;
     public static void restSize() {
         hash = 10;
         width = 280;
@@ -60,8 +60,8 @@ public class MovieCard extends JPanel {
         titel.setFont(FontController.getSecondryFont(Font.BOLD, 16));
         // -----------------------
         JPanel button = new JPanel();
-        button.setName(Integer.valueOf(id).toString());
-        JLabel Btitel = new JLabel("See More");
+        Btitel = new JLabel("See More");
+        Btitel.setName(Integer.valueOf(id).toString());
         Btitel.setHorizontalAlignment(SwingConstants.CENTER);
         Btitel.setBounds(0, 0, 260, 40);
         Btitel.setFont(FontController.getPrimaryFont(Font.BOLD, 18));
@@ -71,14 +71,14 @@ public class MovieCard extends JPanel {
         button.add(Btitel);
         button.setBorder(new LineBorder(ColoringController.getPrimaryColor(), 2, true));
         // button.setBorder(roundedBorder);
-        PanelsController.addActionToButton(button,"TicketAdd");
+        PanelsController.addActionToLabel(Btitel,"TicketAdd");
         // setBorder(new LineBorder(Color.BLACK, 1));
         setLayout(null);
         setBounds(x, y, width, heigh);
 
         setBorder(PanelsController.roundedBorder(30));
         button.setBorder(PanelsController.roundedBorder(20));
-        setBackground(Color.decode("#FFE5E5"));
+        setBackground(ColoringController.getTowColorLigth());
         add(img);
         add(titel);
         add(button);
