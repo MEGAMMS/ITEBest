@@ -25,14 +25,14 @@ public class Signup extends JPanel {
     KGradientPanel right;
     JPanel info;
     JLabel name;
-    JTextField Tname;
+    public JTextField Tname;
     JLabel email;
-    JTextField Temail;
+    public JTextField Temail;
     JLabel pass;
-    JPasswordField Tpass;
+    public JPasswordField Tpass;
     KButton Bsign;
     KButton BCancel;
-    
+    public JLabel NameError,EmailError,PassError,MsgError;
 
     public Signup() {
         initComponents();
@@ -77,97 +77,79 @@ public class Signup extends JPanel {
         Pback.add(back);
 
         name = new JLabel("Name:");
-        name.setBounds(10, 100, 670, 30);
+        name.setBounds(10, 100, 80, 30);
+        NameError = new JLabel("Please Enter Your Name" );
+        NameError.setBounds(90, 102, 200, 30);
+        NameError.setForeground(Color.decode("#B80000"));
+        NameError.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 16));
         // name.setForeground(Color.BLACK);
         name.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 24));
         left.add(name);
+        left.add(NameError);
         Tname = new JTextField();
         Tname.setBounds(10, 140, 670, 50);
         Tname.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 22));
         left.add(Tname);
 
         email = new JLabel("Email:");
-        email.setBounds(10, 200, 670, 30);
-        // name.setForeground(Color.BLACK);
+        email.setBounds(10, 200, 80, 30);
         email.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 24));
+        EmailError = new JLabel("Please Enter Your Email" );
+        EmailError.setBounds(90, 202, 200, 30);
+        EmailError.setForeground(Color.decode("#B80000"));
+        EmailError.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 16));
         left.add(email);
+        left.add(EmailError);
         Temail = new JTextField();
         Temail.setBounds(10, 240, 670, 50);
         Temail.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 22));
         left.add(Temail);
 
         pass = new JLabel("Password:");
-        pass.setBounds(10, 300, 670, 30);
-        // name.setForeground(Color.BLACK);
+        pass.setBounds(10, 300, 150, 30);
         pass.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 24));
+        PassError = new JLabel("Please Enter Your Password" );
+        PassError.setBounds(130, 302, 300, 30);
+        PassError.setForeground(Color.decode("#B80000"));
+        PassError.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 16));
         left.add(pass);
+        left.add(PassError);
         Tpass = new JPasswordField();
         Tpass.setBounds(10, 340, 670, 50);
         Tpass.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 22));
         left.add(Tpass);
-
-        // Bsign = new JPanel();
-        // JPanel conBsign = new JPanel();
-        // JLabel Blabel = new JLabel("Sign up");
-        // Blabel.setForeground(ColoringController.getBasicColor());
-        // Blabel.setFont(FontController.getSecondryFont(Font.BOLD, 22));
-        // conBsign.setBounds(5, 5, 240, 40);
-        // conBsign.setBackground(ColoringController.getWhiteColor());
-        // conBsign.add(Blabel);
-        // Bsign.setBounds(50, 580, 250, 50);
-        // Bsign.setBackground(ColoringController.getPrimaryColor());
-        // Bsign.setLayout(null);
-        // Bsign.add(conBsign);
-        // left.add(Bsign);
+        MsgError = new JLabel("" );
+        MsgError.setBounds(10, 400, 300, 30);
+        MsgError.setForeground(Color.decode("#B80000"));
+        MsgError.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 16));
+        left.add(MsgError);
         Bsign = new KButton();
         Bsign.setBounds(50, 580, 200, 50);
         Bsign.setText("Sign Up");
         Bsign.setBackground(ColoringController.getPrimaryColor());
         PanelsController.setButtonN(Bsign);
-
+        PanelsController.addActionToKButton(Bsign, "Sign Up");
         BCancel = new KButton();
         BCancel.setText("Cancel");
         BCancel.setBounds(450, 580, 200, 50);
         PanelsController.setButtonN(BCancel);
         left.add(Bsign);
 
-        // BCancel = new JPanel();
-        // JPanel conBCancel = new JPanel();
-        // JLabel BlabelC = new JLabel("Cancel");
-        // BlabelC.setForeground(ColoringController.getBasicColor());
-        // BlabelC.setFont(FontController.getSecondryFont(Font.BOLD, 22));
-        // conBCancel.setBounds(5, 5, 240, 40);
-        // conBCancel.setBackground(ColoringController.getWhiteColor());
-        // conBCancel.add(BlabelC);
-        // BCancel.setBounds(380, 580, 250, 50);
-        // BCancel.setBackground(ColoringController.getPrimaryColor());
-        // BCancel.setLayout(null);
-        // BCancel.add(conBCancel);
         left.add(BCancel);
-        //PanelsController.addActionToButton(BCancel, "Close");
         right = new KGradientPanel();
         right.setkEndColor(Color.decode("#860A35"));
         right.setkStartColor(Color.decode("#D30A35"));
-        // right = new JPanel() {
-        //     @Override
-        //     protected void paintComponent(Graphics g) {
-        //         super.paintComponent(g);
-        //         g.setColor(new Color(255, 255, 255, 100)); // تعيين لون خلفية مع شفافية
-        //         g.fillRect(0, 0, getWidth(), getHeight());
-        //     }
-        // };
-        //right.setOpaque(false);
         right.setBounds(710, 0, 570, 650);
-        // right.setBackground(Color.decode("#72223d"));
         right.setLayout(null);
         JLabel img1 = ImageController.addPhoto("\\adduser3.png", 400, 400);
         img1.setBounds(100, 150, 400, 400);
         right.add(img1);
-
-        // info.setBackground(Color.decode("#FFFFFF"));
         info.setBounds(0, 0, 1280, 670);
         info.setLayout(null);
 
+        NameError.setVisible(false);
+        EmailError.setVisible(false);
+        PassError.setVisible(false);
         setBackground(Color.WHITE);
         setBounds(0, 50, 1280, 670);
         setLayout(null);
