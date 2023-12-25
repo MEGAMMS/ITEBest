@@ -8,11 +8,11 @@ public class Visa {
         this.networth=n;
         this.id = id;
     }
-    public void setpass(int pass) {
+    public void setpass(String pass) {
         this.pass = pass;
     }
 
-    public int getpass() {
+    public String getpass() {
         return this.pass;
     }
     public void setnetworth(int n) {
