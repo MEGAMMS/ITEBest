@@ -3,15 +3,11 @@ package main.java.app.Controller;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import main.java.app.View.Home;
 import main.java.app.View.MainFrame;
 import main.java.app.View.MoviesListView;
 
-import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,12 +16,8 @@ import javax.swing.border.Border;
 import com.k33ptoo.components.KButton;
 
 import main.java.app.ITEBest;
-import main.java.app.Model.Database;
 import main.java.app.Model.MainPanels;
-import main.java.app.Model.Movie;
 import main.java.app.View.RoundedBorder;
-import main.java.app.View.TicketAdd;
-import main.java.app.View.MovieCard;
 
 public class PanelsController {
     public static Border roundedBorder(int n) {
@@ -168,19 +160,9 @@ public class PanelsController {
             }
         };
         panel.addMouseListener(ms);
-        ActionListener al = new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
-            }
-
-        };
-
     }
 
-    public static void ChooseComboPanel(JComboBox comboBox) {
+    public static void ChooseComboPanel(JComboBox<String> comboBox) {
         comboBox.addActionListener(e -> {
             String selectedValue = (String) comboBox.getSelectedItem();
             switch (selectedValue) {
