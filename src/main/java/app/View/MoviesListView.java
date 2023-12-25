@@ -75,6 +75,7 @@ public class MoviesListView extends JPanel {
         mainPanel.setPreferredSize(new Dimension(1224, sizeP + 200));
         mainPanel.add(menu);
         JScrollPane scrollPane = new JScrollPane(mainPanel);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
         setLayout(new BorderLayout());
         setBounds(58, 49, 1224, 700);
         mainPanel.setBackground(ColoringController.getWhiteColor());
