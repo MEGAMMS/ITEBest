@@ -5,7 +5,6 @@ import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import main.java.app.View.MainFrame;
-import main.java.app.View.MoviesListView;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
