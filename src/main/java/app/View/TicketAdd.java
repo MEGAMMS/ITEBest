@@ -29,7 +29,6 @@ public class TicketAdd extends JPanel {
         this.titleM.setText(movie.getTitle());
         JLabel label = ImageController.addPhoto(movie.getPoster(), 400, 600);
         this.poster.setIcon(label.getIcon());
-        System.out.println(this.movie.getDescription());
         this.descM.setText("<html>" + this.movie.getDescription() + "\r\n" + //
                 "\r\n" + //
                 "</html>");

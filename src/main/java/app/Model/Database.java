@@ -31,7 +31,7 @@ public class Database implements Serializable {
             new File(path).mkdirs();
             ObjectIO.WriteObjectToFile(users, path + "users.dat");
             ObjectIO.WriteObjectToFile(movies, path + "movies.dat");
-            // ObjectIO.WriteObjectToFile(currUser, path + "currUser.dat");
+            ObjectIO.WriteObjectToFile(thisUser, path + "currUser.dat");
         } catch (IOException ex) {
             System.err.println("Faild to save.");
         }
