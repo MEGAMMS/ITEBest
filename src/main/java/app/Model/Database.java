@@ -12,7 +12,7 @@ public class Database implements Serializable {
     private static final long serialVersionUID = 6529685098267757690L;
     public static ArrayList<User> users = new ArrayList<User>();
     public static ArrayList<Movie> movies = new ArrayList<Movie>();
-
+    public static ArrayList<Ticket> tickets  = new ArrayList<Ticket>();   
     
     static {
         initDatabase();
