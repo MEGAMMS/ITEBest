@@ -33,6 +33,7 @@ public class UserController {
 
     public static String  LogIn(String email,String password){
         if(password.equals("")||email.equals("")){
+
             return "one of the textboxes is blank";
         }
         if (email.length() > 50||email.length()<12) {
