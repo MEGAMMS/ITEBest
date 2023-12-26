@@ -82,7 +82,7 @@ public class MoviesListView extends JPanel {
         body.setLayout(null);
         body.setBackground(ColoringController.getTowColor());
         for (int i = 0; i < Database.movies.size(); i++) {
-            System.out.println(Database.movies.get(i).getTag());
+            //System.out.println(Database.movies.get(i).getTag());
             if (Database.movies.get(i).getTag().equals(tag) || tag.equals("All"))
                 body.add(new MovieCard(i));
         }

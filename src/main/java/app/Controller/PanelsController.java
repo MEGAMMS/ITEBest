@@ -65,15 +65,17 @@ public class PanelsController {
                  */
                 switch (action) {
                     case "Profile":
-                        MainFrame.toolbar.setVisible(false);
-                        if (Utils.isLogedIn()) {
+                        if (!Utils.isLogedIn()) {
+                            MainFrame.toolbar.setVisible(false);
                             switchPanels("Login");
                         } else {
                             MainFrame.toolbar.setVisible(true);
+                            MainFrame.PProfile.updateData(Database.currUser);
                             switchPanels("Profile");
                         }
                         break;
                     case "Close":
+                
                         switchPanels("Home");
                         break;
                     case "TicketAdd":
