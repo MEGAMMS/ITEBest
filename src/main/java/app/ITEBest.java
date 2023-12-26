@@ -9,7 +9,7 @@ public class ITEBest {
     public static MainFrame mainFrame;
 
     public static void main(String[] args) throws InterruptedException {
-        // new AddMoviesToDatabase();
+        //new AddMoviesToDatabase();
         mainFrame = new MainFrame();
         Database.save();
     }
