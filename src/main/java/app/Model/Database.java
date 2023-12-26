@@ -22,7 +22,7 @@ public class Database implements Serializable {
     private static void initDatabase() {
         users = new ArrayList<User>();
         movies = new ArrayList<Movie>();
-        // currUser = null;
+        currUser = null;
     }
 
     public static void save() {
