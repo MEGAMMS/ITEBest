@@ -10,7 +10,7 @@ public class ITEBest {
     public static String LoginState;
     
     public static void main(String[] args) throws InterruptedException {
-         new AddMoviesToDatabase();
+        // new AddMoviesToDatabase();
         LoginState = "none";
         mainFrame = new MainFrame();
         Database.save();

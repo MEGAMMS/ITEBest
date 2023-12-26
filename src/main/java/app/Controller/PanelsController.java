@@ -308,11 +308,6 @@ public static void addActionToKButton(KButton button, String action) {
                             MainFrame.PLogin.MsgError.setForeground(Color.decode("#65B741"));
                             MainFrame.PLogin.MsgError.setVisible(true);
                             ITEBest.LoginState="Logined";
-                            // try{
-                            //     Thread.sleep(1000);
-                            // }catch(Exception ex){
-                            //     System.out.println("error");;
-                            // }
                             MainFrame.toolbar.setVisible(true);
                             switchPanels("Profile");
 
