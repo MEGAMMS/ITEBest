@@ -13,26 +13,27 @@ public class Database implements Serializable {
     private static final long serialVersionUID = 6529685098267757690L;
     public static ArrayList<User> users = new ArrayList<User>();
     public static ArrayList<Movie> movies = new ArrayList<Movie>();
-    public static User thisUser;
-    public static ArrayList<Ticket> tickets  = new ArrayList<Ticket>();   
-    
+    public static User currUser;
+    public static ArrayList<Ticket> tickets = new ArrayList<Ticket>();
+
     static {
         initDatabase();
         load();
     }
-    private static void initDatabase(){
+
+    private static void initDatabase() {
         users = new ArrayList<User>();
         movies = new ArrayList<Movie>();
-        thisUser=null;
+        // currUser = null;
     }
+
     public static void save() {
 
         try {
             new File(path).mkdirs();
             ObjectIO.WriteObjectToFile(users, path + "users.dat");
             ObjectIO.WriteObjectToFile(movies, path + "movies.dat");
-            // if(ITEBest.LoginState.equals("Logined"))
-            // ObjectIO.WriteObjectToFile(thisUser, path + "thisUser.dat");
+            // ObjectIO.WriteObjectToFile(currUser, path + "currUser.dat");
         } catch (IOException ex) {
             System.err.println("Faild to save.");
         }
@@ -46,6 +47,7 @@ public class Database implements Serializable {
             // if(ITEBest.LoginState.equals("Logined"))
             // thisUser=(User)ObjectIO.LoudObjectFromFile(path + "thisUser.dat");
         } catch (ClassNotFoundException | IOException e) {
+            e.printStackTrace();
             System.out.println("Failed to load.");
         }
     }
