@@ -1,6 +1,7 @@
 package main.java.app.Model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Cinema {
     public Cinema(int id, String name, ArrayList<Integer> moviesId) {
@@ -11,6 +12,7 @@ public class Cinema {
     int id;
     String name;
     ArrayList<Integer> moviesId;
+    public ArrayList<Integer> seats=new ArrayList<>(Collections.nCopies(64, 1));
     public int getId() {
         return id;
     }
