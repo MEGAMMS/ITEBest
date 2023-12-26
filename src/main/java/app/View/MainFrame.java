@@ -72,8 +72,8 @@ public class MainFrame extends JFrame {
         mainPanel.add(PLogin);
         mainPanel.add(PMoviesListView);
         mainPanel.add(PTicketAdd);
-        PHome.setVisible(true);
-        PProfile.setVisible(false);
+        PHome.setVisible(false);
+        PProfile.setVisible(true);
         PSignup.setVisible(false);
         PLogin.setVisible(false);
         PMoviesListView.setVisible(false);
