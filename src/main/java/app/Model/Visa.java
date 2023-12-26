@@ -1,10 +1,17 @@
 package main.java.app.Model;
 
 public class Visa {
-    private String id;
-    private int networth;
+    private int id;
+    private String networth;
     private String pass;
-    public Visa(String id,String p){
+    private int visamoney;
+    public Visa(int id, String networth, String pass, int visamoney) {
+        this.id = id;
+        this.networth = networth;
+        this.pass = pass;
+        this.visamoney = visamoney;
+    }
+    public Visa(int id,String p){
         this.pass=p;
         this.id = id;
     }
@@ -15,18 +22,18 @@ public class Visa {
     public String getpass() {
         return this.pass;
     }
-    public void setID(String id) {
+    public void setID(int id) {
          this.id = id;
     }
 
-    public String getID() {
+    public int getID() {
         return this.id;
     }
-    public void setnetworth(int n) {
+    public void setnetworth(String n) {
         this.networth=n;
     }
 
-    public int getnetworth() {
+    public String getnetworth() {
         return this.networth;
     }
 }
