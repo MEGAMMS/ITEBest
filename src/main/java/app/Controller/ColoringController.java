@@ -11,14 +11,14 @@ public class ColoringController {
     public static Color getLightBasicColor(){
         return Color.decode("#D17292");
     }
-    public static Color getBackitems(){
-        return Color.decode("#FFE5E5");
+    public static Color getTowColorLigth(){
+        return Color.decode("#FDF7E4");
     }
     public static Color getSlid(){
         return Color.decode("#FBA1B7");
     }
-    public static Color getDarkBasicColor(){
-        return Color.decode("#4C0027");
+    public static Color getTowColorDark(){
+        return Color.decode("#776B5D");
     }
     public static Color getWhiteColor(){
         return Color.white;
@@ -28,5 +28,8 @@ public class ColoringController {
     }
     public static Color getBlackColor(){
         return Color.BLACK;
+    }
+    public static Color getTowColor(){
+        return Color.decode("#EBE3D5");
     }
 }
