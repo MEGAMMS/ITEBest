@@ -20,7 +20,7 @@ public class TicketController {
         for(int i=0;i<n;i++){
             m.seats.remove(m.seats.size());
             u.getvisa().setnetworth(u.getvisa().getnetworth()-m.getprice());
-            Database.users.get(u.getId()).tickets.add(new Ticket((m.getId()*10)+m.seats.size(), m, u.getId(), showtime));
+            Database.users.get(u.getId()).tickets.add(new Ticket((m.getId()*10)+m.seats.size(), m, u, showtime));
         }
          return "Booked successfully";
     }

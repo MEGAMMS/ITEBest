@@ -1,14 +1,14 @@
 package main.java.app.Model;
 
 public class Ticket {
-    public Ticket(int id, Movie m, int userId, int showTimeId) {
+    public Ticket(int id, Movie m, User u, int showTimeId) {
         this.id = id;
-        this.userId = userId;
+        this.user=u;
         this.showTimeId = showTimeId;
 
     }
     private int id;
-    private int userId;
+    private User user;
     private int showTimeId;
     private Movie movie;
     public void setmovie(Movie m){
@@ -23,11 +23,11 @@ public class Ticket {
     public void setId(int id) {
         this.id = id;
     }
-    public int getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
     public int getShowTimeId() {
         return showTimeId;
