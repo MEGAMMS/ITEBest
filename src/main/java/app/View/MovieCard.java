@@ -97,10 +97,10 @@ public class MovieCard extends JPanel {
 
     public static int sizePanel() {
         int size;
-        if (length % 4 != 0) {
-            size = ((length / 4) + 1) * (heigh + 10);
+        if (length % 5 != 0) {
+            size = ((length / 5) + 1) * (heigh + 10);
         } else {
-            size = ((length / 4)) * (heigh + hash);
+            size = ((length /5)) * (heigh + hash);
         }
         return size;
     }
