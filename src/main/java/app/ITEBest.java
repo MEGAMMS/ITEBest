@@ -10,7 +10,15 @@ public class ITEBest {
     
     public static void main(String[] args) throws InterruptedException {
         // new AddMoviesToDatabase();
-        LoginState = "none";
+        //LoginState = "none";
+        // Database.currUser = new User(0, "null", "null", "null");
+        // Database.save();
+        if(Database.currUser.getName().equals("null"))
+            LoginState="none";
+        else{
+            LoginState="Logined";
+        }
+        System.out.println(LoginState);
         mainFrame = new MainFrame();
         Database.save();
     }

@@ -26,7 +26,9 @@ public class UserController {
         if (!email.substring(email.length() - 10).equals("@gmail.com")) {
             return "that's not an email";
         }
-        Database.users.add(new User(Database.users.size(), name, email, password));
+        User newUser=new User(Database.users.size(), name, email, password);
+        Database.users.add(newUser);
+        Database.currUser=newUser;
         Database.save();
         return "Signed up successfully";
     }
@@ -47,6 +49,7 @@ public class UserController {
                 if (e.getPassword().equals(password)) {
                     Database.currUser = e;
                     MainFrame.PProfile.updateData(e);
+                    Database.save();
                     return "Welcome";
 
                 } else

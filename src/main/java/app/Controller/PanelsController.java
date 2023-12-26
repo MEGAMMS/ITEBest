@@ -70,6 +70,7 @@ public class PanelsController {
                             switchPanels("Login");
                         } else {
                             MainFrame.toolbar.setVisible(true);
+                            MainFrame.PProfile.updateData(Database.currUser);
                             switchPanels("Profile");
                         }
                         break;
@@ -248,7 +249,8 @@ public static void addActionToKButton(KButton button, String action) {
                         if(state.equals("Signed up successfully"))
                         {
                             MainFrame.PSignup.MsgError.setForeground(Color.decode("#65B741"));
-                            ITEBest.LoginState="Signed";
+                            
+                            ITEBest.LoginState="Logined";
                             MainFrame.PSignup.Tname.setText("");
                             MainFrame.PSignup.Temail.setText("");
                             MainFrame.PSignup.Tpass.setText("");
@@ -307,7 +309,13 @@ public static void addActionToKButton(KButton button, String action) {
                             {
                             MainFrame.PLogin.MsgError.setForeground(Color.decode("#65B741"));
                             MainFrame.PLogin.MsgError.setVisible(true);
-                            ITEBest.LoginState="Logined";
+                            System.out.println(Database.currUser.getName());
+                            if(Database.currUser.getName().equals("null"))
+                                ITEBest.LoginState="none";
+                            else{
+                                ITEBest.LoginState="Logined";
+                                }               
+                            //ITEBest.LoginState="Logined";
                             // try{
                             //     Thread.sleep(1000);
                             // }catch(Exception ex){
