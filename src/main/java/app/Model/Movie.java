@@ -7,7 +7,7 @@ public class Movie implements Serializable {
     public Movie(int id, String title, String poster, String tag, String description) {
         this.id = id;
         this.title = title;
-        this.poster = poster;
+        this.poster ="\\MoviesPosters\\"+ poster;
         this.tag = tag;
         this.description = description;
     }
