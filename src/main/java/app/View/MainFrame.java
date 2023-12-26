@@ -5,14 +5,12 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 import main.java.app.Controller.ImageController;
-import main.java.app.Controller.PanelsController;
 import main.java.app.Model.MainPanels;
-import main.java.app.Model.Movie;
 
 public class MainFrame extends JFrame {
     // Panels
     public static JPanel mainPanel = new JPanel();
-
+    public static Toolbar toolbar;
     public static Home PHome = new Home();
     public static Profile PProfile = new Profile();
     public static TicketAdd PTicketAdd = new TicketAdd();
@@ -45,7 +43,7 @@ public class MainFrame extends JFrame {
 
         Headbar headbar = new Headbar();
         mainPanel.add(headbar);
-        Toolbar toolbar = new Toolbar();
+        toolbar = new Toolbar();
         mainPanel.add(toolbar);
 
         // ----------Properties------------
@@ -73,27 +71,15 @@ public class MainFrame extends JFrame {
         mainPanel.add(login);
         mainPanel.add(PMoviesListView);
         mainPanel.add(PTicketAdd);
-        PHome.setVisible(false);
+        PHome.setVisible(true);
         PProfile.setVisible(false);
         PSignup.setVisible(false);
         login.setVisible(false);
         PMoviesListView.setVisible(false);
-        PTicketAdd.setVisible(true);
+        PTicketAdd.setVisible(false);
 
         add(mainPanel);
         setVisible(true);
         // --------------------------------
     }
-    /*
-     * public static void main(String[] args) {
-     * SwingUtilities.invokeLater(new Runnable() {
-     * 
-     * @Override
-     * public void run() {
-     * //new Lobby();
-     * }
-     * });
-     * }
-     */
-
 }
