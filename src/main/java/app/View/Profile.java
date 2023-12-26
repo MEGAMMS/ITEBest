@@ -48,7 +48,9 @@ public class Profile extends JPanel {
         right.add(img2);
         right.setBounds(610, 50, 590, 610);
         idCard=new JLabel("Id: "+"XXXX-XXXX-XXXX-XXXX");
-        idCard.setBounds(10, 450, 400, 50);
+        idCard.setFont(FontController.getSecondryFont(Font.BOLD, 32));
+        idCard.setHorizontalAlignment(SwingConstants.CENTER);
+        idCard.setBounds(0, 400, 590, 50);
         right.add(idCard);
         add(right);
         email=new JLabel("<html>" +"Email: "+ user.getEmail()+"\r\n" + "</html>");
