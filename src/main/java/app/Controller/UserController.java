@@ -46,6 +46,7 @@ public class UserController {
             if (e.getEmail().equals(email)) {
                 if (e.getPassword().equals(password)) {
                     Database.currUser = e;
+                    Database.save();
                     MainFrame.PProfile.updateData(e);
                     return "Welcome";
 

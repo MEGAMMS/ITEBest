@@ -42,6 +42,7 @@ public class Database implements Serializable {
         try {
             users = (ArrayList<User>) ObjectIO.LoudObjectFromFile(path + "users.dat");
             movies = (ArrayList<Movie>) ObjectIO.LoudObjectFromFile(path + "movies.dat");
+            currUser = (User) ObjectIO.LoudObjectFromFile(path + "currUser.dat");
             // if(ITEBest.LoginState.equals("Logined"))
             // thisUser=(User)ObjectIO.LoudObjectFromFile(path + "thisUser.dat");
         } catch (ClassNotFoundException | IOException e) {
