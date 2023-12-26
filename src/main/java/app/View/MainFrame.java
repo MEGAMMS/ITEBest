@@ -15,7 +15,7 @@ public class MainFrame extends JFrame {
     public static Profile PProfile = new Profile();
     public static TicketAdd PTicketAdd = new TicketAdd();
     public static Signup PSignup = new Signup();
-    public static Login login = new Login();
+    public static Login PLogin = new Login();
     public static MoviesListView PMoviesListView = new MoviesListView();
 
     // public void showAddTicket(int id) {
@@ -64,17 +64,18 @@ public class MainFrame extends JFrame {
         MainPanels.addPanel(PProfile);
         MainPanels.addPanel(PSignup);
         MainPanels.addPanel(PMoviesListView);
+        MainPanels.addPanel(PLogin);
 
         mainPanel.add(PHome);
         mainPanel.add(PProfile);
         mainPanel.add(PSignup);
-        mainPanel.add(login);
+        mainPanel.add(PLogin);
         mainPanel.add(PMoviesListView);
         mainPanel.add(PTicketAdd);
         PHome.setVisible(true);
         PProfile.setVisible(false);
         PSignup.setVisible(false);
-        login.setVisible(false);
+        PLogin.setVisible(false);
         PMoviesListView.setVisible(false);
         PTicketAdd.setVisible(false);
 
