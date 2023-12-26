@@ -13,6 +13,14 @@ public class User implements Serializable{
     private String name;
     private String email;
     private String password;
+    private Visa creditcard;
+    
+    public Visa getvisa(){
+        return this.creditcard;
+    }
+    public void setvisa(Visa v){
+        this.creditcard=v;
+    }
     public int getId() {
         return id;
     }

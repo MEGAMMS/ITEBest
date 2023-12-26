@@ -28,7 +28,6 @@ public class UserController {
         Database.users.add(new User(Database.users.size(), name, email, password));
         return "Signed up successfully";
     }
-
     public String  LogIn(String email,String password){
          if(password.equals("")||email.equals("")){
             return "one of the textboxes is blank";

@@ -40,6 +40,15 @@ public class Movie implements Serializable {
     private int showTimeId;
     private ArrayList<Rate> rates;
     private int cinemaId;
+    public ArrayList<Integer> seats=new ArrayList<>(64);
+    private int attendancePrice;
+
+    public int getprice() {
+        return this.attendancePrice;
+    }
+     public void setprice(int p) {
+        this.attendancePrice=p;
+    }
 
     public void setTag(String tag) {
         this.tag = tag;
