@@ -6,16 +6,16 @@ import main.java.app.View.MainFrame;
 
 public class UserController {
     public static String AddUser(String name, String email, String password) {
-        if(name.equals("")||password.equals("")||email.equals("")){
+        if (name.equals("") || password.equals("") || email.equals("")) {
             return "one of the textboxes is blank";
         }
-        if (name.length() > 50||name.length()<2) {
+        if (name.length() > 50 || name.length() < 2) {
             return "error name is invaled";
         }
         if (password.length() < 8 || password.length() > 50) {
             return "password is invaled";
         }
-        if (email.length() > 50||email.length()<12) {
+        if (email.length() > 50 || email.length() < 12) {
             return "error email is invaled";
         }
         for (User e : Database.users) {
@@ -31,29 +31,29 @@ public class UserController {
         return "Signed up successfully";
     }
 
-    public static String  LogIn(String email,String password){
-        if(password.equals("")||email.equals("")){
+    public static String LogIn(String email, String password) {
+        if (password.equals("") || email.equals("")) {
 
             return "one of the textboxes is blank";
         }
-        if (email.length() > 50||email.length()<12) {
+        if (email.length() > 50 || email.length() < 12) {
             return "error email is invaled";
         }
         if (!email.substring(email.length() - 10).equals("@gmail.com")) {
             return "Wrong email adress";
         }
         for (User e : Database.users) {
-            if(e.getEmail().equals(email)){
-                if(e.getPassword().equals(password)){
-                    Database.thisUser=e;
+            if (e.getEmail().equals(email)) {
+                if (e.getPassword().equals(password)) {
+                    Database.currUser = e;
                     MainFrame.PProfile.updateData(e);
                     return "Welcome";
-                    
-                }else return"Wrong Password";
+
+                } else
+                    return "Wrong Password";
             }
         }
-    return "User not found";
+        return "User not found";
     }
-
 
 }
