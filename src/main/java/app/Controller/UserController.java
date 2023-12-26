@@ -5,7 +5,7 @@ import main.java.app.Model.User;
 
 public class UserController {
     public String AddUser(String name, String email, String password) {
-        if(name.equals(" ")||password.equals(" ")||email.equals(" ")){
+        if(name.equals("")||password.equals("")||email.equals("")){
             return "one of the textboxes is blank";
         }
         if (name.length() > 50||name.length()<2) {
@@ -25,6 +25,8 @@ public class UserController {
         Database.users.add(new User(Database.users.size(), name, email, password));
         return "Signed up successfully";
     }
+
+
     public String  LogIn(String email,String password){
          if(password.equals("")||email.equals("")){
             return "one of the textboxes is blank";
