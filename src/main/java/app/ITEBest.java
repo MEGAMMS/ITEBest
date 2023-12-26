@@ -1,5 +1,6 @@
 package main.java.app;
 
+import main.java.app.Controller.AddMoviesToDatabase;
 import main.java.app.Model.Database;
 import main.java.app.Model.User;
 import main.java.app.View.MainFrame;
