@@ -5,8 +5,11 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 
 import main.java.app.Controller.ColoringController;
@@ -113,6 +116,29 @@ public class TicketAdd extends JPanel {
         bookingP.setBackground(Color.decode("#EAD7BB"));
         bookingP.setLayout(new BorderLayout());
         bookingP.setLayout(null);
+        JLabel showtimes=new JLabel("Show Time: ");
+        showtimes.setBounds(330, 20, 150, 40);
+        showtimes.setFont(FontController.getSecondryFont(Font.BOLD, 22));
+        bookingP.add(showtimes);
+        JComboBox comboBox=new JComboBox<>();
+        comboBox.setBounds(480, 20, 280, 40);
+        bookingP.add(comboBox);
+        JLabel numberTicket=new JLabel("Number Ticket: ");
+        numberTicket.setBounds(330, 90, 200, 40);
+        numberTicket.setFont(FontController.getSecondryFont(Font.BOLD, 22));
+        bookingP.add(numberTicket);
+        SpinnerNumberModel model = new SpinnerNumberModel(1, 1, 64, 1);
+        JSpinner numTick=new JSpinner(model);
+        numTick.setBounds(500, 90, 80, 40);
+        numTick.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 22));
+        
+        bookingP.add(numTick);
+        
+        JLabel numberTicketFree=new JLabel("Number Ticket Free");
+        numberTicketFree.setForeground(ColoringController.getGreenColor());
+        numberTicketFree.setBounds(600, 90, 200, 40);
+        numberTicketFree.setFont(FontController.getSecondryFont(Font.BOLD, 14));
+        bookingP.add(numberTicketFree);
         JPanel chairs=new JPanel();
         chairs.setBounds(10, 10, 300, 300);
         chairs.setBackground(ColoringController.getTowColorDark());
@@ -122,7 +148,6 @@ public class TicketAdd extends JPanel {
             for (int j = 0; j < 8; j++) {
                 String s=Integer.toString(++n);
                 chairs.add(itemChair(s));
-               
         }
         }
         bookingP.add(chairs);

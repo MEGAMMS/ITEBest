@@ -192,9 +192,21 @@ public class PanelsController {
                         switchPanels("TicketAdd");
                         break;
                     case "Login":
+                        MainFrame.PSignup.Tname.setText("");
+                        MainFrame.PSignup.Temail.setText("");
+                        MainFrame.PSignup.Tpass.setText("");
+                        MainFrame.PSignup.EmailError.setVisible(false);
+                        MainFrame.PSignup.NameError.setVisible(false);
+                        MainFrame.PSignup.MsgError.setVisible(false);
+                        MainFrame.PSignup.PassError.setVisible(false);
                         switchPanels("Login");
                         break;
                     case "Signup":
+                        MainFrame.PLogin.TEmail.setText("");
+                        MainFrame.PLogin.TPass.setText("");
+                        MainFrame.PLogin.EmailError.setVisible(false);
+                        MainFrame.PLogin.MsgError.setVisible(false);
+                        MainFrame.PLogin.PassError.setVisible(false);
                         switchPanels("Singup");
                         break;
                     default:
@@ -249,12 +261,12 @@ public class PanelsController {
                         String password = new String(passwordChars);
                         String state = UserController.AddUser(name, email, password);
                         if (state.equals("Signed up successfully")) {
-                            MainFrame.PSignup.MsgError.setForeground(Color.decode("#65B741"));
+                            MainFrame.PSignup.MsgError.setForeground(ColoringController.getGreenColor());
                             MainFrame.PSignup.Tname.setText("");
                             MainFrame.PSignup.Temail.setText("");
                             MainFrame.PSignup.Tpass.setText("");
                         } else
-                            MainFrame.PSignup.MsgError.setForeground(Color.decode("#B80000"));
+                            MainFrame.PSignup.MsgError.setForeground(ColoringController.getRedColor());
                         MainFrame.PSignup.MsgError.setText(state);
 
                         if (name.equals("")) {
@@ -277,6 +289,10 @@ public class PanelsController {
                     case "Cancel Login":
                         MainFrame.PLogin.TEmail.setText("");
                         MainFrame.PLogin.TPass.setText("");
+                        MainFrame.PLogin.EmailError.setVisible(false);
+                        MainFrame.PLogin.MsgError.setVisible(false);
+                        MainFrame.PLogin.PassError.setVisible(false);
+                        
                         switchPanels("Home");
                         MainFrame.toolbar.setVisible(true);
                         break;
@@ -284,6 +300,10 @@ public class PanelsController {
                         MainFrame.PSignup.Tname.setText("");
                         MainFrame.PSignup.Temail.setText("");
                         MainFrame.PSignup.Tpass.setText("");
+                        MainFrame.PSignup.EmailError.setVisible(false);
+                        MainFrame.PSignup.NameError.setVisible(false);
+                        MainFrame.PSignup.MsgError.setVisible(false);
+                        MainFrame.PSignup.PassError.setVisible(false);
                         switchPanels("Home");
                         MainFrame.toolbar.setVisible(true);
                         break;
@@ -305,7 +325,7 @@ public class PanelsController {
                             MainFrame.PLogin.PassError.setVisible(false);
                         }
                         if (stateL.equals("Welcome")) {
-                            MainFrame.PLogin.MsgError.setForeground(Color.decode("#65B741"));
+                            MainFrame.PLogin.MsgError.setForeground(ColoringController.getGreenColor());
                             MainFrame.PLogin.MsgError.setVisible(true);
                             MainFrame.toolbar.setVisible(true);
                             switchPanels("Profile");
@@ -313,7 +333,7 @@ public class PanelsController {
                             MainFrame.PLogin.TEmail.setText("");
                             MainFrame.PLogin.TPass.setText("");
                         } else
-                            MainFrame.PLogin.MsgError.setForeground(Color.decode("#B80000"));
+                            MainFrame.PLogin.MsgError.setForeground(ColoringController.getRedColor());
 
                         break;
                     default:

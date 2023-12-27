@@ -67,7 +67,7 @@ public class Login extends JPanel {
         center.add(TEmail);
         EmailError = new JLabel("Please Enter Your Email" );
         EmailError.setBounds(125, 62, 200, 30);
-        EmailError.setForeground(Color.decode("#B80000"));
+        EmailError.setForeground(ColoringController.getRedColor());
         EmailError.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 16));
         center.add(EmailError);
         //--------Password
@@ -81,12 +81,12 @@ public class Login extends JPanel {
         center.add(TPass);
         PassError = new JLabel("Please Enter Your Password" );
         PassError.setBounds(180, 162, 250, 30);
-        PassError.setForeground(Color.decode("#B80000"));
+        PassError.setForeground(ColoringController.getRedColor());
         PassError.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 16));
         center.add(PassError);
         MsgError = new JLabel("" );
         MsgError.setBounds(50, 250, 500, 30);
-        MsgError.setForeground(Color.decode("#B80000"));
+        MsgError.setForeground(ColoringController.getRedColor());
         MsgError.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 16));
         center.add(MsgError);
         JLabel Signup = new JLabel("You don't hava an account? Sign up" );
