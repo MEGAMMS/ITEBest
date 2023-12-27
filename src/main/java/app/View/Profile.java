@@ -23,6 +23,8 @@ public class Profile extends JPanel {
     }
     public void updateData(User user){
         this.user=user;
+        if(this.user.getvisa()==null)
+            right.setVisible(false);
         name.setText("<html>" + user.getName()+"\r\n" + "</html>");
         email.setText("<html>" +"Email: "+ user.getEmail()+"\r\n" + "</html>");
     }

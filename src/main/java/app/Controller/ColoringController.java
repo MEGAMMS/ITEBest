@@ -29,6 +29,12 @@ public class ColoringController {
     public static Color getBlackColor(){
         return Color.BLACK;
     }
+    public static Color getRedColor(){
+        return Color.decode("#B80000");
+    }
+    public static Color getGreenColor(){
+        return Color.decode("#65B741");
+    }
     public static Color getTowColor(){
         return Color.decode("#EBE3D5");
     }
