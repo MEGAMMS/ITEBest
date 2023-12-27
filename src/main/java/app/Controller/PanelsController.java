@@ -85,6 +85,8 @@ public class PanelsController {
                         break;
                     case "chair":
                         System.out.println(button.getName());
+                        button.setBackground(ColoringController.getTowColorDark());
+                        button.setEnabled(false);
                         break;
                     case "Tick":
 

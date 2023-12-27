@@ -10,8 +10,8 @@ public class ITEBest {
     public static MainFrame mainFrame;
 
     public static void main(String[] args) throws InterruptedException {
-        //new AddMoviesToDatabase();
-        Database.load();
+        new AddMoviesToDatabase();
+        System.out.println(Database.movies.get(0).getCinema().getName());
         System.out.println(Utils.isLogedIn());
         mainFrame = new MainFrame();
         Database.save();
