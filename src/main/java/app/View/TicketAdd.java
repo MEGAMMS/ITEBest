@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,6 +19,8 @@ import main.java.app.Controller.ImageController;
 import main.java.app.Controller.PanelsController;
 import main.java.app.Model.Database;
 import main.java.app.Model.Movie;
+import main.java.app.Model.Showtimes;
+import main.java.app.Model.Tags;
 
 public class TicketAdd extends JPanel {
 
@@ -26,7 +29,10 @@ public class TicketAdd extends JPanel {
     public JLabel titleM;
     public JLabel descM;
     public JLabel poster;
-
+    public JComboBox comboBoxShowtime;
+    public JLabel numberTicketFree;
+    JPanel bookingP;
+    public JPanel chairs;
     public void updateData(int id) {
         this.movie = Database.movies.get(id);
         this.titleM.setText(movie.getTitle());
@@ -35,7 +41,13 @@ public class TicketAdd extends JPanel {
         this.descM.setText("<html>" + this.movie.getDescription() + "\r\n" + //
                 "\r\n" + //
                 "</html>");
-
+        // DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(this.movie.getCinema().showtimes.getDateShowtimes().toArray(new String[0]));
+        comboBoxShowtime.setSelectedItem(null);
+        comboBoxShowtime.removeAllItems();
+        for(Showtimes s:movie.getCinema().showtimes)
+            this.comboBoxShowtime.addItem(s.getDateShowtimes());
+        this.numberTicketFree.setText("Number Ticket Free "+movie.getCinema().showtimes.get(0).seats.size());
+    
     }
 
     public TicketAdd() {
@@ -107,7 +119,7 @@ public class TicketAdd extends JPanel {
         descP.add(descM);
         // -----------------------
         // ---------Booking---------
-        JPanel bookingP = new JPanel();
+        bookingP = new JPanel();
         // JLabel descM=new JLabel("XIHOO Gran Turismo");
         // descM.setForeground(Color.BLACK);
         // descM.setHorizontalAlignment(SwingConstants.CENTER);
@@ -120,9 +132,10 @@ public class TicketAdd extends JPanel {
         showtimes.setBounds(330, 20, 150, 40);
         showtimes.setFont(FontController.getSecondryFont(Font.BOLD, 22));
         bookingP.add(showtimes);
-        JComboBox comboBox=new JComboBox<>();
-        comboBox.setBounds(480, 20, 280, 40);
-        bookingP.add(comboBox);
+        comboBoxShowtime=new JComboBox<>();
+        comboBoxShowtime.setBounds(480, 20, 280, 40);
+        comboBoxShowtime.setFont(FontController.getSecondryFont(Font.BOLD, 22));
+        bookingP.add(comboBoxShowtime);
         JLabel numberTicket=new JLabel("Number Ticket: ");
         numberTicket.setBounds(330, 90, 200, 40);
         numberTicket.setFont(FontController.getSecondryFont(Font.BOLD, 22));
@@ -134,12 +147,12 @@ public class TicketAdd extends JPanel {
         
         bookingP.add(numTick);
         
-        JLabel numberTicketFree=new JLabel("Number Ticket Free");
+        numberTicketFree=new JLabel("Number Ticket Free");
         numberTicketFree.setForeground(ColoringController.getGreenColor());
         numberTicketFree.setBounds(600, 90, 200, 40);
         numberTicketFree.setFont(FontController.getSecondryFont(Font.BOLD, 14));
         bookingP.add(numberTicketFree);
-        JPanel chairs=new JPanel();
+        chairs=new JPanel();
         chairs.setBounds(10, 10, 300, 300);
         chairs.setBackground(ColoringController.getTowColorDark());
         chairs.setLayout(new GridLayout(8,8,3,3));

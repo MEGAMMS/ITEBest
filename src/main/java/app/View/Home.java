@@ -42,12 +42,12 @@ public class Home extends JPanel {
         banner.setLayout(null);
         // ---------------------------
 
-        // ----------menu-------------
-        JPanel menu = new JPanel();
-        menu.setBackground(ColoringController.getTowColorDark());
-        menu.setBounds(10, 310, 1180, 40);
-        menu.setLayout(null);
-        // ---------------------------
+        // // ----------menu-------------
+        // JPanel menu = new JPanel();
+        // menu.setBackground(ColoringController.getTowColorDark());
+        // menu.setBounds(10, 310, 1180, 40);
+        // menu.setLayout(null);
+        // // ---------------------------
 
         // -----------Body------------
         body = new JPanel();
@@ -60,7 +60,7 @@ public class Home extends JPanel {
             body.add(new MovieCard(i));
         }
         size = MovieCard.sizePanel();
-        body.setBounds(10, 360, 1180, size + 10);
+        body.setBounds(10, 310, 1180, size + 10);
         // ---------------------------
 
         // -------Properites----------
@@ -71,7 +71,7 @@ public class Home extends JPanel {
         mainPanel.setPreferredSize(new Dimension(1200, size + 400));
         mainPanel.add(tHome);
         mainPanel.add(banner);
-        mainPanel.add(menu);
+        //mainPanel.add(menu);
         mainPanel.add(body);
         mainPanel.setBackground(ColoringController.getTowColor());
         // mainPanel.add(body);
