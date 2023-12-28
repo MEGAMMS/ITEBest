@@ -1,10 +1,11 @@
 package main.java.app.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Cinema {
-    public Cinema(int id, String name, ArrayList<Movie> moviesId, ArrayList<Showtimes> showtimes) {
+public class Cinema implements Serializable{
+    public Cinema(int id, String name, ArrayList<Movie> moviesId, ArrayList<Showtime> showtimes) {
         this.id = id;
         this.name = name;
         this.movies = moviesId;
@@ -13,7 +14,7 @@ public class Cinema {
     int id;
     String name;
     ArrayList<Movie> movies;
-    public ArrayList<Showtimes> showtimes;
+    public ArrayList<Showtime> showtimes;
     
     public int getId() {
         return id;

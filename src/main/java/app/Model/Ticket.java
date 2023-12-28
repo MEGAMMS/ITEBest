@@ -1,6 +1,8 @@
 package main.java.app.Model;
 
-public class Ticket {
+import java.io.Serializable;
+
+public class Ticket implements Serializable{
     public Ticket(int id, Movie m, User u, int showTimeId) {
         this.id = id;
         this.user=u;

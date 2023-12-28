@@ -23,7 +23,7 @@ import main.java.app.Controller.LabelController;
 import main.java.app.Controller.PanelsController;
 import main.java.app.Model.Database;
 import main.java.app.Model.Movie;
-import main.java.app.Model.Showtimes;
+import main.java.app.Model.Showtime;
 import main.java.app.Model.Tags;
 
 public class TicketAdd extends JPanel {
@@ -49,7 +49,7 @@ public class TicketAdd extends JPanel {
         // DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(this.movie.getCinema().showtimes.getDateShowtimes().toArray(new String[0]));
         comboBoxShowtime.setSelectedItem(null);
         comboBoxShowtime.removeAllItems();
-        for(Showtimes s:movie.getCinema().showtimes)
+        for(Showtime s:movie.getCinema().showtimes)
             this.comboBoxShowtime.addItem(s.getDateShowtimes());
         this.numberTicketFree.setText("Number Ticket Free "+movie.getCinema().showtimes.get(0).seats.size());
     
