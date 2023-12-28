@@ -53,13 +53,13 @@ public class Toolbar extends JPanel {
         PanelsController.addActionToButton(BHome, "Home");
         this.add(BHome);
         //
-        JPanel Bticket = new JPanel();
-        Bticket.setLayout(new BorderLayout());
-        Bticket.setBounds(0, 470, 60, 100);
-        Bticket.add(ImageController.addPhoto("ticket.png"), BorderLayout.CENTER);
-        Bticket.setBackground(ColoringController.getBasicColor());
-        PanelsController.addActionToButton(Bticket, "");
-        this.add(Bticket);
+        JPanel BTicketManager = new JPanel();
+        BTicketManager.setLayout(new BorderLayout());
+        BTicketManager.setBounds(0, 470, 60, 100);
+        BTicketManager.add(ImageController.addPhoto("ticket.png"), BorderLayout.CENTER);
+        BTicketManager.setBackground(ColoringController.getBasicColor());
+        PanelsController.addActionToButton(BTicketManager, "TicketManager");
+        this.add(BTicketManager);
         //
         JPanel BSettings = new JPanel();
         BSettings.setLayout(new BorderLayout());

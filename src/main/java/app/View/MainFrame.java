@@ -1,5 +1,6 @@
 package main.java.app.View;
 
+import java.awt.Panel;
 import java.io.IOException;
 
 import javax.swing.JFrame;
@@ -19,6 +20,7 @@ public class MainFrame extends JFrame {
     public static Signup PSignup = new Signup();
     public static Login PLogin = new Login();
     public static MoviesListView PMoviesListView = new MoviesListView();
+    public static TicketManager PTicketManager = new TicketManager();
 
     // public void showAddTicket(int id) {
     //     PTicketAdd.setVisible(false);
@@ -61,26 +63,20 @@ public class MainFrame extends JFrame {
         mainPanel.setBorder(roundedBorder);
         mainPanel.setLayout(null);
 
-        MainPanels.addPanel(PTicketAdd);
         MainPanels.addPanel(PHome);
+        MainPanels.addPanel(PTicketAdd);
         MainPanels.addPanel(PProfile);
         MainPanels.addPanel(PSignup);
         MainPanels.addPanel(PMoviesListView);
         MainPanels.addPanel(PLogin);
+        MainPanels.addPanel(PLogin);
+        MainPanels.addPanel(PTicketManager);
 
-        mainPanel.add(PHome);
-        mainPanel.add(PProfile);
-        mainPanel.add(PSignup);
-        mainPanel.add(PLogin);
-        mainPanel.add(PMoviesListView);
-        mainPanel.add(PTicketAdd);
-        PHome.setVisible(false);
-        PProfile.setVisible(true);
-        PSignup.setVisible(false);
-        PLogin.setVisible(false);
-        PMoviesListView.setVisible(false);
-        PTicketAdd.setVisible(false);
-
+        for(JPanel p : MainPanels.Panels ){
+            mainPanel.add(p);
+            p.setVisible(false);
+        }
+        MainPanels.Panels.get(0).setVisible(true);
         add(mainPanel);
         setVisible(true);
         // --------------------------------
