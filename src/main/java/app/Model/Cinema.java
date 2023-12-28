@@ -2,20 +2,18 @@ package main.java.app.Model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Cinema implements Serializable{
-    public Cinema(int id, String name, ArrayList<Movie> moviesId, ArrayList<Showtime> showtimes) {
-        this.id = id;
-        this.name = name;
-        this.movies = moviesId;
-        this.showtimes=showtimes;
-    }
     int id;
     String name;
     ArrayList<Movie> movies;
-    public ArrayList<Showtime> showtimes;
     
+    public Cinema(int id, String name, ArrayList<Movie> movies) {
+        this.id = id;
+        this.name = name;
+        this.movies = movies;
+    }
+
     public int getId() {
         return id;
     }
@@ -28,11 +26,8 @@ public class Cinema implements Serializable{
     public void setName(String name) {
         this.name = name;
     }
-    public ArrayList<Movie> getMovies() {
+    public ArrayList<Movie> getMoviesId() {
         return movies;
-    }
-    public void setMovies(ArrayList<Movie> moviesId) {
-        this.movies = moviesId;
     }
     
 

@@ -37,7 +37,6 @@ public class Home extends JPanel {
         initComponents();
     }
     public void initComponents() {
-        System.out.println("Comp Home");
         mainPanel.setLayout(null);
         // ----------Top--------------
         JLabel tHome = new JLabel("Home Page");
@@ -70,7 +69,6 @@ public class Home extends JPanel {
         body.setLayout(null);
         body.setBackground(ColoringController.getTowColor());
         for (int i = 0; i < Database.movies.size(); i++) {
-            System.out.println("add film " + (i + 1));
             body.add(new MovieCard(i));
         }
         size = MovieCard.sizePanel();
