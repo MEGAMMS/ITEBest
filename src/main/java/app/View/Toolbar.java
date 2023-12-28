@@ -1,6 +1,7 @@
 package main.java.app.View;
 
 import java.awt.BorderLayout;
+import java.io.IOException;
 
 import javax.swing.JPanel;
 
@@ -9,10 +10,10 @@ import main.java.app.Controller.ImageController;
 import main.java.app.Controller.PanelsController;
 
 public class Toolbar extends JPanel {
-    public Toolbar(){
+    public Toolbar() throws IOException{
         initComponents();
     }
-    private void initComponents() {
+    private void initComponents() throws IOException {
     this.setBounds(0, 0, 60, 1000);
         this.setBackground(ColoringController.getBasicColor());
         this.setLayout(null);
@@ -47,6 +48,7 @@ public class Toolbar extends JPanel {
         BHome.setLayout(new BorderLayout());
         BHome.setBounds(0, 370, 60, 100);
         BHome.add(ImageController.addPhoto("home.png"), BorderLayout.CENTER);
+        //BHome.add(ImageController.addPhotoBasic("home.png"));
         BHome.setBackground(ColoringController.getBasicColor());
         PanelsController.addActionToButton(BHome, "Home");
         this.add(BHome);

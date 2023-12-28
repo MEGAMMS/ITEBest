@@ -1,5 +1,7 @@
 package main.java.app.View;
 
+import java.io.IOException;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
@@ -28,11 +30,11 @@ public class MainFrame extends JFrame {
 
     // }
 
-    public MainFrame() {
+    public MainFrame() throws IOException {
         initComponents();
     }
 
-    private void initComponents() {
+    private void initComponents() throws IOException {
 
         /*
          * Cardpanel=new JPanel(new CardLayout());
@@ -72,8 +74,8 @@ public class MainFrame extends JFrame {
         mainPanel.add(PLogin);
         mainPanel.add(PMoviesListView);
         mainPanel.add(PTicketAdd);
-        PHome.setVisible(true);
-        PProfile.setVisible(false);
+        PHome.setVisible(false);
+        PProfile.setVisible(true);
         PSignup.setVisible(false);
         PLogin.setVisible(false);
         PMoviesListView.setVisible(false);
