@@ -13,7 +13,7 @@ public class Database implements Serializable {
     private static final long serialVersionUID = 6529685098267757690L;
     public static ArrayList<User> users = new ArrayList<User>();
     public static ArrayList<Movie> movies = new ArrayList<Movie>();
-    public static ArrayList<Cinema> cinema = new ArrayList<Cinema>();
+    public static ArrayList<Cinema> halls = new ArrayList<Cinema>();
     public static User currUser;
     static {
         initDatabase();
@@ -24,6 +24,7 @@ public class Database implements Serializable {
         users = new ArrayList<User>();
         movies = new ArrayList<Movie>();
         currUser = null;
+        halls = new ArrayList<Cinema>();
     }
 
     public static void save() {
@@ -33,8 +34,9 @@ public class Database implements Serializable {
             ObjectIO.WriteObjectToFile(users, path + "users.dat");
             ObjectIO.WriteObjectToFile(movies, path + "movies.dat");
             ObjectIO.WriteObjectToFile(currUser, path + "currUser.dat");
-            //ObjectIO.WriteObjectToFile(cinema, path + "Cinema.dat");
+            ObjectIO.WriteObjectToFile(halls, path + "cinema.dat");
         } catch (IOException ex) {
+            ex.printStackTrace();
             System.err.println("Faild to save.");
         }
     }
@@ -45,9 +47,7 @@ public class Database implements Serializable {
             users = (ArrayList<User>) ObjectIO.LoudObjectFromFile(path + "users.dat");
             movies = (ArrayList<Movie>) ObjectIO.LoudObjectFromFile(path + "movies.dat");
             currUser = (User) ObjectIO.LoudObjectFromFile(path + "currUser.dat");
-            //cinema = (ArrayList<Cinema>) ObjectIO.LoudObjectFromFile(path + "Cinema.dat");
-            // if(ITEBest.LoginState.equals("Logined"))
-            // thisUser=(User)ObjectIO.LoudObjectFromFile(path + "thisUser.dat");
+            halls = (ArrayList<Cinema>) ObjectIO.LoudObjectFromFile(path +"Cinema.dat");
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
             System.out.println("Failed to load.");
