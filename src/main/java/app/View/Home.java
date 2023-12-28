@@ -48,7 +48,7 @@ public class Home extends JPanel {
         // ---------banner------------
         imgbanner.setBounds(0, 0, 1180, 250);
         JPanel banner = new JPanel();
-        banner.setBackground(ColoringController.getTowColorDark());
+        banner.setBackground(ColoringController.getSecoundColorDark2());
         banner.setBounds(10, 50, 1180, 250);
 
         banner.add(imgbanner);
@@ -64,10 +64,8 @@ public class Home extends JPanel {
 
         // -----------Body------------
         body = new JPanel();
-        // body.setBackground(Color.decode("#E5E5E5"));
-        // body.setBorder(new LineBorder(ColoringController.getLightGrayColor(), 2));
         body.setLayout(null);
-        body.setBackground(ColoringController.getTowColor());
+        body.setBackground(ColoringController.getSecoundColorLight());
         for (int i = 0; i < Database.movies.size(); i++) {
             body.add(new MovieCard(i));
         }
@@ -85,7 +83,7 @@ public class Home extends JPanel {
         mainPanel.add(banner);
         // mainPanel.add(menu);
         mainPanel.add(body);
-        mainPanel.setBackground(ColoringController.getTowColor());
+        mainPanel.setBackground(ColoringController.getSecoundColorLight());
         // mainPanel.add(body);
         JScrollPane scrollPane = new JScrollPane(mainPanel);
         scrollPane.getVerticalScrollBar().setUnitIncrement(40);
@@ -108,7 +106,7 @@ public class Home extends JPanel {
         @Override
         protected void configureScrollBarColors() {
             // تحديد لون الخلفية لشريط التمرير
-            trackColor = ColoringController.getTowColor();
+            trackColor = ColoringController.getSecoundColorLight();
             setThumbBounds(0, 0, 10, 10);
         }
 
@@ -135,7 +133,7 @@ public class Home extends JPanel {
         @Override
         protected void paintThumb(Graphics g, JComponent c, Rectangle thumbBounds) {
             // تخصيص لون الشريط المتحرك (Thumb)
-            g.setColor(ColoringController.getTowColorDark()); // يمكنك تغيير هذا اللون حسب احتياجاتك
+            g.setColor(ColoringController.getSecoundColorDark2()); // يمكنك تغيير هذا اللون حسب احتياجاتك
             ((Graphics2D) g).fill(thumbBounds);
         }
     }

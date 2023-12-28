@@ -21,7 +21,7 @@ public class Start extends JFrame {
         JLabel imageLabel = new JLabel(ImageController.getITEBestIcon());
         left.setBounds(0, 0, 500, 400);
         left.setLayout(new BorderLayout());
-        left.setBackground(ColoringController.getPrimaryColor());
+        left.setBackground(ColoringController.getFirstColor());
         left.add(imageLabel, BorderLayout.CENTER);
         // ---------------------------
 
