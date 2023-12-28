@@ -50,7 +50,7 @@ public class AnimatedPanel extends JPanel {
         this.setBackground(ColoringController.getBasicColor());
         PanelsController.addActionToButton(this, action);
         //
-        setBorder(new EmptyBorder(X, Y, width, height));
+        setBorder(new EmptyBorder(5, 0, 5, 0));
 //        setBackground(Color.WHITE);
         setCursor(new Cursor(Cursor.HAND_CURSOR));
 
