@@ -35,6 +35,6 @@ public void PrintTicketInfo(Ticket t){
     System.out.println(t.getmovie().getTitle());
     System.out.println(t.getmovie().getCinema());
     System.out.println(t.getId()-(t.getmovie().getId()*10));
-    System.out.println(t.getShowTimeId());
+    System.out.println(t.getShowtime());
 }
 }

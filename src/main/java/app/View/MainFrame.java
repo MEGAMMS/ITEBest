@@ -1,5 +1,6 @@
 package main.java.app.View;
 
+import java.awt.Panel;
 import java.io.IOException;
 
 import javax.swing.JFrame;
@@ -19,6 +20,7 @@ public class MainFrame extends JFrame {
     public static Signup PSignup = new Signup();
     public static Login PLogin = new Login();
     public static MoviesListView PMoviesListView = new MoviesListView();
+    public static TicketManager PTicketManager = new TicketManager();
 
 
     public MainFrame() throws IOException {
@@ -45,8 +47,8 @@ public class MainFrame extends JFrame {
         mainPanel.setBorder(roundedBorder);
         mainPanel.setLayout(null);
 
-        MainPanels.addPanel(PTicketAdd);
         MainPanels.addPanel(PHome);
+        MainPanels.addPanel(PTicketAdd);
         MainPanels.addPanel(PProfile);
         MainPanels.addPanel(PSignup);
         MainPanels.addPanel(PMoviesListView);
