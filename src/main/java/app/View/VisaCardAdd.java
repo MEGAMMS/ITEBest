@@ -19,7 +19,7 @@ public class VisaCardAdd extends JPanel{
         JLabel img2=ImageController.addPhoto("visacard.png", 400, 400);
         img2.setBounds(100, 10, 400, 400);
         setBounds(610, 50, 590, 610);
-        setBackground(ColoringController.getTowColor());
+        setBackground(ColoringController.getSecoundColorLight());
         JLabel title=new JLabel("Add Visa Card");
        // title.setFont(FontController.getSecondryFont(Font.TAG_NAME, ABORT));
         add(img2);

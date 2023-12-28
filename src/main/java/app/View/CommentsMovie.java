@@ -55,17 +55,17 @@ public class CommentsMovie extends JPanel{
         commentTextField.setBounds(5,0,595,40);
         commentTextField.setFont(FontController.getSecondryFont(java.awt.Font.BOLD, 18));
         AnimatedPanel sendComment=new AnimatedPanel("Send Comment", 600, 0, 180, 40);
-        sendComment.setBackground(ColoringController.getTowColorPanel());
+        sendComment.setBackground(ColoringController.getSecoundColorDark1());
         sendComment.add(LabelController.addLabel("Send Comment",FontController.getSecondryFont(java.awt.Font.BOLD, 18)));
         JPanel controlsPanel = new JPanel();
         controlsPanel.setLayout(null);
         controlsPanel.add(commentTextField);
         controlsPanel.add(sendComment);
-        controlsPanel.setBackground(ColoringController.getTowColorPanel());
+        controlsPanel.setBackground(ColoringController.getSecoundColorDark1());
         controlsPanel.setBounds(0,275, 780, 40);
         add(controlsPanel);
         setBounds(10, 280, 780, 320);
-        setBackground(ColoringController.getTowColorPanel());
+        setBackground(ColoringController.getSecoundColorDark1());
         setLayout(null);
         add(scrollPane);
         add(controlsPanel);
@@ -76,7 +76,7 @@ public class CommentsMovie extends JPanel{
         StyleConstants.setFontFamily(nameAttrs, "Arial");
         StyleConstants.setFontSize(nameAttrs, 18);
         StyleConstants.setBold(nameAttrs, true);
-        StyleConstants.setForeground(nameAttrs, ColoringController.getTowColorDark());
+        StyleConstants.setForeground(nameAttrs, ColoringController.getSecoundColorDark2());
 
         SimpleAttributeSet commentAttrs = new SimpleAttributeSet();
         StyleConstants.setFontFamily(commentAttrs, "Arial");

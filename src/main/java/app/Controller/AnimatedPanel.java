@@ -45,7 +45,7 @@ public class AnimatedPanel extends JPanel {
         
         this.setLayout(new BorderLayout());
         this.add(ImageController.addPhoto(img), BorderLayout.CENTER);
-        this.setBackground(ColoringController.getBasicColor());
+        this.setBackground(ColoringController.getFirstColorDark2());
         PanelsController.addActionToButton(this, action);
         setBounds(X, Y, width, height);
         initComponents();
@@ -55,7 +55,7 @@ public class AnimatedPanel extends JPanel {
 //        setContentAreaFilled(false);
         this.setLayout(new BorderLayout());
         this.setBounds(0, 170, 60, 100);
-        this.setBackground(ColoringController.getBasicColor());
+        this.setBackground(ColoringController.getFirstColorDark2());
         PanelsController.addActionToButton(this, action);
         setBounds(X, Y, width, height);
         initComponents();

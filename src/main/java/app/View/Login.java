@@ -91,7 +91,7 @@ public class Login extends JPanel {
         center.add(MsgError);
         JLabel Signup = new JLabel("You don't hava an account? Sign up" );
         Signup.setBounds(50, 280, 400, 30);
-        Signup.setForeground(ColoringController.getBasicColor());
+        Signup.setForeground(ColoringController.getFirstColorDark2());
         Signup.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 20));
         PanelsController.addActionToLabel(Signup, "Signup");
         center.add(Signup);
@@ -99,7 +99,7 @@ public class Login extends JPanel {
         BLogin = new KButton();
         BLogin.setBounds(150, 330, 200, 50);
         BLogin.setText("Login");
-        BLogin.setBackground(ColoringController.getPrimaryColor());
+        BLogin.setBackground(ColoringController.getFirstColor());
         PanelsController.setKButtonDark(BLogin);
         PanelsController.addActionToKButton(BLogin, "Login");
         center.add(BLogin);

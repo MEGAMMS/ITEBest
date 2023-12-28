@@ -41,7 +41,7 @@ public class Profile extends JPanel {
         left=new JPanel();
         left.setLayout(null);
         left.setBounds(10, 50, 590, 610);
-        left.setBackground(ColoringController.getTowColor());
+        left.setBackground(ColoringController.getSecoundColorLight());
         img=ImageController.addPhoto("user.png", 150, 150);
         img.setBounds(10, 10, 150, 150);
 
@@ -59,7 +59,7 @@ public class Profile extends JPanel {
         password.setBounds(10, 300, 500, 60);
         left.add(password);
         KButton loguot=new KButton();
-        PanelsController.setKButtonlight(loguot,ColoringController.getTowColorPanel());
+        PanelsController.setKButtonlight(loguot,ColoringController.getSecoundColorDark1());
         PanelsController.addActionToKButton(loguot,"Log out");
         loguot.setBounds(10, 500, 200, 50);
         loguot.setLayout(null);
@@ -77,7 +77,7 @@ public class Profile extends JPanel {
         img2.setBounds(100, 10, 400, 400);
         right=new JPanel();
         right.setLayout(null);
-        right.setBackground(ColoringController.getTowColor());
+        right.setBackground(ColoringController.getSecoundColorLight());
         right.add(img2);
         right.setBounds(610, 50, 590, 610);
         idCard=new JLabel("Id: "+"XXXX-XXXX-XXXX-XXXX");
@@ -96,7 +96,7 @@ public class Profile extends JPanel {
         TProfile.setBounds(10,5,1200,40);
         TProfile.setFont(FontController.getPrimaryFont(Font.BOLD, 30));
         TProfile.setHorizontalAlignment(SwingConstants.CENTER);
-        setBackground(ColoringController.getTowColorLigth());
+        setBackground(ColoringController.getSecoundColor());
         add(TProfile);
         this.setName("Profile");
     }

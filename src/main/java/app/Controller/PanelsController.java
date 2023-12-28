@@ -28,18 +28,18 @@ public class PanelsController {
     public static void setKButtonDark(KButton kButton) {
         kButton.setkAllowGradient(false);
         kButton.setFont(FontController.getSecondryFont(Font.BOLD, 22));
-        kButton.setkBackGroundColor(ColoringController.getBasicColor());
+        kButton.setkBackGroundColor(ColoringController.getFirstColorDark2());
         kButton.setkForeGround(ColoringController.getWhiteColor());
         kButton.setkHoverColor(ColoringController.getWhiteColor());
-        kButton.setkPressedColor(ColoringController.getLightBasicColor());
-        kButton.setkSelectedColor(ColoringController.getBasicColor());
+        kButton.setkPressedColor(ColoringController.getFirstColorLight1());
+        kButton.setkSelectedColor(ColoringController.getFirstColorDark2());
         ;
-        kButton.setkHoverForeGround(ColoringController.getBasicColor());
+        kButton.setkHoverForeGround(ColoringController.getFirstColorDark2());
         kButton.setBorder(null);
         kButton.setkFillButton(true);
         kButton.setkBorderRadius(30);
         kButton.setkIndicatorThickness(2);
-        kButton.setkIndicatorColor(Color.BLACK);
+        kButton.setkIndicatorColor(ColoringController.getBlackColor());
     }
     public static void setKButtonlight(KButton kButton,Color color) {
         kButton.setkAllowGradient(false);
@@ -54,7 +54,7 @@ public class PanelsController {
         kButton.setkFillButton(true);
         kButton.setkBorderRadius(30);
         kButton.setkIndicatorThickness(2);
-        kButton.setkIndicatorColor(Color.BLACK);
+        kButton.setkIndicatorColor(ColoringController.getBlackColor());
     }
 
     public static void switchPanels(String name) {
@@ -97,7 +97,7 @@ public class PanelsController {
                     
                     case "chair":
                         System.out.println(button.getName());
-                        button.setBackground(ColoringController.getTowColorDark());
+                        button.setBackground(ColoringController.getSecoundColorDark2());
                         button.setEnabled(false);
                         break;
                     case "Tick":
@@ -154,34 +154,34 @@ public class PanelsController {
                     // MovieCard.Btitel.setForeground(ColoringController.getWhiteColor());
                     return;
                 } else if (action == "chair") {
-                    button.setBackground(Color.decode("#B0A4A4"));
+                    button.setBackground(ColoringController.getSecoundColorDarkLight1());
                     return;
                 }
                 if (action == "ViewPanelTickInfo"||action == "ViewPanelComments") {
-                    button.setBackground(ColoringController.getTowColorPanel());
+                    button.setBackground(ColoringController.getSecoundColorDark1());
                     return;
                 }
                 if (action == "Send Comment") {
                     return;
                 }
-                button.setBackground(ColoringController.getLightBasicColor());
+                button.setBackground(ColoringController.getFirstColorLight1());
 
             }
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent e) {
                 if (action == "chair") {
-                    button.setBackground(Color.decode("#F3EEEA"));
+                    button.setBackground(ColoringController.getSecoundColorDarkLight2());
                     return;
                 }
                 if (action == "ViewPanelTickInfo"||action == "ViewPanelComments") {
-                    button.setBackground(ColoringController.getTowColor());
+                    button.setBackground(ColoringController.getSecoundColorLight());
                     return;
                 }
                 if (action == "Send Comment") {
                     return;
                 }
-                button.setBackground(ColoringController.getBasicColor());
+                button.setBackground(ColoringController.getFirstColorDark2());
 
             }
         };
@@ -209,12 +209,12 @@ public class PanelsController {
 
             @Override
             public void mouseEntered(java.awt.event.MouseEvent e) {
-                panel.setBackground(ColoringController.getLightBasicColor());
+                panel.setBackground(ColoringController.getFirstColorLight1());
             }
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent e) {
-                panel.setBackground(ColoringController.getBasicColor());
+                panel.setBackground(ColoringController.getFirstColorDark2());
 
             }
         };
@@ -275,19 +275,19 @@ public class PanelsController {
             @Override
             public void mouseEntered(java.awt.event.MouseEvent e) {
                 if (action.equals("Login") || action.equals("Signup")) {
-                    button.setForeground(ColoringController.getLightBasicColor());
+                    button.setForeground(ColoringController.getFirstColorLight1());
                     return;
                 }
-                button.setForeground(ColoringController.getBasicColor());
+                button.setForeground(ColoringController.getFirstColorDark2());
             }
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent e) {
                 if (action.equals("Login") || action.equals("Signup")) {
-                    button.setForeground(ColoringController.getBasicColor());
+                    button.setForeground(ColoringController.getFirstColorDark2());
                     return;
                 }
-                button.setForeground(Color.BLACK);
+                button.setForeground(ColoringController.getBlackColor());
 
             }
         };
@@ -415,12 +415,12 @@ public class PanelsController {
                 if(action.equals("Log out")){
                     return;
                 }
-                button.setForeground(ColoringController.getBasicColor());
+                button.setForeground(ColoringController.getFirstColorDark2());
             }
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent e) {
-                button.setForeground(Color.BLACK);
+                button.setForeground(ColoringController.getBlackColor());
 
             }
         };
