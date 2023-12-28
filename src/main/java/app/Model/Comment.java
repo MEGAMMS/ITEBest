@@ -1,6 +1,8 @@
 package main.java.app.Model;
 
-public class Comment {
+import java.io.Serializable;
+
+public class Comment implements Serializable{
     public String name;
     public String msg;
     public Comment(String name, String msg) {

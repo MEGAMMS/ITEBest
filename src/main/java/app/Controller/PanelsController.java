@@ -118,11 +118,12 @@ public class PanelsController {
                             MainFrame.PTicketAdd.BookingPanel.setVisible(false);
                         break;
                         case "Send Comment":
-                            String comment = MainFrame.PTicketAdd.CommentsPanel.commentTextField.getText();
+                            String comment = MainFrame.PTicketAdd.CommentsPanel.commentTextField.getText().trim();
                             if(comment.length()!=0){
                                 MainFrame.PTicketAdd.CommentsPanel.addComment(Database.currUser.getName(),comment);
                                 MainFrame.PTicketAdd.CommentsPanel.movie.comments.add(new Comment(Database.currUser.getName(), comment));
                                 System.out.println(MainFrame.PTicketAdd.CommentsPanel.movie.getTitle());
+                                Database.save();
                             }
                             
                             //Database.saveMovies();
@@ -303,7 +304,7 @@ public class PanelsController {
                 switch (action) {
                     case "Log out":
                         Database.currUser=null;
-                        switchPanels("Home");
+                        switchPanels("Login");
                     break;
                     case "Sign Up":
                         String name = MainFrame.PSignup.Tname.getText();
