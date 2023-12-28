@@ -3,10 +3,9 @@ package main.java.app.Model;
 import java.io.Serializable;
 
 public class Ticket implements Serializable{
-    public Ticket(int id, Movie m, User u, int showTimeId) {
+    public Ticket(int id, Movie m, User u) {
         this.id = id;
         this.user=u;
-        this.showTimeId = showTimeId;
 
     }
     private int id;
