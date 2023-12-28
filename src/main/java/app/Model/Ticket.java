@@ -11,8 +11,14 @@ public class Ticket implements Serializable{
     }
     private int id;
     private User user;
-    private int showTimeId;
+    private Showtime showtime;
     private Movie movie;
+    public Ticket(int id, Movie movie, User user, Showtime showtime) {
+        this.id = id;
+        this.user = user;
+        this.showtime = showtime;
+        this.movie = movie;
+    }
     public void setmovie(Movie m){
       this.movie=m;
     }
@@ -31,10 +37,10 @@ public class Ticket implements Serializable{
     public void setUser(User user) {
         this.user = user;
     }
-    public int getShowTimeId() {
-        return showTimeId;
+    public  Showtime getShowtime() {
+        return showtime;
     }
-    public void setShowTimeId(int showTimeId) {
-        this.showTimeId = showTimeId;
+    public void setShowtime(Showtime showTimeId) {
+        this.showtime = showTimeId;
     }    
 }
