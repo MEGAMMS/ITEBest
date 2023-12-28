@@ -50,7 +50,6 @@ public class MovieCard extends JPanel {
         // ---------img-----------
         JPanel img = new JPanel();
         JLabel poster = ImageController.addPhoto(movie.getPoster(), 200, 300);
-        //img.setBackground(Color.BLACK);
         img.setBounds(10, 10, 200, 300);
         img.setLayout(new BorderLayout());
         img.add(poster, BorderLayout.CENTER);
@@ -70,16 +69,15 @@ public class MovieCard extends JPanel {
         button.setBounds(10, 380, width-20, 40);
         button.setLayout(null);
         button.add(Btitel);
-        button.setBorder(new LineBorder(ColoringController.getPrimaryColor(), 2, true));
+        button.setBorder(new LineBorder(ColoringController.getFirstColor(), 2, true));
         // button.setBorder(roundedBorder);
         PanelsController.addActionToLabel(Btitel,"TicketAdd");
-        // setBorder(new LineBorder(Color.BLACK, 1));
         setLayout(null);
         setBounds(x+10, y, width, heigh);
 
         setBorder(PanelsController.roundedBorder(30));
         button.setBorder(PanelsController.roundedBorder(20));
-        setBackground(ColoringController.getTowColorLigth());
+        setBackground(ColoringController.getSecoundColor());
         add(img);
         add(titel);
         add(button);

@@ -16,8 +16,8 @@ public class Toolbar extends JPanel {
     }
 
     private void initComponents() throws IOException {
-        this.setBounds(0, 0, 60, 1000);
-        this.setBackground(ColoringController.getBasicColor());
+    this.setBounds(0, 0, 60, 1000);
+        this.setBackground(ColoringController.getFirstColorDark2());
         this.setLayout(null);
         //
         AnimatedPanel profile = new AnimatedPanel("profile.png", "Profile", 0, 70, 60, 100);

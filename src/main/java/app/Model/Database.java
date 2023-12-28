@@ -40,7 +40,16 @@ public class Database implements Serializable {
             System.err.println("Faild to save.");
         }
     }
+    public static void saveMovies() {
 
+        try {
+            new File(path).mkdirs();
+            ObjectIO.WriteObjectToFile(movies, path + "movies.dat");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            System.err.println("Faild to save.");
+        }
+    }
     @SuppressWarnings("unchecked")
     public static void load() {
         try {

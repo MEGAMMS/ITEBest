@@ -40,7 +40,7 @@ public class MoviesListView extends JPanel {
         mainPanel.setBackground(ColoringController.getWhiteColor());
         // ----------Top-------------
         JPanel Top = new JPanel();
-        Top.setBackground(ColoringController.getTowColorLigth());
+        Top.setBackground(ColoringController.getSecoundColor());
         Top.setBounds(10, 10, 1180, 35);
         Top.setLayout(null);
 
@@ -79,7 +79,7 @@ public class MoviesListView extends JPanel {
         JPanel body = new JPanel();
         MovieCard.restSize();
         body.setLayout(null);
-        body.setBackground(ColoringController.getTowColor());
+        body.setBackground(ColoringController.getSecoundColorLight());
         for (int i = 0; i < Database.movies.size(); i++) {
             // System.out.println(Database.movies.get(i).getTag());
             if (Database.movies.get(i).getTag().equals(tag) || tag.equals("All"))
