@@ -13,6 +13,7 @@ public class ITEBest {
 
     public static void main(String[] args) throws InterruptedException, IOException {
         // new DefaultDatabase();
+        System.out.println(Database.users);
         mainFrame = new MainFrame();
         Database.save();
     }
