@@ -4,7 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.util.Arrays;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -24,9 +25,6 @@ import main.java.app.Controller.LabelController;
 import main.java.app.Controller.PanelsController;
 import main.java.app.Model.Database;
 import main.java.app.Model.Movie;
-import main.java.app.Model.Showtime;
-import main.java.app.Model.Showtime;
-import main.java.app.Model.Tags;
 
 public class TicketAdd extends JPanel {
 
@@ -51,7 +49,8 @@ public class TicketAdd extends JPanel {
                 "</html>");
         comboBoxShowtime.setSelectedItem(null);
         comboBoxShowtime.removeAllItems();
-        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(movie.showtimes.stream().map(Object::toString).toArray(String[]::new));
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(
+                movie.showtimes.stream().map(Object::toString).toArray(String[]::new));
         comboBoxShowtime.setModel(model);
         // for (Showtime s : movie.showtimes)
         // this.comboBoxShowtime.addItem((String)s.getDate().toString());
@@ -169,18 +168,6 @@ public class TicketAdd extends JPanel {
         numberTicketFree.setBounds(600, 90, 200, 40);
         numberTicketFree.setFont(FontController.getSecondryFont(Font.BOLD, 14));
         BookingPanel.add(numberTicketFree);
-        chairs = new JPanel();
-        chairs.setBounds(10, 10, 300, 300);
-        chairs.setBackground(ColoringController.getSecoundColorDark2());
-        chairs.setLayout(new GridLayout(8, 8, 3, 3));
-        int n = 0;
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                String s = Integer.toString(++n);
-                chairs.add(itemChair(s));
-            }
-        }
-        BookingPanel.add(chairs);
         // -----------------------
         // ---------Buttons---------
         JPanel addTick = new JPanel();
@@ -229,18 +216,6 @@ public class TicketAdd extends JPanel {
         // ---------------------------
     }
 
-    public JPanel itemChair(String num) {
-        JPanel panel = new JPanel();
-        JLabel label = new JLabel(num);
-        label.setHorizontalAlignment(SwingConstants.CENTER);
-        panel.setLayout(new BorderLayout());
-        panel.add(label, BorderLayout.CENTER);
-        panel.setName(num);
-        panel.setBackground(ColoringController.getSecoundColorDarkLight2());
-        PanelsController.addActionToButton(panel, "chair");
-        return panel;
-    }
-
     private static class CustomComboBoxUI extends BasicComboBoxUI {
         @Override
         protected JButton createArrowButton() {
@@ -252,4 +227,5 @@ public class TicketAdd extends JPanel {
             };
         }
     }
+
 }
