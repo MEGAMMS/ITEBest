@@ -170,14 +170,6 @@ public class TicketAdd extends JPanel {
         numberTicketFree.setBounds(600, 90, 200, 40);
         numberTicketFree.setFont(FontController.getSecondryFont(Font.BOLD, 14));
         BookingPanel.add(numberTicketFree);
-
-        chairs = new JPanel();
-        chairs.setBounds(10, 10, 300, 300);
-        chairs.setBackground(ColoringController.getTowColorDark());
-        chairs.setLayout(new GridLayout(8, 8, 4, 4));
-        for (int i = 0; i < 64; i++)
-            chairs.add(new ChairCard(i));
-        BookingPanel.add(chairs);
         // -----------------------
         // ---------Buttons---------
         JPanel addTick = new JPanel();
@@ -238,56 +230,4 @@ public class TicketAdd extends JPanel {
         }
     }
 
-    public class ChairCard extends JPanel {
-        int id;
-        boolean available, selected;
-
-        public ChairCard(int id) {
-            available = true;
-            selected = false;
-            JPanel panel = new JPanel();
-            JLabel label = new JLabel(id + 1 + "");
-            label.setFont(FontController.getPrimaryFont(Font.BOLD, 16));
-            label.setHorizontalAlignment(SwingConstants.CENTER);
-            panel.setLayout(new BorderLayout());
-            panel.add(label, BorderLayout.CENTER);
-            panel.setBackground(ColoringController.getTowColorLigth());
-            this.setBackground(ColoringController.getTowColorLigth());
-            this.add(panel);
-            this.addMouseListener(new MouseListener() {
-
-                @Override
-                public void mouseClicked(MouseEvent e) {
-                    if (available)
-                        selected = !selected;
-                    refresh();
-                }
-
-                @Override
-                public void mousePressed(MouseEvent e) {
-                }
-
-                @Override
-                public void mouseReleased(MouseEvent e) {
-                }
-
-                @Override
-                public void mouseEntered(MouseEvent e) {
-
-                }
-
-                @Override
-                public void mouseExited(MouseEvent e) {
-                }
-
-            });
-
-        }
-
-        void refresh() {
-            if(!available)this.setBackground(ColoringController.getTowColorDark());
-            if(selected)this.setBackground(ColoringController.getGreenColor());
-            if(!selected && available)this.setBackground(ColoringController.getTowColorLigth());
-        }
-    }
 }
