@@ -83,11 +83,6 @@ public class PanelsController {
                         MainFrame.PTicketAdd.updateData(id);
                         switchPanels("TicketAdd");
                         break;
-                    case "chair":
-                        System.out.println(button.getName());
-                        button.setBackground(ColoringController.getTowColorDark());
-                        button.setEnabled(false);
-                        break;
                     case "Tick":
 
                         if (!Utils.isLogedIn()) {
@@ -113,25 +108,18 @@ public class PanelsController {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                // TODO Auto-generated method stub
-                // throw new UnsupportedOperationException("Unimplemented method
-                // 'mousePressed'");
+                
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                // TODO Auto-generated method stub
-                // throw new UnsupportedOperationException("Unimplemented method
-                // 'mouseReleased'");
+                
             }
 
             @Override
             public void mouseEntered(java.awt.event.MouseEvent e) {
                 if (action == "TicketAdd") {
                     // MovieCard.Btitel.setForeground(ColoringController.getWhiteColor());
-                    return;
-                } else if (action == "chair") {
-                    button.setBackground(Color.decode("#B0A4A4"));
                     return;
                 }
                 if (action == "ViewPanelTickInfo"||action == "ViewPanelComments") {
@@ -144,10 +132,6 @@ public class PanelsController {
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent e) {
-                if (action == "chair") {
-                    button.setBackground(Color.decode("#F3EEEA"));
-                    return;
-                }
                 if (action == "ViewPanelTickInfo"||action == "ViewPanelComments") {
                     button.setBackground(ColoringController.getTowColor());
                     return;
