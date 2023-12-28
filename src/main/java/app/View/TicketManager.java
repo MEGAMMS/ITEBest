@@ -45,7 +45,7 @@ public class TicketManager extends JPanel {
         Top.add(tMovie);
         // ---------------------------
         // -----------Body------------
-        Ticket t = new Ticket(5, Database.movies.get(0), null, new Showtime(LocalDateTime.of(2024, 1, 15, 10, 0)));
+        Ticket t = new Ticket(5, Database.movies.get(0),Database.users.get(0) , new Showtime(LocalDateTime.of(2024, 1, 15, 10, 0)));
         JPanel TicketCard = new JPanel();
         TicketCard.setBackground(ColoringController.getSecoundColorDarkLight1());
         TicketCard.setBounds(10,50, 1180, 80);
