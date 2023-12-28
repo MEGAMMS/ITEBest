@@ -3,6 +3,7 @@ package main.java.app.View;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 
 import javax.swing.DefaultComboBoxModel;
@@ -44,7 +45,7 @@ public class TicketManager extends JPanel {
         Top.add(tMovie);
         // ---------------------------
         // -----------Body------------
-        Ticket t = new Ticket(5, Database.movies.get(0), null, new Showtime("123"));
+        Ticket t = new Ticket(5, Database.movies.get(0), null, new Showtime(LocalDateTime.of(2024, 1, 15, 10, 0)));
         JPanel TicketCard = new JPanel();
         TicketCard.setBackground(ColoringController.getTowColorLigth());
         TicketCard.setBounds(10,50, 1180, 80);
