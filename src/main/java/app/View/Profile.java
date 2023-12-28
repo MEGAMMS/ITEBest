@@ -2,21 +2,28 @@ package main.java.app.View;
 
 import java.awt.Font;
 
+import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.text.StyleConstants.ColorConstants;
+
+import com.k33ptoo.components.KButton;
 
 import main.java.app.Controller.AnimatedPanel;
 import main.java.app.Controller.ColoringController;
 import main.java.app.Controller.FontController;
 import main.java.app.Controller.ImageController;
+import main.java.app.Controller.LabelController;
+import main.java.app.Controller.PanelsController;
 import main.java.app.Model.Database;
 import main.java.app.Model.User;
 
 public class Profile extends JPanel {
     JPanel left,right;
-    JLabel name,email,img,idCard,networth;
+    JLabel name,email,img,idCard,networth,password;
+    
     public User user;
     Profile() {
         user=new User(0, "Name", "Email", "pass");
@@ -28,6 +35,7 @@ public class Profile extends JPanel {
             right.setVisible(false);
         name.setText("<html>" + user.getName()+"\r\n" + "</html>");
         email.setText("<html>" +"Email: "+ user.getEmail()+"\r\n" + "</html>");
+        password.setText("<html>" +"Password: "+ user.getPassword()+"\r\n" + "</html>");
     }
     private void initComponents() {
         left=new JPanel();
@@ -42,7 +50,29 @@ public class Profile extends JPanel {
         name.setBounds(170, 10, 400, 150);
         left.add(name);
         left.add(img);
-        
+        email=new JLabel("<html>" +"Email: "+ user.getEmail()+"\r\n" + "</html>");
+        email.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 28));
+        email.setBounds(10, 200, 500, 60);
+        left.add(email);
+        password=new JLabel("<html>" +"Password: "+ user.getPassword()+"\r\n" + "</html>");
+        password.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 28));
+        password.setBounds(10, 300, 500, 60);
+        left.add(password);
+        KButton loguot=new KButton();
+        PanelsController.setKButtonlight(loguot,ColoringController.getTowColorPanel());
+        PanelsController.addActionToKButton(loguot,"Log out");
+        loguot.setBounds(10, 500, 200, 50);
+        loguot.setLayout(null);
+        JLabel imgLogout=ImageController.addPhoto("logout.png");imgLogout.setBounds(10, 5, 40, 40);
+        JLabel labelLogout=LabelController.addLabel("Log out", FontController.getSecondryFont(Font.BOLD, 22));
+        labelLogout.setBounds(60, 5, 100, 40);
+        loguot.add(labelLogout);
+        loguot.add(imgLogout);
+        left.add(loguot);
+
+
+
+
         JLabel img2=ImageController.addPhoto("visacard.png", 400, 400);
         img2.setBounds(100, 10, 400, 400);
         right=new JPanel();
@@ -55,12 +85,10 @@ public class Profile extends JPanel {
         idCard.setHorizontalAlignment(SwingConstants.CENTER);
         idCard.setBounds(0, 400, 590, 50);
         right.add(idCard);
-        //add(right);
-        email=new JLabel("<html>" +"Email: "+ user.getEmail()+"\r\n" + "</html>");
-        email.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 28));
-        email.setBounds(10, 200, 500, 60);
+
+        
         add(new VisaCardAdd());
-        left.add(email);
+        
         add(left);
         setBounds(60, 50, 1220, 670);
         setLayout(null);

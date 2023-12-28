@@ -124,12 +124,12 @@ public class Signup extends JPanel {
         Bsign.setBounds(50, 580, 200, 50);
         Bsign.setText("Sign Up");
         Bsign.setBackground(ColoringController.getPrimaryColor());
-        PanelsController.setButtonN(Bsign);
+        PanelsController.setKButtonDark(Bsign);
         PanelsController.addActionToKButton(Bsign, "Sign Up");
         BCancel = new KButton();
         BCancel.setText("Cancel");
         BCancel.setBounds(450, 580, 200, 50);
-        PanelsController.setButtonN(BCancel);
+        PanelsController.setKButtonDark(BCancel);
         PanelsController.addActionToKButton(BCancel, "Cancel Signup");
         left.add(Bsign);
 

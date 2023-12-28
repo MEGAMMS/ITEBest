@@ -25,7 +25,7 @@ public class PanelsController {
         return new RoundedBorder(n);
     }
 
-    public static void setButtonN(KButton kButton) {
+    public static void setKButtonDark(KButton kButton) {
         kButton.setkAllowGradient(false);
         kButton.setFont(FontController.getSecondryFont(Font.BOLD, 22));
         kButton.setkBackGroundColor(ColoringController.getBasicColor());
@@ -35,6 +35,21 @@ public class PanelsController {
         kButton.setkSelectedColor(ColoringController.getBasicColor());
         ;
         kButton.setkHoverForeGround(ColoringController.getBasicColor());
+        kButton.setBorder(null);
+        kButton.setkFillButton(true);
+        kButton.setkBorderRadius(30);
+        kButton.setkIndicatorThickness(2);
+        kButton.setkIndicatorColor(Color.BLACK);
+    }
+    public static void setKButtonlight(KButton kButton,Color color) {
+        kButton.setkAllowGradient(false);
+        kButton.setFont(FontController.getSecondryFont(Font.BOLD, 22));
+        kButton.setkBackGroundColor(ColoringController.getWhiteColor());
+        kButton.setkForeGround(color);
+        kButton.setkHoverColor(color);
+        kButton.setkPressedColor(color);
+        kButton.setkSelectedColor(ColoringController.getWhiteColor());
+        kButton.setkHoverForeGround(ColoringController.getWhiteColor());
         kButton.setBorder(null);
         kButton.setkFillButton(true);
         kButton.setkBorderRadius(30);
@@ -105,7 +120,7 @@ public class PanelsController {
                         case "Send Comment":
                             String comment = MainFrame.PTicketAdd.CommentsPanel.commentTextField.getText();
                             if(comment.length()!=0){
-                                MainFrame.PTicketAdd.CommentsPanel.addComment(comment);
+                                MainFrame.PTicketAdd.CommentsPanel.addComment(Database.currUser.getName(),comment);
                                 MainFrame.PTicketAdd.CommentsPanel.movie.comments.add(new Comment(Database.currUser.getName(), comment));
                                 System.out.println(MainFrame.PTicketAdd.CommentsPanel.movie.getTitle());
                             }
@@ -286,6 +301,10 @@ public class PanelsController {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 switch (action) {
+                    case "Log out":
+                        Database.currUser=null;
+                        switchPanels("Home");
+                    break;
                     case "Sign Up":
                         String name = MainFrame.PSignup.Tname.getText();
                         String email = MainFrame.PSignup.Temail.getText();
@@ -365,7 +384,7 @@ public class PanelsController {
                         }
                         if (stateL.equals("Welcome")) {
                             MainFrame.PLogin.MsgError.setForeground(ColoringController.getGreenColor());
-                            MainFrame.PLogin.MsgError.setVisible(true);
+                            MainFrame.PLogin.MsgError.setVisible(false);
                             MainFrame.toolbar.setVisible(true);
                             switchPanels("Profile");
 
@@ -393,6 +412,9 @@ public class PanelsController {
 
             @Override
             public void mouseEntered(java.awt.event.MouseEvent e) {
+                if(action.equals("Log out")){
+                    return;
+                }
                 button.setForeground(ColoringController.getBasicColor());
             }
 

@@ -42,7 +42,7 @@ public class CommentsMovie extends JPanel{
         commentsTextPane.setText("");
         if(movie.comments.size()!=0)
             for(Comment c:movie.comments)
-                addComment(c.msg);
+                addComment(c.name,c.msg);
     }   
     private void initComponents(){
 
@@ -70,9 +70,8 @@ public class CommentsMovie extends JPanel{
         add(scrollPane);
         add(controlsPanel);
     }
-    public  void addComment(String comment) {
+    public  void addComment(String name,String comment) {
         StyledDocument doc = commentsTextPane.getStyledDocument();
-        String name=Database.currUser.getName();
         SimpleAttributeSet nameAttrs = new SimpleAttributeSet();
         StyleConstants.setFontFamily(nameAttrs, "Arial");
         StyleConstants.setFontSize(nameAttrs, 18);
