@@ -1,14 +1,23 @@
 package main.java.app.View;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.nio.Buffer;
 
+import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+import javax.swing.plaf.basic.BasicScrollBarUI;
+
 import main.java.app.Controller.FontController;
 import main.java.app.Controller.ImageController;
 import main.java.app.Model.Database;
@@ -82,6 +91,8 @@ public class Home extends JPanel {
         // mainPanel.add(body);
         JScrollPane scrollPane = new JScrollPane(mainPanel);
         scrollPane.getVerticalScrollBar().setUnitIncrement(16);
+        JScrollBar scrollBar=scrollPane.getVerticalScrollBar();
+        scrollBar.setUI(new CustomScrollBarUI());
         add(scrollPane, BorderLayout.CENTER);
         // ---------------------------
         
@@ -92,5 +103,39 @@ public class Home extends JPanel {
         mainPanel.setVisible(aFlag);
         body.setVisible(aFlag);
         
+    }
+    private static class CustomScrollBarUI extends BasicScrollBarUI {
+        @Override
+        protected void configureScrollBarColors() {
+            // تحديد لون الخلفية لشريط التمرير
+            trackColor = ColoringController.getTowColor();
+            setThumbBounds(0, 0, 10, 10);
+        }
+
+        @Override
+        protected JButton createDecreaseButton(int orientation) {
+            return createZeroButton();
+        }
+
+        @Override
+        protected JButton createIncreaseButton(int orientation) {
+            return createZeroButton();
+        }
+
+        // إنشاء زر بحجم صفر
+        private JButton createZeroButton() {
+            JButton button = new JButton();
+            Dimension zeroDim = new Dimension(0, 0);
+            button.setPreferredSize(zeroDim);
+            button.setMinimumSize(zeroDim);
+            button.setMaximumSize(zeroDim);
+            return button;
+        }
+        @Override
+        protected void paintThumb(Graphics g, JComponent c, Rectangle thumbBounds) {
+            // تخصيص لون الشريط المتحرك (Thumb)
+            g.setColor(ColoringController.getTowColorDark()); // يمكنك تغيير هذا اللون حسب احتياجاتك
+            ((Graphics2D) g).fill(thumbBounds);
+        }
     }
 }

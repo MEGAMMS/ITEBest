@@ -20,8 +20,13 @@ public class ColoringController {
     public static Color getTowColorDark(){
         return Color.decode("#776B5D");
     }
+    public static Color getTowColorPanel(){
+        return Color.decode("#EAD7BB");
+    }
+    
     public static Color getWhiteColor(){
         return Color.white;
+        
     }
     public static Color getLightGrayColor(){
         return Color.lightGray;

@@ -4,6 +4,7 @@ import java.awt.Font;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
 import com.kitfox.svg.Style;
 
@@ -13,6 +14,8 @@ public class LabelController {
         JLabel label=new JLabel(text);
         label.setFont(font);
         label.setHorizontalAlignment(SwingConstants.CENTER);
+        label.setVerticalAlignment(SwingConstants.CENTER);
+        label.setBorder(new EmptyBorder(0,0,0,0));
         return label;
     }
 }
