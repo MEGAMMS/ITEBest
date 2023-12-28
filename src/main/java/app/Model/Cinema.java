@@ -4,15 +4,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Cinema {
-    public Cinema(int id, String name, ArrayList<Integer> moviesId) {
+    public Cinema(int id, String name, ArrayList<Movie> moviesId, ArrayList<Showtimes> showtimes) {
         this.id = id;
         this.name = name;
-        this.moviesId = moviesId;
+        this.movies = moviesId;
+        this.showtimes=showtimes;
     }
     int id;
     String name;
-    ArrayList<Integer> moviesId;
-    public ArrayList<Integer> seats=new ArrayList<>(Collections.nCopies(64, 1));
+    ArrayList<Movie> movies;
+    public ArrayList<Showtimes> showtimes;
+    
     public int getId() {
         return id;
     }
@@ -25,11 +27,11 @@ public class Cinema {
     public void setName(String name) {
         this.name = name;
     }
-    public ArrayList<Integer> getMoviesId() {
-        return moviesId;
+    public ArrayList<Movie> getMovies() {
+        return movies;
     }
-    public void setMoviesId(ArrayList<Integer> moviesId) {
-        this.moviesId = moviesId;
+    public void setMovies(ArrayList<Movie> moviesId) {
+        this.movies = moviesId;
     }
     
 
