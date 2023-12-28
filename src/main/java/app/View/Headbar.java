@@ -21,11 +21,11 @@ public class Headbar extends JPanel{
         JLabel Exitimh=ImageController.addPhoto("\\Exit.png", 40, 40);
         PExit.setBounds(1230, 0, 50, 50);
         PExit.add(Exitimh);
-        PExit.setBackground(ColoringController.getBasicColor());
+        PExit.setBackground(ColoringController.getFirstColorDark2());
         title.setBounds(600, 0, 300, 50);
         this.setBounds(0, 0, 1280, 50);
         this.setLayout(null);
-        this.setBackground(ColoringController.getBasicColor());
+        this.setBackground(ColoringController.getFirstColorDark2());
         title.setFont(FontController.getPrimaryFont(Font.BOLD, 30));
         title.setForeground(ColoringController.getWhiteColor());
 

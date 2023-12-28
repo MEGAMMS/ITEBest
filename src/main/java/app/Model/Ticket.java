@@ -2,17 +2,16 @@ package main.java.app.Model;
 
 import java.io.Serializable;
 
-public class Ticket implements Serializable {
-    public Ticket(int id, Movie m, User u, int showTimeId) {
+public class Ticket implements Serializable{
+    public Ticket(int id, Movie m, User u) {
         this.id = id;
-        this.user = u;
-        this.showTimeId = showTimeId;
+        this.user=u;
 
     }
 
     private int id;
     private User user;
-    private int showTimeId;
+    private Showtime showtime;
     private Movie movie;
 
     public void setmovie(Movie m) {
@@ -38,17 +37,10 @@ public class Ticket implements Serializable {
     public void setUser(User user) {
         this.user = user;
     }
-
-    public int getShowTimeId() {
-        return showTimeId;
+    public  Showtime getShowtime() {
+        return showtime;
     }
-
-    public void setShowTimeId(int showTimeId) {
-        this.showTimeId = showTimeId;
-    }
-
-    @Override
-    public String toString() {
-        return getId() + "\n" + getmovie();
-    }
+    public void setShowtime(Showtime showTimeId) {
+        this.showtime = showTimeId;
+    }    
 }
