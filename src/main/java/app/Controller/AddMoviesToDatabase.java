@@ -5,15 +5,15 @@ import java.util.ArrayList;
 import main.java.app.Model.Cinema;
 import main.java.app.Model.Database;
 import main.java.app.Model.Movie;
-import main.java.app.Model.Showtimes;
+import main.java.app.Model.Showtime;
 
 public class AddMoviesToDatabase {
     public AddMoviesToDatabase(){
         Database.delete();
-        ArrayList<Showtimes> showtimes=new ArrayList<>();
-        showtimes.add(new Showtimes("19/12/2023   10:00 AM"));
-        showtimes.add(new Showtimes("19/12/2023   2:00 PM"));
-        showtimes.add(new Showtimes("19/12/2023   6:00 PM"));
+        ArrayList<Showtime> showtimes=new ArrayList<>();
+        showtimes.add(new Showtime("19/12/2023   10:00 AM"));
+        showtimes.add(new Showtime("19/12/2023   2:00 PM"));
+        showtimes.add(new Showtime("19/12/2023   6:00 PM"));
         Database.cinema.add(new Cinema(Database.cinema.size()+1, "Hall 1",Database.movies , showtimes));
         Database.save();
         Database.movies.add(new Movie(Database.movies.size(),"Rick And Mortey","RickandMortey.jpg","Comedy","Rick is a mentally-unbalanced but scientifically gifted old man who has recently reconnected with his family. He spends most of his time involving his young grandson Morty in dangerous, outlandish adventures throughout space and alternate universes. Compounded with Morty's already unstable family life, these events cause Morty much distress at home and school."));

@@ -5,10 +5,10 @@ import java.util.Collections;
 
 import javax.xml.crypto.Data;
 
-public class Showtimes {
+public class Showtime {
     public String dateShowtimes;
     public ArrayList<Integer> seats;
-    public Showtimes(String dateShowtimes) {
+    public Showtime(String dateShowtimes) {
         this.dateShowtimes = dateShowtimes;
         seats=new ArrayList<>(Collections.nCopies(64, 1));
     }
