@@ -3,6 +3,9 @@ package main.java.app.View;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.image.BufferedImage;
+import java.nio.Buffer;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -38,6 +41,8 @@ public class Home extends JPanel {
         JPanel banner = new JPanel();
         banner.setBackground(ColoringController.getTowColorDark());
         banner.setBounds(10, 50, 1180, 250);
+
+
         banner.add(imgbanner);
         banner.setLayout(null);
         // ---------------------------

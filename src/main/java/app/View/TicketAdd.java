@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
@@ -89,7 +90,6 @@ public class TicketAdd extends JPanel {
         // -------titleP---0------
         JPanel titleP = new JPanel();
 
-        titleM.setForeground(Color.BLACK);
         titleM.setHorizontalAlignment(SwingConstants.CENTER);
         titleM.setForeground(ColoringController.getWhiteColor());
         titleM.setFont(FontController.getPrimaryFont(ABORT, 24));
@@ -142,6 +142,8 @@ public class TicketAdd extends JPanel {
         bookingP.add(numberTicket);
         SpinnerNumberModel model = new SpinnerNumberModel(1, 1, 64, 1);
         JSpinner numTick=new JSpinner(model);
+        JFormattedTextField textField = ((JSpinner.DefaultEditor) numTick.getEditor()).getTextField();
+        textField.setEditable(false);
         numTick.setBounds(500, 90, 80, 40);
         numTick.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 22));
         
