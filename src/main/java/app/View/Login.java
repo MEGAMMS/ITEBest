@@ -100,14 +100,14 @@ public class Login extends JPanel {
         BLogin.setBounds(150, 330, 200, 50);
         BLogin.setText("Login");
         BLogin.setBackground(ColoringController.getPrimaryColor());
-        PanelsController.setButtonN(BLogin);
+        PanelsController.setKButtonDark(BLogin);
         PanelsController.addActionToKButton(BLogin, "Login");
         center.add(BLogin);
 
         BCancel = new KButton();
         BCancel.setText("Cancel");
         BCancel.setBounds(450, 330, 200, 50);
-        PanelsController.setButtonN(BCancel);
+        PanelsController.setKButtonDark(BCancel);
         PanelsController.addActionToKButton(BCancel, "Cancel Login");
         center.add(BCancel);
         info.setBackground(ColoringController.getWhiteColor());
