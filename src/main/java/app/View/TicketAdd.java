@@ -36,7 +36,7 @@ public class TicketAdd extends JPanel {
     public JLabel poster;
     public JComboBox<String> comboBoxShowtime;
     public JLabel numberTicketFree;
-    public JPanel BookingPanel, CommentsPanel;
+    public JPanel BookingPanel;public CommentsMovie CommentsPanel;
     public JPanel chairs;
     public JPanel menu;
 
@@ -55,7 +55,7 @@ public class TicketAdd extends JPanel {
         // for (Showtime s : movie.showtimes)
         // this.comboBoxShowtime.addItem((String)s.getDate().toString());
         this.numberTicketFree.setText("Number Ticket Free " + movie.showtimes.get(0).seats.size());
-
+        CommentsPanel.updateTextPane(movie);
     }
 
     public TicketAdd() {
@@ -132,10 +132,8 @@ public class TicketAdd extends JPanel {
         menu.add(addCommentsPanel);
 
         // ---------Comments---------
-        CommentsPanel = new JPanel();
-        CommentsPanel.setBounds(10, 280, 780, 320);
-        CommentsPanel.setBackground(ColoringController.getTowColorPanel());
-        CommentsPanel.setLayout(null);
+        CommentsPanel = new CommentsMovie(movie);
+
         body.add(CommentsPanel);
         CommentsPanel.setVisible(false);
         // ---------Booking---------

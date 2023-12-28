@@ -15,6 +15,7 @@ import javax.xml.crypto.Data;
 import com.k33ptoo.components.KButton;
 
 import main.java.app.ITEBest;
+import main.java.app.Model.Comment;
 import main.java.app.Model.Database;
 import main.java.app.Model.MainPanels;
 import main.java.app.View.RoundedBorder;
@@ -78,11 +79,7 @@ public class PanelsController {
                 
                         switchPanels("Home");
                         break;
-                    case "TicketAdd":
-                        int id = Integer.parseInt(button.getName());
-                        MainFrame.PTicketAdd.updateData(id);
-                        switchPanels("TicketAdd");
-                        break;
+                    
                     case "chair":
                         System.out.println(button.getName());
                         button.setBackground(ColoringController.getTowColorDark());
@@ -104,6 +101,17 @@ public class PanelsController {
                         case "ViewPanelComments":
                             MainFrame.PTicketAdd.CommentsPanel.setVisible(true);
                             MainFrame.PTicketAdd.BookingPanel.setVisible(false);
+                        break;
+                        case "Send Comment":
+                            String comment = MainFrame.PTicketAdd.CommentsPanel.commentTextField.getText();
+                            if(comment.length()!=0){
+                                MainFrame.PTicketAdd.CommentsPanel.addComment(comment);
+                                MainFrame.PTicketAdd.CommentsPanel.movie.comments.add(new Comment(Database.currUser.getName(), comment));
+                                System.out.println(MainFrame.PTicketAdd.CommentsPanel.movie.getTitle());
+                            }
+                            
+                            //Database.saveMovies();
+                            MainFrame.PTicketAdd.CommentsPanel.commentTextField.setText("");
                         break;
                     default:
                         switchPanels(action);
@@ -138,6 +146,9 @@ public class PanelsController {
                     button.setBackground(ColoringController.getTowColorPanel());
                     return;
                 }
+                if (action == "Send Comment") {
+                    return;
+                }
                 button.setBackground(ColoringController.getLightBasicColor());
 
             }
@@ -150,6 +161,9 @@ public class PanelsController {
                 }
                 if (action == "ViewPanelTickInfo"||action == "ViewPanelComments") {
                     button.setBackground(ColoringController.getTowColor());
+                    return;
+                }
+                if (action == "Send Comment") {
                     return;
                 }
                 button.setBackground(ColoringController.getBasicColor());
@@ -278,14 +292,20 @@ public class PanelsController {
                         char[] passwordChars = MainFrame.PSignup.Tpass.getPassword();
                         String password = new String(passwordChars);
                         String state = UserController.AddUser(name, email, password);
+                        MainFrame.PSignup.MsgError.setVisible(true);
+                        MainFrame.PSignup.MsgError.setText(state);
                         if (state.equals("Signed up successfully")) {
                             MainFrame.PSignup.MsgError.setForeground(ColoringController.getGreenColor());
                             MainFrame.PSignup.Tname.setText("");
                             MainFrame.PSignup.Temail.setText("");
                             MainFrame.PSignup.Tpass.setText("");
                         } else
+                        {
                             MainFrame.PSignup.MsgError.setForeground(ColoringController.getRedColor());
-                        MainFrame.PSignup.MsgError.setText(state);
+                            
+                            
+                        }
+                            
 
                         if (name.equals("")) {
 
@@ -331,6 +351,7 @@ public class PanelsController {
                         String passwordL = new String(passwordCharsL);
                         String stateL = UserController.LogIn(emailL, passwordL);
                         MainFrame.PLogin.MsgError.setText(stateL);
+                        MainFrame.PLogin.MsgError.setVisible(true);
                         if (emailL.equals("")) {
 
                             MainFrame.PLogin.EmailError.setVisible(true);
