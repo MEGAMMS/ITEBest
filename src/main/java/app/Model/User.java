@@ -9,6 +9,7 @@ public class User implements Serializable{
         this.name = name;
         this.email = email;
         this.password = password;
+        
     }
     private int id;
     private String name;

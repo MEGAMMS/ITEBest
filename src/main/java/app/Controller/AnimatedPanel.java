@@ -42,19 +42,28 @@ public class AnimatedPanel extends JPanel {
     public AnimatedPanel(String img,String action,int X,int Y,int width,int height) {
         this.setBackground(Color.decode("#15151d"));
 //        setContentAreaFilled(false);
-        setOpaque(false);
-        //
+        
+        this.setLayout(new BorderLayout());
+        this.add(ImageController.addPhoto(img), BorderLayout.CENTER);
+        this.setBackground(ColoringController.getFirstColorDark2());
+        PanelsController.addActionToButton(this, action);
+        setBounds(X, Y, width, height);
+        initComponents();
+    }
+    public AnimatedPanel(String action,int X,int Y,int width,int height) {
+        this.setBackground(Color.decode("#15151d"));
+//        setContentAreaFilled(false);
         this.setLayout(new BorderLayout());
         this.setBounds(0, 170, 60, 100);
-        this.add(ImageController.addPhoto(img), BorderLayout.CENTER);
-        this.setBackground(ColoringController.getBasicColor());
+        this.setBackground(ColoringController.getFirstColorDark2());
         PanelsController.addActionToButton(this, action);
-        //
         setBounds(X, Y, width, height);
-//        setBackground(Color.WHITE);
+        initComponents();
+    }
+    public void initComponents(){
         setCursor(new Cursor(Cursor.HAND_CURSOR));
-
-addMouseListener(new MouseAdapter() {
+        setOpaque(false);
+        addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent me) {
                 targetSize = Math.max(getWidth(), getHeight()) * 2;
@@ -82,7 +91,6 @@ addMouseListener(new MouseAdapter() {
         animator.setDeceleration(0.5f);
         animator.setResolution(0);
     }
-
     @Override
     protected void paintComponent(Graphics grphcs) {
         int width = getWidth();

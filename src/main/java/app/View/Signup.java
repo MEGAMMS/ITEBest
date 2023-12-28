@@ -45,14 +45,14 @@ public class Signup extends JPanel {
             }
         };
         info.setOpaque(false);
-        info.setBackground(Color.decode("#C9C9C9"));
+        info.setBackground(ColoringController.getDarkGray2Color());
         left = new JPanel();
         left.setBounds(0, 0, 730, 650);
-        left.setBackground(Color.decode("#EEEEEE"));
+        left.setBackground(ColoringController.getLightGrayColor());
         left.setLayout(null);
         JLabel top = new JLabel("Sign Up");
         top.setBounds(10, 10, 670, 50);
-        // top.setForeground(Color.BLACK);
+
         top.setFont(FontController.getSecondryFont(Font.BOLD, 43));
         top.setHorizontalAlignment(SwingConstants.CENTER);
         //left.setBorder(PanelsController.roundedBorder(50));
@@ -71,7 +71,6 @@ public class Signup extends JPanel {
         NameError.setBounds(90, 102, 200, 30);
         NameError.setForeground(ColoringController.getRedColor());
         NameError.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 16));
-        // name.setForeground(Color.BLACK);
         name.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 24));
         left.add(name);
         left.add(NameError);
@@ -115,7 +114,7 @@ public class Signup extends JPanel {
 
         JLabel Login = new JLabel("You have an account? Login" );
         Login.setBounds(10, 440, 300, 30);
-        Login.setForeground(ColoringController.getBasicColor());
+        Login.setForeground(ColoringController.getFirstColorDark2());
         Login.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 20));
         PanelsController.addActionToLabel(Login, "Login");
         left.add(Login);
@@ -123,20 +122,20 @@ public class Signup extends JPanel {
         Bsign = new KButton();
         Bsign.setBounds(50, 580, 200, 50);
         Bsign.setText("Sign Up");
-        Bsign.setBackground(ColoringController.getPrimaryColor());
-        PanelsController.setButtonN(Bsign);
+        Bsign.setBackground(ColoringController.getFirstColor());
+        PanelsController.setKButtonDark(Bsign);
         PanelsController.addActionToKButton(Bsign, "Sign Up");
         BCancel = new KButton();
         BCancel.setText("Cancel");
         BCancel.setBounds(450, 580, 200, 50);
-        PanelsController.setButtonN(BCancel);
+        PanelsController.setKButtonDark(BCancel);
         PanelsController.addActionToKButton(BCancel, "Cancel Signup");
         left.add(Bsign);
 
         left.add(BCancel);
         right = new KGradientPanel();
-        right.setkEndColor(Color.decode("#860A35"));
-        right.setkStartColor(Color.decode("#D30A35"));
+        right.setkEndColor(ColoringController.getFirstColorDark2());
+        right.setkStartColor(ColoringController.getFirstColorDark1());
         right.setBounds(710, 0, 570, 650);
         right.setLayout(null);
         JLabel img1 = ImageController.addPhoto("\\ITEBestIcon.png", 400, 400);
@@ -148,7 +147,7 @@ public class Signup extends JPanel {
         NameError.setVisible(false);
         EmailError.setVisible(false);
         PassError.setVisible(false);
-        setBackground(Color.WHITE);
+        setBackground(ColoringController.getWhiteColor());
         setBounds(0, 50, 1280, 670);
         setLayout(null);
         this.setName("Singup");
