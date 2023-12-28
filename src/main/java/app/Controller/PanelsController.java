@@ -97,6 +97,14 @@ public class PanelsController {
 
                         }
                         break;
+                        case "ViewPanelTickInfo":
+                            MainFrame.PTicketAdd.BookingPanel.setVisible(true);
+                            MainFrame.PTicketAdd.CommentsPanel.setVisible(false);
+                        break;
+                        case "ViewPanelComments":
+                            MainFrame.PTicketAdd.CommentsPanel.setVisible(true);
+                            MainFrame.PTicketAdd.BookingPanel.setVisible(false);
+                        break;
                     default:
                         switchPanels(action);
                         break;
@@ -126,6 +134,10 @@ public class PanelsController {
                     button.setBackground(Color.decode("#B0A4A4"));
                     return;
                 }
+                if (action == "ViewPanelTickInfo"||action == "ViewPanelComments") {
+                    button.setBackground(ColoringController.getTowColorPanel());
+                    return;
+                }
                 button.setBackground(ColoringController.getLightBasicColor());
 
             }
@@ -134,6 +146,10 @@ public class PanelsController {
             public void mouseExited(java.awt.event.MouseEvent e) {
                 if (action == "chair") {
                     button.setBackground(Color.decode("#F3EEEA"));
+                    return;
+                }
+                if (action == "ViewPanelTickInfo"||action == "ViewPanelComments") {
+                    button.setBackground(ColoringController.getTowColor());
                     return;
                 }
                 button.setBackground(ColoringController.getBasicColor());
