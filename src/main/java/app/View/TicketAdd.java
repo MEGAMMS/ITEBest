@@ -25,6 +25,7 @@ import main.java.app.Controller.PanelsController;
 import main.java.app.Model.Database;
 import main.java.app.Model.Movie;
 import main.java.app.Model.Showtime;
+import main.java.app.Model.Showtime;
 import main.java.app.Model.Tags;
 
 public class TicketAdd extends JPanel {

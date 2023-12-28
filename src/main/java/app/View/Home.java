@@ -36,6 +36,7 @@ public class Home extends JPanel {
     public Home() {
         initComponents();
     }
+
     public void initComponents() {
         mainPanel.setLayout(null);
         // ----------Top--------------
@@ -49,7 +50,6 @@ public class Home extends JPanel {
         JPanel banner = new JPanel();
         banner.setBackground(ColoringController.getSecoundColorDark2());
         banner.setBounds(10, 50, 1180, 250);
-
 
         banner.add(imgbanner);
         banner.setLayout(null);
@@ -81,25 +81,27 @@ public class Home extends JPanel {
         mainPanel.setPreferredSize(new Dimension(1200, size + 400));
         mainPanel.add(tHome);
         mainPanel.add(banner);
-        //mainPanel.add(menu);
+        // mainPanel.add(menu);
         mainPanel.add(body);
         mainPanel.setBackground(ColoringController.getSecoundColorLight());
         // mainPanel.add(body);
         JScrollPane scrollPane = new JScrollPane(mainPanel);
-        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
-        JScrollBar scrollBar=scrollPane.getVerticalScrollBar();
+        scrollPane.getVerticalScrollBar().setUnitIncrement(40);
+        JScrollBar scrollBar = scrollPane.getVerticalScrollBar();
         scrollBar.setUI(new CustomScrollBarUI());
         add(scrollPane, BorderLayout.CENTER);
         // ---------------------------
-        
+
     }
+
     @Override
     public void setVisible(boolean aFlag) {
         super.setVisible(aFlag);
         mainPanel.setVisible(aFlag);
         body.setVisible(aFlag);
-        
+
     }
+
     private static class CustomScrollBarUI extends BasicScrollBarUI {
         @Override
         protected void configureScrollBarColors() {
@@ -127,6 +129,7 @@ public class Home extends JPanel {
             button.setMaximumSize(zeroDim);
             return button;
         }
+
         @Override
         protected void paintThumb(Graphics g, JComponent c, Rectangle thumbBounds) {
             // تخصيص لون الشريط المتحرك (Thumb)

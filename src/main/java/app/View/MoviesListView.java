@@ -69,7 +69,7 @@ public class MoviesListView extends JPanel {
         mainPanel.add(Top);
 
         JScrollPane scrollPane = new JScrollPane(mainPanel);
-        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(40);
         setLayout(new BorderLayout());
         setBounds(58, 49, 1224, 700);
         add(scrollPane, BorderLayout.CENTER);
@@ -81,7 +81,7 @@ public class MoviesListView extends JPanel {
         body.setLayout(null);
         body.setBackground(ColoringController.getSecoundColorLight());
         for (int i = 0; i < Database.movies.size(); i++) {
-            //System.out.println(Database.movies.get(i).getTag());
+            // System.out.println(Database.movies.get(i).getTag());
             if (Database.movies.get(i).getTag().equals(tag) || tag.equals("All"))
                 body.add(new MovieCard(i));
         }
