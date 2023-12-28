@@ -10,7 +10,7 @@ public class ITEBest {
     public static MainFrame mainFrame;
 
     public static void main(String[] args) throws InterruptedException, IOException {
-        new DefaultDatabase();
+        //new DefaultDatabase();
         mainFrame = new MainFrame();
         Database.save();
     }
