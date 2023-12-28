@@ -3,6 +3,9 @@ package main.java.app.View;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.image.BufferedImage;
+import java.nio.Buffer;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -38,16 +41,18 @@ public class Home extends JPanel {
         JPanel banner = new JPanel();
         banner.setBackground(ColoringController.getTowColorDark());
         banner.setBounds(10, 50, 1180, 250);
+
+
         banner.add(imgbanner);
         banner.setLayout(null);
         // ---------------------------
 
-        // ----------menu-------------
-        JPanel menu = new JPanel();
-        menu.setBackground(ColoringController.getTowColorDark());
-        menu.setBounds(10, 310, 1180, 40);
-        menu.setLayout(null);
-        // ---------------------------
+        // // ----------menu-------------
+        // JPanel menu = new JPanel();
+        // menu.setBackground(ColoringController.getTowColorDark());
+        // menu.setBounds(10, 310, 1180, 40);
+        // menu.setLayout(null);
+        // // ---------------------------
 
         // -----------Body------------
         body = new JPanel();
@@ -60,7 +65,7 @@ public class Home extends JPanel {
             body.add(new MovieCard(i));
         }
         size = MovieCard.sizePanel();
-        body.setBounds(10, 360, 1180, size + 10);
+        body.setBounds(10, 310, 1180, size + 10);
         // ---------------------------
 
         // -------Properites----------
@@ -71,7 +76,7 @@ public class Home extends JPanel {
         mainPanel.setPreferredSize(new Dimension(1200, size + 400));
         mainPanel.add(tHome);
         mainPanel.add(banner);
-        mainPanel.add(menu);
+        //mainPanel.add(menu);
         mainPanel.add(body);
         mainPanel.setBackground(ColoringController.getTowColor());
         // mainPanel.add(body);

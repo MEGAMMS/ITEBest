@@ -48,7 +48,6 @@ public class MoviesListView extends JPanel {
         tMovie.setBounds(510, 0, 300, 35);
         tMovie.setFont(FontController.getPrimaryFont(Font.BOLD, 29));
         Top.add(tMovie);
-
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(Tags.tags.toArray(new String[0]));
         JComboBox<String> comboBox = new JComboBox<>(model);
         comboBox.setBounds(10, 5, 200, 23);
@@ -82,7 +81,7 @@ public class MoviesListView extends JPanel {
         body.setLayout(null);
         body.setBackground(ColoringController.getTowColor());
         for (int i = 0; i < Database.movies.size(); i++) {
-            System.out.println(Database.movies.get(i).getTag());
+            //System.out.println(Database.movies.get(i).getTag());
             if (Database.movies.get(i).getTag().equals(tag) || tag.equals("All"))
                 body.add(new MovieCard(i));
         }

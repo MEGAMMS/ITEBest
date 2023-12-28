@@ -23,6 +23,8 @@ public class Profile extends JPanel {
     }
     public void updateData(User user){
         this.user=user;
+        if(this.user.getvisa()==null)
+            right.setVisible(false);
         name.setText("<html>" + user.getName()+"\r\n" + "</html>");
         email.setText("<html>" +"Email: "+ user.getEmail()+"\r\n" + "</html>");
     }
@@ -52,11 +54,11 @@ public class Profile extends JPanel {
         idCard.setHorizontalAlignment(SwingConstants.CENTER);
         idCard.setBounds(0, 400, 590, 50);
         right.add(idCard);
-        add(right);
+        //add(right);
         email=new JLabel("<html>" +"Email: "+ user.getEmail()+"\r\n" + "</html>");
         email.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 28));
         email.setBounds(10, 200, 500, 60);
-
+        add(new VisaCardAdd());
         left.add(email);
         add(left);
         setBounds(60, 50, 1220, 670);

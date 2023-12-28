@@ -69,7 +69,7 @@ public class Signup extends JPanel {
         name.setBounds(10, 100, 80, 30);
         NameError = new JLabel("Please Enter Your Name" );
         NameError.setBounds(90, 102, 200, 30);
-        NameError.setForeground(Color.decode("#B80000"));
+        NameError.setForeground(ColoringController.getRedColor());
         NameError.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 16));
         // name.setForeground(Color.BLACK);
         name.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 24));
@@ -85,7 +85,7 @@ public class Signup extends JPanel {
         email.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 24));
         EmailError = new JLabel("Please Enter Your Email" );
         EmailError.setBounds(90, 202, 200, 30);
-        EmailError.setForeground(Color.decode("#B80000"));
+        EmailError.setForeground(ColoringController.getRedColor());
         EmailError.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 16));
         left.add(email);
         left.add(EmailError);
@@ -99,7 +99,7 @@ public class Signup extends JPanel {
         pass.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 24));
         PassError = new JLabel("Please Enter Your Password" );
         PassError.setBounds(130, 302, 300, 30);
-        PassError.setForeground(Color.decode("#B80000"));
+        PassError.setForeground(ColoringController.getRedColor());
         PassError.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 16));
         left.add(pass);
         left.add(PassError);
@@ -109,7 +109,7 @@ public class Signup extends JPanel {
         left.add(Tpass);
         MsgError = new JLabel("" );
         MsgError.setBounds(10, 400, 300, 30);
-        MsgError.setForeground(Color.decode("#B80000"));
+        MsgError.setForeground(ColoringController.getRedColor());
         MsgError.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 16));
         left.add(MsgError);
 

@@ -1,11 +1,21 @@
 package main.java.app.Controller;
 
+import java.util.ArrayList;
+
+import main.java.app.Model.Cinema;
 import main.java.app.Model.Database;
 import main.java.app.Model.Movie;
+import main.java.app.Model.Showtimes;
 
 public class AddMoviesToDatabase {
     public AddMoviesToDatabase(){
         Database.delete();
+        ArrayList<Showtimes> showtimes=new ArrayList<>();
+        showtimes.add(new Showtimes("19/12/2023   10:00 AM"));
+        showtimes.add(new Showtimes("19/12/2023   2:00 PM"));
+        showtimes.add(new Showtimes("19/12/2023   6:00 PM"));
+        Database.cinema.add(new Cinema(Database.cinema.size()+1, "Hall 1",Database.movies , showtimes));
+        Database.save();
         Database.movies.add(new Movie(Database.movies.size(),"Rick And Mortey","RickandMortey.jpg","Comedy","Rick is a mentally-unbalanced but scientifically gifted old man who has recently reconnected with his family. He spends most of his time involving his young grandson Morty in dangerous, outlandish adventures throughout space and alternate universes. Compounded with Morty's already unstable family life, these events cause Morty much distress at home and school."));
         Database.movies.add(new Movie(Database.movies.size(),"Harry Potter", "HarryPoter.jpg","Fantasy","Harry Potter has lived under the stairs at his aunt and uncle's house his whole life. But on his 11th birthday, he learns he's a powerful wizard—with a place waiting for him at the Hogwarts School of Witchcraft and Wizardry. As he learns to harness his newfound powers with the help of the school's kindly headmaster, Harry uncovers the truth about his parents' deaths—and about the villain who's to blame."));
         Database.movies.add(new Movie(Database.movies.size(),"The Last Of Us", "TheLastOfUs.jpg","Drama","Twenty years after modern civilization has been destroyed, Joel, a hardened survivor, is hired to smuggle Ellie, a 14-year-old girl, out of an oppressive quarantine zone. What starts as a small job soon becomes a brutal, heartbreaking journey, as they both must traverse the United States and depend on each other for survival."));
