@@ -3,16 +3,17 @@ package main.java.app.Model;
 import java.io.Serializable;
 
 public class Ticket implements Serializable{
-    public Ticket(int id, Movie m, User u) {
-        this.id = id;
-        this.user=u;
-
-    }
-
     private int id;
     private User user;
     private Showtime showtime;
     private Movie movie;
+    public Ticket(int id, Movie m, User u,Showtime showtime) {
+        this.id = id;
+        this.user=u;
+        this.movie = m;
+        this.showtime = showtime;
+    }
+
 
     public void setmovie(Movie m) {
         this.movie = m;
