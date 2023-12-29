@@ -10,7 +10,7 @@ public class VisaController {
     public static String addvisacard(String id, String password, User user) {
         for (Visa v : Database.visas) {
             if (v.getID().equals(id) && v.getpass().equals(password)) {
-                if (v.getuser().equals(null)) {
+                if (v.user==null) {
                     user.setVisa(v);
                     v.setuser(user);
                     Database.save();

@@ -9,19 +9,16 @@ public class User implements Serializable {
         this.name = name;
         this.email = email;
         this.password = password;
-
+        creditcard=null;
     }
 
     private int id;
     private String name;
     private String email;
     private String password;
-    private Visa creditcard=null;
+    public Visa creditcard;
     public ArrayList<Ticket> tickets;
 
-    public Visa getVisa() {
-        return this.creditcard;
-    }
 
     public void setVisa(Visa v) {
         this.creditcard = v;

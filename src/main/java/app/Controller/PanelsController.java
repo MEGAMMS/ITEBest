@@ -85,7 +85,7 @@ public class PanelsController {
                         } else {
                             MainFrame.toolbar.setVisible(true);
                             MainFrame.PProfile.updateData(Database.currUser);
-                            if (Database.currUser.getVisa() == null) {
+                            if (Database.currUser.creditcard == null) {
                                 MainFrame.PProfile.dontPayM.setVisible(true);
                                 MainFrame.PProfile.right.setVisible(false);
                             } else {
@@ -329,6 +329,7 @@ public class PanelsController {
                         MainFrame.PProfile.addVisaCard.msgState.setText(stateAddVisa);
                         if (stateAddVisa.equals("succeccfully added your card")) {
                             MainFrame.PProfile.addVisaCard.msgState.setForeground(ColoringController.getGreenColor());
+                            MainFrame.PProfile.updateData(Database.currUser);
                             MainFrame.PProfile.addVisaCard.setVisible(false);
                             MainFrame.PProfile.dontPayM.setVisible(false);
                             MainFrame.PProfile.right.setVisible(true);
@@ -343,6 +344,7 @@ public class PanelsController {
                         switchPanels("Login");
                         break;
                     case "Regecter":
+                        MainFrame.toolbar.setVisible(false);
                         switchPanels("Login");
                         break;
                     case "Sign Up":
@@ -395,7 +397,7 @@ public class PanelsController {
                         MainFrame.PProfile.addVisaCard.password.setText("");
                         MainFrame.PProfile.addVisaCard.msgState.setVisible(false);
                         MainFrame.PProfile.addVisaCard.setVisible(false);
-                        if (Database.currUser.getVisa() == null)
+                        if (Database.currUser.creditcard == null)
                             MainFrame.PProfile.dontPayM.setVisible(true);
                         break;
                     case "AddVisaCard":

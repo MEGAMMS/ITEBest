@@ -26,12 +26,19 @@ public class Profile extends JPanel {
 
     public void updateData(User user) {
         this.user = user;
-        if (this.user.getVisa() == null)
+        if (user.creditcard == null){
             right.setVisible(false);
-        name.setText("<html>" + user.getName()+"\r\n" + "</html>");
-        email.setText("<html>" +"Email: "+ user.getEmail()+"\r\n" + "</html>");
-        password.setText("<html>" +"Password: "+ user.getPassword()+"\r\n" + "</html>");
-        idCard.setText(user.getVisa().getID());
+            dontPayM.setVisible(true);
+        }else{
+            right.setVisible(true);
+            dontPayM.setVisible(false);
+            idCard.setText(user.creditcard.getID());
+        }
+            
+        name.setText("<html>" + this.user.getName()+"\r\n" + "</html>");
+        email.setText("<html>" +"Email: "+ this.user.getEmail()+"\r\n" + "</html>");
+        password.setText("<html>" +"Password: "+ this.user.getPassword()+"\r\n" + "</html>");
+        
     }
 
     private void initComponents() {

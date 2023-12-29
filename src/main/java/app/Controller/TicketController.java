@@ -12,12 +12,12 @@ public class TicketController {
         if (count == 0 || showtime ==null) {
             return "please fill all the required information";
         }
-        if (movie.getPrice() * count > user.getVisa().getNetworth()) {
+        if (movie.getPrice() * count > user.creditcard.getNetworth()) {
             return "Unfortunately you can not afford this transaction";
         }
         showtime.seats -= count;
         for (int i = 0; i < count; i++) {
-            user.getVisa().setNetworth(user.getVisa().getNetworth() - movie.getPrice());
+            user.creditcard.setNetworth(user.creditcard.getNetworth() - movie.getPrice());
             user.tickets.add(new Ticket(user.tickets.size(), movie, user, showtime));
         }
         Database.save();
@@ -26,7 +26,7 @@ public class TicketController {
 
     public String Unbook(Ticket ticket) {
         User user = ticket.getUser();
-        Visa visa = user.getVisa();
+        Visa visa = user.creditcard;
         Movie movie = ticket.getMovie();
         Showtime showtime = ticket.getShowtime();
         visa.setNetworth(visa.getNetworth() + movie.getPrice());
