@@ -1,23 +1,15 @@
 package main.java.app.View;
 
 import java.awt.Font;
-
-import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.text.StyleConstants.ColorConstants;
-
 import com.k33ptoo.components.KButton;
-
-import main.java.app.Controller.AnimatedPanel;
 import main.java.app.Controller.ColoringController;
 import main.java.app.Controller.FontController;
 import main.java.app.Controller.ImageController;
 import main.java.app.Controller.LabelController;
 import main.java.app.Controller.PanelsController;
-import main.java.app.Model.Database;
 import main.java.app.Model.User;
 
 public class Profile extends JPanel {
