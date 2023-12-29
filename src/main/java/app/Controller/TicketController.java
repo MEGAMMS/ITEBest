@@ -15,6 +15,9 @@ public class TicketController {
         if (movie.getPrice() * count > user.creditcard.getNetworth()) {
             return "Unfortunately you can not afford this transaction";
         }
+        if(showtime.seats < count){
+            return "Sorry, not enough seats";
+        }
         showtime.seats -= count;
         for (int i = 0; i < count; i++) {
             user.creditcard.setNetworth(user.creditcard.getNetworth() - movie.getPrice());
@@ -24,7 +27,7 @@ public class TicketController {
         return "Booked successfully";
     }
 
-    public String Unbook(Ticket ticket) {
+    public String UnBook(Ticket ticket) {
         User user = ticket.getUser();
         Visa visa = user.creditcard;
         Movie movie = ticket.getMovie();
