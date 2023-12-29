@@ -22,28 +22,12 @@ public class MainFrame extends JFrame {
     public static MoviesListView PMoviesListView = new MoviesListView();
     public static TicketManager PTicketManager = new TicketManager();
 
-    // public void showAddTicket(int id) {
-    //     PTicketAdd.setVisible(false);
-    //     remove(PTicketAdd);
-    //     PTicketAdd = new TicketAdd(id);
-    //     add(PTicketAdd);
-    //     PanelsController.switchPanels("");
-    //     PTicketAdd.setVisible(true);
-
-    // }
 
     public MainFrame() throws IOException {
         initComponents();
     }
 
     private void initComponents() throws IOException {
-
-        /*
-         * Cardpanel=new JPanel(new CardLayout());
-         * Cardpanel.setBounds(60, 50, 1220, 670);
-         * Cardpanel.add(h,"Home");
-         * Cardpanel.add(PProfile,"Profile");
-         */
 
         Headbar headbar = new Headbar();
         mainPanel.add(headbar);
@@ -69,14 +53,14 @@ public class MainFrame extends JFrame {
         MainPanels.addPanel(PSignup);
         MainPanels.addPanel(PMoviesListView);
         MainPanels.addPanel(PLogin);
-        MainPanels.addPanel(PLogin);
         MainPanels.addPanel(PTicketManager);
 
-        for(JPanel p : MainPanels.Panels ){
+        for(JPanel p : MainPanels.Panels){
             mainPanel.add(p);
             p.setVisible(false);
         }
         MainPanels.Panels.get(0).setVisible(true);
+
         add(mainPanel);
         setVisible(true);
         // --------------------------------

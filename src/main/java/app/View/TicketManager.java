@@ -3,6 +3,7 @@ package main.java.app.View;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 
 import javax.swing.DefaultComboBoxModel;
@@ -34,7 +35,7 @@ public class TicketManager extends JPanel {
         mainPanel.setBackground(ColoringController.getWhiteColor());
         // ----------Top-------------
         JPanel Top = new JPanel();
-        Top.setBackground(ColoringController.getTowColorDark());
+        Top.setBackground(ColoringController.getSecoundColorDark1());
         Top.setBounds(10, 10, 1180, 35);
         Top.setLayout(null);
 
@@ -44,9 +45,9 @@ public class TicketManager extends JPanel {
         Top.add(tMovie);
         // ---------------------------
         // -----------Body------------
-        Ticket t = new Ticket(5, Database.movies.get(0), null, new Showtime("123"));
+        Ticket t = new Ticket(5, Database.movies.get(0),Database.users.get(0) , new Showtime(LocalDateTime.of(2024, 1, 15, 10, 0)));
         JPanel TicketCard = new JPanel();
-        TicketCard.setBackground(ColoringController.getTowColorLigth());
+        TicketCard.setBackground(ColoringController.getSecoundColorDarkLight1());
         TicketCard.setBounds(10,50, 1180, 80);
         TicketCard.setLayout(null);
         JLabel ID=new JLabel("ID:"+Integer.toString(t.getId()));

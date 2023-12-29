@@ -4,8 +4,11 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
@@ -13,15 +16,17 @@ import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
+import javax.swing.plaf.basic.BasicComboBoxUI;
+
+import com.k33ptoo.components.KButton;
 
 import main.java.app.Controller.ColoringController;
 import main.java.app.Controller.FontController;
 import main.java.app.Controller.ImageController;
+import main.java.app.Controller.LabelController;
 import main.java.app.Controller.PanelsController;
 import main.java.app.Model.Database;
 import main.java.app.Model.Movie;
-import main.java.app.Model.Showtime;
-import main.java.app.Model.Tags;
 
 public class TicketAdd extends JPanel {
 
@@ -30,10 +35,13 @@ public class TicketAdd extends JPanel {
     public JLabel titleM;
     public JLabel descM;
     public JLabel poster;
-    public JComboBox comboBoxShowtime;
+    public JComboBox<String> comboBoxShowtime;
     public JLabel numberTicketFree;
-    JPanel bookingP;
+    public JPanel BookingPanel;public CommentsMovie CommentsPanel;
     public JPanel chairs;
+    public JPanel menu;
+    public JPanel checkLogin;
+    public JPanel addTick;
     public void updateData(int id) {
         this.movie = Database.movies.get(id);
         this.titleM.setText(movie.getTitle());
@@ -42,13 +50,15 @@ public class TicketAdd extends JPanel {
         this.descM.setText("<html>" + this.movie.getDescription() + "\r\n" + //
                 "\r\n" + //
                 "</html>");
-        // DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(this.movie.getCinema().showtimes.getDateShowtimes().toArray(new String[0]));
         comboBoxShowtime.setSelectedItem(null);
         comboBoxShowtime.removeAllItems();
-        for(Showtime s:movie.getCinema().showtimes)
-            this.comboBoxShowtime.addItem(s.getDateShowtimes());
-        this.numberTicketFree.setText("Number Ticket Free "+movie.getCinema().showtimes.get(0).seats.size());
-    
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(
+                movie.showtimes.stream().map(Object::toString).toArray(String[]::new));
+        comboBoxShowtime.setModel(model);
+        // for (Showtime s : movie.showtimes)
+        // this.comboBoxShowtime.addItem((String)s.getDate().toString());
+        this.numberTicketFree.setText("Number Ticket Free " + movie.showtimes.get(0).seats.size());
+        CommentsPanel.updateTextPane(movie);
     }
 
     public TicketAdd() {
@@ -62,27 +72,14 @@ public class TicketAdd extends JPanel {
 
     private void initComponents() {
         this.setName("TicketAdd");
-        // -----------TOP-------------
-        /*
-         * JPanel top=new JPanel();
-         * top.setBackground(ColoringController.getBasicColor());
-         * top.setBounds(0,0,800,40);
-         * JLabel title = new JLabel("Add Ticket");
-         * title.setBounds(350, 0, 300, 50);
-         * title.setFont(FontController.getPrimaryFont(Font.BOLD, 24));
-         * title.setForeground(ColoringController.getWhiteColor());
-         * top.add(title);
-         */
-        // ---------------------------
         // -----------Body------------
         JPanel body = new JPanel();
-        // body.setBackground(ColoringController.getLightGrayColor());
         body.setBounds(0, 0, 1220, 670);
         body.setLayout(null);
         // ---------img-----------
         JPanel img = new JPanel();
 
-        img.setBackground(Color.BLACK);
+        img.setBackground(ColoringController.getBlackColor());
         img.setBounds(800, 10, 410, 650);
         img.setLayout(new BorderLayout());
         img.add(poster, BorderLayout.CENTER);
@@ -94,7 +91,7 @@ public class TicketAdd extends JPanel {
         titleM.setForeground(ColoringController.getWhiteColor());
         titleM.setFont(FontController.getPrimaryFont(ABORT, 24));
         titleP.setBounds(10, 10, 780, 50);
-        titleP.setBackground(ColoringController.getTowColorDark());
+        titleP.setBackground(ColoringController.getSecoundColorDark2());
         titleP.setLayout(new BorderLayout());
         titleP.add(titleM, BorderLayout.CENTER);
         // -----------------------
@@ -104,88 +101,110 @@ public class TicketAdd extends JPanel {
 
         // descM.setPreferredSize(new Dimension(380, 200));
         descM.setBounds(10, 0, 780, 190);
-        descM.setForeground(Color.BLACK);
+        descM.setForeground(ColoringController.getBlackColor());
         // descM.setHorizontalAlignment(SwingConstants.CENTER);
         descM.setFont(FontController.getPrimaryFont(ABORT, 18));
         // description.setPreferredSize(new Dimension(380, 40));
         description.setBounds(10, 0, 780, 40);
-        description.setForeground(Color.BLACK);
+        description.setForeground(ColoringController.getBlackColor());
         // description.setHorizontalAlignment(SwingConstants.CENTER);
         description.setFont(FontController.getPrimaryFont(Font.BOLD, 18));
-        descP.setBounds(10, 70, 780, 170);
-        descP.setBackground(Color.decode("#EAD7BB"));
+        descP.setBounds(10, 70, 780, 160);
+        descP.setBackground(ColoringController.getSecoundColorDark1());
         descP.setLayout(null);
         descP.add(description);
         descP.add(descM);
         // -----------------------
+        menu = new JPanel();
+        menu.setBounds(10, 240, 780, 30);
+        menu.setBackground(ColoringController.getSecoundColorDark2());
+        menu.setLayout(null);
+        body.add(menu);
+        JPanel addTickPanel = new JPanel();
+        addTickPanel.setBounds(10, 0, 375, 30);
+        addTickPanel.setBackground(ColoringController.getSecoundColorLight());
+        addTickPanel.add(LabelController.addLabel("Booking", FontController.getSecondryFont(Font.BOLD, 18)));
+        PanelsController.addActionToButton(addTickPanel, "ViewPanelTickInfo");
+        menu.add(addTickPanel);
+
+        JPanel addCommentsPanel = new JPanel();
+        addCommentsPanel.setBounds(395, 0, 375, 30);
+        addCommentsPanel.setBackground(ColoringController.getSecoundColorLight());
+        addCommentsPanel.add(LabelController.addLabel("Comments", FontController.getSecondryFont(Font.BOLD, 18)));
+        PanelsController.addActionToButton(addCommentsPanel, "ViewPanelComments");
+        menu.add(addCommentsPanel);
+        //------checkLogin---------
+        checkLogin=new JPanel();
+        checkLogin.setBounds(10, 280, 780, 320);
+        checkLogin.setBackground(ColoringController.getSecoundColor());
+        checkLogin.setLayout(null);
+        body.add(checkLogin);
+        JLabel imgNeedLogin=ImageController.addPhoto("needLogin.png", 480, 320);
+            imgNeedLogin.setBounds(150, 0, 480, 320);
+        KButton clickForLongin = new KButton();
+        clickForLongin.setText("Regecter");
+        clickForLongin.setBounds(270, 136, 150, 30);
+        PanelsController.setKButtonlight(clickForLongin,ColoringController.getFirstColor());
+        PanelsController.addActionToKButton(clickForLongin, "Regecter");
+        checkLogin.add(clickForLongin);
+        checkLogin.add(imgNeedLogin);
+        // ---------Comments---------
+        CommentsPanel = new CommentsMovie(movie);
+        
+        body.add(CommentsPanel);
+        CommentsPanel.setVisible(false);
         // ---------Booking---------
-        bookingP = new JPanel();
-        // JLabel descM=new JLabel("XIHOO Gran Turismo");
-        // descM.setForeground(Color.BLACK);
-        // descM.setHorizontalAlignment(SwingConstants.CENTER);
-        // titleM.setFont(FontController.getPrimaryFont(ABORT, 24));
-        bookingP.setBounds(10, 250, 780, 350);
-        bookingP.setBackground(Color.decode("#EAD7BB"));
-        bookingP.setLayout(new BorderLayout());
-        bookingP.setLayout(null);
-        JLabel showtimes=new JLabel("Show Time: ");
+        BookingPanel = new JPanel();
+        BookingPanel.setBounds(10, 280, 780, 320);
+        BookingPanel.setBackground(ColoringController.getSecoundColorDark1());
+        BookingPanel.setLayout(null);
+        JLabel showtimes = new JLabel("Show Time: ");
         showtimes.setBounds(330, 20, 150, 40);
         showtimes.setFont(FontController.getSecondryFont(Font.BOLD, 22));
-        bookingP.add(showtimes);
-        comboBoxShowtime=new JComboBox<>();
+        BookingPanel.add(showtimes);
+        comboBoxShowtime = new JComboBox<>();
+        comboBoxShowtime.setUI(new CustomComboBoxUI());
         comboBoxShowtime.setBounds(480, 20, 280, 40);
         comboBoxShowtime.setFont(FontController.getSecondryFont(Font.BOLD, 22));
-        bookingP.add(comboBoxShowtime);
-        JLabel numberTicket=new JLabel("Number Ticket: ");
+        BookingPanel.add(comboBoxShowtime);
+        JLabel numberTicket = new JLabel("Number Ticket: ");
         numberTicket.setBounds(330, 90, 200, 40);
         numberTicket.setFont(FontController.getSecondryFont(Font.BOLD, 22));
-        bookingP.add(numberTicket);
+        BookingPanel.add(numberTicket);
         SpinnerNumberModel model = new SpinnerNumberModel(1, 1, 64, 1);
-        JSpinner numTick=new JSpinner(model);
+        JSpinner numTick = new JSpinner(model);
         JFormattedTextField textField = ((JSpinner.DefaultEditor) numTick.getEditor()).getTextField();
         textField.setEditable(false);
         numTick.setBounds(500, 90, 80, 40);
         numTick.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 22));
-        
-        bookingP.add(numTick);
-        
-        numberTicketFree=new JLabel("Number Ticket Free");
+
+        BookingPanel.add(numTick);
+
+        numberTicketFree = new JLabel("Number Ticket Free");
         numberTicketFree.setForeground(ColoringController.getGreenColor());
         numberTicketFree.setBounds(600, 90, 200, 40);
         numberTicketFree.setFont(FontController.getSecondryFont(Font.BOLD, 14));
-        bookingP.add(numberTicketFree);
-        chairs=new JPanel();
-        chairs.setBounds(10, 10, 300, 300);
-        chairs.setBackground(ColoringController.getTowColorDark());
-        chairs.setLayout(new GridLayout(8,8,3,3));
-        int n=0;
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                String s=Integer.toString(++n);
-                chairs.add(itemChair(s));
-        }
-        }
-        bookingP.add(chairs);
+        BookingPanel.add(numberTicketFree);
         // -----------------------
         // ---------Buttons---------
-        JPanel addTick = new JPanel();
+        addTick = new JPanel();
         JLabel bttickT = new JLabel("Add");
-        bttickT.setForeground(Color.WHITE);
+        bttickT.setForeground(ColoringController.getWhiteColor());
         bttickT.setHorizontalAlignment(SwingConstants.CENTER);
         bttickT.setFont(FontController.getPrimaryFont(ABORT, 24));
         addTick.setBounds(20, 615, 200, 40);
-        addTick.setBackground(ColoringController.getBasicColor());
+        addTick.setBackground(ColoringController.getFirstColorDark2());
         addTick.setLayout(new BorderLayout());
         PanelsController.addActionToButton(addTick, "Tick");
         addTick.add(bttickT);
 
         JPanel closeP = new JPanel();
         JLabel closeT = new JLabel("Close");
-        closeT.setForeground(Color.WHITE);
+        closeT.setForeground(ColoringController.getWhiteColor());
         closeT.setHorizontalAlignment(SwingConstants.CENTER);
         closeT.setFont(FontController.getPrimaryFont(ABORT, 24));
         closeP.setBounds(260, 615, 200, 40);
-        closeP.setBackground(ColoringController.getBasicColor());
+        closeP.setBackground(ColoringController.getFirstColorDark2());
         closeP.setLayout(new BorderLayout());
         closeP.add(closeT);
         PanelsController.addActionToButton(closeP, "Close");
@@ -194,41 +213,39 @@ public class TicketAdd extends JPanel {
         body.add(img);
         body.add(titleP);
         body.add(descP);
-        body.add(bookingP);
+        body.add(BookingPanel);
         body.add(addTick);
         body.add(closeP);
+        menu.setVisible(true);
+        BookingPanel.setVisible(false);
+        CommentsPanel.setVisible(false);
+        body.setBackground(ColoringController.getSecoundColor());
         // ---------------------------
         // ----------Buttom-----------
         JPanel buttom = new JPanel();
-        buttom.setBackground(ColoringController.getBasicColor());
+        buttom.setBackground(ColoringController.getFirstColorDark2());
         buttom.setBounds(0, 580, 800, 20);
 
         // ---------------------------
         // -------Properites----------
-        // setIconImage(new
-        // ImageIcon("src\\main\\resources\\images\\ITEBestIcon.png").getImage());
-        // setSize(800, 600);
-        setBounds(60, 50, 1220, 670);
-        // setUndecorated(true);
-        // setLocationRelativeTo(null);
-        setLayout(null);
-        setBackground(Color.BLACK);
-        // add(top);
-        // add(top);
 
+        setBounds(60, 50, 1220, 670);
+        setLayout(null);
+        setBackground(ColoringController.getBlackColor());
         add(body);
-        // add(buttom);
         // ---------------------------
     }
-    public JPanel itemChair(String num){
-        JPanel panel=new JPanel();
-        JLabel label =new JLabel(num);
-        label.setHorizontalAlignment(SwingConstants.CENTER);
-        panel.setLayout(new BorderLayout());
-        panel.add(label,BorderLayout.CENTER);
-        panel.setName(num);
-        panel.setBackground(Color.decode("#F3EEEA"));
-        PanelsController.addActionToButton(panel, "chair");
-        return panel;
+
+    private static class CustomComboBoxUI extends BasicComboBoxUI {
+        @Override
+        protected JButton createArrowButton() {
+            return new JButton() {
+                @Override
+                public int getWidth() {
+                    return 0;
+                }
+            };
+        }
     }
+
 }
