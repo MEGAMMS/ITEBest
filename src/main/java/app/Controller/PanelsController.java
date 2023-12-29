@@ -110,10 +110,23 @@ public class PanelsController {
                         }
                         break;
                         case "ViewPanelTickInfo":
-                            MainFrame.PTicketAdd.BookingPanel.setVisible(true);
+                            if(Utils.isLogedIn()){
+                                MainFrame.PTicketAdd.BookingPanel.setVisible(true);
+                                MainFrame.PTicketAdd.checkLogin.setVisible(false);
+                            }else{
+                                MainFrame.PTicketAdd.checkLogin.setVisible(true);
+                                MainFrame.PTicketAdd.BookingPanel.setVisible(false);
+                            }
+                            
                             MainFrame.PTicketAdd.CommentsPanel.setVisible(false);
                         break;
                         case "ViewPanelComments":
+                            if(Utils.isLogedIn()){
+                                MainFrame.PTicketAdd.CommentsPanel.commentTextField.setEditable(true);
+                            }else{
+                                MainFrame.PTicketAdd.CommentsPanel.commentTextField.setEditable(false);
+                            }
+                            MainFrame.PTicketAdd.checkLogin.setVisible(false);
                             MainFrame.PTicketAdd.CommentsPanel.setVisible(true);
                             MainFrame.PTicketAdd.BookingPanel.setVisible(false);
                         break;
@@ -226,6 +239,15 @@ public class PanelsController {
                     case "TicketAdd":
                         int id = Integer.parseInt(button.getName());
                         MainFrame.PTicketAdd.updateData(id);
+                        if(!Utils.isLogedIn()){
+                            MainFrame.PTicketAdd.BookingPanel.setVisible(false);
+                            MainFrame.PTicketAdd.checkLogin.setVisible(true);
+                            MainFrame.PTicketAdd.addTick.setVisible(false);
+                        }else{
+                            MainFrame.PTicketAdd.BookingPanel.setVisible(true);
+                            MainFrame.PTicketAdd.checkLogin.setVisible(false);
+                            MainFrame.PTicketAdd.addTick.setVisible(true);
+                        }
                         switchPanels("TicketAdd");
                         break;
                     case "Login":
@@ -293,6 +315,7 @@ public class PanelsController {
                 switch (action) {
                     case "Log out":
                         Database.currUser=null;
+                        Database.save();
                         switchPanels("Login");
                     break;
                     case "Sign Up":
