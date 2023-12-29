@@ -39,7 +39,7 @@ public class TicketAdd extends JPanel {
     public JPanel checkLogin;
     public JPanel addTick;
     public JLabel MsgError,priceMovie,priceAll;
-    
+    //HHH
     public void updateData(Movie movie) {
         this.movie = movie;
         this.titleM.setText(movie.getTitle());
