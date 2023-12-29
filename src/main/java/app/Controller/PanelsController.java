@@ -371,7 +371,7 @@ public class PanelsController {
                         break;
                     case "Cancel addVisa":
                         MainFrame.PProfile.addVisaCard.setVisible(false);
-                        if(Database.currUser.getvisa()==null)
+                        if(Database.currUser.getVisa()==null)
                             MainFrame.PProfile.dontPayM.setVisible(true);
                         break;
                     case "AddVisaCard":

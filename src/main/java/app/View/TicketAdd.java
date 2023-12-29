@@ -27,6 +27,7 @@ import main.java.app.Controller.LabelController;
 import main.java.app.Controller.PanelsController;
 import main.java.app.Model.Database;
 import main.java.app.Model.Movie;
+import main.java.app.Model.Showtime;
 
 public class TicketAdd extends JPanel {
 
@@ -57,7 +58,9 @@ public class TicketAdd extends JPanel {
         comboBoxShowtime.setModel(model);
         // for (Showtime s : movie.showtimes)
         // this.comboBoxShowtime.addItem((String)s.getDate().toString());
-        this.numberTicketFree.setText("Number Ticket Free " + movie.showtimes.get(0).seats.size());
+        Showtime SelectedShowtime = movie.showtimes.stream().filter(obj -> obj.toString().equals((String)comboBoxShowtime.getSelectedItem())).findFirst().orElse(null);
+
+        this.numberTicketFree.setText("Number Ticket Free " + SelectedShowtime.getSeats());
         CommentsPanel.updateTextPane(movie);
     }
 
