@@ -21,7 +21,8 @@ import main.java.app.Model.Database;
 import main.java.app.Model.User;
 
 public class Profile extends JPanel {
-    JPanel left,right;
+    public JPanel left,right,dontPayM;
+    public VisaCardAdd addVisaCard;
     JLabel name,email,img,idCard,networth,password;
     
     public User user;
@@ -86,9 +87,24 @@ public class Profile extends JPanel {
         idCard.setBounds(0, 400, 590, 50);
         right.add(idCard);
 
+        addVisaCard=new VisaCardAdd();
+        add(addVisaCard);
         
-        add(new VisaCardAdd());
-        
+        dontPayM=new JPanel();
+        dontPayM.setLayout(null);
+        dontPayM.setBackground(ColoringController.getSecoundColor());
+        dontPayM.setBounds(610, 50, 590, 610);
+        JLabel imgdontCard=ImageController.addPhoto("DontpayM.png", 600, 400);
+        imgdontCard.setBounds(0, 60, 600, 400);
+        dontPayM.add(imgdontCard);
+        KButton paddVisaCard = new KButton();
+        paddVisaCard.setText("Add Visa Card");
+        paddVisaCard.setBounds(180, 540, 300, 40);
+        PanelsController.setKButtonlight(paddVisaCard,ColoringController.getVisaColor());
+        PanelsController.addActionToKButton(paddVisaCard, "AddVisaCard");
+        dontPayM.add(paddVisaCard);
+        add(dontPayM);
+        addVisaCard.setVisible(false);
         add(left);
         setBounds(60, 50, 1220, 670);
         setLayout(null);

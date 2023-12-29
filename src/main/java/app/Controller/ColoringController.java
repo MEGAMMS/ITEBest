@@ -55,6 +55,9 @@ public class ColoringController {
         return Color.decode("#B80000");
     }
     public static Color getGreenColor(){
-        return Color.decode("#65B741");
+        return Color.decode("#1C6758");
+    }
+    public static Color getVisaColor(){
+        return Color.decode("#3887BE");
     }
 }
