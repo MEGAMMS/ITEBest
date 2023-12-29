@@ -4,6 +4,13 @@ public class Visa {
     private String id;
     private int networth;
     private String pass;
+    private User user;
+    public void setuser(User user) {
+        this.user = user;
+    }
+     public User getuser() {
+        return this.user;
+    }
     public Visa(String id,String p){
         this.pass=p;
         this.id = id;
