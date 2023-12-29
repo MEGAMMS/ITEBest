@@ -14,7 +14,6 @@ import com.k33ptoo.components.KButton;
 import main.java.app.Model.Comment;
 import main.java.app.Model.Database;
 import main.java.app.Model.MainPanels;
-import main.java.app.View.RoundedBorder;
 
 public class PanelsController {
     public static JPanel roundedBorder(int n) {
