@@ -1,19 +1,23 @@
 package main.java.app.View;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.RenderingHints;
+
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+import javax.swing.border.AbstractBorder;
 import javax.swing.plaf.basic.BasicScrollBarUI;
-
+import main.java.app.Controller.RoundedPanel;
 import main.java.app.Controller.FontController;
 import main.java.app.Controller.ImageController;
 import main.java.app.Model.Database;
@@ -40,13 +44,12 @@ public class Home extends JPanel {
         tHome.setBounds(10, 0, 300, 50);
         tHome.setFont(FontController.getPrimaryFont(Font.BOLD, 30));
         // ---------------------------
-
+        
         // ---------banner------------
         imgbanner.setBounds(0, 0, 1180, 250);
-        JPanel banner = new JPanel();
-        banner.setBackground(ColoringController.getSecoundColorDark2());
+        JPanel banner = new RoundedPanel(50);
         banner.setBounds(10, 50, 1180, 250);
-
+        banner.setOpaque(false);
         banner.add(imgbanner);
         banner.setLayout(null);
         // ---------------------------

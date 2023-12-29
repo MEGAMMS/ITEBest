@@ -65,7 +65,7 @@ public class Profile extends JPanel {
         KButton loguot = new KButton();
         PanelsController.setKButtonlight(loguot, ColoringController.getSecoundColorDark1());
         PanelsController.addActionToKButton(loguot, "Log out");
-        loguot.setBounds(10, 500, 200, 50);
+        loguot.setBounds(10, 540, 200, 50);
         loguot.setLayout(null);
         JLabel imgLogout = ImageController.addPhoto("logout.png");
         imgLogout.setBounds(10, 5, 40, 40);
