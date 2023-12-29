@@ -318,6 +318,9 @@ public class PanelsController {
                         Database.save();
                         switchPanels("Login");
                     break;
+                    case "Regecter":
+                    switchPanels("Login");
+                    break;
                     case "Sign Up":
                         String name = MainFrame.PSignup.Tname.getText();
                         String email = MainFrame.PSignup.Temail.getText();
