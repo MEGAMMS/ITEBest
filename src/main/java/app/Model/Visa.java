@@ -1,6 +1,8 @@
 package main.java.app.Model;
 
-public class Visa {
+import java.io.Serializable;
+
+public class Visa implements Serializable{
     private String id;
     private int networth;
     private String pass;
@@ -11,9 +13,11 @@ public class Visa {
      public User getuser() {
         return this.user;
     }
-    public Visa(String id,String p){
+    public Visa(String id,String p,int networth){
         this.pass=p;
         this.id = id;
+        this.networth=networth;
+        this.user=null;
     }
     public void setpass(String pass) {
         this.pass = pass;

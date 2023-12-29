@@ -84,6 +84,13 @@ public class PanelsController {
                         } else {
                             MainFrame.toolbar.setVisible(true);
                             MainFrame.PProfile.updateData(Database.currUser);
+                            if(Database.currUser.getvisa()==null){
+                                MainFrame.PProfile.dontPayM.setVisible(true);
+                                MainFrame.PProfile.right.setVisible(false);
+                            }else{
+                                MainFrame.PProfile.dontPayM.setVisible(false);
+                                MainFrame.PProfile.right.setVisible(true);
+                            }
                             switchPanels("Profile");
                         }
                         break;
@@ -309,6 +316,24 @@ public class PanelsController {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 switch (action) {
+                    case "CheckVisa":
+                        String idCard=MainFrame.PProfile.addVisaCard.idCardText.getText();
+                        String pin=MainFrame.PProfile.addVisaCard.password.getText();
+                        System.out.println();
+                        String stateAddVisa=VisaController.addvisacard(idCard, MainFrame.PProfile.addVisaCard.password.getText(), Database.currUser);
+                        MainFrame.PProfile.addVisaCard.msgState.setForeground(ColoringController.getRedColor());
+                        MainFrame.PProfile.addVisaCard.msgState.setVisible(true);
+                        MainFrame.PProfile.addVisaCard.msgState.setText(stateAddVisa);
+                        if(stateAddVisa.equals("succeccfully added your card")){
+                            MainFrame.PProfile.addVisaCard.msgState.setForeground(ColoringController.getGreenColor());
+                            MainFrame.PProfile.addVisaCard.setVisible(false);
+                            MainFrame.PProfile.dontPayM.setVisible(false);
+                            MainFrame.PProfile.right.setVisible(true);
+                        }
+                        MainFrame.PProfile.addVisaCard.idCardText.setText("");
+                        MainFrame.PProfile.addVisaCard.password.setText("");
+                        
+                    break;
                     case "Log out":
                         Database.currUser=null;
                         Database.save();
@@ -366,6 +391,9 @@ public class PanelsController {
                         MainFrame.toolbar.setVisible(true);
                         break;
                     case "Cancel addVisa":
+                        MainFrame.PProfile.addVisaCard.idCardText.setText("");
+                        MainFrame.PProfile.addVisaCard.password.setText("");
+                        MainFrame.PProfile.addVisaCard.msgState.setVisible(false);
                         MainFrame.PProfile.addVisaCard.setVisible(false);
                         if(Database.currUser.getvisa()==null)
                             MainFrame.PProfile.dontPayM.setVisible(true);
