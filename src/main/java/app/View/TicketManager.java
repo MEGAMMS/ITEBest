@@ -1,23 +1,14 @@
 package main.java.app.View;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.Font;
-import java.time.LocalDateTime;
-import java.util.HashMap;
-
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import main.java.app.Controller.ColoringController;
 import main.java.app.Controller.FontController;
-import main.java.app.Controller.PanelsController;
 import main.java.app.Model.Database;
-import main.java.app.Model.Showtime;
-import main.java.app.Model.Tags;
 import main.java.app.Model.Ticket;
 
 public class TicketManager extends JPanel {
@@ -45,40 +36,12 @@ public class TicketManager extends JPanel {
         Top.add(tMovie);
         // ---------------------------
         // -----------Body------------
-        Ticket t = new Ticket(5, Database.movies.get(0), Database.users.get(0),
-                new Showtime(LocalDateTime.of(2024, 1, 15, 10, 0)));
-        JPanel TicketCard = new JPanel();
-        TicketCard.setBackground(ColoringController.getSecoundColorDarkLight1());
-        TicketCard.setBounds(10, 50, 1180, 80);
-        TicketCard.setLayout(null);
-        JLabel ID = new JLabel("ID:" + Integer.toString(t.getId()));
-        ID.setBounds(0, 20, 1000, 40);
-        ID.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
-        TicketCard.add(ID);
-        JLabel title = new JLabel("Title:" + t.getMovie().getTitle());
-        title.setBounds(60, 20, 1000, 40);
-        title.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
-        TicketCard.add(title);
-        JLabel showtime = new JLabel("Showtime:" + "hhh");
-        showtime.setBounds(300, 20, 1000, 40);
-        showtime.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
-        TicketCard.add(showtime);
-        JLabel hall = new JLabel("Hall:" + t.getMovie().getCinema().getName());
-        hall.setBounds(490, 20, 1000, 40);
-        hall.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
-        TicketCard.add(hall);
-        JLabel price = new JLabel("Price:" + t.getMovie().getPrice());
-        price.setBounds(660, 20, 1000, 40);
-        price.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
-        TicketCard.add(price);
-        JButton withdraw = new JButton("withdraw");
-        withdraw.setBounds(860, 20, 300, 40);
-        TicketCard.add(withdraw);
-
+        Ticket t = new Ticket(2, Database.movies.get(0), Database.users.get(0),Database.movies.get(0).showtimes.get(0));
+        TicketCard testTicket = new TicketCard(t);
         // ---------------------------.
         // ---------------------------
         mainPanel.add(Top);
-        mainPanel.add(TicketCard);
+        mainPanel.add(testTicket);
 
         JScrollPane scrollPane = new JScrollPane(mainPanel);
         scrollPane.getVerticalScrollBar().setUnitIncrement(16);
@@ -87,4 +50,35 @@ public class TicketManager extends JPanel {
         add(scrollPane, BorderLayout.CENTER);
     }
 
+    class TicketCard extends JPanel {
+        public TicketCard(Ticket ticket) {
+            this.setBackground(ColoringController.getSecoundColorDarkLight1());
+            this.setBounds(10, 50, 1180, 80);
+            this.setLayout(null);
+            JLabel ID = new JLabel("ID:" + Integer.toString(ticket.getId()));
+            ID.setBounds(0, 20, 1000, 40);
+            ID.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
+            this.add(ID);
+            JLabel title = new JLabel("Title:" + ticket.getMovie().getTitle());
+            title.setBounds(60, 20, 1000, 40);
+            title.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
+            this.add(title);
+            JLabel showtime = new JLabel("Showtime:" + "hhh");
+            showtime.setBounds(300, 20, 1000, 40);
+            showtime.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
+            this.add(showtime);
+            JLabel hall = new JLabel("Hall:" + ticket.getMovie().getCinema().getName());
+            hall.setBounds(490, 20, 1000, 40);
+            hall.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
+            this.add(hall);
+            JLabel price = new JLabel("Price:" + ticket.getMovie().getPrice());
+            price.setBounds(660, 20, 1000, 40);
+            price.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
+            this.add(price);
+            JButton withdraw = new JButton("withdraw");
+            withdraw.setBounds(860, 20, 300, 40);
+            this.add(withdraw);
+        }
+
+    }
 }
