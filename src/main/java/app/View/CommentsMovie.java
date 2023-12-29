@@ -1,32 +1,19 @@
 package main.java.app.View;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
-import javax.xml.crypto.Data;
-
-import com.kitfox.svg.Font;
-
 import main.java.app.Controller.AnimatedPanel;
 import main.java.app.Controller.ColoringController;
 import main.java.app.Controller.FontController;
 import main.java.app.Controller.LabelController;
 import main.java.app.Model.Comment;
-import main.java.app.Model.Database;
 import main.java.app.Model.Movie;
 
 public class CommentsMovie extends JPanel{

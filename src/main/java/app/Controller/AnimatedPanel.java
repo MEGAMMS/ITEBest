@@ -5,9 +5,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-
-import net.miginfocom.swing.MigLayout;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
@@ -36,8 +33,7 @@ public class AnimatedPanel extends JPanel {
     private Point pressedPoint;
     private float alpha;
     private Color effectColor = new Color(255, 255, 255);
-    private Icon prefixIcon;
-    private Icon suffixIcon;
+
     MouseListener listener;
     public AnimatedPanel(String img,String action,int X,int Y,int width,int height) {
         this.setBackground(Color.decode("#15151d"));

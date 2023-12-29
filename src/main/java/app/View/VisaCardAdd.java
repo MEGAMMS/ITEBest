@@ -1,24 +1,17 @@
 package main.java.app.View;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.text.ParseException;
-
-import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.text.MaskFormatter;
-
 import com.k33ptoo.components.KButton;
-
 import java.awt.Font;
-
 import main.java.app.Controller.ColoringController;
 import main.java.app.Controller.FontController;
 import main.java.app.Controller.ImageController;
@@ -26,8 +19,10 @@ import main.java.app.Controller.LabelController;
 import main.java.app.Controller.PanelsController;
 
 public class VisaCardAdd extends JPanel{
+    public JFormattedTextField idCardText,password;
     KButton bCheckVisa;
     KButton bCancelAddVisa;
+    public JLabel msgState;
     VisaCardAdd(){
         initComponents();
     }
@@ -40,36 +35,37 @@ public class VisaCardAdd extends JPanel{
             //-----------Id Card-------------
             add(LabelController.addLabel("Enter Id Card: ",FontController.getSecondryFont(Font.BOLD, 20) , 40, 350, 140, 50));
             MaskFormatter maskFormatter = new MaskFormatter("####-####-####-####");
-            JFormattedTextField IdCardText = new JFormattedTextField(maskFormatter);
-            IdCardText.setBounds(190, 360, 320, 35);
-            IdCardText.setHorizontalAlignment(SwingConstants.CENTER);
-            IdCardText.setFont(FontController.getSecondryFont(Font.BOLD, 20));
-            add(IdCardText);
+            idCardText = new JFormattedTextField(maskFormatter);
+            idCardText.setBounds(190, 360, 320, 35);
+            idCardText.setHorizontalAlignment(SwingConstants.CENTER);
+            idCardText.setFont(FontController.getSecondryFont(Font.BOLD, 20));
+            add(idCardText);
             //-----------Password-------------
             add(LabelController.addLabel("Enter PIN Password: ",FontController.getSecondryFont(Font.BOLD, 20) , 40, 420, 200, 50));
             MaskFormatter maskFormatterPass = new MaskFormatter("####");
-            JFormattedTextField password = new JFormattedTextField(maskFormatterPass);
+            password = new JFormattedTextField(maskFormatterPass);
             password.setBounds(300, 430, 100, 35);
             password.setHorizontalAlignment(SwingConstants.CENTER);
             password.setFont(FontController.getSecondryFont(Font.BOLD, 20));
             add(password);
 
-           
-
+            msgState=LabelController.addLabel("", FontController.getSecondryFont(Font.CENTER_BASELINE, 16), 50, 480, 500, 40);
+            msgState.setHorizontalAlignment(SwingConstants.LEFT);
+            add(msgState);
+            msgState.setVisible(false);
             bCheckVisa = new KButton();
-        bCheckVisa.setBounds(80, 540, 150, 40);
-        bCheckVisa.setText("Check");
-        bCheckVisa.setBackground(ColoringController.getFirstColor());
-        PanelsController.setKButtonlight(bCheckVisa,ColoringController.getGreenColor());
-        PanelsController.addActionToKButton(bCheckVisa, "CheckVisa");
-        add(bCheckVisa);
-
-        bCancelAddVisa = new KButton();
-        bCancelAddVisa.setText("Cancel");
-        bCancelAddVisa.setBounds(400, 540, 150, 40);
-        PanelsController.setKButtonlight(bCancelAddVisa,ColoringController.getRedColor());
-        PanelsController.addActionToKButton(bCancelAddVisa, "Cancel addVisa");
-        add(bCancelAddVisa);
+            bCheckVisa.setBounds(80, 540, 150, 40);
+            bCheckVisa.setText("Check");
+            bCheckVisa.setBackground(ColoringController.getFirstColor());
+            PanelsController.setKButtonlight(bCheckVisa,ColoringController.getGreenColor());
+            PanelsController.addActionToKButton(bCheckVisa, "CheckVisa");
+            add(bCheckVisa);
+            bCancelAddVisa = new KButton();
+            bCancelAddVisa.setText("Cancel");
+            bCancelAddVisa.setBounds(400, 540, 150, 40);
+            PanelsController.setKButtonlight(bCancelAddVisa,ColoringController.getRedColor());
+            PanelsController.addActionToKButton(bCancelAddVisa, "Cancel addVisa");
+            add(bCancelAddVisa);
             setBounds(610, 50, 590, 610);
             setBackground(ColoringController.getSecoundColorLight());
             setLayout(null);
