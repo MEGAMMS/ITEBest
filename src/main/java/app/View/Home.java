@@ -78,7 +78,7 @@ public class Home extends JPanel {
         setBounds(60, 50, 1220, 670);
         setLayout(new BorderLayout());
 
-        mainPanel.setPreferredSize(new Dimension(1200, size + 400));
+        mainPanel.setPreferredSize(new Dimension(1200, size + 350));
         mainPanel.add(tHome);
         mainPanel.add(banner);
         // mainPanel.add(menu);
