@@ -6,7 +6,6 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import com.kitfox.svg.Style;
 
 
 public class LabelController {

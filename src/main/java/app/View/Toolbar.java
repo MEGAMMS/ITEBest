@@ -1,14 +1,11 @@
 package main.java.app.View;
 
-import java.awt.BorderLayout;
 import java.io.IOException;
-
 import javax.swing.JPanel;
 
 import main.java.app.Controller.AnimatedPanel;
 import main.java.app.Controller.ColoringController;
-import main.java.app.Controller.ImageController;
-import main.java.app.Controller.PanelsController;
+
 
 public class Toolbar extends JPanel {
     public Toolbar() throws IOException {

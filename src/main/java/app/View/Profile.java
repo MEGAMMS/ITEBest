@@ -1,23 +1,15 @@
 package main.java.app.View;
 
 import java.awt.Font;
-
-import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.text.StyleConstants.ColorConstants;
-
 import com.k33ptoo.components.KButton;
-
-import main.java.app.Controller.AnimatedPanel;
 import main.java.app.Controller.ColoringController;
 import main.java.app.Controller.FontController;
 import main.java.app.Controller.ImageController;
 import main.java.app.Controller.LabelController;
 import main.java.app.Controller.PanelsController;
-import main.java.app.Model.Database;
 import main.java.app.Model.User;
 
 public class Profile extends JPanel {
@@ -34,11 +26,19 @@ public class Profile extends JPanel {
 
     public void updateData(User user) {
         this.user = user;
-        if (this.user.getVisa() == null)
+        if (user.creditcard == null){
             right.setVisible(false);
-        name.setText("<html>" + user.getName() + "\r\n" + "</html>");
-        email.setText("<html>" + "Email: " + user.getEmail() + "\r\n" + "</html>");
-        password.setText("<html>" + "Password: " + user.getPassword() + "\r\n" + "</html>");
+            dontPayM.setVisible(true);
+        }else{
+            right.setVisible(true);
+            dontPayM.setVisible(false);
+            idCard.setText(user.creditcard.getID());
+        }
+            
+        name.setText("<html>" + this.user.getName()+"\r\n" + "</html>");
+        email.setText("<html>" +"Email: "+ this.user.getEmail()+"\r\n" + "</html>");
+        password.setText("<html>" +"Password: "+ this.user.getPassword()+"\r\n" + "</html>");
+        
     }
 
     private void initComponents() {
@@ -65,7 +65,7 @@ public class Profile extends JPanel {
         KButton loguot = new KButton();
         PanelsController.setKButtonlight(loguot, ColoringController.getSecoundColorDark1());
         PanelsController.addActionToKButton(loguot, "Log out");
-        loguot.setBounds(10, 500, 200, 50);
+        loguot.setBounds(10, 540, 200, 50);
         loguot.setLayout(null);
         JLabel imgLogout = ImageController.addPhoto("logout.png");
         imgLogout.setBounds(10, 5, 40, 40);
@@ -87,11 +87,12 @@ public class Profile extends JPanel {
         idCard.setHorizontalAlignment(SwingConstants.CENTER);
         idCard.setBounds(0, 400, 590, 50);
         right.add(idCard);
-
-        addVisaCard = new VisaCardAdd();
+        
+        addVisaCard=new VisaCardAdd();
         add(addVisaCard);
-
-        dontPayM = new JPanel();
+        add(right);
+        right.setVisible(false);
+        dontPayM=new JPanel();
         dontPayM.setLayout(null);
         dontPayM.setBackground(ColoringController.getSecoundColor());
         dontPayM.setBounds(610, 50, 590, 610);
