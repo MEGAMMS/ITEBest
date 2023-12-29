@@ -13,17 +13,16 @@ public class Toolbar extends JPanel {
     }
 
     private void initComponents() throws IOException {
-    this.setBounds(0, 0, 60, 1000);
+        this.setBounds(0, 0, 60, 1000);
         this.setBackground(ColoringController.getFirstColorDark2());
         this.setLayout(null);
-        //
-        AnimatedPanel profile = new AnimatedPanel("profile.png", "Profile", 0, 70, 60, 100);
-        this.add(profile);
-        this.add(new AnimatedPanel("movie.png", "MoviesListView", 0, 170, 60, 100));
-        this.add(new AnimatedPanel("fire.png", "", 0, 270, 60, 100));
-        this.add(new AnimatedPanel("home.png", "Home", 0, 370, 60, 100));
-        this.add(new AnimatedPanel("ticket.png", "TicketManager", 0, 470, 60, 100));
-        this.add(new AnimatedPanel("setting.png", "", 0, 570, 60, 100));
+        int hightOfButton = 130;
+        int startY = 50;
+        this.add(new AnimatedPanel("profile.png", "Profile", 0, startY, 60, hightOfButton));
+        this.add(new AnimatedPanel("movie.png", "MoviesListView", 0, startY + hightOfButton, 60, hightOfButton));
+        this.add(new AnimatedPanel("home.png", "Home", 0, startY + hightOfButton * 2, 60, hightOfButton));
+        this.add(new AnimatedPanel("ticket.png", "TicketManager", 0, startY + hightOfButton * 3, 60, hightOfButton));
+        this.add(new AnimatedPanel("setting.png", "", 0, startY + hightOfButton * 4, 60, hightOfButton));
 
         // -----------------------------
     }
