@@ -142,10 +142,10 @@ public class TicketAdd extends JPanel {
         JLabel imgNeedLogin=ImageController.addPhoto("needLogin.png", 480, 320);
             imgNeedLogin.setBounds(150, 0, 480, 320);
         KButton clickForLongin = new KButton();
-        clickForLongin.setText("Rejecter");
+        clickForLongin.setText("Regecter");
         clickForLongin.setBounds(270, 136, 150, 30);
         PanelsController.setKButtonlight(clickForLongin,ColoringController.getFirstColor());
-        PanelsController.addActionToKButton(clickForLongin, "AddVisaCard");
+        PanelsController.addActionToKButton(clickForLongin, "Regecter");
         checkLogin.add(clickForLongin);
         checkLogin.add(imgNeedLogin);
         // ---------Comments---------
