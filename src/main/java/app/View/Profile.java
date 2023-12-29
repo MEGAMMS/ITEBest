@@ -29,6 +29,7 @@ public class Profile extends JPanel {
         name.setText("<html>" + user.getName()+"\r\n" + "</html>");
         email.setText("<html>" +"Email: "+ user.getEmail()+"\r\n" + "</html>");
         password.setText("<html>" +"Password: "+ user.getPassword()+"\r\n" + "</html>");
+        idCard.setText(user.getvisa().getID());
     }
     private void initComponents() {
         left=new JPanel();
@@ -78,10 +79,11 @@ public class Profile extends JPanel {
         idCard.setHorizontalAlignment(SwingConstants.CENTER);
         idCard.setBounds(0, 400, 590, 50);
         right.add(idCard);
-
+        
         addVisaCard=new VisaCardAdd();
         add(addVisaCard);
-        
+        add(right);
+        right.setVisible(false);
         dontPayM=new JPanel();
         dontPayM.setLayout(null);
         dontPayM.setBackground(ColoringController.getSecoundColor());
