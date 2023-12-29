@@ -9,6 +9,7 @@ public class User implements Serializable{
         this.name = name;
         this.email = email;
         this.password = password;
+        
     }
     private int id;
     private String name;
@@ -45,5 +46,9 @@ public class User implements Serializable{
     }
     public void setPassword(String password) {
         this.password = password;
+    }
+    @Override
+    public String toString() {
+        return "Name:" + name;
     }
 }

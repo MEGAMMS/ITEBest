@@ -7,28 +7,21 @@ public class Movie implements Serializable {
     public Movie(int id, String title, String poster, String tag, String description) {
         this.id = id;
         this.title = title;
-        this.poster ="\\MoviesPosters\\"+ poster;
+        this.poster = "\\MoviesPosters\\" + poster;
         this.tag = tag;
         this.description = description;
-        this.cinema=Database.cinema.get(0);
+        this.cinema = Database.halls.get(0);
+        this.comments=new ArrayList<>();
     }
-    public Movie(int id, String title, String poster, String tag, String description,Cinema cinema) {
+
+    public Movie(int id, String title, String poster, String tag, String description, Cinema cinema) {
         this.id = id;
         this.title = title;
-        this.poster ="\\MoviesPosters\\"+ poster;
+        this.poster = "\\MoviesPosters\\" + poster;
         this.tag = tag;
         this.description = description;
-        this.cinema=cinema;
-    }
-    public Movie(int id, String title, String director, String description, int showTimeId, ArrayList<Rate> rates,
-            Cinema cinema) {
-        this.id = id;
-        this.title = title;
-        this.director = director;
-        this.description = description;
-        this.showTimeId = showTimeId;
-        this.rates = rates;
         this.cinema = cinema;
+        this.comments=new ArrayList<>();
     }
 
     public Movie(int id, String title, String poster) {
@@ -37,6 +30,7 @@ public class Movie implements Serializable {
         this.poster = poster;
         this.tag = "";
         this.description = "";
+        this.comments=new ArrayList<>();
     }
 
     private String tag;
@@ -45,17 +39,27 @@ public class Movie implements Serializable {
     private String title;
     private String director;
     private String description;
-    private int showTimeId;
     private ArrayList<Rate> rates;
+    public ArrayList<Showtime> showtimes;
+    public ArrayList<Comment>comments;
+    public ArrayList<Showtime> getShowtimes() {
+        return showtimes;
+    }
+
+    public void setShowtimes(ArrayList<Showtime> showtimes) {
+        this.showtimes = showtimes;
+    }
+
     private Cinema cinema;
-    
+
     private int attendancePrice;
 
     public int getprice() {
         return this.attendancePrice;
     }
-     public void setprice(int p) {
-        this.attendancePrice=p;
+
+    public void setprice(int p) {
+        this.attendancePrice = p;
     }
 
     public void setTag(String tag) {
@@ -102,10 +106,6 @@ public class Movie implements Serializable {
         this.description = description;
     }
 
-    public int getShowTimeId() {
-        return showTimeId;
-    }
-
     public ArrayList<Rate> getRates() {
         return rates;
     }
@@ -120,10 +120,6 @@ public class Movie implements Serializable {
 
     public void setCinema(Cinema cinema) {
         this.cinema = cinema;
-    }
-
-    public void setShowTimeId(int showTimeId) {
-        this.showTimeId = showTimeId;
     }
 
 }
