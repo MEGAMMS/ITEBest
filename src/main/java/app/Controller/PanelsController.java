@@ -45,6 +45,7 @@ public class PanelsController {
         kButton.setkAllowGradient(false);
         kButton.setFont(FontController.getSecondryFont(Font.BOLD, 22));
         kButton.setkBackGroundColor(ColoringController.getWhiteColor());
+        kButton.setForeground(color);
         kButton.setkForeGround(color);
         kButton.setkHoverColor(color);
         kButton.setkPressedColor(color);
@@ -341,6 +342,15 @@ public class PanelsController {
                         
                         switchPanels("Home");
                         MainFrame.toolbar.setVisible(true);
+                        break;
+                    case "Cancel addVisa":
+                        MainFrame.PProfile.addVisaCard.setVisible(false);
+                        if(Database.currUser.getvisa()==null)
+                            MainFrame.PProfile.dontPayM.setVisible(true);
+                        break;
+                    case "AddVisaCard":
+                        MainFrame.PProfile.dontPayM.setVisible(false);
+                        MainFrame.PProfile.addVisaCard.setVisible(true);
                         break;
                     case "Cancel Signup":
                         MainFrame.PSignup.Tname.setText("");
