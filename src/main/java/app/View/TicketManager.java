@@ -9,6 +9,7 @@ import javax.swing.JScrollPane;
 import main.java.app.Controller.ColoringController;
 import main.java.app.Controller.FontController;
 import main.java.app.Model.Database;
+import main.java.app.Model.Showtime;
 import main.java.app.Model.Ticket;
 
 public class TicketManager extends JPanel {
@@ -36,6 +37,7 @@ public class TicketManager extends JPanel {
         Top.add(tMovie);
         // ---------------------------
         // -----------Body------------
+        System.out.println(Database.movies.get(0).showtimes.get(0));
         Ticket t = new Ticket(2, Database.movies.get(0), Database.users.get(0),Database.movies.get(0).showtimes.get(0));
         TicketCard testTicket = new TicketCard(t);
         // ---------------------------.
@@ -63,7 +65,7 @@ public class TicketManager extends JPanel {
             title.setBounds(60, 20, 1000, 40);
             title.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
             this.add(title);
-            JLabel showtime = new JLabel("Showtime:" + "hhh");
+            JLabel showtime = new JLabel("Showtime:" + ticket.getShowtime());
             showtime.setBounds(300, 20, 1000, 40);
             showtime.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
             this.add(showtime);
