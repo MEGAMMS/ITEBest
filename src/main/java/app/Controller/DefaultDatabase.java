@@ -87,8 +87,6 @@ public class DefaultDatabase {
                 "High schoolers Mitsuha and Taki are complete strangers living separate lives. But one night, they suddenly switch places. Mitsuha wakes up in Taki’s body, and he in hers. This bizarre occurrence continues to happen randomly, and the two must adjust their lives around each other."));
         Database.movies.add(new Movie(Database.movies.size(), "LordOfTheRings", "LordOfTheRings.jpg", "Fantasy",
                 "Young hobbit Frodo Baggins, after inheriting a mysterious ring from his uncle Bilbo, must leave his home in order to keep it from falling into the hands of its evil creator. Along the way, a fellowship is formed to protect the ringbearer and make sure that the ring arrives at its final destination: Mt. Doom, the only place where it can be destroyed."));
-        Database.movies.add(new Movie(Database.movies.size(), "The Dark Knight", "The Dark Knight.jpg", "Action",
-                "Batman raises the stakes in his war on crime. With the help of Lt. Jim Gordon and District Attorney Harvey Dent, Batman sets out to dismantle the remaining criminal organizations that plague the streets. The partnership proves to be effective, but they soon find themselves prey to a reign of chaos unleashed by a rising criminal mastermind known to the terrified citizens of Gotham as the Joker."));
         ArrayList<Showtime> showtimes = new ArrayList<>();
         showtimes.add(new Showtime(LocalDateTime.of(2024, 1, 15, 10, 0)));
         showtimes.add(new Showtime(LocalDateTime.of(2024, 1, 15, 12, 0)));

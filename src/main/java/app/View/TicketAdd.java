@@ -18,6 +18,8 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 import javax.swing.plaf.basic.BasicComboBoxUI;
 
+import com.k33ptoo.components.KButton;
+
 import main.java.app.Controller.ColoringController;
 import main.java.app.Controller.FontController;
 import main.java.app.Controller.ImageController;
@@ -38,7 +40,8 @@ public class TicketAdd extends JPanel {
     public JPanel BookingPanel;public CommentsMovie CommentsPanel;
     public JPanel chairs;
     public JPanel menu;
-
+    public JPanel checkLogin;
+    public JPanel addTick;
     public void updateData(int id) {
         this.movie = Database.movies.get(id);
         this.titleM.setText(movie.getTitle());
@@ -130,10 +133,24 @@ public class TicketAdd extends JPanel {
         addCommentsPanel.add(LabelController.addLabel("Comments", FontController.getSecondryFont(Font.BOLD, 18)));
         PanelsController.addActionToButton(addCommentsPanel, "ViewPanelComments");
         menu.add(addCommentsPanel);
-
+        //------checkLogin---------
+        checkLogin=new JPanel();
+        checkLogin.setBounds(10, 280, 780, 320);
+        checkLogin.setBackground(ColoringController.getSecoundColor());
+        checkLogin.setLayout(null);
+        body.add(checkLogin);
+        JLabel imgNeedLogin=ImageController.addPhoto("needLogin.png", 480, 320);
+            imgNeedLogin.setBounds(150, 0, 480, 320);
+        KButton clickForLongin = new KButton();
+        clickForLongin.setText("Regecter");
+        clickForLongin.setBounds(270, 136, 150, 30);
+        PanelsController.setKButtonlight(clickForLongin,ColoringController.getFirstColor());
+        PanelsController.addActionToKButton(clickForLongin, "Regecter");
+        checkLogin.add(clickForLongin);
+        checkLogin.add(imgNeedLogin);
         // ---------Comments---------
         CommentsPanel = new CommentsMovie(movie);
-
+        
         body.add(CommentsPanel);
         CommentsPanel.setVisible(false);
         // ---------Booking---------
@@ -170,7 +187,7 @@ public class TicketAdd extends JPanel {
         BookingPanel.add(numberTicketFree);
         // -----------------------
         // ---------Buttons---------
-        JPanel addTick = new JPanel();
+        addTick = new JPanel();
         JLabel bttickT = new JLabel("Add");
         bttickT.setForeground(ColoringController.getWhiteColor());
         bttickT.setHorizontalAlignment(SwingConstants.CENTER);
@@ -199,6 +216,9 @@ public class TicketAdd extends JPanel {
         body.add(BookingPanel);
         body.add(addTick);
         body.add(closeP);
+        menu.setVisible(true);
+        BookingPanel.setVisible(false);
+        CommentsPanel.setVisible(false);
         body.setBackground(ColoringController.getSecoundColor());
         // ---------------------------
         // ----------Buttom-----------

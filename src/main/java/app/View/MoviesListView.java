@@ -40,13 +40,14 @@ public class MoviesListView extends JPanel {
         mainPanel.setBackground(ColoringController.getWhiteColor());
         // ----------Top-------------
         JPanel Top = new JPanel();
-        Top.setBackground(ColoringController.getSecoundColor());
+        Top.setBackground(ColoringController.getSecoundColorDark2());
         Top.setBounds(10, 10, 1180, 35);
         Top.setLayout(null);
 
         JLabel tMovie = new JLabel("Movies Page");
         tMovie.setBounds(510, 0, 300, 35);
         tMovie.setFont(FontController.getPrimaryFont(Font.BOLD, 29));
+        tMovie.setForeground(ColoringController.getWhiteColor());
         Top.add(tMovie);
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(Tags.tags.toArray(new String[0]));
         JComboBox<String> comboBox = new JComboBox<>(model);
@@ -67,7 +68,7 @@ public class MoviesListView extends JPanel {
         // ---------------------------
         mainPanel.setPreferredSize(new Dimension(1200, bodies.get("All").getHeight() + 100));
         mainPanel.add(Top);
-
+        mainPanel.setBackground(ColoringController.getSecoundColorLight());
         JScrollPane scrollPane = new JScrollPane(mainPanel);
         scrollPane.getVerticalScrollBar().setUnitIncrement(40);
         setLayout(new BorderLayout());
