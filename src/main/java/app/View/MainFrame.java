@@ -1,6 +1,4 @@
 package main.java.app.View;
-
-import java.awt.Panel;
 import java.io.IOException;
 
 import javax.swing.JFrame;

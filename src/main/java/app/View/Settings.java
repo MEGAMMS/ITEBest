@@ -4,7 +4,7 @@ import javax.swing.JPanel;
 
 public class Settings  extends JPanel{
     Settings(){
-
+        initComponents();
     }
     private void initComponents(){
 

@@ -1,14 +1,5 @@
 package main.java.app.Controller;
 
-import java.util.ArrayList;
-
-import main.java.app.Model.Database;
-import main.java.app.Model.Movie;
-import main.java.app.Model.Showtime;
-import main.java.app.Model.Ticket;
-import main.java.app.Model.User;
-import main.java.app.Model.Visa;
-
 public class TicketController {
     // public String Booking(Movie movie, User user, ArrayList<Integer> n, Showtime showtime) {
     //     if (n.equals(null) || showtime.equals(null)) {
