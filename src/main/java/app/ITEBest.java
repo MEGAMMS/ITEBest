@@ -11,7 +11,7 @@ public class ITEBest {
     public static MainFrame mainFrame;
 
     public static void main(String[] args) throws InterruptedException, IOException {
-        //new DefaultDatabase();
+        new DefaultDatabase();
         Database.visas.add(new Visa("1111-2222-3333-4444", "1234",15000));
         mainFrame = new MainFrame();
         Database.save();

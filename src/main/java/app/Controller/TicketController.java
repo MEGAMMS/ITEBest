@@ -9,7 +9,7 @@ import main.java.app.Model.Visa;
 
 public class TicketController {
     public String Book(Movie movie, User user, int count, Showtime showtime) {
-        if (count == 0 || showtime.equals(null)) {
+        if (count == 0 || showtime ==null) {
             return "please fill all the required information";
         }
         if (movie.getPrice() * count > user.getVisa().getNetworth()) {
