@@ -16,6 +16,7 @@ import main.java.app.Controller.ColoringController;
 import main.java.app.Controller.FontController;
 import main.java.app.Controller.ImageController;
 import main.java.app.Controller.PanelsController;
+import main.java.app.Controller.RoundedPanel;
 
 public class Login extends JPanel {
     JPanel center;
@@ -35,15 +36,8 @@ public class Login extends JPanel {
 
         info = new JPanel();
 
-        center = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                g.setColor(new Color(255, 255, 255, 200)); // تعيين لون خلفية مع شفافية
-                g.fillRect(0, 0, getWidth(), getHeight());
-            }
-        };
-        center.setOpaque(false); // جعل اللوحة شفافة
+        center = new RoundedPanel(50,new Color(255, 255, 255, 200));
+        center.setOpaque(false); 
         center.setBounds(200, 150, 800, 400);
         center.setLayout(null);
         JLabel top = new JLabel("Login");
@@ -51,7 +45,7 @@ public class Login extends JPanel {
         top.setForeground(ColoringController.getBlackColor());
         top.setFont(FontController.getSecondryFont(Font.BOLD, 43));
         top.setHorizontalAlignment(SwingConstants.CENTER);
-        center.setBorder(PanelsController.roundedBorder(50));
+        //center.setBorder(PanelsController.roundedBorder(50));
         center.add(top);
         JLabel back = ImageController.addPhoto("backlogin.jpg", 1280, 670);
         back.setBounds(0, 0, 1280, 670);

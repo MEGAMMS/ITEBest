@@ -39,10 +39,7 @@ public class MainFrame extends JFrame {
         setUndecorated(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        Border roundedBorder = new RoundedBorder(10);
-        mainPanel.setBorder(roundedBorder);
         setLayout(null);
-        mainPanel.setBorder(roundedBorder);
         mainPanel.setLayout(null);
 
         MainPanels.addPanel(PHome);

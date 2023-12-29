@@ -17,8 +17,8 @@ import main.java.app.Model.MainPanels;
 import main.java.app.View.RoundedBorder;
 
 public class PanelsController {
-    public static Border roundedBorder(int n) {
-        return new RoundedBorder(n);
+    public static JPanel roundedBorder(int n) {
+        return new RoundedPanel(n);
     }
 
     public static void setKButtonDark(KButton kButton) {
@@ -341,6 +341,7 @@ public class PanelsController {
                     case "Log out":
                         Database.currUser = null;
                         Database.save();
+                        MainFrame.toolbar.setVisible(false);
                         switchPanels("Login");
                         break;
                     case "Regecter":
