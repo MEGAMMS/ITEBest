@@ -40,8 +40,8 @@ public class TicketAdd extends JPanel {
     public JPanel addTick;
     public JLabel MsgError,priceMovie,priceAll;
     //HHH
-    public void updateData(Movie movie) {
-        this.movie = movie;
+    public void updateData(int id) {
+        this.movie = Database.movies.get(id);
         this.titleM.setText(movie.getTitle());
         JLabel label = ImageController.addPhoto(movie.getPoster(), 400, 600);
         this.poster.setIcon(label.getIcon());

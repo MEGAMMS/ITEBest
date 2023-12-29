@@ -105,7 +105,7 @@ public class PanelsController {
                         break;
                     case "TicketAdd":
                         int id = Integer.parseInt(button.getName());
-                        MainFrame.PTicketAdd.updateData(Database.movies.get(id));
+                        MainFrame.PTicketAdd.updateData(id);
                         switchPanels("TicketAdd");
                         break;
                     case "Tick":
@@ -125,7 +125,7 @@ public class PanelsController {
                                 MainFrame.PTicketAdd.MsgError.setVisible(true);
                                 System.out.println("Booked successfully ");
                                 MainFrame.PTicketAdd.MsgError.setForeground(ColoringController.getGreenColor());
-                                MainFrame.PTicketAdd.updateData(MainFrame.PTicketAdd.movie);
+                                MainFrame.PTicketAdd.updateData(Database.movies.indexOf(MainFrame.PTicketAdd.movie));
                             }
                         }
                         break;
@@ -281,7 +281,7 @@ public class PanelsController {
                             MainFrame.PTicketAdd.checkLogin.setVisible(true);
                             MainFrame.PTicketAdd.addTick.setVisible(false);
                         } else {
-                            MainFrame.PTicketAdd.updateData(Database.movies.get(id));
+                            MainFrame.PTicketAdd.updateData(id);
                             MainFrame.PTicketAdd.BookingPanel.setVisible(true);
                             MainFrame.PTicketAdd.checkLogin.setVisible(false);
                             MainFrame.PTicketAdd.addTick.setVisible(true);
