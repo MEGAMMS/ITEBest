@@ -7,10 +7,12 @@ public class Visa implements Serializable{
     private int networth;
     private String pass;
     private User user;
+
     public void setuser(User user) {
         this.user = user;
     }
-     public User getuser() {
+
+    public User getuser() {
         return this.user;
     }
     public Visa(String id,String p,int networth){
@@ -19,6 +21,7 @@ public class Visa implements Serializable{
         this.networth=networth;
         this.user=null;
     }
+
     public void setpass(String pass) {
         this.pass = pass;
     }
@@ -26,18 +29,20 @@ public class Visa implements Serializable{
     public String getpass() {
         return this.pass;
     }
+
     public void setID(String id) {
-         this.id = id;
+        this.id = id;
     }
 
     public String getID() {
         return this.id;
     }
-    public void setnetworth(int n) {
-        this.networth=n;
+
+    public void setNetworth(int n) {
+        this.networth = n;
     }
 
-    public int getnetworth() {
+    public int getNetworth() {
         return this.networth;
     }
 }

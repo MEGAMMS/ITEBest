@@ -2,15 +2,14 @@ package main.java.app.Model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 public class Showtime implements Serializable {
     public LocalDateTime date;
-    public ArrayList<Integer> seats;
+    public int seats;
 
     public Showtime(LocalDateTime dateShowtimes) {
         this.date = dateShowtimes;
-        seats = new ArrayList<>();
+        seats = 64;
     }
 
     public LocalDateTime getDate() {
@@ -21,11 +20,11 @@ public class Showtime implements Serializable {
         this.date = dateShowtimes;
     }
 
-    public ArrayList<Integer> getSeats() {
+    public int getSeats() {
         return seats;
     }
 
-    public void setSeats(ArrayList<Integer> seats) {
+    public void setSeats(int seats) {
         this.seats = seats;
     }
 

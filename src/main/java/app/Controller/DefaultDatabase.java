@@ -12,7 +12,8 @@ import main.java.app.Model.Showtime;
 public class DefaultDatabase {
     public DefaultDatabase() {
         Database.delete();
-        UserController.AddUser("Mouaaz", "mmsweid@gmail.com", "123456789");
+        UserController.AddUser("admin", "admin@gmail.com", "123456789");
+        Database.currUser = Database.users.get(0);
         Database.halls.add(new Cinema(Database.halls.size(), "Mouaaz Cinema", Database.movies));
         Database.movies.add(new Movie(Database.movies.size(), "Rick And Mortey", "RickandMortey.jpg", "Comedy",
                 "Rick is a mentally-unbalanced but scientifically gifted old man who has recently reconnected with his family. He spends most of his time involving his young grandson Morty in dangerous, outlandish adventures throughout space and alternate universes. Compounded with Morty's already unstable family life, these events cause Morty much distress at home and school."));

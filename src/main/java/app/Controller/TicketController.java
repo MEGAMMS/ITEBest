@@ -1,26 +1,38 @@
 package main.java.app.Controller;
 
-public class TicketController {
-    // public String Booking(Movie movie, User user, ArrayList<Integer> n, Showtime showtime) {
-    //     if (n.equals(null) || showtime.equals(null)) {
-    //         return "please fill all the required information";
-    //     }
-    //     if (movie.getprice() * n.size() > user.getvisa().getnetworth()) {
-    //         return "Unfortunately you can not afford this transaction";
-    //     }
-    //     for (int i = 0; i < n.size(); i++) {
-    //         movie.getCinema().seats.set(n.get(i), 0);
-    //         user.getvisa().setnetworth(user.getvisa().getnetworth() - movie.getprice());
-    //         Database.users.get(user.getId()).tickets.add(new Ticket((movie.getId() * 10) + n.get(i), movie, user, showtime));
-    //     }
-    //     return "Booked successfully";
-    // }
+import main.java.app.Model.Database;
+import main.java.app.Model.Movie;
+import main.java.app.Model.Showtime;
+import main.java.app.Model.Ticket;
+import main.java.app.Model.User;
+import main.java.app.Model.Visa;
 
-    // public String Withdraw(Ticket t, User u, Movie m) {
-    //     u.getvisa().setnetworth(u.getvisa().getnetworth() + t.getmovie().getprice());
-    //     m.getCinema().seats.set(t.getId() - (m.getId() * 10), 1);
-    //     Database.users.get(u.getId()).tickets.remove(t);
-    //     return "ticket withdrawn";
-    // }
+public class TicketController {
+    public String Book(Movie movie, User user, int count, Showtime showtime) {
+        if (count == 0 || showtime.equals(null)) {
+            return "please fill all the required information";
+        }
+        if (movie.getPrice() * count > user.getVisa().getNetworth()) {
+            return "Unfortunately you can not afford this transaction";
+        }
+        showtime.seats -= count;
+        for (int i = 0; i < count; i++) {
+            user.getVisa().setNetworth(user.getVisa().getNetworth() - movie.getPrice());
+            user.tickets.add(new Ticket(user.tickets.size(), movie, user, showtime));
+        }
+        Database.save();
+        return "Booked successfully";
+    }
+
+    public String Unbook(Ticket ticket) {
+        User user = ticket.getUser();
+        Visa visa = user.getVisa();
+        Movie movie = ticket.getMovie();
+        Showtime showtime = ticket.getShowtime();
+        visa.setNetworth(visa.getNetworth() + movie.getPrice());
+        showtime.seats++;
+        user.tickets.remove(ticket);
+        return "Ticket withdrawn";
+    }
 
 }
