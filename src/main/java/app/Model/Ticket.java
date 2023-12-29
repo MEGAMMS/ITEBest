@@ -2,24 +2,24 @@ package main.java.app.Model;
 
 import java.io.Serializable;
 
-public class Ticket implements Serializable{
+public class Ticket implements Serializable {
     private int id;
     private User user;
     private Showtime showtime;
     private Movie movie;
-    public Ticket(int id, Movie m, User u,Showtime showtime) {
+
+    public Ticket(int id, Movie m, User u, Showtime showtime) {
         this.id = id;
-        this.user=u;
+        this.user = u;
         this.movie = m;
         this.showtime = showtime;
     }
-
 
     public void setmovie(Movie m) {
         this.movie = m;
     }
 
-    public Movie getmovie() {
+    public Movie getMovie() {
         return this.movie;
     }
 
@@ -38,10 +38,12 @@ public class Ticket implements Serializable{
     public void setUser(User user) {
         this.user = user;
     }
-    public  Showtime getShowtime() {
+
+    public Showtime getShowtime() {
         return showtime;
     }
+
     public void setShowtime(Showtime showTimeId) {
         this.showtime = showTimeId;
-    }    
+    }
 }
