@@ -1,27 +1,118 @@
 package main.java.app.View;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.text.ParseException;
+
+import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.text.MaskFormatter;
 
-import com.kitfox.svg.Font;
+import com.k33ptoo.components.KButton;
+
+import java.awt.Font;
 
 import main.java.app.Controller.ColoringController;
 import main.java.app.Controller.FontController;
 import main.java.app.Controller.ImageController;
 import main.java.app.Controller.LabelController;
+import main.java.app.Controller.PanelsController;
 
 public class VisaCardAdd extends JPanel{
+    KButton bCheckVisa;
+    KButton bCancelAddVisa;
     VisaCardAdd(){
         initComponents();
     }
     private void initComponents(){
+        try {
+            add(LabelController.addLabel("Add Visa Card",FontController.getSecondryFont(Font.BOLD, 32) , 10, 20, 570, 40));
+            JLabel img2=ImageController.addPhoto("addVisa.png", 450, 300);
+            img2.setBounds(100, 10, 400, 400);
+            add(img2);
+            //-----------Id Card-------------
+            add(LabelController.addLabel("Enter Id Card: ",FontController.getSecondryFont(Font.BOLD, 20) , 40, 350, 140, 50));
+            MaskFormatter maskFormatter = new MaskFormatter("####-####-####-####");
+            JFormattedTextField IdCardText = new JFormattedTextField(maskFormatter);
+            IdCardText.setBounds(190, 360, 320, 35);
+            IdCardText.setHorizontalAlignment(SwingConstants.CENTER);
+            IdCardText.setFont(FontController.getSecondryFont(Font.BOLD, 20));
+            add(IdCardText);
+            //-----------Password-------------
+            add(LabelController.addLabel("Enter PIN Password: ",FontController.getSecondryFont(Font.BOLD, 20) , 40, 420, 200, 50));
+            MaskFormatter maskFormatterPass = new MaskFormatter("####");
+            JFormattedTextField password = new JFormattedTextField(maskFormatterPass);
+            password.setBounds(300, 430, 100, 35);
+            password.setHorizontalAlignment(SwingConstants.CENTER);
+            password.setFont(FontController.getSecondryFont(Font.BOLD, 20));
+            add(password);
+
+           
+
+            bCheckVisa = new KButton();
+        bCheckVisa.setBounds(80, 540, 150, 40);
+        bCheckVisa.setText("Check");
+        bCheckVisa.setBackground(ColoringController.getFirstColor());
+        PanelsController.setKButtonlight(bCheckVisa,ColoringController.getGreenColor());
+        PanelsController.addActionToKButton(bCheckVisa, "CheckVisa");
+        add(bCheckVisa);
+
+        bCancelAddVisa = new KButton();
+        bCancelAddVisa.setText("Cancel");
+        bCancelAddVisa.setBounds(400, 540, 150, 40);
+        PanelsController.setKButtonlight(bCancelAddVisa,ColoringController.getRedColor());
+        PanelsController.addActionToKButton(bCancelAddVisa, "Cancel addVisa");
+        add(bCancelAddVisa);
+            setBounds(610, 50, 590, 610);
+            setBackground(ColoringController.getSecoundColorLight());
+            setLayout(null);
         
-        JLabel img2=ImageController.addPhoto("visacard.png", 400, 400);
-        img2.setBounds(100, 10, 400, 400);
-        setBounds(610, 50, 590, 610);
-        setBackground(ColoringController.getSecoundColorLight());
-        JLabel title=new JLabel("Add Visa Card");
-       // title.setFont(FontController.getSecondryFont(Font.TAG_NAME, ABORT));
-        add(img2);
+        
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
+        
     }
 }
+class JPlaceholderTextField extends JTextField {
+    private String placeholder;
+
+    public JPlaceholderTextField(String placeholder) {
+        this.placeholder = placeholder;
+        addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (getText().isEmpty()) {
+                    setForeground(Color.BLACK);
+                    setText("");
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (getText().isEmpty()) {
+                    setForeground(Color.GRAY);
+                    setText(placeholder);
+                }
+            }
+        });
+        setForeground(Color.GRAY);
+        setText(placeholder);
+    }
+
+    @Override
+    public String getText() {
+        String typed = super.getText();
+        return typed.equals(placeholder) ? "" : typed;
+    }
+}
+
