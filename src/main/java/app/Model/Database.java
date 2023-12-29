@@ -14,7 +14,7 @@ public class Database implements Serializable {
     public static ArrayList<User> users = new ArrayList<User>();
     public static ArrayList<Movie> movies = new ArrayList<Movie>();
 
-    public static ArrayList<Cinema> cinema = new ArrayList<Cinema>();
+    public static ArrayList<Cinema> halls = new ArrayList<Cinema>();
     public static ArrayList<Visa> visas = new ArrayList<Visa>();
     //public static ArrayList<Cinema> halls = new ArrayList<Cinema>();
     public static User currUser;
