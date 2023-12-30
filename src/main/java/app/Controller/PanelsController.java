@@ -10,35 +10,48 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
-import javax.xml.crypto.Data;
-
 import com.k33ptoo.components.KButton;
-
-import main.java.app.ITEBest;
+import main.java.app.Model.Comment;
 import main.java.app.Model.Database;
 import main.java.app.Model.MainPanels;
-import main.java.app.View.RoundedBorder;
 
 public class PanelsController {
-    public static Border roundedBorder(int n) {
-        return new RoundedBorder(n);
+    public static JPanel roundedBorder(int n) {
+        return new RoundedPanel(n);
     }
 
-    public static void setButtonN(KButton kButton) {
+    public static void setKButtonDark(KButton kButton) {
         kButton.setkAllowGradient(false);
         kButton.setFont(FontController.getSecondryFont(Font.BOLD, 22));
-        kButton.setkBackGroundColor(ColoringController.getBasicColor());
+        kButton.setkBackGroundColor(ColoringController.getFirstColorDark2());
         kButton.setkForeGround(ColoringController.getWhiteColor());
         kButton.setkHoverColor(ColoringController.getWhiteColor());
-        kButton.setkPressedColor(ColoringController.getLightBasicColor());
-        kButton.setkSelectedColor(ColoringController.getBasicColor());
+        kButton.setkPressedColor(ColoringController.getFirstColorLight1());
+        kButton.setkSelectedColor(ColoringController.getFirstColorDark2());
         ;
-        kButton.setkHoverForeGround(ColoringController.getBasicColor());
+        kButton.setkHoverForeGround(ColoringController.getFirstColorDark2());
         kButton.setBorder(null);
         kButton.setkFillButton(true);
         kButton.setkBorderRadius(30);
         kButton.setkIndicatorThickness(2);
-        kButton.setkIndicatorColor(Color.BLACK);
+        kButton.setkIndicatorColor(ColoringController.getBlackColor());
+    }
+
+    public static void setKButtonlight(KButton kButton, Color color) {
+        kButton.setkAllowGradient(false);
+        kButton.setFont(FontController.getSecondryFont(Font.BOLD, 22));
+        kButton.setkBackGroundColor(ColoringController.getWhiteColor());
+        kButton.setForeground(color);
+        kButton.setkForeGround(color);
+        kButton.setkHoverColor(color);
+        kButton.setkPressedColor(color);
+        kButton.setkSelectedColor(ColoringController.getWhiteColor());
+        kButton.setkHoverForeGround(ColoringController.getWhiteColor());
+        kButton.setBorder(null);
+        kButton.setkFillButton(true);
+        kButton.setkBorderRadius(30);
+        kButton.setkIndicatorThickness(2);
+        kButton.setkIndicatorColor(ColoringController.getBlackColor());
     }
 
     public static void switchPanels(String name) {
@@ -71,22 +84,24 @@ public class PanelsController {
                         } else {
                             MainFrame.toolbar.setVisible(true);
                             MainFrame.PProfile.updateData(Database.currUser);
+                            if (Database.currUser.creditcard == null) {
+                                MainFrame.PProfile.dontPayM.setVisible(true);
+                                MainFrame.PProfile.right.setVisible(false);
+                            } else {
+                                MainFrame.PProfile.dontPayM.setVisible(false);
+                                MainFrame.PProfile.right.setVisible(true);
+                            }
                             switchPanels("Profile");
                         }
                         break;
                     case "Close":
-                
+
                         switchPanels("Home");
                         break;
                     case "TicketAdd":
                         int id = Integer.parseInt(button.getName());
                         MainFrame.PTicketAdd.updateData(id);
                         switchPanels("TicketAdd");
-                        break;
-                    case "chair":
-                        System.out.println(button.getName());
-                        button.setBackground(ColoringController.getTowColorDark());
-                        button.setEnabled(false);
                         break;
                     case "Tick":
 
@@ -97,6 +112,40 @@ public class PanelsController {
 
                         }
                         break;
+                    case "ViewPanelTickInfo":
+                        if (Utils.isLogedIn()) {
+                            MainFrame.PTicketAdd.BookingPanel.setVisible(true);
+                            MainFrame.PTicketAdd.checkLogin.setVisible(false);
+                        } else {
+                            MainFrame.PTicketAdd.checkLogin.setVisible(true);
+                            MainFrame.PTicketAdd.BookingPanel.setVisible(false);
+                        }
+
+                        MainFrame.PTicketAdd.CommentsPanel.setVisible(false);
+                        break;
+                    case "ViewPanelComments":
+                        if (Utils.isLogedIn()) {
+                            MainFrame.PTicketAdd.CommentsPanel.commentTextField.setEditable(true);
+                        } else {
+                            MainFrame.PTicketAdd.CommentsPanel.commentTextField.setEditable(false);
+                        }
+                        MainFrame.PTicketAdd.checkLogin.setVisible(false);
+                        MainFrame.PTicketAdd.CommentsPanel.setVisible(true);
+                        MainFrame.PTicketAdd.BookingPanel.setVisible(false);
+                        break;
+                    case "Send Comment":
+                        String comment = MainFrame.PTicketAdd.CommentsPanel.commentTextField.getText().trim();
+                        if (comment.length() != 0) {
+                            MainFrame.PTicketAdd.CommentsPanel.addComment(Database.currUser.getName(), comment);
+                            MainFrame.PTicketAdd.CommentsPanel.movie.comments
+                                    .add(new Comment(Database.currUser.getName(), comment));
+                            System.out.println(MainFrame.PTicketAdd.CommentsPanel.movie.getTitle());
+                            Database.save();
+                        }
+
+                        // Database.saveMovies();
+                        MainFrame.PTicketAdd.CommentsPanel.commentTextField.setText("");
+                        break;
                     default:
                         switchPanels(action);
                         break;
@@ -105,16 +154,12 @@ public class PanelsController {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                // TODO Auto-generated method stub
-                // throw new UnsupportedOperationException("Unimplemented method
-                // 'mousePressed'");
+
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                // TODO Auto-generated method stub
-                // throw new UnsupportedOperationException("Unimplemented method
-                // 'mouseReleased'");
+
             }
 
             @Override
@@ -122,21 +167,28 @@ public class PanelsController {
                 if (action == "TicketAdd") {
                     // MovieCard.Btitel.setForeground(ColoringController.getWhiteColor());
                     return;
-                } else if (action == "chair") {
-                    button.setBackground(Color.decode("#B0A4A4"));
+                }
+                if (action == "ViewPanelTickInfo" || action == "ViewPanelComments") {
+                    button.setBackground(ColoringController.getSecoundColorDark1());
                     return;
                 }
-                button.setBackground(ColoringController.getLightBasicColor());
+                if (action == "Send Comment") {
+                    return;
+                }
+                button.setBackground(ColoringController.getFirstColorLight1());
 
             }
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent e) {
-                if (action == "chair") {
-                    button.setBackground(Color.decode("#F3EEEA"));
+                if (action == "ViewPanelTickInfo" || action == "ViewPanelComments") {
+                    button.setBackground(ColoringController.getSecoundColorLight());
                     return;
                 }
-                button.setBackground(ColoringController.getBasicColor());
+                if (action == "Send Comment") {
+                    return;
+                }
+                button.setBackground(ColoringController.getFirstColorDark2());
 
             }
         };
@@ -164,12 +216,12 @@ public class PanelsController {
 
             @Override
             public void mouseEntered(java.awt.event.MouseEvent e) {
-                panel.setBackground(ColoringController.getLightBasicColor());
+                panel.setBackground(ColoringController.getFirstColorLight1());
             }
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent e) {
-                panel.setBackground(ColoringController.getBasicColor());
+                panel.setBackground(ColoringController.getFirstColorDark2());
 
             }
         };
@@ -191,6 +243,15 @@ public class PanelsController {
                     case "TicketAdd":
                         int id = Integer.parseInt(button.getName());
                         MainFrame.PTicketAdd.updateData(id);
+                        if (!Utils.isLogedIn()) {
+                            MainFrame.PTicketAdd.BookingPanel.setVisible(false);
+                            MainFrame.PTicketAdd.checkLogin.setVisible(true);
+                            MainFrame.PTicketAdd.addTick.setVisible(false);
+                        } else {
+                            MainFrame.PTicketAdd.BookingPanel.setVisible(true);
+                            MainFrame.PTicketAdd.checkLogin.setVisible(false);
+                            MainFrame.PTicketAdd.addTick.setVisible(true);
+                        }
                         switchPanels("TicketAdd");
                         break;
                     case "Login":
@@ -230,19 +291,19 @@ public class PanelsController {
             @Override
             public void mouseEntered(java.awt.event.MouseEvent e) {
                 if (action.equals("Login") || action.equals("Signup")) {
-                    button.setForeground(ColoringController.getLightBasicColor());
+                    button.setForeground(ColoringController.getFirstColorLight1());
                     return;
                 }
-                button.setForeground(ColoringController.getBasicColor());
+                button.setForeground(ColoringController.getFirstColorDark2());
             }
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent e) {
                 if (action.equals("Login") || action.equals("Signup")) {
-                    button.setForeground(ColoringController.getBasicColor());
+                    button.setForeground(ColoringController.getFirstColorDark2());
                     return;
                 }
-                button.setForeground(Color.BLACK);
+                button.setForeground(ColoringController.getBlackColor());
 
             }
         };
@@ -256,20 +317,53 @@ public class PanelsController {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 switch (action) {
+                    case "CheckVisa":
+                        String idCard = MainFrame.PProfile.addVisaCard.idCardText.getText();
+                        String pin = MainFrame.PProfile.addVisaCard.password.getText();
+                        System.out.println();
+                        String stateAddVisa = VisaController.addvisacard(idCard,
+                                MainFrame.PProfile.addVisaCard.password.getText(), Database.currUser);
+                        MainFrame.PProfile.addVisaCard.msgState.setForeground(ColoringController.getRedColor());
+                        MainFrame.PProfile.addVisaCard.msgState.setVisible(true);
+                        MainFrame.PProfile.addVisaCard.msgState.setText(stateAddVisa);
+                        if (stateAddVisa.equals("succeccfully added your card")) {
+                            MainFrame.PProfile.addVisaCard.msgState.setForeground(ColoringController.getGreenColor());
+                            MainFrame.PProfile.updateData(Database.currUser);
+                            MainFrame.PProfile.addVisaCard.setVisible(false);
+                            MainFrame.PProfile.dontPayM.setVisible(false);
+                            MainFrame.PProfile.right.setVisible(true);
+                        }
+                        MainFrame.PProfile.addVisaCard.idCardText.setText("");
+                        MainFrame.PProfile.addVisaCard.password.setText("");
+
+                        break;
+                    case "Log out":
+                        Database.currUser = null;
+                        Database.save();
+                        MainFrame.toolbar.setVisible(false);
+                        switchPanels("Login");
+                        break;
+                    case "Regecter":
+                        MainFrame.toolbar.setVisible(false);
+                        switchPanels("Login");
+                        break;
                     case "Sign Up":
                         String name = MainFrame.PSignup.Tname.getText();
                         String email = MainFrame.PSignup.Temail.getText();
                         char[] passwordChars = MainFrame.PSignup.Tpass.getPassword();
                         String password = new String(passwordChars);
                         String state = UserController.AddUser(name, email, password);
+                        MainFrame.PSignup.MsgError.setVisible(true);
+                        MainFrame.PSignup.MsgError.setText(state);
                         if (state.equals("Signed up successfully")) {
                             MainFrame.PSignup.MsgError.setForeground(ColoringController.getGreenColor());
                             MainFrame.PSignup.Tname.setText("");
                             MainFrame.PSignup.Temail.setText("");
                             MainFrame.PSignup.Tpass.setText("");
-                        } else
+                        } else {
                             MainFrame.PSignup.MsgError.setForeground(ColoringController.getRedColor());
-                        MainFrame.PSignup.MsgError.setText(state);
+
+                        }
 
                         if (name.equals("")) {
 
@@ -294,9 +388,21 @@ public class PanelsController {
                         MainFrame.PLogin.EmailError.setVisible(false);
                         MainFrame.PLogin.MsgError.setVisible(false);
                         MainFrame.PLogin.PassError.setVisible(false);
-                        
+
                         switchPanels("Home");
                         MainFrame.toolbar.setVisible(true);
+                        break;
+                    case "Cancel addVisa":
+                        MainFrame.PProfile.addVisaCard.idCardText.setText("");
+                        MainFrame.PProfile.addVisaCard.password.setText("");
+                        MainFrame.PProfile.addVisaCard.msgState.setVisible(false);
+                        MainFrame.PProfile.addVisaCard.setVisible(false);
+                        if (Database.currUser.creditcard == null)
+                            MainFrame.PProfile.dontPayM.setVisible(true);
+                        break;
+                    case "AddVisaCard":
+                        MainFrame.PProfile.dontPayM.setVisible(false);
+                        MainFrame.PProfile.addVisaCard.setVisible(true);
                         break;
                     case "Cancel Signup":
                         MainFrame.PSignup.Tname.setText("");
@@ -315,6 +421,7 @@ public class PanelsController {
                         String passwordL = new String(passwordCharsL);
                         String stateL = UserController.LogIn(emailL, passwordL);
                         MainFrame.PLogin.MsgError.setText(stateL);
+                        MainFrame.PLogin.MsgError.setVisible(true);
                         if (emailL.equals("")) {
 
                             MainFrame.PLogin.EmailError.setVisible(true);
@@ -328,7 +435,7 @@ public class PanelsController {
                         }
                         if (stateL.equals("Welcome")) {
                             MainFrame.PLogin.MsgError.setForeground(ColoringController.getGreenColor());
-                            MainFrame.PLogin.MsgError.setVisible(true);
+                            MainFrame.PLogin.MsgError.setVisible(false);
                             MainFrame.toolbar.setVisible(true);
                             switchPanels("Profile");
 
@@ -356,12 +463,15 @@ public class PanelsController {
 
             @Override
             public void mouseEntered(java.awt.event.MouseEvent e) {
-                button.setForeground(ColoringController.getBasicColor());
+                if (action.equals("Log out")) {
+                    return;
+                }
+                button.setForeground(ColoringController.getFirstColorDark2());
             }
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent e) {
-                button.setForeground(Color.BLACK);
+                button.setForeground(ColoringController.getBlackColor());
 
             }
         };

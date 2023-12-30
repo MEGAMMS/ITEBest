@@ -1,20 +1,24 @@
 package main.java.app.Model;
 
-public class Visa {
+import java.io.Serializable;
+
+public class Visa implements Serializable{
     private int id;
-    private String networth;
+    private int networth;
     private String pass;
-    private int visamoney;
-    public Visa(int id, String networth, String pass, int visamoney) {
-        this.id = id;
-        this.networth = networth;
-        this.pass = pass;
-        this.visamoney = visamoney;
+    public User user;
+
+    public void setuser(User user) {
+        this.user = user;
     }
-    public Visa(int id,String p){
+
+    public Visa(String id,String p,int networth){
         this.pass=p;
         this.id = id;
+        this.networth=networth;
+        this.user=null;
     }
+
     public void setpass(String pass) {
         this.pass = pass;
     }
@@ -22,18 +26,20 @@ public class Visa {
     public String getpass() {
         return this.pass;
     }
-    public void setID(int id) {
-         this.id = id;
+
+    public void setID(String id) {
+        this.id = id;
     }
 
     public int getID() {
         return this.id;
     }
-    public void setnetworth(String n) {
-        this.networth=n;
+
+    public void setNetworth(int n) {
+        this.networth = n;
     }
 
-    public String getnetworth() {
+    public int getNetworth() {
         return this.networth;
     }
 }
