@@ -31,27 +31,11 @@ public class ColoringController {
     public static Color getSecoundColorDark2() {
         return Color.decode("#776B5D");
     }
-
-    public static Color getSecoundColorDarkLight1() {
-        return Color.decode("#B0A4A4");
-    }
-
-    public static Color getSecoundColorDarkLight2() {
-        return Color.decode("#F3EEEA");
-    }
     // ------------------------------------
 
     public static Color getWhiteColor() {
         return Color.white;
 
-    }
-
-    public static Color getLightGrayColor() {
-        return Color.decode("#EEEEEE");
-    }
-
-    public static Color getDarkGray2Color() {
-        return Color.decode("#C9C9C9");
     }
 
     public static Color getBlackColor() {
@@ -64,9 +48,5 @@ public class ColoringController {
 
     public static Color getGreenColor() {
         return Color.decode("#1C6758");
-    }
-
-    public static Color getVisaColor() {
-        return Color.decode("#3887BE");
     }
 }

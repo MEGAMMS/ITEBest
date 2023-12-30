@@ -26,20 +26,20 @@ public class Profile extends JPanel {
 
     public void updateData(User user) {
         this.user = user;
-        if (user.creditcard == null){
+        if (user.creditcard == null) {
             right.setVisible(false);
             dontPayM.setVisible(true);
-        }else{
+        } else {
             right.setVisible(true);
             dontPayM.setVisible(false);
-            idCard.setText("Id: "+user.creditcard.getID());
-            networth.setText("networth: "+user.creditcard.getNetworth()+" S.P");
+            idCard.setText("Id: " + user.creditcard.getID());
+            networth.setText("networth: " + user.creditcard.getNetworth() + " S.P");
         }
-            
-        name.setText("<html>" + this.user.getName()+"\r\n" + "</html>");
-        email.setText("<html>" +"Email: "+ this.user.getEmail()+"\r\n" + "</html>");
-        password.setText("<html>" +"Password: "+ this.user.getPassword()+"\r\n" + "</html>");
-        
+
+        name.setText("<html>" + this.user.getName() + "\r\n" + "</html>");
+        email.setText("<html>" + "Email: " + this.user.getEmail() + "\r\n" + "</html>");
+        password.setText("<html>" + "Password: " + this.user.getPassword() + "\r\n" + "</html>");
+
     }
 
     private void initComponents() {
@@ -94,12 +94,12 @@ public class Profile extends JPanel {
         networth.setHorizontalAlignment(SwingConstants.CENTER);
         networth.setBounds(0, 480, 590, 50);
         right.add(networth);
-        
-        addVisaCard=new VisaCardAdd();
+
+        addVisaCard = new VisaCardAdd();
         add(addVisaCard);
         add(right);
         right.setVisible(false);
-        dontPayM=new JPanel();
+        dontPayM = new JPanel();
         dontPayM.setLayout(null);
         dontPayM.setBackground(ColoringController.getSecoundColor());
         dontPayM.setBounds(610, 50, 590, 610);
@@ -109,7 +109,7 @@ public class Profile extends JPanel {
         KButton paddVisaCard = new KButton();
         paddVisaCard.setText("Add Visa Card");
         paddVisaCard.setBounds(180, 540, 300, 40);
-        PanelsController.setKButtonlight(paddVisaCard, ColoringController.getVisaColor());
+        PanelsController.setKButtonlight(paddVisaCard, ColoringController.getFirstColorDark());
         PanelsController.addActionToKButton(paddVisaCard, "AddVisaCard");
         dontPayM.add(paddVisaCard);
         add(dontPayM);

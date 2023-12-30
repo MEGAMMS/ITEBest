@@ -46,47 +46,48 @@ public class TicketManager extends JPanel {
         mainPanel.add(Top);
         // ---------------------------
         JPanel header = new JPanel();
-        header.setBackground(ColoringController.getSecoundColorDarkLight1());
+        header.setBackground(ColoringController.getSecoundColorDark1());
         header.setBounds(10, 45, 1180, 35);
         header.setLayout(null);
         JLabel ID = new JLabel("ID");
-            ID.setBounds(0, 0, 60, 40);
-            ID.setHorizontalAlignment(SwingConstants.CENTER);
-            ID.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
-            header.add(ID);
-            JLabel titleM = new JLabel("Title");
-            titleM.setBounds(60, 0, 200, 40);
-            titleM.setHorizontalAlignment(SwingConstants.CENTER);
-            titleM.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
-            header.add(titleM);
-            JLabel showtime = new JLabel("Showtime");
-            showtime.setBounds(300, 0, 200, 40);
-            showtime.setHorizontalAlignment(SwingConstants.CENTER);
-            showtime.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
-            header.add(showtime);
-            JLabel hall = new JLabel("Hall");
-            hall.setBounds(540, 0, 200, 40);
-            hall.setHorizontalAlignment(SwingConstants.CENTER);
-            hall.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
-            header.add(hall);
-            JLabel price = new JLabel("Price");
-            price.setBounds(760, 0, 200, 40);
-            price.setHorizontalAlignment(SwingConstants.CENTER);
-            price.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
-            header.add(price);
-            JLabel withdraw = new JLabel("Withdraw");
-            withdraw.setBounds(960, 0, 200, 40);
-            withdraw.setHorizontalAlignment(SwingConstants.CENTER);
-            withdraw.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
-            header.add(withdraw);
+        ID.setBounds(0, 0, 60, 40);
+        ID.setHorizontalAlignment(SwingConstants.CENTER);
+        ID.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
+        header.add(ID);
+        JLabel titleM = new JLabel("Title");
+        titleM.setBounds(60, 0, 200, 40);
+        titleM.setHorizontalAlignment(SwingConstants.CENTER);
+        titleM.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
+        header.add(titleM);
+        JLabel showtime = new JLabel("Showtime");
+        showtime.setBounds(300, 0, 200, 40);
+        showtime.setHorizontalAlignment(SwingConstants.CENTER);
+        showtime.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
+        header.add(showtime);
+        JLabel hall = new JLabel("Hall");
+        hall.setBounds(540, 0, 200, 40);
+        hall.setHorizontalAlignment(SwingConstants.CENTER);
+        hall.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
+        header.add(hall);
+        JLabel price = new JLabel("Price");
+        price.setBounds(760, 0, 200, 40);
+        price.setHorizontalAlignment(SwingConstants.CENTER);
+        price.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
+        header.add(price);
+        JLabel withdraw = new JLabel("Withdraw");
+        withdraw.setBounds(960, 0, 200, 40);
+        withdraw.setHorizontalAlignment(SwingConstants.CENTER);
+        withdraw.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
+        header.add(withdraw);
         mainPanel.add(header);
         // -----------Body------------
         // System.out.println(Database.movies.get(0).showtimes.get(0));
-        Ticket t = new Ticket(2, Database.movies.get(0), Database.users.get(0),Database.movies.get(0).showtimes.get(0));
+        Ticket t = new Ticket(2, Database.movies.get(0), Database.users.get(0),
+                Database.movies.get(0).showtimes.get(0));
         TicketCard testTicket = new TicketCard(t);
         // ---------------------------.
         // ---------------------------
-        
+
         mainPanel.add(testTicket);
 
         JScrollPane scrollPane = new JScrollPane(mainPanel);
@@ -98,10 +99,11 @@ public class TicketManager extends JPanel {
 
     class TicketCard extends JPanel {
         public KButton withdraw;
-        public int X,Y;
+        public int X, Y;
+
         public TicketCard(Ticket ticket) {
-            X=10;
-            Y=80;
+            X = 10;
+            Y = 80;
             this.setBackground(ColoringController.getSecoundColor());
             this.setBounds(X, Y, 1180, 50);
             this.setLayout(null);
@@ -129,7 +131,7 @@ public class TicketManager extends JPanel {
             hall.setHorizontalAlignment(SwingConstants.CENTER);
             hall.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
             this.add(hall);
-            JLabel price = new JLabel(""+ticket.getMovie().getPrice());
+            JLabel price = new JLabel("" + ticket.getMovie().getPrice());
             price.setBounds(760, 0, 200, 50);
             price.setHorizontalAlignment(SwingConstants.CENTER);
             price.setBackground(ColoringController.getWhiteColor());

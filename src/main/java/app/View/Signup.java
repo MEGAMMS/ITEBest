@@ -45,10 +45,9 @@ public class Signup extends JPanel {
             }
         };
         info.setOpaque(false);
-        info.setBackground(ColoringController.getDarkGray2Color());
         left = new JPanel();
         left.setBounds(0, 0, 730, 650);
-        left.setBackground(ColoringController.getLightGrayColor());
+        left.setBackground(ColoringController.getSecoundColorLight());
         left.setLayout(null);
         JLabel top = new JLabel("Sign Up");
         top.setBounds(10, 10, 670, 50);
