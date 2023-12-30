@@ -65,15 +65,17 @@ public class PanelsController {
                  */
                 switch (action) {
                     case "Profile":
-                        MainFrame.toolbar.setVisible(false);
-                        if (ITEBest.LoginState.equals("none")) {
+                        if (!Utils.isLogedIn()) {
+                            MainFrame.toolbar.setVisible(false);
                             switchPanels("Login");
                         } else {
                             MainFrame.toolbar.setVisible(true);
+                            MainFrame.PProfile.updateData(Database.currUser);
                             switchPanels("Profile");
                         }
                         break;
                     case "Close":
+                
                         switchPanels("Home");
                         break;
                     case "TicketAdd":
@@ -83,14 +85,16 @@ public class PanelsController {
                         break;
                     case "chair":
                         System.out.println(button.getName());
+                        button.setBackground(ColoringController.getTowColorDark());
+                        button.setEnabled(false);
                         break;
                     case "Tick":
-                        
-                        if (ITEBest.LoginState.equals("none")) {
+
+                        if (!Utils.isLogedIn()) {
                             MainFrame.toolbar.setVisible(false);
                             switchPanels("Singup");
                         } else {
-                            
+
                         }
                         break;
                     default:
@@ -174,7 +178,7 @@ public class PanelsController {
 
     public static void ChooseComboPanel(JComboBox<String> comboBox) {
         comboBox.addActionListener(e -> {
-            MainFrame.PMoviesListView.refresh((String)comboBox.getSelectedItem());
+            MainFrame.PMoviesListView.refresh((String) comboBox.getSelectedItem());
         });
     }
 
@@ -190,9 +194,21 @@ public class PanelsController {
                         switchPanels("TicketAdd");
                         break;
                     case "Login":
+                        MainFrame.PSignup.Tname.setText("");
+                        MainFrame.PSignup.Temail.setText("");
+                        MainFrame.PSignup.Tpass.setText("");
+                        MainFrame.PSignup.EmailError.setVisible(false);
+                        MainFrame.PSignup.NameError.setVisible(false);
+                        MainFrame.PSignup.MsgError.setVisible(false);
+                        MainFrame.PSignup.PassError.setVisible(false);
                         switchPanels("Login");
                         break;
                     case "Signup":
+                        MainFrame.PLogin.TEmail.setText("");
+                        MainFrame.PLogin.TPass.setText("");
+                        MainFrame.PLogin.EmailError.setVisible(false);
+                        MainFrame.PLogin.MsgError.setVisible(false);
+                        MainFrame.PLogin.PassError.setVisible(false);
                         switchPanels("Singup");
                         break;
                     default:
@@ -213,7 +229,7 @@ public class PanelsController {
 
             @Override
             public void mouseEntered(java.awt.event.MouseEvent e) {
-                if(action.equals("Login")||action.equals("Signup")){
+                if (action.equals("Login") || action.equals("Signup")) {
                     button.setForeground(ColoringController.getLightBasicColor());
                     return;
                 }
@@ -222,7 +238,7 @@ public class PanelsController {
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent e) {
-                if(action.equals("Login")||action.equals("Signup")){
+                if (action.equals("Login") || action.equals("Signup")) {
                     button.setForeground(ColoringController.getBasicColor());
                     return;
                 }
@@ -233,7 +249,8 @@ public class PanelsController {
         button.addMouseListener(ms);
 
     }
-public static void addActionToKButton(KButton button, String action) {
+
+    public static void addActionToKButton(KButton button, String action) {
 
         MouseListener ms = new MouseListener() {
             @Override
@@ -245,15 +262,13 @@ public static void addActionToKButton(KButton button, String action) {
                         char[] passwordChars = MainFrame.PSignup.Tpass.getPassword();
                         String password = new String(passwordChars);
                         String state = UserController.AddUser(name, email, password);
-                        if(state.equals("Signed up successfully"))
-                        {
-                            MainFrame.PSignup.MsgError.setForeground(Color.decode("#65B741"));
-                            ITEBest.LoginState="Signed";
+                        if (state.equals("Signed up successfully")) {
+                            MainFrame.PSignup.MsgError.setForeground(ColoringController.getGreenColor());
                             MainFrame.PSignup.Tname.setText("");
                             MainFrame.PSignup.Temail.setText("");
                             MainFrame.PSignup.Tpass.setText("");
-                        }
-                        else MainFrame.PSignup.MsgError.setForeground(Color.decode("#B80000"));
+                        } else
+                            MainFrame.PSignup.MsgError.setForeground(ColoringController.getRedColor());
                         MainFrame.PSignup.MsgError.setText(state);
 
                         if (name.equals("")) {
@@ -273,58 +288,58 @@ public static void addActionToKButton(KButton button, String action) {
                             MainFrame.PSignup.PassError.setVisible(false);
                         }
                         break;
-                        case "Cancel Login":
-                            MainFrame.PLogin.TEmail.setText("");
-                            MainFrame.PLogin.TPass.setText("");
-                            switchPanels("Home");
-                            MainFrame.toolbar.setVisible(true);
+                    case "Cancel Login":
+                        MainFrame.PLogin.TEmail.setText("");
+                        MainFrame.PLogin.TPass.setText("");
+                        MainFrame.PLogin.EmailError.setVisible(false);
+                        MainFrame.PLogin.MsgError.setVisible(false);
+                        MainFrame.PLogin.PassError.setVisible(false);
+                        
+                        switchPanels("Home");
+                        MainFrame.toolbar.setVisible(true);
                         break;
-                        case "Cancel Signup":
-                            MainFrame.PSignup.Tname.setText("");
-                            MainFrame.PSignup.Temail.setText("");
-                            MainFrame.PSignup.Tpass.setText("");
-                            switchPanels("Home");
-                            MainFrame.toolbar.setVisible(true);
+                    case "Cancel Signup":
+                        MainFrame.PSignup.Tname.setText("");
+                        MainFrame.PSignup.Temail.setText("");
+                        MainFrame.PSignup.Tpass.setText("");
+                        MainFrame.PSignup.EmailError.setVisible(false);
+                        MainFrame.PSignup.NameError.setVisible(false);
+                        MainFrame.PSignup.MsgError.setVisible(false);
+                        MainFrame.PSignup.PassError.setVisible(false);
+                        switchPanels("Home");
+                        MainFrame.toolbar.setVisible(true);
                         break;
-                        case "Login":
-                            String emailL= MainFrame.PLogin.TEmail.getText();
-                            char[] passwordCharsL = MainFrame.PLogin.TPass.getPassword();
-                            String passwordL = new String(passwordCharsL);
-                            String stateL= UserController.LogIn(emailL, passwordL);
-                            MainFrame.PLogin.MsgError.setText(stateL);
-                            if (emailL.equals("")) {
+                    case "Login":
+                        String emailL = MainFrame.PLogin.TEmail.getText();
+                        char[] passwordCharsL = MainFrame.PLogin.TPass.getPassword();
+                        String passwordL = new String(passwordCharsL);
+                        String stateL = UserController.LogIn(emailL, passwordL);
+                        MainFrame.PLogin.MsgError.setText(stateL);
+                        if (emailL.equals("")) {
 
                             MainFrame.PLogin.EmailError.setVisible(true);
-                            } else {
+                        } else {
                             MainFrame.PLogin.EmailError.setVisible(false);
-                            }
-                            if (passwordL.equals("")) {
+                        }
+                        if (passwordL.equals("")) {
                             MainFrame.PLogin.PassError.setVisible(true);
-                            } else {
+                        } else {
                             MainFrame.PLogin.PassError.setVisible(false);
-                            }
-                            if(stateL.equals("Welcome"))
-                            {
-                            MainFrame.PLogin.MsgError.setForeground(Color.decode("#65B741"));
+                        }
+                        if (stateL.equals("Welcome")) {
+                            MainFrame.PLogin.MsgError.setForeground(ColoringController.getGreenColor());
                             MainFrame.PLogin.MsgError.setVisible(true);
-                            ITEBest.LoginState="Logined";
-                            // try{
-                            //     Thread.sleep(1000);
-                            // }catch(Exception ex){
-                            //     System.out.println("error");;
-                            // }
                             MainFrame.toolbar.setVisible(true);
                             switchPanels("Profile");
 
                             MainFrame.PLogin.TEmail.setText("");
                             MainFrame.PLogin.TPass.setText("");
-                            }
-                            else MainFrame.PLogin.MsgError.setForeground(Color.decode("#B80000"));
-                            
-                            
+                        } else
+                            MainFrame.PLogin.MsgError.setForeground(ColoringController.getRedColor());
+
                         break;
                     default:
-                        
+
                         break;
                 }
             }

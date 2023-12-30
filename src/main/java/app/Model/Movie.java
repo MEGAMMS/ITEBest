@@ -10,17 +10,25 @@ public class Movie implements Serializable {
         this.poster ="\\MoviesPosters\\"+ poster;
         this.tag = tag;
         this.description = description;
+        this.cinema=Database.cinema.get(0);
     }
-
+    public Movie(int id, String title, String poster, String tag, String description,Cinema cinema) {
+        this.id = id;
+        this.title = title;
+        this.poster ="\\MoviesPosters\\"+ poster;
+        this.tag = tag;
+        this.description = description;
+        this.cinema=cinema;
+    }
     public Movie(int id, String title, String director, String description, int showTimeId, ArrayList<Rate> rates,
-            int cinemaId) {
+            Cinema cinema) {
         this.id = id;
         this.title = title;
         this.director = director;
         this.description = description;
         this.showTimeId = showTimeId;
         this.rates = rates;
-        this.cinemaId = cinemaId;
+        this.cinema = cinema;
     }
 
     public Movie(int id, String title, String poster) {
@@ -39,8 +47,8 @@ public class Movie implements Serializable {
     private String description;
     private int showTimeId;
     private ArrayList<Rate> rates;
-    private int cinemaId;
-    public ArrayList<Integer> seats=new ArrayList<>(64);
+    private Cinema cinema;
+    
     private int attendancePrice;
 
     public int getprice() {
@@ -106,12 +114,12 @@ public class Movie implements Serializable {
         this.rates = rates;
     }
 
-    public int getCinemaId() {
-        return cinemaId;
+    public Cinema getCinema() {
+        return this.cinema;
     }
 
-    public void setCinemaId(int cinemaId) {
-        this.cinemaId = cinemaId;
+    public void setCinema(Cinema cinema) {
+        this.cinema = cinema;
     }
 
     public void setShowTimeId(int showTimeId) {
