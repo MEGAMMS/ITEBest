@@ -28,6 +28,7 @@ public class Start extends JFrame {
         // ---------Rigth-------------
         JPanel rigth = new JPanel();
         JLabel welcomelLabel = new JLabel("Welcome");
+        welcomelLabel.setForeground(ColoringController.getBlackColor());
         rigth.setBounds(500, 0, 200, 400);
         welcomelLabel.setFont(FontController.getPrimaryFont(Font.BOLD, 20));
         rigth.add(welcomelLabel);
