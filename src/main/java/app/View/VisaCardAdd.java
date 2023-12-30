@@ -37,6 +37,8 @@ public class VisaCardAdd extends JPanel{
             MaskFormatter maskFormatter = new MaskFormatter("####-####-####-####");
             idCardText = new JFormattedTextField(maskFormatter);
             idCardText.setBounds(190, 360, 320, 35);
+            idCardText.setForeground(ColoringController.getBlackColor());
+            idCardText.setBackground(ColoringController.getWhiteColor());
             idCardText.setHorizontalAlignment(SwingConstants.CENTER);
             idCardText.setFont(FontController.getSecondryFont(Font.BOLD, 20));
             add(idCardText);
@@ -46,6 +48,8 @@ public class VisaCardAdd extends JPanel{
             password = new JFormattedTextField(maskFormatterPass);
             password.setBounds(300, 430, 100, 35);
             password.setHorizontalAlignment(SwingConstants.CENTER);
+            password.setForeground(ColoringController.getBlackColor());
+            password.setBackground(ColoringController.getWhiteColor());
             password.setFont(FontController.getSecondryFont(Font.BOLD, 20));
             add(password);
 

@@ -52,6 +52,8 @@ public class MoviesListView extends JPanel {
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(Tags.tags.toArray(new String[0]));
         JComboBox<String> comboBox = new JComboBox<>(model);
         comboBox.setBounds(10, 5, 200, 23);
+        comboBox.setForeground(ColoringController.getBlackColor());
+        comboBox.setBackground(ColoringController.getWhiteColor());
         comboBox.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
         PanelsController.ChooseComboPanel(comboBox);
         Top.add(comboBox);

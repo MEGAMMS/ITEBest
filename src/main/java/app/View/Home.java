@@ -43,6 +43,7 @@ public class Home extends JPanel {
         JLabel tHome = new JLabel("Home Page");
         tHome.setBounds(10, 0, 300, 50);
         tHome.setFont(FontController.getPrimaryFont(Font.BOLD, 30));
+        tHome.setForeground(ColoringController.getBlackColor());
         // ---------------------------
         
         // ---------banner------------
