@@ -103,12 +103,14 @@ public class PanelsController {
                         }
                         break;
                     case "Close":
-
+                        MainFrame.PTicketAdd.MsgError.setVisible(false);
                         switchPanels("Home");
                         break;
                     case "TicketAdd":
+                        
                         int id = Integer.parseInt(button.getName());
                         MainFrame.PTicketAdd.updateData(id);
+                        MainFrame.PTicketAdd.MsgError.setVisible(false);
                         switchPanels("TicketAdd");
                         break;
                     case "Tick":
@@ -133,6 +135,9 @@ public class PanelsController {
                                 MainFrame.PTicketAdd.MsgError.setForeground(ColoringController.getGreenColor());
                                 MainFrame.PTicketAdd.numberTicketFree.setText(
                                         "Number Ticket Free " + MainFrame.PTicketAdd.SelectedShowtime.getSeats());
+                                MainFrame.PTicketAdd.MsgError.setVisible(false);
+                                MainFrame.PTicketManager.refresh();
+                                switchPanels("TicketManager");
                             }
                         }
                         break;
@@ -300,7 +305,7 @@ public class PanelsController {
                     case "TicketAdd":
                         int id = Integer.parseInt(button.getName());
                         System.out.println(id);
-
+                        MainFrame.PTicketAdd.MsgError.setVisible(false);
                         if (!Utils.isLogedIn()) {
                             MainFrame.PTicketAdd.BookingPanel.setVisible(false);
                             MainFrame.PTicketAdd.checkLogin.setVisible(true);
