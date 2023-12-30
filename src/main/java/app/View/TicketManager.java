@@ -2,11 +2,13 @@ package main.java.app.View;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.time.LocalDateTime;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
@@ -25,10 +27,14 @@ public class TicketManager extends JPanel {
     // identifications
     public static JPanel mainPanel;
     public static JPanel body;
+    public static int scrollBarHight = 0;
+    JScrollPane scrollPane;
 
     public void refresh() {
         body.removeAll();
-        if(!Utils.isLogedIn())return;
+        if (!Utils.isLogedIn())
+            return;
+        scrollBarHight = Database.currUser.tickets.size()*53;
         body.setBackground(ColoringController.getSecoundColorLight());
         for (Ticket ticket : Database.currUser.tickets) {
             TicketCard card = new TicketCard(ticket);
@@ -37,6 +43,9 @@ public class TicketManager extends JPanel {
             card.setBounds(10, 54 * ticket.getId(), 1180, 50);
             body.add(card);
         }
+        body.setBounds(0, 100, 1200, scrollBarHight + 200);
+        mainPanel.setPreferredSize(new Dimension(1224, scrollBarHight + 200));
+
     }
 
     public TicketManager() {
@@ -107,13 +116,13 @@ public class TicketManager extends JPanel {
         body = new JPanel(null);
         System.out.println(Database.currUser.tickets);
         refresh();
-        body.setBounds(0, 100, 1200, 5000);
         mainPanel.add(body);
         // ---------------------------.
         // ---------------------------
-
-        JScrollPane scrollPane = new JScrollPane(mainPanel);
-        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
+        scrollPane = new JScrollPane(mainPanel);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(40);
+        JScrollBar scrollBar = scrollPane.getVerticalScrollBar();
+        scrollBar.setUI(new CustomScrollBarUI());
         setLayout(new BorderLayout());
         setBounds(58, 49, 1224, 700);
         add(scrollPane, BorderLayout.CENTER);
@@ -121,7 +130,6 @@ public class TicketManager extends JPanel {
 
     class TicketCard extends RoundedPanel {
         public KButton withdraw;
-        public int X, Y;
 
         public TicketCard(Ticket ticket) {
             super(10);
