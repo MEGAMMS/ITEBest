@@ -60,6 +60,7 @@ public class MovieCard extends RoundedPanel {
         titel.setBounds(10, 305, width-20, 50);
         titel.setFont(FontController.getSecondryFont(Font.BOLD, 16));
         // -----------------------
+      
         JPanel button = new RoundedPanel(20);
         Btitel = new JLabel("See More");
         Btitel.setName(Integer.valueOf(id).toString());
@@ -84,6 +85,7 @@ public class MovieCard extends RoundedPanel {
         add(img);
         add(titel);
         add(button);
+        
 
     }
 
