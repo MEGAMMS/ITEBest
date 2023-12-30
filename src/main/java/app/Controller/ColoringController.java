@@ -2,51 +2,57 @@ package main.java.app.Controller;
 
 import java.awt.Color;
 
+import main.java.app.Model.Themes;
+
 public class ColoringController {
+    private static String[] theme;
+    static{
+        theme = Themes.currTheme();
+    }
     public static Color getFirstColor() {
-        return Color.decode("#AF2655");
+        return Color.decode(theme[0]);
     }
 
     public static Color getFirstColorLight() {
-        return Color.decode("#D17292");
+        return Color.decode(theme[1]);
     }
 
     public static Color getFirstColorDark() {
-        return Color.decode("#860A35");
+        return Color.decode(theme[2]);
     }
 
     // ------------------------------------
     public static Color getSecoundColor() {
-        return Color.decode("#FDF7E4");
+        return Color.decode(theme[3]);
     }
 
     public static Color getSecoundColorLight() {
-        return Color.decode("#EBE3D5");
+        return Color.decode(theme[4]);
     }
 
     public static Color getSecoundColorDark1() {
-        return Color.decode("#EAD7BB");
+        return Color.decode(theme[5]);
     }
 
     public static Color getSecoundColorDark2() {
-        return Color.decode("#776B5D");
+        return Color.decode(theme[6]);
     }
     // ------------------------------------
 
     public static Color getWhiteColor() {
-        return Color.white;
+        return Color.decode(theme[7]);
 
     }
 
     public static Color getBlackColor() {
-        return Color.BLACK;
+        return Color.decode(theme[8]);
     }
 
     public static Color getRedColor() {
-        return Color.decode("#B80000");
+        return Color.decode(theme[9]);
     }
 
     public static Color getGreenColor() {
-        return Color.decode("#1C6758");
+        return Color.decode(theme[10]);
     }
 }
