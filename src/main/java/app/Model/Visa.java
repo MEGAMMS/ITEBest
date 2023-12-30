@@ -12,7 +12,7 @@ public class Visa implements Serializable{
         this.user = user;
     }
 
-    public Visa(String id,String p,int networth){
+    public Visa(int id,String p,int networth){
         this.pass=p;
         this.id = id;
         this.networth=networth;
