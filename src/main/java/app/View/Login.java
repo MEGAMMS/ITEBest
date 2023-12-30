@@ -55,10 +55,13 @@ public class Login extends JPanel {
         email = new JLabel("Email:");
         email.setBounds(50, 60, 100, 30);
         email.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 24));
+        email.setForeground(ColoringController.getBlackColor());
         center.add(email);
         TEmail = new JTextField();
         TEmail.setBounds(50, 100, 700, 50);
         TEmail.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 22));
+        TEmail.setForeground(ColoringController.getBlackColor());
+        TEmail.setBackground(ColoringController.getWhiteColor());
         center.add(TEmail);
         EmailError = new JLabel("Please Enter Your Email");
         EmailError.setBounds(125, 62, 200, 30);
@@ -69,10 +72,13 @@ public class Login extends JPanel {
         pass = new JLabel("Password:");
         pass.setBounds(50, 160, 200, 30);
         pass.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 24));
+        pass.setForeground(ColoringController.getBlackColor());
         center.add(pass);
         TPass = new JPasswordField();
         TPass.setBounds(50, 200, 700, 50);
         TPass.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 22));
+        TPass.setForeground(ColoringController.getBlackColor());
+        TPass.setBackground(ColoringController.getWhiteColor());
         center.add(TPass);
         PassError = new JLabel("Please Enter Your Password");
         PassError.setBounds(180, 162, 250, 30);

@@ -51,7 +51,7 @@ public class Signup extends JPanel {
         left.setLayout(null);
         JLabel top = new JLabel("Sign Up");
         top.setBounds(10, 10, 670, 50);
-
+        top.setForeground(ColoringController.getBlackColor());
         top.setFont(FontController.getSecondryFont(Font.BOLD, 43));
         top.setHorizontalAlignment(SwingConstants.CENTER);
         // left.setBorder(PanelsController.roundedBorder(50));
@@ -65,6 +65,7 @@ public class Signup extends JPanel {
         Pback.add(back);
 
         name = new JLabel("Name:");
+        name.setForeground(ColoringController.getBlackColor());
         name.setBounds(10, 100, 80, 30);
         NameError = new JLabel("Please Enter Your Name");
         NameError.setBounds(90, 102, 200, 30);
@@ -74,11 +75,14 @@ public class Signup extends JPanel {
         left.add(name);
         left.add(NameError);
         Tname = new JTextField();
+        Tname.setForeground(ColoringController.getBlackColor());
+        Tname.setBackground(ColoringController.getWhiteColor());
         Tname.setBounds(10, 140, 670, 50);
         Tname.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 22));
         left.add(Tname);
 
         email = new JLabel("Email:");
+        email.setForeground(ColoringController.getBlackColor());
         email.setBounds(10, 200, 80, 30);
         email.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 24));
         EmailError = new JLabel("Please Enter Your Email");
@@ -88,11 +92,14 @@ public class Signup extends JPanel {
         left.add(email);
         left.add(EmailError);
         Temail = new JTextField();
+        Temail.setForeground(ColoringController.getBlackColor());
+        Temail.setBackground(ColoringController.getWhiteColor());
         Temail.setBounds(10, 240, 670, 50);
         Temail.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 22));
         left.add(Temail);
 
         pass = new JLabel("Password:");
+        pass.setForeground(ColoringController.getBlackColor());
         pass.setBounds(10, 300, 150, 30);
         pass.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 24));
         PassError = new JLabel("Please Enter Your Password");
@@ -102,6 +109,8 @@ public class Signup extends JPanel {
         left.add(pass);
         left.add(PassError);
         Tpass = new JPasswordField();
+        Tpass.setForeground(ColoringController.getBlackColor());
+        Tpass.setBackground(ColoringController.getWhiteColor());
         Tpass.setBounds(10, 340, 670, 50);
         Tpass.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 22));
         left.add(Tpass);
