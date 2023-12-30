@@ -17,6 +17,7 @@ import javax.swing.event.ChangeListener;
 import com.k33ptoo.components.KButton;
 import main.java.app.Model.Comment;
 import main.java.app.Model.Database;
+import main.java.app.Model.LogIn;
 import main.java.app.Model.MainPanels;
 import main.java.app.Model.Showtime;
 
@@ -167,6 +168,14 @@ public class PanelsController {
                         // Database.saveMovies();
                         MainFrame.PTicketAdd.CommentsPanel.commentTextField.setText("");
                         break;
+                    case "TicketManager":
+                        if(Utils.isLogedIn()){
+                            MainFrame.PTicketManager.refresh();
+                            switchPanels(action);
+                        } else {
+                            switchPanels("Login");
+                        }
+                    break;
                     default:
                         switchPanels(action);
                         break;
