@@ -376,8 +376,6 @@ public class PanelsController {
                 switch (action) {
                     case "CheckVisa":
                         String idCard = MainFrame.PProfile.addVisaCard.idCardText.getText();
-                        String pin = MainFrame.PProfile.addVisaCard.password.getText();
-                        System.out.println();
                         String stateAddVisa = VisaController.addvisacard(idCard,
                                 MainFrame.PProfile.addVisaCard.password.getText(), Database.currUser);
                         MainFrame.PProfile.addVisaCard.msgState.setForeground(ColoringController.getRedColor());
