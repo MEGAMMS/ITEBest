@@ -1,7 +1,6 @@
 package main.java.app.View;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JLabel;
@@ -13,10 +12,11 @@ import main.java.app.Controller.ColoringController;
 import main.java.app.Controller.FontController;
 import main.java.app.Controller.ImageController;
 import main.java.app.Controller.PanelsController;
+import main.java.app.Controller.RoundedPanel;
 import main.java.app.Model.Database;
 import main.java.app.Model.Movie;
 
-public class MovieCard extends JPanel {
+public class MovieCard extends RoundedPanel {
     String tag;
     static int hash = 10;
     static int width = 280;
@@ -37,6 +37,7 @@ public class MovieCard extends JPanel {
     }
 
     public MovieCard(int id) {
+        super(30);
         this.id = id;
         width=220;
         movie = Database.movies.get(id);
@@ -50,7 +51,6 @@ public class MovieCard extends JPanel {
         // ---------img-----------
         JPanel img = new JPanel();
         JLabel poster = ImageController.addPhoto(movie.getPoster(), 200, 300);
-        //img.setBackground(Color.BLACK);
         img.setBounds(10, 10, 200, 300);
         img.setLayout(new BorderLayout());
         img.add(poster, BorderLayout.CENTER);
@@ -60,7 +60,7 @@ public class MovieCard extends JPanel {
         titel.setBounds(10, 305, width-20, 50);
         titel.setFont(FontController.getSecondryFont(Font.BOLD, 16));
         // -----------------------
-        JPanel button = new JPanel();
+        JPanel button = new RoundedPanel(20);
         Btitel = new JLabel("See More");
         Btitel.setName(Integer.valueOf(id).toString());
         Btitel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -70,16 +70,17 @@ public class MovieCard extends JPanel {
         button.setBounds(10, 380, width-20, 40);
         button.setLayout(null);
         button.add(Btitel);
-        button.setBorder(new LineBorder(ColoringController.getPrimaryColor(), 2, true));
+        button.setOpaque(false);
+        //button.setBorder(new LineBorder(ColoringController.getFirstColor(), 2, true));
         // button.setBorder(roundedBorder);
         PanelsController.addActionToLabel(Btitel,"TicketAdd");
-        // setBorder(new LineBorder(Color.BLACK, 1));
         setLayout(null);
         setBounds(x+10, y, width, heigh);
 
-        setBorder(PanelsController.roundedBorder(30));
-        button.setBorder(PanelsController.roundedBorder(20));
-        setBackground(ColoringController.getTowColorLigth());
+        //setBorder(PanelsController.roundedBorder(30));
+        setOpaque(false);
+        //button.setBorder(PanelsController.roundedBorder(20));
+        setBackground(ColoringController.getSecoundColor());
         add(img);
         add(titel);
         add(button);
