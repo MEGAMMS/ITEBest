@@ -12,6 +12,9 @@ public class TicketController {
         if (count == 0 || showtime ==null) {
             return "please fill all the required information";
         }
+        if(user.creditcard == null){
+            return "You don't have a creditcard";
+        }
         if (movie.getPrice() * count > user.creditcard.getNetworth()) {
             return "Unfortunately you can not afford this transaction";
         }
