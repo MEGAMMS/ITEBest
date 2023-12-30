@@ -9,6 +9,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import main.java.app.Controller.ColoringController;
 import main.java.app.Controller.FontController;
@@ -73,6 +74,8 @@ public class MoviesListView extends JPanel {
         mainPanel.setBackground(ColoringController.getSecoundColorLight());
         JScrollPane scrollPane = new JScrollPane(mainPanel);
         scrollPane.getVerticalScrollBar().setUnitIncrement(40);
+        JScrollBar scrollBar = scrollPane.getVerticalScrollBar();
+        scrollBar.setUI(new CustomScrollBarUI());
         setLayout(new BorderLayout());
         setBounds(58, 49, 1224, 700);
         add(scrollPane, BorderLayout.CENTER);
