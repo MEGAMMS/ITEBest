@@ -10,6 +10,7 @@ public class User implements Serializable {
         this.email = email;
         this.password = password;
         creditcard=null;
+        tickets=new ArrayList<>();
     }
 
     private int id;

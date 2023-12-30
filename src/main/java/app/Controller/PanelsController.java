@@ -9,11 +9,16 @@ import main.java.app.View.MainFrame;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
 import javax.swing.border.Border;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
 import com.k33ptoo.components.KButton;
 import main.java.app.Model.Comment;
 import main.java.app.Model.Database;
 import main.java.app.Model.MainPanels;
+import main.java.app.Model.Showtime;
 
 public class PanelsController {
     public static JPanel roundedBorder(int n) {
@@ -110,6 +115,20 @@ public class PanelsController {
                             switchPanels("Singup");
                         } else {
 
+                            int count = Integer.parseInt(MainFrame.PTicketAdd.numTick.getValue().toString());
+                            Showtime showtime = MainFrame.PTicketAdd.movie.showtimes
+                                    .get(MainFrame.PTicketAdd.comboBoxShowtime.getSelectedIndex());
+                            String stateTick = TicketController.Book(MainFrame.PTicketAdd.movie, Database.currUser,
+                                    count, showtime);
+                            MainFrame.PTicketAdd.MsgError.setText(stateTick);
+                            MainFrame.PTicketAdd.MsgError.setForeground(ColoringController.getRedColor());
+                            MainFrame.PTicketAdd.MsgError.setVisible(true);
+                            if (stateTick.equals("Booked successfully")) {
+                                MainFrame.PTicketAdd.MsgError.setVisible(true);
+                                System.out.println("Booked successfully ");
+                                MainFrame.PTicketAdd.MsgError.setForeground(ColoringController.getGreenColor());
+                                MainFrame.PTicketAdd.updateData(Database.movies.indexOf(MainFrame.PTicketAdd.movie));
+                            }
                         }
                         break;
                     case "ViewPanelTickInfo":
@@ -234,6 +253,28 @@ public class PanelsController {
         });
     }
 
+    public static void ChooseComboShowTimes(JComboBox<String> comboBox) {
+        comboBox.addActionListener(e -> {
+            System.out.println(comboBox.getSelectedItem());
+            Showtime SelectedShowtime = MainFrame.PTicketAdd.movie.showtimes.stream().filter(obj -> obj.toString().equals((String)comboBox.getSelectedItem())).findFirst().orElse(null);
+            System.out.println(SelectedShowtime);
+            MainFrame.PTicketAdd.numberTicketFree.setText("Number Ticket Free " + SelectedShowtime.getSeats());
+            // MainFrame.PTicketAdd.updateData(MainFrame.PTicketAdd.movie.getId());
+           // MainFrame.PTicketAdd.numberTicketFree.setText("Number Ticket Free " + showtime.getSeats());
+        });
+    }
+
+    public static void ChooseSpinner(JSpinner spinner) {
+        spinner.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                int spinnerValue = (int) spinner.getValue();
+                int totalPrice = MainFrame.PTicketAdd.movie.getPrice() * spinnerValue;
+                MainFrame.PTicketAdd.priceAll.setText("Total Price: " + Integer.toString(totalPrice) + " S.P");
+            }
+        });
+    }
+
     public static void addActionToLabel(JLabel button, String action) {
 
         MouseListener ms = new MouseListener() {
@@ -242,15 +283,18 @@ public class PanelsController {
                 switch (action) {
                     case "TicketAdd":
                         int id = Integer.parseInt(button.getName());
-                        MainFrame.PTicketAdd.updateData(id);
+                        System.out.println(id);
+
                         if (!Utils.isLogedIn()) {
                             MainFrame.PTicketAdd.BookingPanel.setVisible(false);
                             MainFrame.PTicketAdd.checkLogin.setVisible(true);
                             MainFrame.PTicketAdd.addTick.setVisible(false);
                         } else {
+                            MainFrame.PTicketAdd.updateData(id);
                             MainFrame.PTicketAdd.BookingPanel.setVisible(true);
                             MainFrame.PTicketAdd.checkLogin.setVisible(false);
                             MainFrame.PTicketAdd.addTick.setVisible(true);
+                            // MainFrame.PTicketAdd.MsgError.setVisible(false);
                         }
                         switchPanels("TicketAdd");
                         break;

@@ -32,7 +32,8 @@ public class Profile extends JPanel {
         }else{
             right.setVisible(true);
             dontPayM.setVisible(false);
-            idCard.setText(user.creditcard.getID());
+            idCard.setText("Id: "+user.creditcard.getID());
+            networth.setText("networth: "+user.creditcard.getNetworth()+" S.P");
         }
             
         name.setText("<html>" + this.user.getName()+"\r\n" + "</html>");
@@ -87,6 +88,12 @@ public class Profile extends JPanel {
         idCard.setHorizontalAlignment(SwingConstants.CENTER);
         idCard.setBounds(0, 400, 590, 50);
         right.add(idCard);
+
+        networth = new JLabel("networth: " + "0 S.P");
+        networth.setFont(FontController.getSecondryFont(Font.BOLD, 32));
+        networth.setHorizontalAlignment(SwingConstants.CENTER);
+        networth.setBounds(0, 480, 590, 50);
+        right.add(networth);
         
         addVisaCard=new VisaCardAdd();
         add(addVisaCard);
