@@ -3,7 +3,7 @@ package main.java.app.Model;
 import java.io.Serializable;
 
 public class Visa implements Serializable{
-    private int id;
+    private String id;
     private int networth;
     private String pass;
     public User user;
@@ -12,7 +12,7 @@ public class Visa implements Serializable{
         this.user = user;
     }
 
-    public Visa(int id,String p,int networth){
+    public Visa(String id,String p,int networth){
         this.pass=p;
         this.id = id;
         this.networth=networth;
@@ -31,7 +31,7 @@ public class Visa implements Serializable{
         this.id = id;
     }
 
-    public int getID() {
+    public String getID() {
         return this.id;
     }
 
