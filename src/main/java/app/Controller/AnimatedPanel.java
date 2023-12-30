@@ -1,4 +1,5 @@
 package main.java.app.Controller;
+
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -10,14 +11,13 @@ import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 
 public class AnimatedPanel extends JPanel {
-//    public void setPrefixIcon(Icon prefixIcon) {
-//        this.prefixIcon = prefixIcon;
-//        initBorder();
-//    }
-//    public void settext(String text) {
-//        this.text = text;
-//    }
-
+    // public void setPrefixIcon(Icon prefixIcon) {
+    // this.prefixIcon = prefixIcon;
+    // initBorder();
+    // }
+    // public void settext(String text) {
+    // this.text = text;
+    // }
 
     public Color getEffectColor() {
         return effectColor;
@@ -26,7 +26,8 @@ public class AnimatedPanel extends JPanel {
     public void setEffectColor(Color effectColor) {
         this.effectColor = effectColor;
     }
-    //    private String text = "";
+
+    // private String text = "";
     private Animator animator;
     private int targetSize;
     private float animatSize;
@@ -35,28 +36,31 @@ public class AnimatedPanel extends JPanel {
     private Color effectColor = new Color(255, 255, 255);
 
     MouseListener listener;
-    public AnimatedPanel(String img,String action,int X,int Y,int width,int height) {
+
+    public AnimatedPanel(String img, String action, int X, int Y, int width, int height) {
         this.setBackground(Color.decode("#15151d"));
-//        setContentAreaFilled(false);
-        
+        // setContentAreaFilled(false);
+
         this.setLayout(new BorderLayout());
         this.add(ImageController.addPhoto(img), BorderLayout.CENTER);
-        this.setBackground(ColoringController.getFirstColorDark2());
+        this.setBackground(ColoringController.getFirstColorDark());
         PanelsController.addActionToButton(this, action);
         setBounds(X, Y, width, height);
         initComponents();
     }
-    public AnimatedPanel(String action,int X,int Y,int width,int height) {
+
+    public AnimatedPanel(String action, int X, int Y, int width, int height) {
         this.setBackground(Color.decode("#15151d"));
-//        setContentAreaFilled(false);
+        // setContentAreaFilled(false);
         this.setLayout(new BorderLayout());
         this.setBounds(0, 170, 60, 100);
-        this.setBackground(ColoringController.getFirstColorDark2());
+        this.setBackground(ColoringController.getFirstColorDark());
         PanelsController.addActionToButton(this, action);
         setBounds(X, Y, width, height);
         initComponents();
     }
-    public void initComponents(){
+
+    public void initComponents() {
         setCursor(new Cursor(Cursor.HAND_CURSOR));
         setOpaque(false);
         addMouseListener(new MouseAdapter() {
@@ -87,6 +91,7 @@ public class AnimatedPanel extends JPanel {
         animator.setDeceleration(0.5f);
         animator.setResolution(0);
     }
+
     @Override
     protected void paintComponent(Graphics grphcs) {
         int width = getWidth();
@@ -99,11 +104,12 @@ public class AnimatedPanel extends JPanel {
         if (pressedPoint != null) {
             g2.setColor(effectColor);
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_ATOP, alpha));
-            g2.fillRect((int) (pressedPoint.x - animatSize / 2), (int) (pressedPoint.y - animatSize / 2), (int) animatSize, (int) animatSize);
+            g2.fillRect((int) (pressedPoint.x - animatSize / 2), (int) (pressedPoint.y - animatSize / 2),
+                    (int) animatSize, (int) animatSize);
         }
         g2.dispose();
         grphcs.drawImage(img, 0, 0, null);
-//        paintIcon(grphcs);
+        // paintIcon(grphcs);
         super.paintComponent(grphcs);
     }
 

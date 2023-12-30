@@ -6,7 +6,6 @@ import javax.swing.JPanel;
 import main.java.app.Controller.AnimatedPanel;
 import main.java.app.Controller.ColoringController;
 
-
 public class Toolbar extends JPanel {
     public Toolbar() throws IOException {
         initComponents();
@@ -14,7 +13,7 @@ public class Toolbar extends JPanel {
 
     private void initComponents() throws IOException {
         this.setBounds(0, 0, 60, 1000);
-        this.setBackground(ColoringController.getFirstColorDark2());
+        this.setBackground(ColoringController.getFirstColorDark());
         this.setLayout(null);
         int hightOfButton = 130;
         int startY = 50;

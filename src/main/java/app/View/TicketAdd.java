@@ -57,7 +57,8 @@ public class TicketAdd extends JPanel {
                 movie.showtimes.stream().map(Object::toString).toArray(String[]::new));
         comboBoxShowtime.setModel(model);
         SelectedShowtime = MainFrame.PTicketAdd.movie.showtimes.stream()
-                    .filter(obj -> obj.toString().equals((String) comboBoxShowtime.getSelectedItem())).findFirst().orElse(null);
+                .filter(obj -> obj.toString().equals((String) comboBoxShowtime.getSelectedItem())).findFirst()
+                .orElse(null);
         MainFrame.PTicketAdd.numberTicketFree.setText("Number Ticket Free " + SelectedShowtime.getSeats());
         priceMovie.setText("Price One Ticket: " + movie.getPrice() + " S.P");
         // for (Showtime s : movie.showtimes)
@@ -211,7 +212,7 @@ public class TicketAdd extends JPanel {
 
         priceAll = new JLabel("Price All: 1000 s.p");
         priceAll.setBounds(10, 260, 300, 30);
-        priceAll.setForeground(ColoringController.getFirstColorDark2());
+        priceAll.setForeground(ColoringController.getFirstColorDark());
         priceAll.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 22));
         BookingPanel.add(priceAll);
 
@@ -224,7 +225,7 @@ public class TicketAdd extends JPanel {
         bttickT.setHorizontalAlignment(SwingConstants.CENTER);
         bttickT.setFont(FontController.getPrimaryFont(ABORT, 24));
         addTick.setBounds(20, 615, 200, 40);
-        addTick.setBackground(ColoringController.getFirstColorDark2());
+        addTick.setBackground(ColoringController.getFirstColorDark());
         addTick.setLayout(new BorderLayout());
         PanelsController.addActionToButton(addTick, "Tick");
         addTick.add(bttickT);
@@ -236,7 +237,7 @@ public class TicketAdd extends JPanel {
         closeT.setHorizontalAlignment(SwingConstants.CENTER);
         closeT.setFont(FontController.getPrimaryFont(ABORT, 24));
         closeP.setBounds(260, 615, 200, 40);
-        closeP.setBackground(ColoringController.getFirstColorDark2());
+        closeP.setBackground(ColoringController.getFirstColorDark());
         closeP.setLayout(new BorderLayout());
         closeP.add(closeT);
         PanelsController.addActionToButton(closeP, "Close");
@@ -255,7 +256,7 @@ public class TicketAdd extends JPanel {
         // ---------------------------
         // ----------Buttom-----------
         JPanel buttom = new JPanel();
-        buttom.setBackground(ColoringController.getFirstColorDark2());
+        buttom.setBackground(ColoringController.getFirstColorDark());
         buttom.setBounds(0, 580, 800, 20);
 
         // ---------------------------
