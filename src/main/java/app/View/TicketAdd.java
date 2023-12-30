@@ -41,6 +41,7 @@ public class TicketAdd extends JPanel {
     public JLabel MsgError,priceMovie,priceAll;
     //HHH
     public void updateData(int id) {
+        System.out.println(id);
         this.movie = Database.movies.get(id);
         this.titleM.setText(movie.getTitle());
         JLabel label = ImageController.addPhoto(movie.getPoster(), 400, 600);
@@ -53,13 +54,9 @@ public class TicketAdd extends JPanel {
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(
                 movie.showtimes.stream().map(Object::toString).toArray(String[]::new));
         comboBoxShowtime.setModel(model);
-        PanelsController.ChooseComboShowTimes(comboBoxShowtime);
         priceMovie.setText("Price One Ticket: "+movie.getPrice()+" S.P" );
         // for (Showtime s : movie.showtimes)
         // this.comboBoxShowtime.addItem((String)s.getDate().toString());
-        Showtime SelectedShowtime = movie.showtimes.stream().filter(obj -> obj.toString().equals((String)comboBoxShowtime.getSelectedItem())).findFirst().orElse(null);
-
-        this.numberTicketFree.setText("Number Ticket Free " + SelectedShowtime.getSeats());
         CommentsPanel.updateTextPane(movie);
     }
 
@@ -168,6 +165,7 @@ public class TicketAdd extends JPanel {
         comboBoxShowtime.setUI(new CustomComboBoxUI());
         comboBoxShowtime.setBounds(160, 20, 280, 40);
         comboBoxShowtime.setFont(FontController.getSecondryFont(Font.BOLD, 22));
+        PanelsController.ChooseComboShowTimes(comboBoxShowtime);
         BookingPanel.add(comboBoxShowtime);
         JLabel numberTicket = new JLabel("Number Ticket: ");
         numberTicket.setBounds(10, 90, 200, 40);

@@ -114,14 +114,16 @@ public class PanelsController {
                             MainFrame.toolbar.setVisible(false);
                             switchPanels("Singup");
                         } else {
-                            
-                            int count= Integer.parseInt(MainFrame.PTicketAdd.numTick.getValue().toString());
-                            Showtime showtime=MainFrame.PTicketAdd.movie.showtimes.get(MainFrame.PTicketAdd.comboBoxShowtime.getSelectedIndex());
-                            String stateTick=TicketController.Book(MainFrame.PTicketAdd.movie, Database.currUser, count, showtime);
+
+                            int count = Integer.parseInt(MainFrame.PTicketAdd.numTick.getValue().toString());
+                            Showtime showtime = MainFrame.PTicketAdd.movie.showtimes
+                                    .get(MainFrame.PTicketAdd.comboBoxShowtime.getSelectedIndex());
+                            String stateTick = TicketController.Book(MainFrame.PTicketAdd.movie, Database.currUser,
+                                    count, showtime);
                             MainFrame.PTicketAdd.MsgError.setText(stateTick);
                             MainFrame.PTicketAdd.MsgError.setForeground(ColoringController.getRedColor());
                             MainFrame.PTicketAdd.MsgError.setVisible(true);
-                            if(stateTick.equals("Booked successfully")){
+                            if (stateTick.equals("Booked successfully")) {
                                 MainFrame.PTicketAdd.MsgError.setVisible(true);
                                 System.out.println("Booked successfully ");
                                 MainFrame.PTicketAdd.MsgError.setForeground(ColoringController.getGreenColor());
@@ -250,22 +252,29 @@ public class PanelsController {
             MainFrame.PMoviesListView.refresh((String) comboBox.getSelectedItem());
         });
     }
+
     public static void ChooseComboShowTimes(JComboBox<String> comboBox) {
         comboBox.addActionListener(e -> {
-            Showtime showtime=MainFrame.PTicketAdd.movie.showtimes.get(comboBox.getSelectedIndex());
-           MainFrame.PTicketAdd.numberTicketFree.setText("Number Ticket Free " + showtime.getSeats());
+            System.out.println(comboBox.getSelectedItem());
+            Showtime SelectedShowtime = MainFrame.PTicketAdd.movie.showtimes.stream().filter(obj -> obj.toString().equals((String)comboBox.getSelectedItem())).findFirst().orElse(null);
+            System.out.println(SelectedShowtime);
+            MainFrame.PTicketAdd.numberTicketFree.setText("Number Ticket Free " + SelectedShowtime.getSeats());
+            // MainFrame.PTicketAdd.updateData(MainFrame.PTicketAdd.movie.getId());
+           // MainFrame.PTicketAdd.numberTicketFree.setText("Number Ticket Free " + showtime.getSeats());
         });
     }
- public static void ChooseSpinner(JSpinner spinner) {
+
+    public static void ChooseSpinner(JSpinner spinner) {
         spinner.addChangeListener(new ChangeListener() {
-                @Override
-                public void stateChanged(ChangeEvent e) {
-                    int spinnerValue = (int) spinner.getValue();
-                    int totalPrice=MainFrame.PTicketAdd.movie.getPrice()*spinnerValue;
-                    MainFrame.PTicketAdd.priceAll.setText("Total Price: "+Integer.toString(totalPrice)+" S.P");
-                }
-            });
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                int spinnerValue = (int) spinner.getValue();
+                int totalPrice = MainFrame.PTicketAdd.movie.getPrice() * spinnerValue;
+                MainFrame.PTicketAdd.priceAll.setText("Total Price: " + Integer.toString(totalPrice) + " S.P");
+            }
+        });
     }
+
     public static void addActionToLabel(JLabel button, String action) {
 
         MouseListener ms = new MouseListener() {
@@ -275,7 +284,7 @@ public class PanelsController {
                     case "TicketAdd":
                         int id = Integer.parseInt(button.getName());
                         System.out.println(id);
-                        
+
                         if (!Utils.isLogedIn()) {
                             MainFrame.PTicketAdd.BookingPanel.setVisible(false);
                             MainFrame.PTicketAdd.checkLogin.setVisible(true);
@@ -285,7 +294,7 @@ public class PanelsController {
                             MainFrame.PTicketAdd.BookingPanel.setVisible(true);
                             MainFrame.PTicketAdd.checkLogin.setVisible(false);
                             MainFrame.PTicketAdd.addTick.setVisible(true);
-                            //MainFrame.PTicketAdd.MsgError.setVisible(false);
+                            // MainFrame.PTicketAdd.MsgError.setVisible(false);
                         }
                         switchPanels("TicketAdd");
                         break;
