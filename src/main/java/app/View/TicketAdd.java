@@ -114,6 +114,13 @@ public class TicketAdd extends JPanel {
         descP.add(description);
         descP.add(descM);
         // -----------------------
+        StarRatingComponent starRating = new StarRatingComponent(5);
+        starRating.setBounds(120, 10,135, 30);
+        starRating.setBackground(ColoringController.getSecoundColorDark1());
+        starRating.setVisible(true);
+        starRating.setOpaque(true);
+        descP.add(starRating);
+        //------------------------
         menu = new JPanel();
         menu.setBounds(10, 240, 780, 30);
         menu.setBackground(ColoringController.getSecoundColorDark2());
@@ -165,7 +172,7 @@ public class TicketAdd extends JPanel {
         comboBoxShowtime.setUI(new CustomComboBoxUI());
         comboBoxShowtime.setBounds(160, 20, 280, 40);
         comboBoxShowtime.setFont(FontController.getSecondryFont(Font.BOLD, 22));
-        PanelsController.ChooseComboShowTimes(comboBoxShowtime);
+        //PanelsController.ChooseComboShowTimes(comboBoxShowtime);
         BookingPanel.add(comboBoxShowtime);
         JLabel numberTicket = new JLabel("Number Ticket: ");
         numberTicket.setBounds(10, 90, 200, 40);
