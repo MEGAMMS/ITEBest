@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Movie implements Serializable {
-    public Movie(int id, String title, String poster, String tag, String description) {
+    public Movie(int id, String title, String poster, String tag, String description, int price) {
         this.id = id;
         this.title = title;
         this.poster = "\\MoviesPosters\\" + poster;
