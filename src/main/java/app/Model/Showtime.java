@@ -11,7 +11,10 @@ public class Showtime implements Serializable {
         this.date = dateShowtimes;
         seats = 64;
     }
-
+    public Showtime(Showtime showtime) {
+        this.date = showtime.date;
+        seats = 64;
+    }
     public LocalDateTime getDate() {
         return date;
     }

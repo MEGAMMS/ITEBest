@@ -135,7 +135,7 @@ public class DefaultDatabase {
                 showtimes.add(new Showtime(LocalDateTime.of(2024, 1, 16, 2, 30)));
                 Random rand = new Random();
                 for (Movie m : Database.movies) {
-                        m.setShowtimes(showtimes);
+                        m.setShowtimes(new ArrayList<>(showtimes));
                         showtimes.set(0, new Showtime(showtimes.get(0).date.plusHours(rand.nextInt(12))));
                         showtimes.set(1, new Showtime(showtimes.get(1).date.plusHours(rand.nextInt(12))));
                         showtimes.set(2, new Showtime(showtimes.get(2).date.plusHours(rand.nextInt(12))));
