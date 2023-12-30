@@ -60,7 +60,7 @@ public class DefaultDatabase {
         Database.movies.add(new Movie(Database.movies.size(), "Doctor Who ", "DoctorWho.jpg", "Drama",
                 "The Doctor and friends travel from the dawn of human history to distant alien worlds. And everywhere they go, they find adventure, terror, fun, chases, joy and monsters.",11000));
         Database.movies.add(new Movie(Database.movies.size(), "Oppenheimer", "Oppenheimer.jpg", "Action",
-                "The story of J. Robert Oppenheimer's role in the development of the atomic bomb during World War II."6990));
+                "The story of J. Robert Oppenheimer's role in the development of the atomic bomb during World War II.",6990));
         Database.movies.add(new Movie(Database.movies.size(), "Wonka", "Wonka.jpg", "Fantasy",
                 "Willy Wonka , chock-full of ideas and determined to change the world one delectable bite at a time – is proof that the best things in life begin with a dream, and if you’re lucky enough to meet Willy Wonka, anything is possible.",7900));
         Database.movies.add(new Movie(Database.movies.size(), "Jujutsu Kaisen", "Jujutsu.jpg", "Adventure",
@@ -68,7 +68,7 @@ public class DefaultDatabase {
         Database.movies.add(new Movie(Database.movies.size(), "Parasite", "Parasite.jpg", "Comedy",
                 "All unemployed, Ki-taek's family takes peculiar interest in the wealthy and glamorous Parks for their livelihood until they get entangled in an unexpected incident.",30000));
         Database.movies.add(new Movie(Database.movies.size(), "Spirited Away", "Spirited Away.jpg", "Drama",
-                "A young girl, Chihiro, becomes trapped in a strange new world of spirits. When her parents undergo a mysterious transformation, she must call upon the courage she never knew she had to free her family."6000));
+                "A young girl, Chihiro, becomes trapped in a strange new world of spirits. When her parents undergo a mysterious transformation, she must call upon the courage she never knew she had to free her family.",6000));
         Database.movies.add(new Movie(Database.movies.size(), "The Godfather", "The Godfather.jpg", "Action",
                 "Spanning the years 1945 to 1955, a chronicle of the fictional Italian-American Corleone crime family. When organized crime family patriarch, Vito Corleone barely survives an attempt on his life, his youngest son, Michael steps in to take care of the would-be killers, launching a campaign of bloody revenge.",8300));
         Database.movies.add(new Movie(Database.movies.size(), "The Great Dictator", "The Great Dictator.jpg", "Comedy",
