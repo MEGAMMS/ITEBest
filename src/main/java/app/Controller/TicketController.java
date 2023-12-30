@@ -24,7 +24,7 @@ public class TicketController {
         showtime.seats -= count;
         for (int i = 0; i < count; i++) {
             user.creditcard.setNetworth(user.creditcard.getNetworth() - movie.getPrice());
-            user.tickets.add(new Ticket(user.tickets.size(), movie, user, showtime));
+            user.tickets.add(new Ticket(user.tickets.size(), movie, user, showtime,showtime.seats+i+1));
         }
         Database.save();
         return "Booked successfully";
