@@ -26,7 +26,7 @@ import main.java.app.Model.Showtime;
 public class TicketAdd extends JPanel {
 
     public Movie movie;
-    JPanel descP = new JPanel();
+    JPanel descP;
     public JSpinner numTick;
     public JLabel titleM;
     public JLabel descM;
@@ -47,7 +47,7 @@ public class TicketAdd extends JPanel {
         System.out.println(id);
         this.movie = Database.movies.get(id);
         this.titleM.setText(movie.getTitle());
-        JLabel label = ImageController.addPhoto(movie.getPoster(), 400, 600);
+        JLabel label = ImageController.addPhoto(movie.getPoster(), 410, 615);
         this.poster.setIcon(label.getIcon());
         this.descM.setText("<html>" + this.movie.getDescription() + "\r\n" + //
                 "\r\n" + //
@@ -90,8 +90,8 @@ public class TicketAdd extends JPanel {
         img.add(poster, BorderLayout.CENTER);
         // -----------------------
         // -------titleP---0------
-        JPanel titleP = new JPanel();
-
+        JPanel titleP =  new RoundedPanel(15);
+        titleP.setOpaque(false);
         titleM.setHorizontalAlignment(SwingConstants.CENTER);
         titleM.setForeground(ColoringController.getWhiteColor());
         titleM.setFont(FontController.getPrimaryFont(ABORT, 24));
@@ -101,7 +101,8 @@ public class TicketAdd extends JPanel {
         titleP.add(titleM, BorderLayout.CENTER);
         // -----------------------
         // ---------Des---------
-
+        descP=new RoundedPanel(15);
+        descP.setOpaque(false);
         JLabel description = new JLabel("Description");
 
         // descM.setPreferredSize(new Dimension(380, 200));
@@ -129,17 +130,19 @@ public class TicketAdd extends JPanel {
         //------------------------
         menu = new JPanel();
         menu.setBounds(10, 240, 780, 30);
-        menu.setBackground(ColoringController.getSecoundColorDark2());
+        menu.setBackground(ColoringController.getSecoundColor());
         menu.setLayout(null);
         body.add(menu);
-        JPanel addTickPanel = new JPanel();
+        JPanel addTickPanel = new RoundedPanel(20);
+        addTickPanel.setOpaque(false);
         addTickPanel.setBounds(10, 0, 375, 30);
         addTickPanel.setBackground(ColoringController.getSecoundColorLight());
         addTickPanel.add(LabelController.addLabel("Booking", FontController.getSecondryFont(Font.BOLD, 18)));
         PanelsController.addActionToButton(addTickPanel, "ViewPanelTickInfo");
         menu.add(addTickPanel);
 
-        JPanel addCommentsPanel = new JPanel();
+        JPanel addCommentsPanel =  new RoundedPanel(20);
+        addCommentsPanel.setOpaque(false);
         addCommentsPanel.setBounds(395, 0, 375, 30);
         addCommentsPanel.setBackground(ColoringController.getSecoundColorLight());
         addCommentsPanel.add(LabelController.addLabel("Comments", FontController.getSecondryFont(Font.BOLD, 18)));
@@ -154,7 +157,7 @@ public class TicketAdd extends JPanel {
         JLabel imgNeedLogin = ImageController.addPhoto("needLogin.png", 480, 320);
         imgNeedLogin.setBounds(150, 0, 480, 320);
         KButton clickForLongin = new KButton();
-        clickForLongin.setText("Regecter");
+        clickForLongin.setText("Login");
         clickForLongin.setBounds(270, 136, 150, 30);
         PanelsController.setKButtonlight(clickForLongin, ColoringController.getFirstColor());
         PanelsController.addActionToKButton(clickForLongin, "Regecter");
@@ -166,7 +169,8 @@ public class TicketAdd extends JPanel {
         body.add(CommentsPanel);
         CommentsPanel.setVisible(false);
         // ---------Booking---------
-        BookingPanel = new JPanel();
+        BookingPanel =new RoundedPanel(15);
+        BookingPanel.setOpaque(false);
         BookingPanel.setBounds(10, 280, 780, 320);
         BookingPanel.setBackground(ColoringController.getSecoundColorDark1());
         BookingPanel.setLayout(null);

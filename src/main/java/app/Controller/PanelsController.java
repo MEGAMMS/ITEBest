@@ -34,7 +34,6 @@ public class PanelsController {
         kButton.setkHoverColor(ColoringController.getWhiteColor());
         kButton.setkPressedColor(ColoringController.getFirstColorLight());
         kButton.setkSelectedColor(ColoringController.getFirstColorDark());
-        ;
         kButton.setkHoverForeGround(ColoringController.getFirstColorDark());
         kButton.setBorder(null);
         kButton.setkFillButton(true);
@@ -93,20 +92,24 @@ public class PanelsController {
                             if (Database.currUser.creditcard == null) {
                                 MainFrame.PProfile.dontPayM.setVisible(true);
                                 MainFrame.PProfile.right.setVisible(false);
+                                MainFrame.PProfile.addVisaCard.setVisible(false);
                             } else {
                                 MainFrame.PProfile.dontPayM.setVisible(false);
                                 MainFrame.PProfile.right.setVisible(true);
+                                MainFrame.PProfile.addVisaCard.setVisible(false);
                             }
                             switchPanels("Profile");
                         }
                         break;
                     case "Close":
-
+                        MainFrame.PTicketAdd.MsgError.setVisible(false);
                         switchPanels("Home");
                         break;
                     case "TicketAdd":
+                        
                         int id = Integer.parseInt(button.getName());
                         MainFrame.PTicketAdd.updateData(id);
+                        MainFrame.PTicketAdd.MsgError.setVisible(false);
                         switchPanels("TicketAdd");
                         break;
                     case "Tick":
@@ -131,6 +134,9 @@ public class PanelsController {
                                 MainFrame.PTicketAdd.MsgError.setForeground(ColoringController.getGreenColor());
                                 MainFrame.PTicketAdd.numberTicketFree.setText(
                                         "Number Ticket Free " + MainFrame.PTicketAdd.SelectedShowtime.getSeats());
+                                MainFrame.PTicketAdd.MsgError.setVisible(false);
+                                MainFrame.PTicketManager.refresh();
+                                switchPanels("TicketManager");
                             }
                         }
                         break;
@@ -173,6 +179,7 @@ public class PanelsController {
                             MainFrame.PTicketManager.refresh();
                             switchPanels(action);
                         } else {
+                            MainFrame.toolbar.setVisible(false);
                             switchPanels("Login");
                         }
                     break;
@@ -297,7 +304,7 @@ public class PanelsController {
                     case "TicketAdd":
                         int id = Integer.parseInt(button.getName());
                         System.out.println(id);
-
+                        MainFrame.PTicketAdd.MsgError.setVisible(false);
                         if (!Utils.isLogedIn()) {
                             MainFrame.PTicketAdd.BookingPanel.setVisible(false);
                             MainFrame.PTicketAdd.checkLogin.setVisible(true);
