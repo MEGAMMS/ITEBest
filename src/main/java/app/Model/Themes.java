@@ -12,7 +12,7 @@ public class Themes {
         themes.add(new String[] { "#AF2655", "#6B728E", "#404258","#50577A","#282A3A","#474E68","#6B728E","#474E68","#ffffff","#B80000","#1C6758" });
     }
     public static String[] currTheme(){
-        return themes.get(4);
+        return themes.get(0);
     }
 }
 

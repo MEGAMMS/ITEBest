@@ -15,7 +15,7 @@ import main.java.app.Model.User;
 public class Profile extends JPanel {
     public JPanel left, right, dontPayM;
     public VisaCardAdd addVisaCard;
-    JLabel name, email, img, idCard, networth, password;
+    JLabel name, email, img, idCard, networth;
 
     public User user;
 
@@ -38,7 +38,6 @@ public class Profile extends JPanel {
 
         name.setText("<html>" + this.user.getName() + "\r\n" + "</html>");
         email.setText("<html>" + "Email: " + this.user.getEmail() + "\r\n" + "</html>");
-        password.setText("<html>" + "Password: " + this.user.getPassword() + "\r\n" + "</html>");
 
     }
 
@@ -61,11 +60,6 @@ public class Profile extends JPanel {
         email.setBounds(10, 200, 500, 60);
         email.setForeground(ColoringController.getBlackColor());
         left.add(email);
-        password = new JLabel("<html>" + "Password: " + user.getPassword() + "\r\n" + "</html>");
-        password.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 28));
-        password.setBounds(10, 300, 500, 60);
-        password.setForeground(ColoringController.getBlackColor());
-        left.add(password);
         KButton loguot = new KButton();
         PanelsController.setKButtonlight(loguot, ColoringController.getSecoundColorDark1());
         PanelsController.addActionToKButton(loguot, "Log out");
