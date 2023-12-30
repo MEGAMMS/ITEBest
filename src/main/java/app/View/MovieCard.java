@@ -58,11 +58,13 @@ public class MovieCard extends RoundedPanel {
         JLabel titel = new JLabel(movie.getTitle());
         titel.setHorizontalAlignment(SwingConstants.CENTER);
         titel.setBounds(10, 305, width-20, 50);
+        titel.setForeground(ColoringController.getBlackColor());
         titel.setFont(FontController.getSecondryFont(Font.BOLD, 16));
         // -----------------------
       
         JPanel button = new RoundedPanel(20);
         Btitel = new JLabel("See More");
+        Btitel.setForeground(ColoringController.getBlackColor());
         Btitel.setName(Integer.valueOf(id).toString());
         Btitel.setHorizontalAlignment(SwingConstants.CENTER);
         Btitel.setBounds(0, 0, width-20, 40);
@@ -71,6 +73,7 @@ public class MovieCard extends RoundedPanel {
         button.setBounds(10, 380, width-20, 40);
         button.setLayout(null);
         button.add(Btitel);
+        button.setBackground(ColoringController.getWhiteColor());
         button.setOpaque(false);
         //button.setBorder(new LineBorder(ColoringController.getFirstColor(), 2, true));
         // button.setBorder(roundedBorder);
