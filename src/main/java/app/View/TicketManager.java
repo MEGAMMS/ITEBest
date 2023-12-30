@@ -16,6 +16,7 @@ import main.java.app.Controller.ColoringController;
 import main.java.app.Controller.FontController;
 import main.java.app.Controller.PanelsController;
 import main.java.app.Controller.RoundedPanel;
+import main.java.app.Controller.Utils;
 import main.java.app.Model.Database;
 import main.java.app.Model.Showtime;
 import main.java.app.Model.Ticket;
@@ -23,6 +24,20 @@ import main.java.app.Model.Ticket;
 public class TicketManager extends JPanel {
     // identifications
     public static JPanel mainPanel;
+    public static JPanel body;
+
+    public void refresh() {
+        body.removeAll();
+        if(!Utils.isLogedIn())return;
+        body.setBackground(ColoringController.getSecoundColorLight());
+        for (Ticket ticket : Database.currUser.tickets) {
+            TicketCard card = new TicketCard(ticket);
+            System.err.println(ticket);
+            System.err.println(ticket.getId());
+            card.setBounds(10, 54 * ticket.getId(), 1180, 50);
+            body.add(card);
+        }
+    }
 
     public TicketManager() {
         initComponents();
@@ -83,13 +98,13 @@ public class TicketManager extends JPanel {
         mainPanel.add(header);
         // -----------Body------------
         // System.out.println(Database.movies.get(0).showtimes.get(0));
-        Ticket t = new Ticket(2, Database.movies.get(0), Database.users.get(0),
-                Database.movies.get(0).showtimes.get(0),5);
-        TicketCard testTicket = new TicketCard(t,10,80);
+        body = new JPanel(null);
+        System.out.println(Database.currUser.tickets);
+        refresh();
+        body.setBounds(0, 100, 1200, 5000);
+        mainPanel.add(body);
         // ---------------------------.
         // ---------------------------
-
-        mainPanel.add(testTicket);
 
         JScrollPane scrollPane = new JScrollPane(mainPanel);
         scrollPane.getVerticalScrollBar().setUnitIncrement(16);
@@ -102,13 +117,10 @@ public class TicketManager extends JPanel {
         public KButton withdraw;
         public int X, Y;
 
-        public TicketCard(Ticket ticket,int X,int Y) {
+        public TicketCard(Ticket ticket) {
             super(10);
-            setOpaque(true);
-            this.X = X;
-            this.Y = Y;
+            setOpaque(false);
             this.setBackground(ColoringController.getSecoundColor());
-            this.setBounds(X, Y, 1180, 50);
             this.setLayout(null);
             JLabel ID = new JLabel(Integer.toString(ticket.getId()));
             ID.setBounds(3, 2, 60, 46);
@@ -129,7 +141,7 @@ public class TicketManager extends JPanel {
             showtime.setOpaque(true);
             showtime.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
             this.add(showtime);
-            JLabel hall = new JLabel(ticket.getMovie().getCinema().getName()+" Num Seat("+ticket.getSeatId()+")");
+            JLabel hall = new JLabel(ticket.getMovie().getCinema().getName() + " Num Seat(" + ticket.getSeatId() + ")");
             hall.setBounds(540, 0, 200, 50);
             hall.setHorizontalAlignment(SwingConstants.CENTER);
             hall.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
