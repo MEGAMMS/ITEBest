@@ -1,6 +1,7 @@
 package main.java.app.View;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.time.LocalDateTime;
 import javax.swing.JButton;
@@ -71,15 +72,16 @@ public class TicketManager extends JPanel {
             showtime.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
             this.add(showtime);
             JLabel hall = new JLabel("Hall:" + ticket.getMovie().getCinema().getName());
-            hall.setBounds(490, 20, 1000, 40);
+            hall.setBounds(540, 20, 1000, 40);
             hall.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
             this.add(hall);
             JLabel price = new JLabel("Price:" + ticket.getMovie().getPrice());
-            price.setBounds(660, 20, 1000, 40);
+            price.setBounds(760, 20, 1000, 40);
             price.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
             this.add(price);
             JButton withdraw = new JButton("withdraw");
             withdraw.setBounds(860, 20, 300, 40);
+            withdraw.setBackground(Color.RED);
             this.add(withdraw);
         }
 
