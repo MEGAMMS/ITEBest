@@ -15,7 +15,7 @@ import main.java.app.Model.User;
 
 public class Profile extends JPanel {
     JPanel left,right;
-    JLabel name,email,img;
+    JLabel name,email,img,idCard,networth;
     public User user;
     Profile() {
         user=new User(0, "Name", "Email", "pass");
@@ -23,6 +23,8 @@ public class Profile extends JPanel {
     }
     public void updateData(User user){
         this.user=user;
+        if(this.user.getvisa()==null)
+            right.setVisible(false);
         name.setText("<html>" + user.getName()+"\r\n" + "</html>");
         email.setText("<html>" +"Email: "+ user.getEmail()+"\r\n" + "</html>");
     }
@@ -39,10 +41,24 @@ public class Profile extends JPanel {
         name.setBounds(170, 10, 400, 150);
         left.add(name);
         left.add(img);
-
+        
+        JLabel img2=ImageController.addPhoto("visacard.png", 400, 400);
+        img2.setBounds(100, 10, 400, 400);
+        right=new JPanel();
+        right.setLayout(null);
+        right.setBackground(ColoringController.getTowColor());
+        right.add(img2);
+        right.setBounds(610, 50, 590, 610);
+        idCard=new JLabel("Id: "+"XXXX-XXXX-XXXX-XXXX");
+        idCard.setFont(FontController.getSecondryFont(Font.BOLD, 32));
+        idCard.setHorizontalAlignment(SwingConstants.CENTER);
+        idCard.setBounds(0, 400, 590, 50);
+        right.add(idCard);
+        //add(right);
         email=new JLabel("<html>" +"Email: "+ user.getEmail()+"\r\n" + "</html>");
         email.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 28));
         email.setBounds(10, 200, 500, 60);
+        add(new VisaCardAdd());
         left.add(email);
         add(left);
         setBounds(60, 50, 1220, 670);

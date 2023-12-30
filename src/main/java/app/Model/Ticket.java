@@ -1,41 +1,33 @@
 package main.java.app.Model;
 
 public class Ticket {
-    public Ticket(int id, int movieId, int userId, int price, int showTimeId) {
+    public Ticket(int id, Movie m, User u, int showTimeId) {
         this.id = id;
-        this.movieId = movieId;
-        this.userId = userId;
-        this.price = price;
+        this.user=u;
         this.showTimeId = showTimeId;
+
     }
     private int id;
-    private int movieId;
-    private int userId;
-    private int price;
+    private User user;
     private int showTimeId;
+    private Movie movie;
+    public void setmovie(Movie m){
+      this.movie=m;
+    }
+    public Movie getmovie(){
+        return this.movie;
+    }
     public int getId() {
         return id;
     }
     public void setId(int id) {
         this.id = id;
     }
-    public int getMovieId() {
-        return movieId;
+    public User getUser() {
+        return user;
     }
-    public void setMovieId(int movieId) {
-        this.movieId = movieId;
-    }
-    public int getUserId() {
-        return userId;
-    }
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-    public int getPrice() {
-        return price;
-    }
-    public void setPrice(int price) {
-        this.price = price;
+    public void setUser(User user) {
+        this.user = user;
     }
     public int getShowTimeId() {
         return showTimeId;

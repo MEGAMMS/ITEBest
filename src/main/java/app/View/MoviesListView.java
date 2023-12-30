@@ -41,14 +41,13 @@ public class MoviesListView extends JPanel {
         // ----------Top-------------
         JPanel Top = new JPanel();
         Top.setBackground(ColoringController.getTowColorLigth());
-        Top.setBounds(10, 10, 1190, 35);
+        Top.setBounds(10, 10, 1180, 35);
         Top.setLayout(null);
 
         JLabel tMovie = new JLabel("Movies Page");
         tMovie.setBounds(510, 0, 300, 35);
         tMovie.setFont(FontController.getPrimaryFont(Font.BOLD, 29));
         Top.add(tMovie);
-
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(Tags.tags.toArray(new String[0]));
         JComboBox<String> comboBox = new JComboBox<>(model);
         comboBox.setBounds(10, 5, 200, 23);
@@ -66,7 +65,7 @@ public class MoviesListView extends JPanel {
         bodies.get("All").setVisible(true);
         // ---------------------------
         // ---------------------------
-        mainPanel.setPreferredSize(new Dimension(1200, MovieCard.sizePanel() + 400));
+        mainPanel.setPreferredSize(new Dimension(1200, bodies.get("All").getHeight() + 100));
         mainPanel.add(Top);
 
         JScrollPane scrollPane = new JScrollPane(mainPanel);
@@ -82,11 +81,11 @@ public class MoviesListView extends JPanel {
         body.setLayout(null);
         body.setBackground(ColoringController.getTowColor());
         for (int i = 0; i < Database.movies.size(); i++) {
-            System.out.println(Database.movies.get(i).getTag());
+            //System.out.println(Database.movies.get(i).getTag());
             if (Database.movies.get(i).getTag().equals(tag) || tag.equals("All"))
                 body.add(new MovieCard(i));
         }
-        body.setBounds(10, 60, 1190, MovieCard.sizePanel() + 10);
+        body.setBounds(10, 60, 1180, MovieCard.sizePanel() + 10);
         return body;
     }
 
