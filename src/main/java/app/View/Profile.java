@@ -53,15 +53,18 @@ public class Profile extends JPanel {
         name = new JLabel("<html>" + user.getName() + "\r\n" + "</html>");
         name.setFont(FontController.getSecondryFont(Font.BOLD, 32));
         name.setBounds(170, 10, 400, 150);
+        name.setForeground(ColoringController.getBlackColor());
         left.add(name);
         left.add(img);
         email = new JLabel("<html>" + "Email: " + user.getEmail() + "\r\n" + "</html>");
         email.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 28));
         email.setBounds(10, 200, 500, 60);
+        email.setForeground(ColoringController.getBlackColor());
         left.add(email);
         password = new JLabel("<html>" + "Password: " + user.getPassword() + "\r\n" + "</html>");
         password.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 28));
         password.setBounds(10, 300, 500, 60);
+        password.setForeground(ColoringController.getBlackColor());
         left.add(password);
         KButton loguot = new KButton();
         PanelsController.setKButtonlight(loguot, ColoringController.getSecoundColorDark1());
@@ -86,12 +89,14 @@ public class Profile extends JPanel {
         idCard = new JLabel("Id: " + "XXXX-XXXX-XXXX-XXXX");
         idCard.setFont(FontController.getSecondryFont(Font.BOLD, 32));
         idCard.setHorizontalAlignment(SwingConstants.CENTER);
+        idCard.setForeground(ColoringController.getBlackColor());
         idCard.setBounds(0, 400, 590, 50);
         right.add(idCard);
 
         networth = new JLabel("networth: " + "0 S.P");
         networth.setFont(FontController.getSecondryFont(Font.BOLD, 32));
         networth.setHorizontalAlignment(SwingConstants.CENTER);
+        networth.setForeground(ColoringController.getBlackColor());
         networth.setBounds(0, 480, 590, 50);
         right.add(networth);
 
@@ -119,6 +124,7 @@ public class Profile extends JPanel {
         setLayout(null);
         JLabel TProfile = new JLabel("Profile Page");
         TProfile.setBounds(10, 5, 1200, 40);
+        TProfile.setForeground(ColoringController.getBlackColor());
         TProfile.setFont(FontController.getPrimaryFont(Font.BOLD, 30));
         TProfile.setHorizontalAlignment(SwingConstants.CENTER);
         setBackground(ColoringController.getSecoundColor());
