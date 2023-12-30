@@ -34,7 +34,6 @@ public class PanelsController {
         kButton.setkHoverColor(ColoringController.getWhiteColor());
         kButton.setkPressedColor(ColoringController.getFirstColorLight());
         kButton.setkSelectedColor(ColoringController.getFirstColorDark());
-        ;
         kButton.setkHoverForeGround(ColoringController.getFirstColorDark());
         kButton.setBorder(null);
         kButton.setkFillButton(true);
