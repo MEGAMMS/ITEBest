@@ -118,6 +118,7 @@ public class PanelsController {
                             int count = Integer.parseInt(MainFrame.PTicketAdd.numTick.getValue().toString());
                             Showtime showtime = MainFrame.PTicketAdd.movie.showtimes
                                     .get(MainFrame.PTicketAdd.comboBoxShowtime.getSelectedIndex());
+                            System.out.println(showtime);
                             String stateTick = TicketController.Book(MainFrame.PTicketAdd.movie, Database.currUser,
                                     count, showtime);
                             MainFrame.PTicketAdd.MsgError.setText(stateTick);
@@ -125,9 +126,9 @@ public class PanelsController {
                             MainFrame.PTicketAdd.MsgError.setVisible(true);
                             if (stateTick.equals("Booked successfully")) {
                                 MainFrame.PTicketAdd.MsgError.setVisible(true);
-                                System.out.println("Booked successfully ");
+                                System.out.println(stateTick);
                                 MainFrame.PTicketAdd.MsgError.setForeground(ColoringController.getGreenColor());
-                                MainFrame.PTicketAdd.updateData(Database.movies.indexOf(MainFrame.PTicketAdd.movie));
+                                MainFrame.PTicketAdd.numberTicketFree.setText("Number Ticket Free " + MainFrame.PTicketAdd.SelectedShowtime.getSeats());
                             }
                         }
                         break;
@@ -256,11 +257,13 @@ public class PanelsController {
     public static void ChooseComboShowTimes(JComboBox<String> comboBox) {
         comboBox.addActionListener(e -> {
             System.out.println(comboBox.getSelectedItem());
-            Showtime SelectedShowtime = MainFrame.PTicketAdd.movie.showtimes.stream().filter(obj -> obj.toString().equals((String)comboBox.getSelectedItem())).findFirst().orElse(null);
+            Showtime SelectedShowtime = MainFrame.PTicketAdd.movie.showtimes.stream()
+                    .filter(obj -> obj.toString().equals((String) comboBox.getSelectedItem())).findFirst().orElse(null);
             System.out.println(SelectedShowtime);
             MainFrame.PTicketAdd.numberTicketFree.setText("Number Ticket Free " + SelectedShowtime.getSeats());
             // MainFrame.PTicketAdd.updateData(MainFrame.PTicketAdd.movie.getId());
-           // MainFrame.PTicketAdd.numberTicketFree.setText("Number Ticket Free " + showtime.getSeats());
+            // MainFrame.PTicketAdd.numberTicketFree.setText("Number Ticket Free " +
+            // showtime.getSeats());
         });
     }
 

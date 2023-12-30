@@ -33,13 +33,16 @@ public class TicketAdd extends JPanel {
     public JLabel poster;
     public JComboBox<String> comboBoxShowtime;
     public JLabel numberTicketFree;
-    public JPanel BookingPanel;public CommentsMovie CommentsPanel;
+    public JPanel BookingPanel;
+    public CommentsMovie CommentsPanel;
     public JPanel chairs;
     public JPanel menu;
     public JPanel checkLogin;
     public JPanel addTick;
-    public JLabel MsgError,priceMovie,priceAll;
-    //HHH
+    public JLabel MsgError, priceMovie, priceAll;
+    public Showtime SelectedShowtime;
+
+    // HHH
     public void updateData(int id) {
         System.out.println(id);
         this.movie = Database.movies.get(id);
@@ -49,12 +52,14 @@ public class TicketAdd extends JPanel {
         this.descM.setText("<html>" + this.movie.getDescription() + "\r\n" + //
                 "\r\n" + //
                 "</html>");
-        comboBoxShowtime.setSelectedItem(null);
         comboBoxShowtime.removeAllItems();
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(
                 movie.showtimes.stream().map(Object::toString).toArray(String[]::new));
         comboBoxShowtime.setModel(model);
-        priceMovie.setText("Price One Ticket: "+movie.getPrice()+" S.P" );
+        SelectedShowtime = MainFrame.PTicketAdd.movie.showtimes.stream()
+                    .filter(obj -> obj.toString().equals((String) comboBoxShowtime.getSelectedItem())).findFirst().orElse(null);
+        MainFrame.PTicketAdd.numberTicketFree.setText("Number Ticket Free " + SelectedShowtime.getSeats());
+        priceMovie.setText("Price One Ticket: " + movie.getPrice() + " S.P");
         // for (Showtime s : movie.showtimes)
         // this.comboBoxShowtime.addItem((String)s.getDate().toString());
         CommentsPanel.updateTextPane(movie);
@@ -132,24 +137,24 @@ public class TicketAdd extends JPanel {
         addCommentsPanel.add(LabelController.addLabel("Comments", FontController.getSecondryFont(Font.BOLD, 18)));
         PanelsController.addActionToButton(addCommentsPanel, "ViewPanelComments");
         menu.add(addCommentsPanel);
-        //------checkLogin---------
-        checkLogin=new JPanel();
+        // ------checkLogin---------
+        checkLogin = new JPanel();
         checkLogin.setBounds(10, 280, 780, 320);
         checkLogin.setBackground(ColoringController.getSecoundColor());
         checkLogin.setLayout(null);
         body.add(checkLogin);
-        JLabel imgNeedLogin=ImageController.addPhoto("needLogin.png", 480, 320);
-            imgNeedLogin.setBounds(150, 0, 480, 320);
+        JLabel imgNeedLogin = ImageController.addPhoto("needLogin.png", 480, 320);
+        imgNeedLogin.setBounds(150, 0, 480, 320);
         KButton clickForLongin = new KButton();
         clickForLongin.setText("Regecter");
         clickForLongin.setBounds(270, 136, 150, 30);
-        PanelsController.setKButtonlight(clickForLongin,ColoringController.getFirstColor());
+        PanelsController.setKButtonlight(clickForLongin, ColoringController.getFirstColor());
         PanelsController.addActionToKButton(clickForLongin, "Regecter");
         checkLogin.add(clickForLongin);
         checkLogin.add(imgNeedLogin);
         // ---------Comments---------
         CommentsPanel = new CommentsMovie(movie);
-        
+
         body.add(CommentsPanel);
         CommentsPanel.setVisible(false);
         // ---------Booking---------
@@ -186,26 +191,26 @@ public class TicketAdd extends JPanel {
         numberTicketFree.setBounds(300, 90, 200, 40);
         numberTicketFree.setFont(FontController.getSecondryFont(Font.BOLD, 14));
         BookingPanel.add(numberTicketFree);
-        JLabel imgTicket1=ImageController.addPhoto("booking.png", 600, 400);
+        JLabel imgTicket1 = ImageController.addPhoto("booking.png", 600, 400);
         imgTicket1.setBounds(240, 0, 600, 400);
         BookingPanel.add(imgTicket1);
-        JLabel imgTicket2=ImageController.addPhoto("Tickets.png", 150, 100);
+        JLabel imgTicket2 = ImageController.addPhoto("Tickets.png", 150, 100);
         imgTicket2.setBounds(150, 220, 150, 100);
-        //BookingPanel.add(imgTicket2);
-        MsgError = new JLabel("" );
+        // BookingPanel.add(imgTicket2);
+        MsgError = new JLabel("");
         MsgError.setBounds(10, 160, 300, 30);
         MsgError.setForeground(ColoringController.getRedColor());
         MsgError.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 16));
         BookingPanel.add(MsgError);
 
-        priceMovie = new JLabel("Price Movie: 100 s.p" );
-        priceMovie.setBounds(10, 210,300, 30);
+        priceMovie = new JLabel("Price Movie: 100 s.p");
+        priceMovie.setBounds(10, 210, 300, 30);
         priceMovie.setForeground(ColoringController.getBlackColor());
         priceMovie.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
         BookingPanel.add(priceMovie);
 
-        priceAll = new JLabel("Price All: 1000 s.p" );
-        priceAll.setBounds(10, 260,300, 30);
+        priceAll = new JLabel("Price All: 1000 s.p");
+        priceAll.setBounds(10, 260, 300, 30);
         priceAll.setForeground(ColoringController.getFirstColorDark2());
         priceAll.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 22));
         BookingPanel.add(priceAll);
