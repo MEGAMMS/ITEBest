@@ -12,6 +12,7 @@ public class LabelController {
     public static JLabel addLabel(String text,Font font){
         JLabel label=new JLabel(text);
         label.setFont(font);
+        label.setForeground(ColoringController.getBlackColor());
         label.setHorizontalAlignment(SwingConstants.CENTER);
         label.setVerticalAlignment(SwingConstants.CENTER);
         label.setBorder(new EmptyBorder(0,0,0,0));
