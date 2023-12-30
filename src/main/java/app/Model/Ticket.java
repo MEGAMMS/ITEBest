@@ -7,12 +7,22 @@ public class Ticket implements Serializable {
     private User user;
     private Showtime showtime;
     private Movie movie;
+    private int seatId;
 
-    public Ticket(int id, Movie m, User u, Showtime showtime) {
+    public int getSeatId() {
+        return seatId;
+    }
+
+    public void setSeatId(int seatId) {
+        this.seatId = seatId;
+    }
+
+    public Ticket(int id, Movie m, User u, Showtime showtime,int seatId) {
         this.id = id;
         this.user = u;
         this.movie = m;
         this.showtime = showtime;
+        this.seatId=seatId;
     }
 
     public void setmovie(Movie m) {

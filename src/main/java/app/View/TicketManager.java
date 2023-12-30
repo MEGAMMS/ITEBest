@@ -15,6 +15,7 @@ import com.k33ptoo.components.KButton;
 import main.java.app.Controller.ColoringController;
 import main.java.app.Controller.FontController;
 import main.java.app.Controller.PanelsController;
+import main.java.app.Controller.RoundedPanel;
 import main.java.app.Model.Database;
 import main.java.app.Model.Showtime;
 import main.java.app.Model.Ticket;
@@ -83,8 +84,8 @@ public class TicketManager extends JPanel {
         // -----------Body------------
         // System.out.println(Database.movies.get(0).showtimes.get(0));
         Ticket t = new Ticket(2, Database.movies.get(0), Database.users.get(0),
-                Database.movies.get(0).showtimes.get(0));
-        TicketCard testTicket = new TicketCard(t);
+                Database.movies.get(0).showtimes.get(0),5);
+        TicketCard testTicket = new TicketCard(t,10,80);
         // ---------------------------.
         // ---------------------------
 
@@ -97,18 +98,20 @@ public class TicketManager extends JPanel {
         add(scrollPane, BorderLayout.CENTER);
     }
 
-    class TicketCard extends JPanel {
+    class TicketCard extends RoundedPanel {
         public KButton withdraw;
         public int X, Y;
 
-        public TicketCard(Ticket ticket) {
-            X = 10;
-            Y = 80;
+        public TicketCard(Ticket ticket,int X,int Y) {
+            super(10);
+            setOpaque(true);
+            this.X = X;
+            this.Y = Y;
             this.setBackground(ColoringController.getSecoundColor());
             this.setBounds(X, Y, 1180, 50);
             this.setLayout(null);
             JLabel ID = new JLabel(Integer.toString(ticket.getId()));
-            ID.setBounds(0, 0, 60, 50);
+            ID.setBounds(3, 2, 60, 46);
             ID.setHorizontalAlignment(SwingConstants.CENTER);
             ID.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
             ID.setBackground(ColoringController.getWhiteColor());
@@ -120,19 +123,19 @@ public class TicketManager extends JPanel {
             title.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
             this.add(title);
             JLabel showtime = new JLabel("" + ticket.getShowtime());
-            showtime.setBounds(300, 0, 200, 50);
+            showtime.setBounds(300, 2, 200, 46);
             showtime.setHorizontalAlignment(SwingConstants.CENTER);
             showtime.setBackground(ColoringController.getWhiteColor());
             showtime.setOpaque(true);
             showtime.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
             this.add(showtime);
-            JLabel hall = new JLabel(ticket.getMovie().getCinema().getName());
+            JLabel hall = new JLabel(ticket.getMovie().getCinema().getName()+" Num Seat("+ticket.getSeatId()+")");
             hall.setBounds(540, 0, 200, 50);
             hall.setHorizontalAlignment(SwingConstants.CENTER);
             hall.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
             this.add(hall);
             JLabel price = new JLabel("" + ticket.getMovie().getPrice());
-            price.setBounds(760, 0, 200, 50);
+            price.setBounds(760, 2, 200, 46);
             price.setHorizontalAlignment(SwingConstants.CENTER);
             price.setBackground(ColoringController.getWhiteColor());
             price.setOpaque(true);
@@ -140,7 +143,7 @@ public class TicketManager extends JPanel {
             this.add(price);
             withdraw = new KButton();
             withdraw.setText("withdraw");
-            withdraw.setFont(FontController.getSecondryFont(Font.BOLD, 11));
+            withdraw.setFont(FontController.getSecondryFont(Font.BOLD, 8));
             PanelsController.setKButtonlight(withdraw, ColoringController.getRedColor());
             withdraw.setkBorderRadius(10);
             withdraw.setBounds(1000, 10, 120, 30);
