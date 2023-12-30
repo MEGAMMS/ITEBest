@@ -11,7 +11,7 @@ public class Themes {
         themes.add(new String[] {  "#FFC436", "#FFFB73", "#F4CE14","#FBD85D","#FAE392","#F1C93B","#F0DE36","#ffffff","#000000","#ee4011","#D9F609" });
     }
     public static String[] currTheme(){
-        return themes.get(2);
+        return themes.get(0);
     }
 }
 

@@ -93,9 +93,11 @@ public class PanelsController {
                             if (Database.currUser.creditcard == null) {
                                 MainFrame.PProfile.dontPayM.setVisible(true);
                                 MainFrame.PProfile.right.setVisible(false);
+                                MainFrame.PProfile.addVisaCard.setVisible(false);
                             } else {
                                 MainFrame.PProfile.dontPayM.setVisible(false);
                                 MainFrame.PProfile.right.setVisible(true);
+                                MainFrame.PProfile.addVisaCard.setVisible(false);
                             }
                             switchPanels("Profile");
                         }
@@ -173,6 +175,7 @@ public class PanelsController {
                             MainFrame.PTicketManager.refresh();
                             switchPanels(action);
                         } else {
+                            MainFrame.toolbar.setVisible(false);
                             switchPanels("Login");
                         }
                     break;
