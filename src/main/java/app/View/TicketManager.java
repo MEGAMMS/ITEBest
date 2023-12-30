@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.time.LocalDateTime;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -18,9 +20,9 @@ import main.java.app.Controller.ColoringController;
 import main.java.app.Controller.FontController;
 import main.java.app.Controller.PanelsController;
 import main.java.app.Controller.RoundedPanel;
+import main.java.app.Controller.TicketController;
 import main.java.app.Controller.Utils;
 import main.java.app.Model.Database;
-import main.java.app.Model.Showtime;
 import main.java.app.Model.Ticket;
 
 public class TicketManager extends JPanel {
@@ -36,6 +38,7 @@ public class TicketManager extends JPanel {
             return;
         scrollBarHight = Database.currUser.tickets.size()*53;
         body.setBackground(ColoringController.getSecoundColorLight());
+        System.out.println("refresh:"+ Database.currUser.tickets.size());
         for (Ticket ticket : Database.currUser.tickets) {
             TicketCard card = new TicketCard(ticket);
             System.err.println(ticket);
@@ -180,6 +183,31 @@ public class TicketManager extends JPanel {
             withdraw.setkBorderRadius(10);
             withdraw.setBounds(1000, 10, 120, 30);
             withdraw.setBackground(Color.RED);
+            withdraw.addMouseListener(new MouseListener() {
+
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    TicketController.UnBook(ticket);
+                    refresh();
+                }
+
+                @Override
+                public void mousePressed(MouseEvent e) {
+                }
+
+                @Override
+                public void mouseReleased(MouseEvent e) {
+                }
+
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                }
+
+                @Override
+                public void mouseExited(MouseEvent e) {
+                }
+                
+            });
             this.add(withdraw);
         }
 
