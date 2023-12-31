@@ -559,16 +559,9 @@ public class PanelsController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (radioButton1.isSelected()) {
-
-                    int choice = JOptionPane.showConfirmDialog(radioButton1,
-                            "This will restart the program. Are you sure?", "Confirmation", JOptionPane.YES_NO_OPTION);
-                    if (choice == JOptionPane.YES_OPTION) {
-                        // System.out.println(MainFrame.PSettings.radioButtons.indexOf(radioButton1));
-                        Database.themes.numTheme = MainFrame.PSettings.radioButtons.indexOf(radioButton1);
-                        Database.save();
-                        Utils.restart();
-                    }
-
+                    Database.currTheme = MainFrame.PSettings.radioButtons.indexOf(radioButton1);
+                    Database.save();
+                    Utils.restart();
                 }
             }
         });

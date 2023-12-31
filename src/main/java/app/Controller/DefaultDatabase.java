@@ -8,20 +8,18 @@ import main.java.app.Model.Cinema;
 import main.java.app.Model.Database;
 import main.java.app.Model.Movie;
 import main.java.app.Model.Showtime;
-import main.java.app.Model.Themes;
 import main.java.app.Model.Visa;
 
 public class DefaultDatabase {
         public DefaultDatabase() {
                 Database.delete();
-                Database.themes=new Themes();
                 new addVisaCardToDataBase();
                 UserController.AddUser("admin", "admin@gmail.com", "123456789");
                 UserController.AddUser("admin2", "admin2@gmail.com", "123456789");
                 Database.currUser = Database.users.get(0);
                 Database.visas.add(new Visa("1111-2222-3333-4444", "1234", 15000000));
                 Database.currUser.setVisa(Database.visas.get(0));
-                
+
                 Database.halls.add(new Cinema(Database.halls.size(), "Hall 1", Database.movies));
                 Database.movies.add(new Movie(Database.movies.size(), "Rick And Mortey", "RickandMortey.jpg", "Comedy",
                                 "Rick is a mentally-unbalanced but scientifically gifted old man who has recently reconnected with his family. He spends most of his time involving his young grandson Morty in dangerous, outlandish adventures throughout space and alternate universes. Compounded with Morty's already unstable family life, these events cause Morty much distress at home and school.",
@@ -144,18 +142,19 @@ public class DefaultDatabase {
                         showtimes.set(1, new Showtime(showtimes.get(1).date.plusHours(rand.nextInt(12))));
                         showtimes.set(2, new Showtime(showtimes.get(2).date.plusHours(rand.nextInt(12))));
                 }
-                ArrayList<Double>rates=new ArrayList<>();
-                        rates.add(rand.nextDouble(1, 5));
-                        rates.add(rand.nextDouble(1, 5));
-                        rates.add(rand.nextDouble(1, 5));
+                ArrayList<Double> rates = new ArrayList<>();
+                rates.add(rand.nextDouble(1, 5));
+                rates.add(rand.nextDouble(1, 5));
+                rates.add(rand.nextDouble(1, 5));
                 for (Movie m : Database.movies) {
                         m.setRates(new ArrayList<>(rates));
-                        rates.set(0,rand.nextDouble(1, 5));
-                        rates.set(1,rand.nextDouble(1, 5));
-                        rates.set(2,rand.nextDouble(1, 5));
+                        rates.set(0, rand.nextDouble(1, 5));
+                        rates.set(1, rand.nextDouble(1, 5));
+                        rates.set(2, rand.nextDouble(1, 5));
                 }
-                // System.out.println(TicketController.Book(Database.movies.get(0), Database.currUser, 20,
-                //                 Database.movies.get(0).showtimes.get(0)));
+                // System.out.println(TicketController.Book(Database.movies.get(0),
+                // Database.currUser, 20,
+                // Database.movies.get(0).showtimes.get(0)));
                 Database.save();
 
         }

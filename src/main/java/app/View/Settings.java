@@ -132,7 +132,7 @@ public class Settings extends JPanel {
         radioButtons.add(theme_icon_button4);
         radioButtons.add(theme_icon_button5);
         radioButtons.add(theme_icon_button6);
-        radioButtons.get(Database.themes.numTheme).setSelected(true);
+        radioButtons.get(Database.currTheme).setSelected(true);
         // theme_icon_button.setSelected(true);
 
         // ____________button_________________________________________________________-
@@ -153,7 +153,6 @@ public class Settings extends JPanel {
     public JRadioButton addRadioButton(String img, int X, int Y) {
         JRadioButton rb = new JRadioButton(ImageController.getIcon(img, 320, 180));
         rb.setBounds(X, Y, 330, 220);
-        // PanelsController.addActionToButton(theme_icon_button,0,"Theme");
         PanelsController.addActionToRadio(rb);
         rb.setBackground(ColoringController.getSecoundColor());
         rb.setFocusable(false);

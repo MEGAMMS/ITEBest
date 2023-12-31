@@ -7,10 +7,10 @@ import main.java.app.Model.Themes;
 
 public class ColoringController {
     public static String[] theme;
-    static{
-        theme = Themes.currTheme(Database.themes.numTheme);
-        System.out.println(Database.themes.numTheme);
+    static {
+        theme = Themes.getTheme();
     }
+
     public static Color getFirstColor() {
         return Color.decode(theme[0]);
     }
