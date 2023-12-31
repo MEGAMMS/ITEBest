@@ -1,24 +1,18 @@
 package main.java.app.View;
 
 import main.java.app.Controller.ImageController;
-import main.java.app.Controller.Utils;
-import main.java.app.Model.Database;
 import main.java.app.Model.Spinner;
 import main.java.app.ITEBest;
 import main.java.app.Controller.ColoringController;
-import main.java.app.Controller.DefaultDatabase;
 import main.java.app.Controller.FontController;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.RoundRectangle2D;
-import java.io.IOException;
-import java.util.Scanner;
 import javax.swing.Timer;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
@@ -26,9 +20,8 @@ import javax.swing.SwingUtilities;
 public class Start extends JFrame {
     public static MainFrame mainFrame;
     public JLabel loadingJLabel; 
-    Spinner spinner,spinner2;
+    Spinner spinner;
     Timer timer;
-    private static int angle = 0;
     public Start() {
         
         initComponents();
@@ -57,6 +50,7 @@ public class Start extends JFrame {
         // ---------Rigth-------------
         
         JPanel rigth = new JPanel();
+        rigth.setBackground(ColoringController.getWhiteColor());
         rigth.setLayout(null);
         JLabel welcomelLabel = new JLabel("Welcome");
         welcomelLabel.setForeground(ColoringController.getBlackColor());
@@ -72,7 +66,8 @@ public class Start extends JFrame {
         loadingJLabel.setHorizontalAlignment(SwingConstants.CENTER);
         loadingJLabel.setFont(FontController.getPrimaryFont(Font.BOLD, 22));
         rigth.add(loadingJLabel);
-        spinner=new Spinner(ColoringController.getFirstColorDark());
+        spinner=new Spinner(ColoringController.getFirstColor());
+        spinner.setBackground(ColoringController.getWhiteColor());
         spinner.setBounds(50, 280, 100, 100);
         rigth.add(spinner);
         // ---------------------------
