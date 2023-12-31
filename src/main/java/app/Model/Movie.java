@@ -10,7 +10,7 @@ public class Movie implements Serializable {
     private String title;
     private String director;
     private String description;
-    private ArrayList<Float> rates;
+    private ArrayList<Double> rates;
     public ArrayList<Showtime> showtimes;
     public ArrayList<Comment> comments;
     public int rateUser;
@@ -112,20 +112,20 @@ public class Movie implements Serializable {
         this.description = description;
     }
 
-    public ArrayList<Float> getRates() {
+    public ArrayList<Double> getRates() {
         return rates;
     }
-    public float getRate(){
+    public Double getRate(){
         if(rates.size()!=0){
-            float sum=0;
-            for (float x:rates)
+            Double sum=0.0;
+            for (Double x:rates)
                 sum+=x;
             return sum/rates.size();
         }else{
-            return 0.0f;
+            return 0.0;
         }
     }
-    public void setRates(ArrayList<Float> rates) {
+    public void setRates(ArrayList<Double> rates) {
         this.rates = rates;
     }
 

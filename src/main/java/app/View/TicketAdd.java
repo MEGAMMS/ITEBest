@@ -44,7 +44,7 @@ public class TicketAdd extends JPanel {
     public StarRatingComponent starRating;
     // HHH
     public void updateData(int id) {
-        System.out.println(id);
+        // System.out.println(id);
         this.movie = Database.movies.get(id);
         this.titleM.setText(movie.getTitle());
         JLabel label = ImageController.addPhoto(movie.getPoster(), 410, 615);
