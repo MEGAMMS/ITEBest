@@ -3,7 +3,6 @@ package main.java.app.View.Misc;
 import java.io.IOException;
 import javax.swing.JPanel;
 
-import main.java.app.Controller.AnimatedPanel;
 import main.java.app.Controller.ColoringController;
 
 public class Toolbar extends JPanel {

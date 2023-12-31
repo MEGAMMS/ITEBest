@@ -9,12 +9,13 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
-import main.java.app.Controller.AnimatedPanel;
+
 import main.java.app.Controller.ColoringController;
 import main.java.app.Controller.FontController;
 import main.java.app.Controller.LabelController;
 import main.java.app.Model.Comment;
 import main.java.app.Model.Movie;
+import main.java.app.View.Misc.AnimatedPanel;
 
 public class CommentsMovie extends JPanel{
     public Movie movie;

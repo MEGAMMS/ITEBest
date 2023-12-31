@@ -1,4 +1,4 @@
-package main.java.app.Controller;
+package main.java.app.View.Misc;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -9,6 +9,10 @@ import javax.swing.*;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
+
+import main.java.app.Controller.ColoringController;
+import main.java.app.Controller.ImageController;
+import main.java.app.Controller.PanelsController;
 
 public class AnimatedPanel extends JPanel {
 
