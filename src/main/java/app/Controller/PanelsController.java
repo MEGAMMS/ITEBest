@@ -298,19 +298,16 @@ public class PanelsController {
                 switch (action) {
                     case "TicketAdd":
                         int id = Integer.parseInt(button.getName());
-                        // System.out.println(id);
+                        MainFrame.PTicketAdd.updateData(Database.movies.get(id));
                         MainFrame.PTicketAdd.MsgError.setVisible(false);
                         if (!Utils.isLogedIn()) {
                             MainFrame.PTicketAdd.BookingPanel.setVisible(false);
                             MainFrame.PTicketAdd.checkLogin.setVisible(true);
                             MainFrame.PTicketAdd.addTick.setVisible(false);
                         } else {
-                            MainFrame.PTicketAdd.updateData(Database.movies.get(id));
-                            System.out.println(id + "mo");
                             MainFrame.PTicketAdd.BookingPanel.setVisible(true);
                             MainFrame.PTicketAdd.checkLogin.setVisible(false);
                             MainFrame.PTicketAdd.addTick.setVisible(true);
-                            // MainFrame.PTicketAdd.MsgError.setVisible(false);
                         }
                         switchPanels("TicketAdd");
                         break;
