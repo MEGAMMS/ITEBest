@@ -127,7 +127,7 @@ public class PanelsController {
                             int count = Integer.parseInt(MainFrame.PTicketAdd.numTick.getValue().toString());
                             Showtime showtime = MainFrame.PTicketAdd.movie.showtimes
                                     .get(MainFrame.PTicketAdd.comboBoxShowtime.getSelectedIndex());
-                            System.out.println(showtime);
+                            // System.out.println(showtime);
                             String stateTick = TicketController.Book(MainFrame.PTicketAdd.movie, Database.currUser,
                                     count, showtime);
                             MainFrame.PTicketAdd.MsgError.setText(stateTick);
@@ -172,7 +172,7 @@ public class PanelsController {
                             MainFrame.PTicketAdd.CommentsPanel.addComment(Database.currUser.getName(), comment);
                             MainFrame.PTicketAdd.CommentsPanel.movie.comments
                                     .add(new Comment(Database.currUser.getName(), comment));
-                            System.out.println(MainFrame.PTicketAdd.CommentsPanel.movie.getTitle());
+                            // System.out.println(MainFrame.PTicketAdd.CommentsPanel.movie.getTitle());
                             Database.save();
                         }
 
@@ -278,10 +278,10 @@ public class PanelsController {
 
     public static void ChooseComboShowTimes(JComboBox<String> comboBox) {
         comboBox.addActionListener(e -> {
-            System.out.println(comboBox.getSelectedItem());
+            // System.out.println(comboBox.getSelectedItem());
             Showtime SelectedShowtime = MainFrame.PTicketAdd.movie.showtimes.stream()
                     .filter(obj -> obj.toString().equals((String) comboBox.getSelectedItem())).findFirst().orElse(null);
-            System.out.println(SelectedShowtime);
+            // System.out.println(SelectedShowtime);
             MainFrame.PTicketAdd.numberTicketFree.setText("Number Ticket Free " + SelectedShowtime.getSeats());
             // MainFrame.PTicketAdd.updateData(MainFrame.PTicketAdd.movie.getId());
             // MainFrame.PTicketAdd.numberTicketFree.setText("Number Ticket Free " +
@@ -308,7 +308,7 @@ public class PanelsController {
                 switch (action) {
                     case "TicketAdd":
                         int id = Integer.parseInt(button.getName());
-                        System.out.println(id);
+                        // System.out.println(id);
                         MainFrame.PTicketAdd.MsgError.setVisible(false);
                         if (!Utils.isLogedIn()) {
                             MainFrame.PTicketAdd.BookingPanel.setVisible(false);
@@ -572,7 +572,7 @@ public class PanelsController {
                     
                     int choice=JOptionPane.showConfirmDialog(radioButton1,"This will close the program. Are you sure?", "Confirmation", JOptionPane.YES_NO_OPTION);
                             if (choice  == JOptionPane.YES_OPTION){
-                                System.out.println(MainFrame.PSettings.radioButtons.indexOf(radioButton1));
+                                // System.out.println(MainFrame.PSettings.radioButtons.indexOf(radioButton1));
                                 Database.themes.numTheme=MainFrame.PSettings.radioButtons.indexOf(radioButton1);
                                 Database.save();
                                 System.exit(0);

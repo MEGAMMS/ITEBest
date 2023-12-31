@@ -144,8 +144,18 @@ public class DefaultDatabase {
                         showtimes.set(1, new Showtime(showtimes.get(1).date.plusHours(rand.nextInt(12))));
                         showtimes.set(2, new Showtime(showtimes.get(2).date.plusHours(rand.nextInt(12))));
                 }
-                System.out.println(TicketController.Book(Database.movies.get(0), Database.currUser, 20,
-                                Database.movies.get(0).showtimes.get(0)));
+                ArrayList<Float>rates=new ArrayList<>();
+                        rates.add(rand.nextFloat(1, 5));
+                        rates.add(rand.nextFloat(1, 5));
+                        rates.add(rand.nextFloat(1, 5));
+                for (Movie m : Database.movies) {
+                        m.setRates(new ArrayList<>(rates));
+                        rates.set(0,rand.nextFloat(1, 5));
+                        rates.set(1,rand.nextFloat(1, 5));
+                        rates.set(2,rand.nextFloat(1, 5));
+                }
+                // System.out.println(TicketController.Book(Database.movies.get(0), Database.currUser, 20,
+                //                 Database.movies.get(0).showtimes.get(0)));
                 Database.save();
 
         }

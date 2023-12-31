@@ -19,7 +19,7 @@ public class User implements Serializable {
     private String password;
     public Visa creditcard;
     public ArrayList<Ticket> tickets;
-
+    
 
     public void setVisa(Visa v) {
         this.creditcard = v;

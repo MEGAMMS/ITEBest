@@ -2,6 +2,7 @@ package main.java.app.View;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
+import java.text.DecimalFormat;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -11,6 +12,7 @@ import javax.swing.border.LineBorder;
 import main.java.app.Controller.ColoringController;
 import main.java.app.Controller.FontController;
 import main.java.app.Controller.ImageController;
+import main.java.app.Controller.LabelController;
 import main.java.app.Controller.PanelsController;
 import main.java.app.Controller.RoundedPanel;
 import main.java.app.Model.Database;
@@ -60,6 +62,16 @@ public class MovieCard extends RoundedPanel {
         titel.setBounds(10, 305, width-20, 50);
         titel.setForeground(ColoringController.getBlackColor());
         titel.setFont(FontController.getSecondryFont(Font.BOLD, 16));
+
+        JLabel starRate=ImageController.addPhoto("star.png", 25, 25);
+        starRate.setBounds(110, 346, 25, 25);
+        add(starRate);
+        JLabel rate=new JLabel(formatFloat((movie.getRate())));
+
+        rate.setBounds(80, 344, 80, 30);
+        rate.setFont(FontController.getSecondryFont(Font.BOLD, 16));
+        rate.setForeground(ColoringController.getBlackColor());
+        add(rate);
         // -----------------------
       
         JPanel button = new RoundedPanel(20);
@@ -109,5 +121,10 @@ public class MovieCard extends RoundedPanel {
             size = ((length /5)) * (heigh + hash);
         }
         return size;
+    }
+    private static String formatFloat(float value) {
+        DecimalFormat decimalFormat = new DecimalFormat("#.0");
+        decimalFormat.setMaximumIntegerDigits(1);
+        return decimalFormat.format(value);
     }
 }

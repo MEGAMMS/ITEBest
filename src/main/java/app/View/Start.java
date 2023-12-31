@@ -12,6 +12,7 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.RoundRectangle2D;
 import java.io.IOException;
 import java.util.Scanner;
 import javax.swing.Timer;
@@ -77,11 +78,13 @@ public class Start extends JFrame {
         // ---------------------------
 
         // -------Propeties-----------
+        
         setIconImage(ImageController.getITEBestIcon().getImage());
         setSize(700, 400);
         setUndecorated(true);
         setLocationRelativeTo(null);
         setLayout(null);
+        setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 30, 30));
         add(rigth);
         add(left);
         setVisible(true);
