@@ -14,15 +14,13 @@ import main.java.app.View.Start;
 public class ITEBest {
     public static MainFrame mainFrame;
     public static Start startLoading;
+
     public static void main(String[] args) throws InterruptedException, IOException {
         Start.showLoadingFrame();
-        new DefaultDatabase();
+        // new DefaultDatabase();
         // System.out.println(Utils.isLogedIn());
-        try {
-            mainFrame = new MainFrame();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        System.out.println("theme:"+Database.themes.numTheme);
+        mainFrame = new MainFrame();
         Database.save();
         Start.hideLoadingScreen();
     }
