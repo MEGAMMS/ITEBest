@@ -18,7 +18,6 @@ public class ITEBest {
         Start.showLoadingFrame();
         new DefaultDatabase();
         System.out.println(Utils.isLogedIn());
-        Database.movies.get(0).setPrice(1000);
         try {
             mainFrame = new MainFrame();
         } catch (IOException e) {

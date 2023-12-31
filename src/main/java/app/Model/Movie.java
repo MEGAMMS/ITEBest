@@ -12,6 +12,7 @@ public class Movie implements Serializable {
         this.description = description;
         this.cinema = Database.halls.get(0);
         this.comments = new ArrayList<>();
+        this.attendancePrice=price;
     }
 
     public Movie(int id, String title, String poster, String tag, String description, Cinema cinema) {
@@ -42,6 +43,7 @@ public class Movie implements Serializable {
     private ArrayList<Rate> rates;
     public ArrayList<Showtime> showtimes;
     public ArrayList<Comment> comments;
+    
 
     public ArrayList<Showtime> getShowtimes() {
         return showtimes;

@@ -14,7 +14,6 @@ public class Database implements Serializable {
     public static ArrayList<Movie> movies = new ArrayList<Movie>();
     public static ArrayList<Cinema> halls = new ArrayList<Cinema>();
     public static ArrayList<Visa> visas = new ArrayList<Visa>();
-    //public static ArrayList<Cinema> halls = new ArrayList<Cinema>();
     public static User currUser;
     public static Themes themes;
     static {
@@ -40,6 +39,7 @@ public class Database implements Serializable {
             ObjectIO.WriteObjectToFile(currUser, path + "currUser.dat");
             ObjectIO.WriteObjectToFile(halls, path + "cinema.dat");
             ObjectIO.WriteObjectToFile(themes, path + "themes.dat");
+            ObjectIO.WriteObjectToFile(visas, path + "visas.dat");
         } catch (IOException ex) {
             ex.printStackTrace();
             System.err.println("Faild to save.");
@@ -63,6 +63,7 @@ public class Database implements Serializable {
             currUser = (User) ObjectIO.LoudObjectFromFile(path + "currUser.dat");
             halls = (ArrayList<Cinema>) ObjectIO.LoudObjectFromFile(path +"Cinema.dat");
             themes = (Themes) ObjectIO.LoudObjectFromFile(path +"themes.dat");
+            visas = (ArrayList<Visa>) ObjectIO.LoudObjectFromFile(path +"visas.dat");
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
             System.out.println("Failed to load.");

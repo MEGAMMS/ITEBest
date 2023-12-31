@@ -8,9 +8,6 @@ public class Visa implements Serializable{
     private String pass;
     public User user;
 
-    public void setuser(User user) {
-        this.user = user;
-    }
 
     public Visa(String id,String p,int networth){
         this.pass=p;
@@ -41,5 +38,9 @@ public class Visa implements Serializable{
 
     public int getNetworth() {
         return this.networth;
+    }
+
+    public void setuser(User user2) {
+        this.user=user2;
     }
 }
