@@ -8,27 +8,16 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import main.java.app.View.MainFrame;
 
-import javax.swing.Action;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JSpinner;
-import javax.swing.border.Border;
+import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import com.k33ptoo.components.KButton;
 
-import main.java.app.ITEBest;
 import main.java.app.Model.Comment;
 import main.java.app.Model.Database;
-import main.java.app.Model.LogIn;
 import main.java.app.Model.MainPanels;
 import main.java.app.Model.Showtime;
-import main.java.app.Model.Themes;
 
 public class PanelsController {
     public static JPanel roundedBorder(int n) {
@@ -85,8 +74,8 @@ public class PanelsController {
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 switch (action) {
                     case "Settings":
-                    switchPanels("Settings");
-                    break;
+                        switchPanels("Settings");
+                        break;
                     case "Profile":
                         if (!Utils.isLogedIn()) {
                             MainFrame.toolbar.setVisible(false);
@@ -111,10 +100,10 @@ public class PanelsController {
                         switchPanels("Home");
                         break;
                     case "TicketAdd":
-                        
+
                         int id = Integer.parseInt(button.getName());
                         MainFrame.PTicketAdd.updateData(Database.movies.get(id));
-                        
+
                         MainFrame.PTicketAdd.MsgError.setVisible(false);
                         switchPanels("TicketAdd");
                         break;
@@ -181,14 +170,14 @@ public class PanelsController {
                         MainFrame.PTicketAdd.CommentsPanel.commentTextField.setText("");
                         break;
                     case "TicketManager":
-                        if(Utils.isLogedIn()){
+                        if (Utils.isLogedIn()) {
                             MainFrame.PTicketManager.refresh();
                             switchPanels(action);
                         } else {
                             MainFrame.toolbar.setVisible(false);
                             switchPanels("Login");
                         }
-                    break;
+                        break;
                     default:
                         switchPanels(action);
                         break;
@@ -317,7 +306,7 @@ public class PanelsController {
                             MainFrame.PTicketAdd.addTick.setVisible(false);
                         } else {
                             MainFrame.PTicketAdd.updateData(Database.movies.get(id));
-                            System.out.println(id+"mo");
+                            System.out.println(id + "mo");
                             MainFrame.PTicketAdd.BookingPanel.setVisible(true);
                             MainFrame.PTicketAdd.checkLogin.setVisible(false);
                             MainFrame.PTicketAdd.addTick.setVisible(true);
@@ -547,39 +536,42 @@ public class PanelsController {
         button.addMouseListener(ms);
 
     }
-    public static void addActionToButton(JButton button,int n,String action){
+
+    public static void addActionToButton(JButton button, int n, String action) {
 
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (action.equals("ChooseThemes")){
+                if (action.equals("ChooseThemes")) {
                     MainFrame.PSettings.SettingsLabel.setVisible(false);
-                    MainFrame.PSettings.iSettings+=1;
+                    MainFrame.PSettings.iSettings += 1;
                     MainFrame.PSettings.panel.setVisible(true);
-                    if (MainFrame.PSettings.iSettings%2==0){
+                    if (MainFrame.PSettings.iSettings % 2 == 0) {
                         MainFrame.PSettings.panel.setVisible(false);
                         MainFrame.PSettings.SettingsLabel.setVisible(true);
                     }
-                 }
+                }
             }
         });
-        
+
     }
-    public static void addActionToRadio(JRadioButton radioButton1){
-    
+
+    public static void addActionToRadio(JRadioButton radioButton1) {
+
         radioButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(radioButton1.isSelected()){
-                    
-                    int choice=JOptionPane.showConfirmDialog(radioButton1,"This will close the program. Are you sure?", "Confirmation", JOptionPane.YES_NO_OPTION);
-                            if (choice  == JOptionPane.YES_OPTION){
-                                // System.out.println(MainFrame.PSettings.radioButtons.indexOf(radioButton1));
-                                Database.themes.numTheme=MainFrame.PSettings.radioButtons.indexOf(radioButton1);
-                                Database.save();
-                                System.exit(0);
-                            }
-                                
+                if (radioButton1.isSelected()) {
+
+                    int choice = JOptionPane.showConfirmDialog(radioButton1,
+                            "This will restart the program. Are you sure?", "Confirmation", JOptionPane.YES_NO_OPTION);
+                    if (choice == JOptionPane.YES_OPTION) {
+                        // System.out.println(MainFrame.PSettings.radioButtons.indexOf(radioButton1));
+                        Database.themes.numTheme = MainFrame.PSettings.radioButtons.indexOf(radioButton1);
+                        Database.save();
+                        Utils.restart();
+                    }
+
                 }
             }
         });

@@ -1,9 +1,6 @@
 package main.java.app.Controller;
 import java.awt.*;
-import java.awt.image.*;
-import java.awt.geom.*;
 import javax.swing.*;
-import javax.swing.border.*;
 public class RoundedPanel extends JPanel
     {
         private Color backgroundColor;
