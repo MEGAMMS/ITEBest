@@ -6,12 +6,15 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 
+import main.java.app.Model.Database;
+import main.java.app.Model.Movie;
+
 public class StarRatingComponent extends JPanel {
     private int rating; // Current rating (number of filled stars)
     private int maxRating; // Maximum rating (total number of stars)
     private static final int STAR_SIZE = 20; // Size of each star
 
-    public StarRatingComponent(int maxRating) {
+    public StarRatingComponent(int maxRating,Movie movie) {
         this.rating = 0;
         this.maxRating = maxRating;
 
@@ -21,6 +24,7 @@ public class StarRatingComponent extends JPanel {
                 int mouseX = e.getX();
                 int clickedStar = mouseX / STAR_SIZE + 1; // Calculate which star was clicked
                 setRating(clickedStar);
+                movie.rateUser=rating;
             }
         });
     }
@@ -28,6 +32,7 @@ public class StarRatingComponent extends JPanel {
     public void setRating(int rating) {
         if (rating >= 0 && rating <= maxRating) {
             this.rating = rating;
+            // Database.save();
             repaint();
         }
     }

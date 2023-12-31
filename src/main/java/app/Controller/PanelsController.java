@@ -2,24 +2,33 @@ package main.java.app.Controller;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import main.java.app.View.MainFrame;
 
+import javax.swing.Action;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.border.Border;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import com.k33ptoo.components.KButton;
+
+import main.java.app.ITEBest;
 import main.java.app.Model.Comment;
 import main.java.app.Model.Database;
 import main.java.app.Model.LogIn;
 import main.java.app.Model.MainPanels;
 import main.java.app.Model.Showtime;
+import main.java.app.Model.Themes;
 
 public class PanelsController {
     public static JPanel roundedBorder(int n) {
@@ -74,14 +83,10 @@ public class PanelsController {
         MouseListener ms = new MouseListener() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
-                // PanelsController.switchPanels(panel);
-                // Lobby.PHome.setBody(5);
-
-                /*
-                 * CardLayout cardLayout = (CardLayout) Lobby.Cardpanel.getLayout();
-                 * cardLayout.show(Lobby.Cardpanel, nameP);
-                 */
                 switch (action) {
+                    case "Settings":
+                    switchPanels("Settings");
+                    break;
                     case "Profile":
                         if (!Utils.isLogedIn()) {
                             MainFrame.toolbar.setVisible(false);
@@ -108,7 +113,8 @@ public class PanelsController {
                     case "TicketAdd":
                         
                         int id = Integer.parseInt(button.getName());
-                        MainFrame.PTicketAdd.updateData(id);
+                        MainFrame.PTicketAdd.updateData(Database.movies.get(id));
+                        
                         MainFrame.PTicketAdd.MsgError.setVisible(false);
                         switchPanels("TicketAdd");
                         break;
@@ -122,7 +128,7 @@ public class PanelsController {
                             int count = Integer.parseInt(MainFrame.PTicketAdd.numTick.getValue().toString());
                             Showtime showtime = MainFrame.PTicketAdd.movie.showtimes
                                     .get(MainFrame.PTicketAdd.comboBoxShowtime.getSelectedIndex());
-                            System.out.println(showtime);
+                            // System.out.println(showtime);
                             String stateTick = TicketController.Book(MainFrame.PTicketAdd.movie, Database.currUser,
                                     count, showtime);
                             MainFrame.PTicketAdd.MsgError.setText(stateTick);
@@ -167,7 +173,7 @@ public class PanelsController {
                             MainFrame.PTicketAdd.CommentsPanel.addComment(Database.currUser.getName(), comment);
                             MainFrame.PTicketAdd.CommentsPanel.movie.comments
                                     .add(new Comment(Database.currUser.getName(), comment));
-                            System.out.println(MainFrame.PTicketAdd.CommentsPanel.movie.getTitle());
+                            // System.out.println(MainFrame.PTicketAdd.CommentsPanel.movie.getTitle());
                             Database.save();
                         }
 
@@ -273,10 +279,10 @@ public class PanelsController {
 
     public static void ChooseComboShowTimes(JComboBox<String> comboBox) {
         comboBox.addActionListener(e -> {
-            System.out.println(comboBox.getSelectedItem());
+            // System.out.println(comboBox.getSelectedItem());
             Showtime SelectedShowtime = MainFrame.PTicketAdd.movie.showtimes.stream()
                     .filter(obj -> obj.toString().equals((String) comboBox.getSelectedItem())).findFirst().orElse(null);
-            System.out.println(SelectedShowtime);
+            // System.out.println(SelectedShowtime);
             MainFrame.PTicketAdd.numberTicketFree.setText("Number Ticket Free " + SelectedShowtime.getSeats());
             // MainFrame.PTicketAdd.updateData(MainFrame.PTicketAdd.movie.getId());
             // MainFrame.PTicketAdd.numberTicketFree.setText("Number Ticket Free " +
@@ -303,14 +309,15 @@ public class PanelsController {
                 switch (action) {
                     case "TicketAdd":
                         int id = Integer.parseInt(button.getName());
-                        System.out.println(id);
+                        // System.out.println(id);
                         MainFrame.PTicketAdd.MsgError.setVisible(false);
                         if (!Utils.isLogedIn()) {
                             MainFrame.PTicketAdd.BookingPanel.setVisible(false);
                             MainFrame.PTicketAdd.checkLogin.setVisible(true);
                             MainFrame.PTicketAdd.addTick.setVisible(false);
                         } else {
-                            MainFrame.PTicketAdd.updateData(id);
+                            MainFrame.PTicketAdd.updateData(Database.movies.get(id));
+                            System.out.println(id+"mo");
                             MainFrame.PTicketAdd.BookingPanel.setVisible(true);
                             MainFrame.PTicketAdd.checkLogin.setVisible(false);
                             MainFrame.PTicketAdd.addTick.setVisible(true);
@@ -539,5 +546,42 @@ public class PanelsController {
         };
         button.addMouseListener(ms);
 
+    }
+    public static void addActionToButton(JButton button,int n,String action){
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (action.equals("ChooseThemes")){
+                    MainFrame.PSettings.SettingsLabel.setVisible(false);
+                    MainFrame.PSettings.iSettings+=1;
+                    MainFrame.PSettings.panel.setVisible(true);
+                    if (MainFrame.PSettings.iSettings%2==0){
+                        MainFrame.PSettings.panel.setVisible(false);
+                        MainFrame.PSettings.SettingsLabel.setVisible(true);
+                    }
+                 }
+            }
+        });
+        
+    }
+    public static void addActionToRadio(JRadioButton radioButton1){
+    
+        radioButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(radioButton1.isSelected()){
+                    
+                    int choice=JOptionPane.showConfirmDialog(radioButton1,"This will close the program. Are you sure?", "Confirmation", JOptionPane.YES_NO_OPTION);
+                            if (choice  == JOptionPane.YES_OPTION){
+                                // System.out.println(MainFrame.PSettings.radioButtons.indexOf(radioButton1));
+                                Database.themes.numTheme=MainFrame.PSettings.radioButtons.indexOf(radioButton1);
+                                Database.save();
+                                System.exit(0);
+                            }
+                                
+                }
+            }
+        });
     }
 }

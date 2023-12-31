@@ -21,7 +21,7 @@ public class Toolbar extends JPanel {
         this.add(new AnimatedPanel("movie.png", "MoviesListView", 0, startY + hightOfButton, 60, hightOfButton));
         this.add(new AnimatedPanel("home.png", "Home", 0, startY + hightOfButton * 2, 60, hightOfButton));
         this.add(new AnimatedPanel("ticket.png", "TicketManager", 0, startY + hightOfButton * 3, 60, hightOfButton));
-        this.add(new AnimatedPanel("setting.png", "", 0, startY + hightOfButton * 4, 60, hightOfButton));
+        this.add(new AnimatedPanel("setting.png", "Settings", 0, startY + hightOfButton * 4, 60, hightOfButton));
 
         // -----------------------------
     }

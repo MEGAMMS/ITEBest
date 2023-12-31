@@ -4,6 +4,16 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Movie implements Serializable {
+    private String tag;
+    private String poster;
+    private int id;
+    private String title;
+    private String director;
+    private String description;
+    private ArrayList<Double> rates;
+    public ArrayList<Showtime> showtimes;
+    public ArrayList<Comment> comments;
+    public int rateUser;
     public Movie(int id, String title, String poster, String tag, String description, int price) {
         this.id = id;
         this.title = title;
@@ -12,6 +22,9 @@ public class Movie implements Serializable {
         this.description = description;
         this.cinema = Database.halls.get(0);
         this.comments = new ArrayList<>();
+        this.attendancePrice=price;
+        rateUser=0;
+        rates=new ArrayList<>();
     }
 
     public Movie(int id, String title, String poster, String tag, String description, Cinema cinema) {
@@ -33,15 +46,7 @@ public class Movie implements Serializable {
         this.comments = new ArrayList<>();
     }
 
-    private String tag;
-    private String poster;
-    private int id;
-    private String title;
-    private String director;
-    private String description;
-    private ArrayList<Rate> rates;
-    public ArrayList<Showtime> showtimes;
-    public ArrayList<Comment> comments;
+    
 
     public ArrayList<Showtime> getShowtimes() {
         return showtimes;
@@ -107,11 +112,20 @@ public class Movie implements Serializable {
         this.description = description;
     }
 
-    public ArrayList<Rate> getRates() {
+    public ArrayList<Double> getRates() {
         return rates;
     }
-
-    public void setRates(ArrayList<Rate> rates) {
+    public Double getRate(){
+        if(rates.size()!=0){
+            Double sum=0.0;
+            for (Double x:rates)
+                sum+=x;
+            return sum/rates.size();
+        }else{
+            return 0.0;
+        }
+    }
+    public void setRates(ArrayList<Double> rates) {
         this.rates = rates;
     }
 

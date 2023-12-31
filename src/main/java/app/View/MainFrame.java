@@ -3,6 +3,7 @@ import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 
 import main.java.app.Controller.ImageController;
@@ -19,6 +20,7 @@ public class MainFrame extends JFrame {
     public static Login PLogin = new Login();
     public static MoviesListView PMoviesListView = new MoviesListView();
     public static TicketManager PTicketManager = new TicketManager();
+    public static Settings PSettings =new Settings();
 
 
     public MainFrame() throws IOException {
@@ -49,6 +51,7 @@ public class MainFrame extends JFrame {
         MainPanels.addPanel(PMoviesListView);
         MainPanels.addPanel(PLogin);
         MainPanels.addPanel(PTicketManager);
+        MainPanels.addPanel(PSettings);
 
         for(JPanel p : MainPanels.Panels){
             mainPanel.add(p);

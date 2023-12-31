@@ -3,6 +3,11 @@ package main.java.app.View;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.List;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
@@ -11,6 +16,7 @@ import main.java.app.Controller.RoundedPanel;
 import main.java.app.Controller.FontController;
 import main.java.app.Controller.ImageController;
 import main.java.app.Model.Database;
+import main.java.app.Model.Movie;
 import main.java.app.Controller.ColoringController;
 
 public class Home extends JPanel {
@@ -56,8 +62,14 @@ public class Home extends JPanel {
         body = new JPanel();
         body.setLayout(null);
         body.setBackground(ColoringController.getSecoundColorLight());
-        for (int i = 0; i < Database.movies.size(); i++) {
-            body.add(new MovieCard(i));
+        java.util.List<Movie> topMovies=new ArrayList<>();
+        for(Movie movie: Database.movies)
+            topMovies.add(movie);
+        //Collections.copy(topMovies, Database.movies);
+        Collections.sort(topMovies, Comparator.comparingDouble(Movie::getRate).reversed());
+
+        for (int i = 0; i < topMovies.size(); i++) {
+            body.add(new MovieCard(topMovies.get(i)));
         }
         size = MovieCard.sizePanel();
         body.setBounds(10, 310, 1180, size + 10);

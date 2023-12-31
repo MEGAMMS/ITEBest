@@ -2,6 +2,7 @@ package main.java.app.View;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
+import java.text.DecimalFormat;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -11,6 +12,7 @@ import javax.swing.border.LineBorder;
 import main.java.app.Controller.ColoringController;
 import main.java.app.Controller.FontController;
 import main.java.app.Controller.ImageController;
+import main.java.app.Controller.LabelController;
 import main.java.app.Controller.PanelsController;
 import main.java.app.Controller.RoundedPanel;
 import main.java.app.Model.Database;
@@ -36,11 +38,10 @@ public class MovieCard extends RoundedPanel {
         length = 0;
     }
 
-    public MovieCard(int id) {
+    public MovieCard(Movie movie) {
         super(30);
-        this.id = id;
         width=220;
-        movie = Database.movies.get(id);
+        this.movie =movie;
         initComponents();
         fix();
         length++;
@@ -60,12 +61,23 @@ public class MovieCard extends RoundedPanel {
         titel.setBounds(10, 305, width-20, 50);
         titel.setForeground(ColoringController.getBlackColor());
         titel.setFont(FontController.getSecondryFont(Font.BOLD, 16));
+
+        JLabel starRate=ImageController.addPhoto("star.png", 25, 25);
+        starRate.setBounds(110, 346, 25, 25);
+        add(starRate);
+        JLabel rate=new JLabel(formatFloat((movie.getRate())));
+
+        rate.setBounds(80, 344, 80, 30);
+        rate.setFont(FontController.getSecondryFont(Font.BOLD, 16));
+        rate.setForeground(ColoringController.getBlackColor());
+        add(rate);
         // -----------------------
-      
+
         JPanel button = new RoundedPanel(20);
         Btitel = new JLabel("See More");
         Btitel.setForeground(ColoringController.getBlackColor());
-        Btitel.setName(Integer.valueOf(id).toString());
+        //Btitel.setName(Integer.valueOf(id).toString());
+        Btitel.setName(Integer.toString(Database.movies.indexOf(movie)));
         Btitel.setHorizontalAlignment(SwingConstants.CENTER);
         Btitel.setBounds(0, 0, width-20, 40);
         Btitel.setFont(FontController.getPrimaryFont(Font.BOLD, 18));
@@ -109,5 +121,10 @@ public class MovieCard extends RoundedPanel {
             size = ((length /5)) * (heigh + hash);
         }
         return size;
+    }
+    private static String formatFloat(Double value) {
+        DecimalFormat decimalFormat = new DecimalFormat("#.#");
+        decimalFormat.setMaximumIntegerDigits(1);
+        return decimalFormat.format(value);
     }
 }
