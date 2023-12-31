@@ -17,12 +17,12 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
-public class Loading extends JFrame {
+public class LoadingFrame extends JFrame {
     public static MainFrame mainFrame;
     public JLabel loadingJLabel; 
     Spinner spinner;
     Timer timer;
-    public Loading() {
+    public LoadingFrame() {
         
         initComponents();
         timer = new Timer(50, new ActionListener() {
@@ -89,7 +89,7 @@ public class Loading extends JFrame {
 
     public static void showLoadingFrame() {
         SwingUtilities.invokeLater(() -> {
-            ITEBest.startLoading=new Loading();
+            ITEBest.startLoading=new LoadingFrame();
         });
     }
 
