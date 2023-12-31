@@ -88,7 +88,7 @@ public class TicketAdd extends JPanel {
         // ---------img-----------
         JPanel img = new JPanel();
 
-        img.setBackground(ColoringController.getBlackColor());
+        img.setBackground(ColoringController.getSecoundColor());
         img.setBounds(800, 10, 410, 650);
         img.setLayout(new BorderLayout());
         img.add(poster, BorderLayout.CENTER);
@@ -97,7 +97,7 @@ public class TicketAdd extends JPanel {
         JPanel titleP =  new RoundedPanel(15);
         titleP.setOpaque(false);
         titleM.setHorizontalAlignment(SwingConstants.CENTER);
-        titleM.setForeground(ColoringController.getWhiteColor());
+        titleM.setForeground(ColoringController.getBlackColor());
         titleM.setFont(FontController.getPrimaryFont(ABORT, 24));
         titleP.setBounds(10, 10, 780, 50);
         titleP.setBackground(ColoringController.getSecoundColorDark2());
