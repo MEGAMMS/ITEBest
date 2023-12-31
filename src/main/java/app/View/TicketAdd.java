@@ -41,7 +41,7 @@ public class TicketAdd extends JPanel {
     public JPanel addTick;
     public JLabel MsgError, priceMovie, priceAll;
     public Showtime SelectedShowtime;
-
+    public StarRatingComponent starRating;
     // HHH
     public void updateData(int id) {
         System.out.println(id);
@@ -64,6 +64,8 @@ public class TicketAdd extends JPanel {
         // for (Showtime s : movie.showtimes)
         // this.comboBoxShowtime.addItem((String)s.getDate().toString());
         CommentsPanel.updateTextPane(movie);
+        System.out.println(movie.rateUser);
+        starRating.setRating(movie.rateUser);
     }
 
     public TicketAdd() {
@@ -121,7 +123,7 @@ public class TicketAdd extends JPanel {
         descP.add(description);
         descP.add(descM);
         // -----------------------
-        StarRatingComponent starRating = new StarRatingComponent(5);
+        starRating = new StarRatingComponent(5,movie);
         starRating.setBounds(120, 10,135, 30);
         starRating.setBackground(ColoringController.getSecoundColorDark1());
         starRating.setVisible(true);

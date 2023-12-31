@@ -17,7 +17,7 @@ public class ITEBest {
     public static void main(String[] args) throws InterruptedException, IOException {
         Start.showLoadingFrame();
         new DefaultDatabase();
-        System.out.println(Utils.isLogedIn());
+        // System.out.println(Utils.isLogedIn());
         try {
             mainFrame = new MainFrame();
         } catch (IOException e) {
