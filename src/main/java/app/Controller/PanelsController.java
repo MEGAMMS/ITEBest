@@ -2,24 +2,33 @@ package main.java.app.Controller;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import main.java.app.View.MainFrame;
 
+import javax.swing.Action;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.border.Border;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import com.k33ptoo.components.KButton;
+
+import main.java.app.ITEBest;
 import main.java.app.Model.Comment;
 import main.java.app.Model.Database;
 import main.java.app.Model.LogIn;
 import main.java.app.Model.MainPanels;
 import main.java.app.Model.Showtime;
+import main.java.app.Model.Themes;
 
 public class PanelsController {
     public static JPanel roundedBorder(int n) {
@@ -82,6 +91,9 @@ public class PanelsController {
                  * cardLayout.show(Lobby.Cardpanel, nameP);
                  */
                 switch (action) {
+                    case "Settings":
+                    switchPanels("Settings");
+                    break;
                     case "Profile":
                         if (!Utils.isLogedIn()) {
                             MainFrame.toolbar.setVisible(false);
@@ -539,5 +551,42 @@ public class PanelsController {
         };
         button.addMouseListener(ms);
 
+    }
+    public static void addActionToButton(JButton button,int n,String action){
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (action.equals("ChooseThemes")){
+                    MainFrame.PSettings.SettingsLabel.setVisible(false);
+                    MainFrame.PSettings.iSettings+=1;
+                    MainFrame.PSettings.panel.setVisible(true);
+                    if (MainFrame.PSettings.iSettings%2==0){
+                        MainFrame.PSettings.panel.setVisible(false);
+                        MainFrame.PSettings.SettingsLabel.setVisible(true);
+                    }
+                 }
+            }
+        });
+        
+    }
+    public static void addActionToRadio(JRadioButton radioButton1){
+    
+        radioButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(radioButton1.isSelected()){
+                    
+                    int choice=JOptionPane.showConfirmDialog(radioButton1,"This will close the program. Are you sure?", "Confirmation", JOptionPane.YES_NO_OPTION);
+                            if (choice  == JOptionPane.YES_OPTION){
+                                System.out.println(MainFrame.PSettings.radioButtons.indexOf(radioButton1));
+                                Database.themes.numTheme=MainFrame.PSettings.radioButtons.indexOf(radioButton1);
+                                Database.save();
+                                System.exit(0);
+                            }
+                                
+                }
+            }
+        });
     }
 }
