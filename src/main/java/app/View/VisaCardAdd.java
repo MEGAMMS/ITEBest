@@ -76,7 +76,6 @@ public class VisaCardAdd extends JPanel{
         
         
         } catch (ParseException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         

@@ -3,7 +3,6 @@ package main.java.app.View;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.List;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;

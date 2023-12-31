@@ -6,7 +6,6 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 
-import main.java.app.Model.Database;
 import main.java.app.Model.Movie;
 
 public class StarRatingComponent extends JPanel {

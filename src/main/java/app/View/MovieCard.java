@@ -7,12 +7,9 @@ import java.text.DecimalFormat;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import javax.swing.border.LineBorder;
-
 import main.java.app.Controller.ColoringController;
 import main.java.app.Controller.FontController;
 import main.java.app.Controller.ImageController;
-import main.java.app.Controller.LabelController;
 import main.java.app.Controller.PanelsController;
 import main.java.app.Controller.RoundedPanel;
 import main.java.app.Model.Database;

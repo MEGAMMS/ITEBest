@@ -36,7 +36,6 @@ public class Settings extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
                 MainFrame.PSettings.theme_icon_button.setBackground(ColoringController.getSecoundColorDark2());
                 MainFrame.PSettings.theme_icon_button2.setBackground(ColoringController.getSecoundColorDark2());
                 MainFrame.PSettings.theme_icon_button3.setBackground(ColoringController.getSecoundColorDark2());

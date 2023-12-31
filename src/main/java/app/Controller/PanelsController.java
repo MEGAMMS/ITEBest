@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import main.java.app.View.MainFrame;
+import main.java.app.View.Settings;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -541,9 +542,9 @@ public class PanelsController {
             public void actionPerformed(ActionEvent e) {
                 if (action.equals("ChooseThemes")) {
                     MainFrame.PSettings.SettingsLabel.setVisible(false);
-                    MainFrame.PSettings.iSettings += 1;
+                    Settings.iSettings += 1;
                     MainFrame.PSettings.panel.setVisible(true);
-                    if (MainFrame.PSettings.iSettings % 2 == 0) {
+                    if (Settings.iSettings % 2 == 0) {
                         MainFrame.PSettings.panel.setVisible(false);
                         MainFrame.PSettings.SettingsLabel.setVisible(true);
                     }

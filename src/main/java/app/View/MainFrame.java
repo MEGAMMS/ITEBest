@@ -3,9 +3,6 @@ import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-import javax.swing.border.Border;
-
 import main.java.app.Controller.ImageController;
 import main.java.app.Model.MainPanels;
 
