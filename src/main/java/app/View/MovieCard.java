@@ -38,11 +38,10 @@ public class MovieCard extends RoundedPanel {
         length = 0;
     }
 
-    public MovieCard(int id) {
+    public MovieCard(Movie movie) {
         super(30);
-        this.id = id;
         width=220;
-        movie = Database.movies.get(id);
+        this.movie =movie;
         initComponents();
         fix();
         length++;
@@ -73,7 +72,7 @@ public class MovieCard extends RoundedPanel {
         rate.setForeground(ColoringController.getBlackColor());
         add(rate);
         // -----------------------
-      
+
         JPanel button = new RoundedPanel(20);
         Btitel = new JLabel("See More");
         Btitel.setForeground(ColoringController.getBlackColor());
@@ -122,8 +121,8 @@ public class MovieCard extends RoundedPanel {
         }
         return size;
     }
-    private static String formatFloat(float value) {
-        DecimalFormat decimalFormat = new DecimalFormat("#.0");
+    private static String formatFloat(Double value) {
+        DecimalFormat decimalFormat = new DecimalFormat("#.#");
         decimalFormat.setMaximumIntegerDigits(1);
         return decimalFormat.format(value);
     }
