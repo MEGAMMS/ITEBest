@@ -83,13 +83,6 @@ public class PanelsController {
         MouseListener ms = new MouseListener() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
-                // PanelsController.switchPanels(panel);
-                // Lobby.PHome.setBody(5);
-
-                /*
-                 * CardLayout cardLayout = (CardLayout) Lobby.Cardpanel.getLayout();
-                 * cardLayout.show(Lobby.Cardpanel, nameP);
-                 */
                 switch (action) {
                     case "Settings":
                     switchPanels("Settings");

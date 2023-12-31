@@ -11,13 +11,6 @@ import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 
 public class AnimatedPanel extends JPanel {
-    // public void setPrefixIcon(Icon prefixIcon) {
-    // this.prefixIcon = prefixIcon;
-    // initBorder();
-    // }
-    // public void settext(String text) {
-    // this.text = text;
-    // }
 
     public Color getEffectColor() {
         return effectColor;
@@ -27,7 +20,6 @@ public class AnimatedPanel extends JPanel {
         this.effectColor = effectColor;
     }
 
-    // private String text = "";
     private Animator animator;
     private int targetSize;
     private float animatSize;
@@ -39,8 +31,6 @@ public class AnimatedPanel extends JPanel {
 
     public AnimatedPanel(String img, String action, int X, int Y, int width, int height) {
         this.setBackground(Color.decode("#15151d"));
-        // setContentAreaFilled(false);
-
         this.setLayout(new BorderLayout());
         this.add(ImageController.addPhoto(img), BorderLayout.CENTER);
         this.setBackground(ColoringController.getFirstColorDark());
@@ -51,7 +41,6 @@ public class AnimatedPanel extends JPanel {
 
     public AnimatedPanel(String action, int X, int Y, int width, int height) {
         this.setBackground(Color.decode("#15151d"));
-        // setContentAreaFilled(false);
         this.setLayout(new BorderLayout());
         this.setBounds(0, 170, 60, 100);
         this.setBackground(ColoringController.getFirstColorDark());
@@ -109,7 +98,6 @@ public class AnimatedPanel extends JPanel {
         }
         g2.dispose();
         grphcs.drawImage(img, 0, 0, null);
-        // paintIcon(grphcs);
         super.paintComponent(grphcs);
     }
 
