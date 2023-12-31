@@ -1,4 +1,4 @@
-package main.java.app.View;
+package main.java.app.View.MovieView;
 
 import java.awt.Color;
 import java.awt.Font;

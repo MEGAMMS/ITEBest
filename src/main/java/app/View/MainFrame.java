@@ -5,6 +5,16 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import main.java.app.Controller.ImageController;
 import main.java.app.Model.MainPanels;
+import main.java.app.View.Misc.Headbar;
+import main.java.app.View.Misc.Toolbar;
+import main.java.app.View.MovieView.Home;
+import main.java.app.View.MovieView.Login;
+import main.java.app.View.MovieView.MoviesListView;
+import main.java.app.View.MovieView.Profile;
+import main.java.app.View.MovieView.Settings;
+import main.java.app.View.MovieView.Signup;
+import main.java.app.View.MovieView.TicketAdd;
+import main.java.app.View.MovieView.TicketManager;
 
 public class MainFrame extends JFrame {
     // Panels

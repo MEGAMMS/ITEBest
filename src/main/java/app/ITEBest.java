@@ -5,14 +5,14 @@ import java.io.IOException;
 import main.java.app.Controller.DefaultDatabase.DefaultDatabase;
 import main.java.app.Model.Database;
 import main.java.app.View.MainFrame;
-import main.java.app.View.Start;
+import main.java.app.View.Loading;
 
 public class ITEBest {
     public static MainFrame mainFrame;
-    public static Start startLoading;
+    public static Loading startLoading;
 
     public static void main(String[] args) {
-        Start.showLoadingFrame();
+        Loading.showLoadingFrame();
         new DefaultDatabase();
         try {
             mainFrame = new MainFrame();
@@ -21,6 +21,6 @@ public class ITEBest {
             System.out.println("Something went wrong");
         }
         Database.save();
-        Start.hideLoadingScreen();
+        Loading.hideLoadingScreen();
     }
 }

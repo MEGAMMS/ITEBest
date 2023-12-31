@@ -1,4 +1,4 @@
-package main.java.app.View;
+package main.java.app.View.MovieView;
 
 import java.awt.Font;
 import javax.swing.JLabel;
@@ -19,7 +19,7 @@ public class Profile extends JPanel {
 
     public User user;
 
-    Profile() {
+    public Profile() {
         user = new User(0, "Name", "Email", "pass");
         initComponents();
     }

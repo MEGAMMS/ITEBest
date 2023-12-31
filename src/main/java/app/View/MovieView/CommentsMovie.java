@@ -1,4 +1,4 @@
-package main.java.app.View;
+package main.java.app.View.MovieView;
 
 
 import javax.swing.JPanel;
@@ -20,7 +20,7 @@ public class CommentsMovie extends JPanel{
     public Movie movie;
     public JTextField commentTextField = new JTextField();
     private  JTextPane commentsTextPane;
-    CommentsMovie(Movie movie){
+    public CommentsMovie(Movie movie){
         this.movie=movie;
         initComponents();
     }

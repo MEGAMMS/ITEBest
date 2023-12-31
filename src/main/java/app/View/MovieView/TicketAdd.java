@@ -1,4 +1,4 @@
-package main.java.app.View;
+package main.java.app.View.MovieView;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -22,6 +22,8 @@ import main.java.app.Controller.RoundedPanel;
 import main.java.app.Model.Database;
 import main.java.app.Model.Movie;
 import main.java.app.Model.Showtime;
+import main.java.app.View.MainFrame;
+import main.java.app.View.Misc.StarRatingComponent;
 
 public class TicketAdd extends JPanel {
 

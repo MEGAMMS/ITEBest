@@ -1,4 +1,4 @@
-package main.java.app.View;
+package main.java.app.View.Misc;
 
 import java.awt.Dimension;
 import java.awt.Graphics;

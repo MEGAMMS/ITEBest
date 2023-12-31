@@ -1,4 +1,4 @@
-package main.java.app.View;
+package main.java.app.View.MovieView;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -16,6 +16,8 @@ import main.java.app.Controller.FontController;
 import main.java.app.Controller.PanelsController;
 import main.java.app.Model.Database;
 import main.java.app.Model.Tags;
+import main.java.app.View.Misc.CustomScrollBarUI;
+import main.java.app.View.Misc.MovieCard;
 
 public class MoviesListView extends JPanel {
     // identifications

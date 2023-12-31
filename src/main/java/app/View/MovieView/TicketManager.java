@@ -1,4 +1,4 @@
-package main.java.app.View;
+package main.java.app.View.MovieView;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -22,6 +22,7 @@ import main.java.app.Controller.TicketController;
 import main.java.app.Controller.Utils;
 import main.java.app.Model.Database;
 import main.java.app.Model.Ticket;
+import main.java.app.View.Misc.CustomScrollBarUI;
 
 public class TicketManager extends JPanel {
     // identifications

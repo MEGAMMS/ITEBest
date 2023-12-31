@@ -1,4 +1,4 @@
-package main.java.app.View;
+package main.java.app.View.MovieView;
 
 import javax.swing.*;
 
@@ -7,6 +7,8 @@ import main.java.app.Controller.FontController;
 import main.java.app.Controller.ImageController;
 import main.java.app.Controller.PanelsController;
 import main.java.app.Model.Database;
+import main.java.app.View.MainFrame;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,7 +32,7 @@ public class Settings extends JPanel {
     public ArrayList<JRadioButton> radioButtons;
     public ButtonGroup group;
 
-    Settings() {
+    public Settings() {
 
         Timer timer = new Timer(0, new ActionListener() {
 
