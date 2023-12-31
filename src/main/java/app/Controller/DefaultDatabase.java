@@ -20,7 +20,6 @@ public class DefaultDatabase {
                 Database.visas.add(new Visa("1111-2222-3333-4444", "1234", 15000000));
                 Database.currUser.setVisa(Database.visas.get(0));
 
-                Database.halls.add(new Cinema(Database.halls.size(), "Hall 1", Database.movies));
                 Database.movies.add(new Movie(Database.movies.size(), "Rick And Mortey", "RickandMortey.jpg", "Comedy",
                                 "Rick is a mentally-unbalanced but scientifically gifted old man who has recently reconnected with his family. He spends most of his time involving his young grandson Morty in dangerous, outlandish adventures throughout space and alternate universes. Compounded with Morty's already unstable family life, these events cause Morty much distress at home and school.",
                                 5000));
@@ -131,16 +130,31 @@ public class DefaultDatabase {
                 Database.movies.add(new Movie(Database.movies.size(), "LordOfTheRings", "LordOfTheRings.jpg", "Fantasy",
                                 "Young hobbit Frodo Baggins, after inheriting a mysterious ring from his uncle Bilbo, must leave his home in order to keep it from falling into the hands of its evil creator. Along the way, a fellowship is formed to protect the ringbearer and make sure that the ring arrives at its final destination: Mt. Doom, the only place where it can be destroyed.",
                                 41000));
+                Database.halls.add(new Cinema(Database.halls.size(), "Hall 1",
+                                new ArrayList<Movie>(Database.movies.subList(0, 5)), 80));
+                for (int i = 0; i < 5; i++)
+                        Database.movies.get(i).setCinema(Database.halls.get(0));
+                Database.halls.add(new Cinema(Database.halls.size(), "Hall 2",
+                                new ArrayList<Movie>(Database.movies.subList(5, 10)), 50));
+                for (int i = 5; i < 10; i++)
+                        Database.movies.get(i).setCinema(Database.halls.get(0));
+                Database.halls.add(new Cinema(Database.halls.size(), "Hall 3",
+                                new ArrayList<Movie>(Database.movies.subList(10, Database.movies.size())), 90));
+                for (int i = 10; i < Database.movies.size(); i++)
+                        Database.movies.get(i).setCinema(Database.halls.get(0));
                 ArrayList<Showtime> showtimes = new ArrayList<>();
-                showtimes.add(new Showtime(LocalDateTime.of(2024, 1, 15, 10, 0)));
-                showtimes.add(new Showtime(LocalDateTime.of(2024, 1, 15, 12, 0)));
-                showtimes.add(new Showtime(LocalDateTime.of(2024, 1, 16, 2, 30)));
+                showtimes.add(new Showtime(LocalDateTime.of(2024, 1, 15, 10, 0), 0));
+                showtimes.add(new Showtime(LocalDateTime.of(2024, 1, 15, 12, 0), 0));
+                showtimes.add(new Showtime(LocalDateTime.of(2024, 1, 16, 2, 30), 0));
                 Random rand = new Random();
                 for (Movie m : Database.movies) {
+                        showtimes.set(0, new Showtime(showtimes.get(0).date.plusHours(rand.nextInt(12)),
+                                        m.getCinema().getSeats()));
+                        showtimes.set(1, new Showtime(showtimes.get(1).date.plusHours(rand.nextInt(12)),
+                                        m.getCinema().getSeats()));
+                        showtimes.set(2, new Showtime(showtimes.get(2).date.plusHours(rand.nextInt(12)),
+                                        m.getCinema().getSeats()));
                         m.setShowtimes(new ArrayList<>(showtimes));
-                        showtimes.set(0, new Showtime(showtimes.get(0).date.plusHours(rand.nextInt(12))));
-                        showtimes.set(1, new Showtime(showtimes.get(1).date.plusHours(rand.nextInt(12))));
-                        showtimes.set(2, new Showtime(showtimes.get(2).date.plusHours(rand.nextInt(12))));
                 }
                 ArrayList<Double> rates = new ArrayList<>();
                 rates.add(rand.nextDouble(1, 5));
@@ -152,9 +166,6 @@ public class DefaultDatabase {
                         rates.set(1, rand.nextDouble(1, 5));
                         rates.set(2, rand.nextDouble(1, 5));
                 }
-                // System.out.println(TicketController.Book(Database.movies.get(0),
-                // Database.currUser, 20,
-                // Database.movies.get(0).showtimes.get(0)));
                 Database.save();
 
         }

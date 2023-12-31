@@ -7,14 +7,15 @@ public class Showtime implements Serializable {
     public LocalDateTime date;
     public int seats;
 
-    public Showtime(LocalDateTime dateShowtimes) {
+    public Showtime(LocalDateTime dateShowtimes, int seats) {
         this.date = dateShowtimes;
-        seats = 64;
+        this.seats = seats;
     }
+
     public Showtime(Showtime showtime) {
-        this.date = showtime.date;
-        seats = 64;
+        this(showtime.date, showtime.seats);
     }
+
     public LocalDateTime getDate() {
         return date;
     }
@@ -33,6 +34,7 @@ public class Showtime implements Serializable {
 
     @Override
     public String toString() {
-        return "" + date.getYear() + "/" + date.getMonthValue() + "/" + date.getDayOfMonth() + " " +date.getHour() + ":"+ date.getMinute();
+        return "" + date.getYear() + "/" + date.getMonthValue() + "/" + date.getDayOfMonth() + " " + date.getHour()
+                + ":" + date.getMinute();
     }
 }

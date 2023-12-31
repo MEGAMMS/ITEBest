@@ -20,7 +20,6 @@ public class Movie implements Serializable {
         this.poster = "\\MoviesPosters\\" + poster;
         this.tag = tag;
         this.description = description;
-        this.cinema = Database.halls.get(0);
         this.comments = new ArrayList<>();
         this.attendancePrice=price;
         rateUser=0;
