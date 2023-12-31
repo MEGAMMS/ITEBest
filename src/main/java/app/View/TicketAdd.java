@@ -241,7 +241,7 @@ public class TicketAdd extends JPanel {
         // ---------Buttons---------
         addTick = new RoundedPanel(30);
         addTick.setOpaque(false);
-        JLabel bttickT = new JLabel("Add");
+        JLabel bttickT = new JLabel("Order");
         bttickT.setForeground(ColoringController.getWhiteColor());
         bttickT.setHorizontalAlignment(SwingConstants.CENTER);
         bttickT.setFont(FontController.getPrimaryFont(ABORT, 24));
