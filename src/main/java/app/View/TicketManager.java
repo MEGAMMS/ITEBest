@@ -117,7 +117,7 @@ public class TicketManager extends JPanel {
         // -----------Body------------
         // System.out.println(Database.movies.get(0).showtimes.get(0));
         body = new JPanel(null);
-        System.out.println(Database.currUser.tickets);
+        //System.out.println(Database.currUser.tickets);
         refresh();
         mainPanel.add(body);
         // ---------------------------.

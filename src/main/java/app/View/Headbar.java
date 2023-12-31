@@ -1,5 +1,6 @@
 package main.java.app.View;
 
+import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JLabel;
@@ -27,7 +28,7 @@ public class Headbar extends JPanel {
         this.setLayout(null);
         this.setBackground(ColoringController.getFirstColorDark());
         title.setFont(FontController.getPrimaryFont(Font.BOLD, 30));
-        title.setForeground(ColoringController.getWhiteColor());
+        title.setForeground(Color.white);
 
         this.add(title);
         this.add(PExit);

@@ -2,12 +2,14 @@ package main.java.app.Controller;
 
 import java.awt.Color;
 
+import main.java.app.Model.Database;
 import main.java.app.Model.Themes;
 
 public class ColoringController {
-    private static String[] theme;
+    public static String[] theme;
     static{
-        theme = Themes.currTheme();
+        theme = Themes.currTheme(Database.themes.numTheme);
+        System.out.println(Database.themes.numTheme);
     }
     public static Color getFirstColor() {
         return Color.decode(theme[0]);

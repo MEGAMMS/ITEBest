@@ -8,11 +8,13 @@ import main.java.app.Model.Cinema;
 import main.java.app.Model.Database;
 import main.java.app.Model.Movie;
 import main.java.app.Model.Showtime;
+import main.java.app.Model.Themes;
 import main.java.app.Model.Visa;
 
 public class DefaultDatabase {
         public DefaultDatabase() {
                 Database.delete();
+                Database.themes=new Themes();
                 UserController.AddUser("admin", "admin@gmail.com", "123456789");
                 UserController.AddUser("admin2", "admin2@gmail.com", "123456789");
                 Database.currUser = Database.users.get(0);
