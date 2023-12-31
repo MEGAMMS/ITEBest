@@ -2,7 +2,6 @@ package main.java.app.Controller;
 
 import java.awt.Color;
 
-import main.java.app.Model.Database;
 import main.java.app.Model.Themes;
 
 public class ColoringController {
