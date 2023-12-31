@@ -43,29 +43,31 @@ public class TicketAdd extends JPanel {
     public Showtime SelectedShowtime;
     public StarRatingComponent starRating;
     // HHH
-    public void updateData(int id) {
+    public void updateData(Movie movie) {
         // System.out.println(id);
-        this.movie = Database.movies.get(id);
-        this.titleM.setText(movie.getTitle());
-        JLabel label = ImageController.addPhoto(movie.getPoster(), 410, 615);
+        this.movie = movie;
+        this.titleM.setText(this.movie.getTitle());
+        JLabel label = ImageController.addPhoto(this.movie.getPoster(), 410, 615);
         this.poster.setIcon(label.getIcon());
         this.descM.setText("<html>" + this.movie.getDescription() + "\r\n" + //
                 "\r\n" + //
                 "</html>");
         comboBoxShowtime.removeAllItems();
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(
-                movie.showtimes.stream().map(Object::toString).toArray(String[]::new));
+                this.movie.showtimes.stream().map(Object::toString).toArray(String[]::new));
         comboBoxShowtime.setModel(model);
         SelectedShowtime = MainFrame.PTicketAdd.movie.showtimes.stream()
                 .filter(obj -> obj.toString().equals((String) comboBoxShowtime.getSelectedItem())).findFirst()
                 .orElse(null);
         MainFrame.PTicketAdd.numberTicketFree.setText("Number Ticket Free " + SelectedShowtime.getSeats());
-        priceMovie.setText("Price One Ticket: " + movie.getPrice() + " S.P");
+        priceMovie.setText("Price One Ticket: " + this.movie.getPrice() + " S.P");
+        int count = Integer.parseInt(numTick.getValue().toString());
+        priceAll.setText("Price All: "+Integer.toString(movie.getPrice()*count)+" S.P");
         // for (Showtime s : movie.showtimes)
         // this.comboBoxShowtime.addItem((String)s.getDate().toString());
-        CommentsPanel.updateTextPane(movie);
-        System.out.println(movie.rateUser);
-        starRating.setRating(movie.rateUser);
+        CommentsPanel.updateTextPane(this.movie);
+        System.out.println(this.movie.rateUser);
+        starRating.setRating(this.movie.rateUser);
     }
 
     public TicketAdd() {
@@ -218,7 +220,7 @@ public class TicketAdd extends JPanel {
         imgTicket2.setBounds(150, 220, 150, 100);
         // BookingPanel.add(imgTicket2);
         MsgError = new JLabel("");
-        MsgError.setBounds(10, 160, 300, 30);
+        MsgError.setBounds(10, 140, 500, 30);
         MsgError.setForeground(ColoringController.getRedColor());
         MsgError.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 16));
         BookingPanel.add(MsgError);

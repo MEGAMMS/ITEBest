@@ -76,7 +76,8 @@ public class MovieCard extends RoundedPanel {
         JPanel button = new RoundedPanel(20);
         Btitel = new JLabel("See More");
         Btitel.setForeground(ColoringController.getBlackColor());
-        Btitel.setName(Integer.valueOf(id).toString());
+        //Btitel.setName(Integer.valueOf(id).toString());
+        Btitel.setName(Integer.toString(Database.movies.indexOf(movie)));
         Btitel.setHorizontalAlignment(SwingConstants.CENTER);
         Btitel.setBounds(0, 0, width-20, 40);
         Btitel.setFont(FontController.getPrimaryFont(Font.BOLD, 18));
