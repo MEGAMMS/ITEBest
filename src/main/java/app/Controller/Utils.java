@@ -3,6 +3,7 @@ package main.java.app.Controller;
 import java.io.IOException;
 
 import main.java.app.ITEBest;
+import main.java.app.Controller.DefaultDatabase.DefaultDatabase;
 import main.java.app.Model.Database;
 
 public class Utils {
@@ -22,6 +23,10 @@ public class Utils {
             System.exit(0);
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println("Something went wrong");
+            System.out.println("Restarting the app");
+            new DefaultDatabase();
+            Utils.restartApp();
         }
     }
 }

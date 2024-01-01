@@ -17,6 +17,8 @@ import main.java.app.Controller.FontController;
 import main.java.app.Controller.ImageController;
 import main.java.app.Controller.LabelController;
 import main.java.app.Controller.PanelsController;
+import main.java.app.Controller.Utils;
+import main.java.app.Controller.DefaultDatabase.DefaultDatabase;
 
 public class VisaCardAdd extends JPanel{
     public JFormattedTextField idCardText,password;
@@ -77,6 +79,10 @@ public class VisaCardAdd extends JPanel{
         
         } catch (ParseException e) {
             e.printStackTrace();
+            System.out.println("Something went wrong");
+            System.out.println("Restarting the app");
+            new DefaultDatabase();
+            Utils.restartApp();
         }
         
         

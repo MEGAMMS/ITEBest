@@ -13,6 +13,8 @@ import javax.swing.text.StyledDocument;
 import main.java.app.Controller.ColoringController;
 import main.java.app.Controller.FontController;
 import main.java.app.Controller.LabelController;
+import main.java.app.Controller.Utils;
+import main.java.app.Controller.DefaultDatabase.DefaultDatabase;
 import main.java.app.Model.Comment;
 import main.java.app.Model.Movie;
 import main.java.app.View.Misc.AnimatedPanel;
@@ -78,6 +80,10 @@ public class CommentsMovie extends JPanel{
             
         } catch (BadLocationException e) {
             e.printStackTrace();
+            System.out.println("Something went wrong");
+            System.out.println("Restarting the app");
+            new DefaultDatabase();
+            Utils.restartApp();
         }
     }
 }

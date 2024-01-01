@@ -6,6 +6,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import main.java.app.Controller.ObjectIO;
+import main.java.app.Controller.Utils;
+import main.java.app.Controller.DefaultDatabase.DefaultDatabase;
 
 public class Database implements Serializable {
     private static final String path = "saves\\";
@@ -43,17 +45,10 @@ public class Database implements Serializable {
         } catch (IOException ex) {
             ex.printStackTrace();
             System.err.println("Faild to save.");
-        }
-    }
-
-    public static void saveMovies() {
-
-        try {
-            new File(path).mkdirs();
-            ObjectIO.WriteObjectToFile(movies, path + "movies.dat");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            System.err.println("Faild to save.");
+            System.out.println("Something went wrong");
+            System.out.println("Restarting the app");
+            new DefaultDatabase();
+            Utils.restartApp();
         }
     }
 
@@ -69,6 +64,10 @@ public class Database implements Serializable {
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
             System.out.println("Failed to load.");
+            System.out.println("Something went wrong");
+            System.out.println("Restarting the app");
+            new DefaultDatabase();
+            Utils.restartApp();
         }
     }
 

@@ -164,11 +164,9 @@ public class PanelsController {
                             MainFrame.PTicketAdd.CommentsPanel.addComment(Database.currUser.getName(), comment);
                             MainFrame.PTicketAdd.CommentsPanel.movie.comments
                                     .add(new Comment(Database.currUser.getName(), comment));
-                            // System.out.println(MainFrame.PTicketAdd.CommentsPanel.movie.getTitle());
                             Database.save();
                         }
 
-                        // Database.saveMovies();
                         MainFrame.PTicketAdd.CommentsPanel.commentTextField.setText("");
                         break;
                     case "TicketManager":
