@@ -13,7 +13,7 @@ public class ITEBest {
 
     public static void main(String[] args) {
         LoadingFrame.showLoadingFrame();
-        // new DefaultDatabase();
+        new DefaultDatabase();
         try {
             mainFrame = new MainFrame();
         } catch (IOException e) {
