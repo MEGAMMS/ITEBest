@@ -10,7 +10,7 @@ public class Utils {
         return Database.currUser != null;
     }
 
-    public static void restart() {
+    public static void restartApp() {
         try {
             String javaCmd = System.getProperty("java.home") + "/bin/java";
             String classPath = System.getProperty("java.class.path");

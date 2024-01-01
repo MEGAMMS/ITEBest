@@ -2,6 +2,7 @@ package main.java.app;
 
 import java.io.IOException;
 
+import main.java.app.Controller.Utils;
 import main.java.app.Controller.DefaultDatabase.DefaultDatabase;
 import main.java.app.Model.Database;
 import main.java.app.View.MainFrame;
@@ -12,15 +13,16 @@ public class ITEBest {
     public static LoadingFrame startLoading;
 
     public static void main(String[] args) {
-        LoadingFrame.showLoadingFrame();
-        // new DefaultDatabase();
         try {
+            LoadingFrame.showLoadingFrame();
             mainFrame = new MainFrame();
-        } catch (IOException e) {
-            e.printStackTrace();
+            Database.save();
+            LoadingFrame.hideLoadingScreen();
+        } catch (Exception e) {
             System.out.println("Something went wrong");
+            System.out.println("Restarting the app");
+            new DefaultDatabase();
+            Utils.restartApp();
         }
-        Database.save();
-        LoadingFrame.hideLoadingScreen();
     }
 }

@@ -563,7 +563,7 @@ public class PanelsController {
                 if (radioButton1.isSelected()) {
                     Database.currTheme = MainFrame.PSettings.radioButtons.indexOf(radioButton1);
                     Database.save();
-                    Utils.restart();
+                    Utils.restartApp();
                 }
             }
         });
