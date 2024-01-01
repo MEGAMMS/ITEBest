@@ -1,4 +1,4 @@
-package main.java.app.Controller;
+package main.java.app.View.Misc;
 import java.awt.*;
 import javax.swing.*;
 public class RoundedPanel extends JPanel

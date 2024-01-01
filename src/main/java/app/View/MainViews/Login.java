@@ -1,4 +1,4 @@
-package main.java.app.View.MovieView;
+package main.java.app.View.MainViews;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -14,7 +14,7 @@ import main.java.app.Controller.ColoringController;
 import main.java.app.Controller.FontController;
 import main.java.app.Controller.ImageController;
 import main.java.app.Controller.PanelsController;
-import main.java.app.Controller.RoundedPanel;
+import main.java.app.View.Misc.RoundedPanel;
 
 public class Login extends JPanel {
     JPanel center;

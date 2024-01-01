@@ -1,4 +1,4 @@
-package main.java.app.View.MovieView;
+package main.java.app.View.MainViews;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -17,12 +17,12 @@ import com.k33ptoo.components.KButton;
 import main.java.app.Controller.ColoringController;
 import main.java.app.Controller.FontController;
 import main.java.app.Controller.PanelsController;
-import main.java.app.Controller.RoundedPanel;
 import main.java.app.Controller.TicketController;
 import main.java.app.Controller.Utils;
 import main.java.app.Model.Database;
 import main.java.app.Model.Ticket;
 import main.java.app.View.Misc.CustomScrollBarUI;
+import main.java.app.View.Misc.RoundedPanel;
 
 public class TicketManager extends JPanel {
     // identifications

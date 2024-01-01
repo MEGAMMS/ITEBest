@@ -7,7 +7,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import main.java.app.View.MainFrame;
-import main.java.app.View.MovieView.Settings;
+import main.java.app.View.MainViews.Settings;
+import main.java.app.View.Misc.RoundedPanel;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;

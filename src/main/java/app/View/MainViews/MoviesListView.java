@@ -1,4 +1,4 @@
-package main.java.app.View.MovieView;
+package main.java.app.View.MainViews;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;

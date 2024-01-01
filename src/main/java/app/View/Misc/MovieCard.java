@@ -11,7 +11,6 @@ import main.java.app.Controller.ColoringController;
 import main.java.app.Controller.FontController;
 import main.java.app.Controller.ImageController;
 import main.java.app.Controller.PanelsController;
-import main.java.app.Controller.RoundedPanel;
 import main.java.app.Model.Database;
 import main.java.app.Model.Movie;
 
