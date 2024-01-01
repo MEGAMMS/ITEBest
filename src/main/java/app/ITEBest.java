@@ -1,7 +1,5 @@
 package main.java.app;
 
-import java.io.IOException;
-
 import main.java.app.Controller.Utils;
 import main.java.app.Controller.DefaultDatabase.DefaultDatabase;
 import main.java.app.Model.Database;
