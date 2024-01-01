@@ -160,7 +160,7 @@ public class TicketManager extends JPanel {
             showtime.setOpaque(true);
             showtime.setFont(FontController.getSecondryFont(Font.CENTER_BASELINE, 18));
             this.add(showtime);
-            JLabel hall = new JLabel(ticket.getMovie().getCinema().getName() + " Num Seat(" + ticket.getSeatId() + ")");
+            JLabel hall = new JLabel(ticket.getMovie().getCinema().getName() + " Seat(" + ticket.getSeatId() + ")");
             hall.setBounds(540, 0, 200, 50);
             hall.setHorizontalAlignment(SwingConstants.CENTER);
             hall.setForeground(ColoringController.getBlackColor());
